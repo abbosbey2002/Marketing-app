@@ -18,9 +18,18 @@ class ProviderDashboardController extends Controller
         // Hozirgi foydalanuvchi (provider manager) ma'lumotlarini oling
         $providerManager = Auth::user();
 
-        return view('admin.layouts.main', [
-            'providerManager' => $providerManager,
-            'provider' => $providerManager->provider, // Provider ma'lumotlarini olish
-        ]);
+        return redirect()->route('providers.index');
+        /*
+        * Author: Abbos Qudratov
+        * Date: 2024-09-03
+        * This redirects to the providers index page.
+        * After the dashboard is completed, change the route to the dashboard route.
+        */
+
+
+        // return view('admin.layouts.main', [
+        //     'providerManager' => $providerManager,
+        //     'provider' => $providerManager->provider, // Provider ma'lumotlarini olish
+        // ]);
     }
 }

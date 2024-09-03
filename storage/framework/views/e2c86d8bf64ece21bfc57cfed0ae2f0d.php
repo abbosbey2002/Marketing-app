@@ -1,6 +1,4 @@
-@extends('admin.layouts.main')
-
-@section('content')
+<?php $__env->startSection('content'); ?>
 
 <div class="nxl-content">
     <!-- [ page-header ] start -->
@@ -46,9 +44,9 @@
     <!-- [ page-header ] end -->
     <!-- [ Main Content ] start -->
     <div class="main-content">
-        <form action="{{ route('providers.update', $provider->id) }}" method="POST" enctype="multipart/form-data">
-            @csrf
-            @method('PUT')
+        <form action="<?php echo e(route('providers.update', $provider->id)); ?>" method="POST" enctype="multipart/form-data">
+            <?php echo csrf_field(); ?>
+            <?php echo method_field('PUT'); ?>
             <div class="row">
                 
                 <div class="col-xxl-4 col-xl-6">
@@ -57,7 +55,7 @@
                             <div class="mb-4 text-center">
                                 <div class="wd-150 ht-150 mx-auto mb-3 position-relative">
                                     <div class="avatar-image wd-150 ht-150 border border-5 border-gray-3 position-relative">
-                                        <img id="avatarPreview" src="{{ asset('storage/' . $provider->logo) }}" alt="" class="img-fluid" />
+                                        <img id="avatarPreview" src="<?php echo e(asset('storage/' . $provider->logo)); ?>" alt="" class="img-fluid" />
                                     </div>
                                     <div class="wd-10 ht-10 text-success rounded-circle position-absolute translate-middle" style="top: 68%; right: 18px">
                                         <label for="logoInput" class="overflow-hidden">
@@ -68,9 +66,10 @@
                                     </div>
                                 </div>
                                 <div class="mb-4">
-                                {{$provider}}
-                                    <a href="javascript:void(0);" class="fs-14 fw-bold d-block"> {{ old('name', $provider->name) }}</a>
-                                    <a href="javascript:void(0);" class="fs-12 fw-normal text-muted d-block">{{ old('email', $provider->email) }}</a>
+                                <?php echo e($provider); ?>
+
+                                    <a href="javascript:void(0);" class="fs-14 fw-bold d-block"> <?php echo e(old('name', $provider->name)); ?></a>
+                                    <a href="javascript:void(0);" class="fs-12 fw-normal text-muted d-block"><?php echo e(old('email', $provider->email)); ?></a>
                                 </div>
                                 <div class="fs-12 fw-normal text-muted text-center d-flex flex-wrap gap-3 mb-4">
                                     <div class="flex-fill py-3 px-4 rounded-1 d-none d-sm-block border border-dashed border-gray-5">
@@ -96,10 +95,9 @@
                                     <span class="text-muted fw-medium hstack gap-3"><i class="feather-phone"></i>Phone</span>
                                     <a href="javascript:void(0);" class="float-end">+01 (375) 2589 645</a>
                                 </li>
-                                
                                 <li class="hstack justify-content-between mb-0">
                                     <span class="text-muted fw-medium hstack gap-3"><i class="feather-mail"></i>Email</span>
-                                    <a href="javascript:void(0);" class="float-end">{{ old('email', $provider->email) }}</a>
+                                    <a href="javascript:void(0);" class="float-end"><?php echo e(old('email', $provider->email)); ?></a>
                                 </li>
                             </ul>
                         </div>
@@ -110,13 +108,13 @@
                     <div class="col-12">
                         <div class="card stretch stretch-full border-0 rounded">
                             <div class="position-relative">
-                                @if($provider->cover)
-                                    <img id="coverPreview" src="{{ asset('storage/' . $provider->cover) }}" alt="Cover" 
+                                <?php if($provider->cover): ?>
+                                    <img id="coverPreview" src="<?php echo e(asset('storage/' . $provider->cover)); ?>" alt="Cover" 
                                         style="height: 18em; width: 100%; object-fit: cover;"/>
-                                @else
+                                <?php else: ?>
                                     <img id="coverPreview" src="" alt="Cover" 
                                         style="height: 18em; width: 100%; object-fit: cover; display: none;"/>
-                                @endif
+                                <?php endif; ?>
                                 <div class="wd-10 ht-10 text-success rounded-circle position-absolute translate-middle" style="bottom: 10%; right: 3%;">
                                     <label for="coverInput" class="overflow-hidden">
                                         <i class="fa-solid fa-pen-to-square border rounded-circle p-3 bg-light" 
@@ -133,7 +131,7 @@
                             <!-- Nav tabs -->
                             <ul class="nav nav-tabs flex-wrap w-100 text-center customers-nav-tabs" id="myTab" role="tablist">
                                 <li class="nav-item flex-fill border-top" role="presentation">
-                                    <a href="javascript:void(0);" class="nav-link active" data-bs-toggle="tab" data-bs-target="#overviewTab" role="tab">{{ old('name', $provider->name) ?: 'Kompaniya' }}</a>
+                                    <a href="javascript:void(0);" class="nav-link active" data-bs-toggle="tab" data-bs-target="#overviewTab" role="tab"><?php echo e(old('name', $provider->name) ?: 'Kompaniya'); ?></a>
                                 </li>
                                 <li class="nav-item flex-fill border-top" role="presentation">
                                     <a href="javascript:void(0);" class="nav-link" data-bs-toggle="tab" data-bs-target="#portfolioTab" role="tab">Portfolio</a>
@@ -158,10 +156,10 @@
                             <div class="tab-pane fade show active p-4" id="overviewTab" role="tabpanel">
                                 <div class="about-section mb-5">
                                     <div class="mb-4 d-flex align-items-center justify-content-between">
-                                        <h5 class="fw-bold mb-0">{{ old('name', $provider->name) ?: 'Kompaniya' }} haqida:</h5>
+                                        <h5 class="fw-bold mb-0"><?php echo e(old('name', $provider->name) ?: 'Kompaniya'); ?> haqida:</h5>
                                     </div>
                                     <div class="col-12">
-                                        <textarea class="form-control" name="description" style="height: 18em;">{{ old('description', $provider->description) }}</textarea>
+                                        <textarea class="form-control" name="description" style="height: 18em;"><?php echo e(old('description', $provider->description)); ?></textarea>
                                     </div>
                                 </div>
                                 <div class="profile-details mb-5">
@@ -172,14 +170,14 @@
                                     <div class="row g-0 mb-4">
                                         <div class="col-sm-6 text-muted">Kompaniya nomi:</div>
                                         <div class="col-sm-6 fw-semibold">
-                                            <input type="text" class="form-control" id="nameInput" placeholder="Name" name="name" value="{{ old('name', $provider->name) }}">
+                                            <input type="text" class="form-control" id="nameInput" placeholder="Name" name="name" value="<?php echo e(old('name', $provider->name)); ?>">
                                         </div>
                                     </div>
 
                                     <div class="row g-0 mb-4">
                                         <div class="col-sm-6 text-muted">Shior:</div>
                                         <div class="col-sm-6 fw-semibold">
-                                            <input type="text" class="form-control" id="taglineInput" placeholder="Tagline" name="tagline" value="{{ old('tagline', $provider->tagline) }}">
+                                            <input type="text" class="form-control" id="taglineInput" placeholder="Tagline" name="tagline" value="<?php echo e(old('tagline', $provider->tagline)); ?>">
                                         </div>
                                     </div>
 
@@ -200,7 +198,7 @@
                                     <div class="row g-0 mb-4">
                                         <div class="col-sm-6 text-muted">Email:</div>
                                         <div class="col-sm-6 fw-semibold">
-                                            <input type="email" class="form-control" id="emailInput" placeholder="Email" name="email" value="{{ old('email', $provider->email) }}">
+                                            <input type="email" class="form-control" id="emailInput" placeholder="Email" name="email" value="<?php echo e(old('email', $provider->email)); ?>">
                                         </div>
                                     </div>
 
@@ -209,11 +207,12 @@
                                         <div class="col-sm-6 fw-semibold">
                                             <select class="form-select form-control max-select" data-select2-selector="tag" multiple>
                                                 <option value="success" data-bg="bg-success">Tanlang</option>
-                                                @foreach($services as $service)
-                                                    <option value="{{ $service->id }}" {{ $provider->service_id == $service->id ? 'selected' : '' }}>
-                                                        {{ $service->name }}
+                                                <?php $__currentLoopData = $services; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $service): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                    <option value="<?php echo e($service->id); ?>" <?php echo e($provider->service_id == $service->id ? 'selected' : ''); ?>>
+                                                        <?php echo e($service->name); ?>
+
                                                     </option>
-                                                @endforeach
+                                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                             </select>
                                         </div>
                                     </div>
@@ -221,14 +220,14 @@
                                     <div class="row g-0 mb-4">
                                         <div class="col-sm-6 text-muted">Tashkil etilgan sana:</div>
                                         <div class="col-sm-6 fw-semibold">
-                                                <input type="date" class="form-control" id="foundedAtInput" name="foundedAt" value="{{ old('foundedAt', $provider->foundedAt) }}">
+                                                <input type="date" class="form-control" id="foundedAtInput" name="foundedAt" value="<?php echo e(old('foundedAt', $provider->foundedAt)); ?>">
                                         </div>
                                     </div>
 
                                     <div class="row g-0 mb-4">
                                         <div class="col-sm-6 text-muted">Xizmat narxi:</div>
                                         <div class="col-sm-6 fw-semibold">
-                                            <input type="text" class="form-control" id="turnoverInput" placeholder="Turnover" name="turnover" value="{{ old('turnover', $provider->turnover) }}">
+                                            <input type="text" class="form-control" id="turnoverInput" placeholder="Turnover" name="turnover" value="<?php echo e(old('turnover', $provider->turnover)); ?>">
                                         </div>
                                     </div>
 
@@ -377,7 +376,7 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        @foreach( $providers as $provider)
+                                                        <?php $__currentLoopData = $providers; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $provider): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                                         <tr>
                                                             <td>
                                                                 <div class="d-flex align-items-center gap-3">
@@ -385,8 +384,8 @@
                                                                         <img src="assets/images/avatar/2.png" alt="" class="img-fluid">
                                                                     </div>
                                                                     <a href="javascript:void(0);">
-                                                                        <span class="d-block">{{ $provider->manager_name}}</span>
-                                                                        <span class="fs-12 d-block fw-normal text-muted">{{ $provider->manager_email}}</span>
+                                                                        <span class="d-block"><?php echo e($provider->manager_name); ?></span>
+                                                                        <span class="fs-12 d-block fw-normal text-muted"><?php echo e($provider->manager_email); ?></span>
                                                                     </a>
                                                                 </div>
                                                             </td>
@@ -401,7 +400,7 @@
                                                                 <a href="javascript:void(0);"><i class="feather-more-vertical"></i></a>
                                                             </td>
                                                         </tr>
-                                                        @endforeach
+                                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                                     </tbody>
                                                 </table>
                                             </div>
@@ -486,10 +485,10 @@
     <!-- [ Main Content ] end -->
 </div>
 
-@include('admin.components.portfolios.provider-portfolio-modal')
-@include('admin.components.managers.provider-manager-modal')
-@include('admin.components..awards.provider-award-modal')
-@include('admin.components.reviews.provider-review-modal')
+<?php echo $__env->make('admin.components.portfolios.provider-portfolio-modal', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+<?php echo $__env->make('admin.components.managers.provider-manager-modal', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+<?php echo $__env->make('admin.components..awards.provider-award-modal', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+<?php echo $__env->make('admin.components.reviews.provider-review-modal', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
 <script>
     const coverInput = document.getElementById('coverInput');
@@ -527,4 +526,6 @@
     });
 </script>
 
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('admin.layouts.main', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\projects\MARKETING\resources\views/admin/providers/profile/index.blade.php ENDPATH**/ ?>

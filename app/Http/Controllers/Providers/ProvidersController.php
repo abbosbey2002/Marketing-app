@@ -27,7 +27,6 @@ class ProvidersController extends Controller
         $provider = $user->provider;
         $portfolios = Portfolio::where('provider_id',$user->provider_id)->get();
         $reviews = Review::where('provider_id',$user->provider_id)->get();
-        dd($reviews);
         $services = Service::all();
         $providers = ProviderManager::where('provider_id', $provider->id)->get();
         $categories = Category::all();
