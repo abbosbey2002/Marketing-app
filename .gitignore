@@ -1,0 +1,31 @@
+# Laravel specific
+/vendor
+/node_modules
+/public/storage
+/storage/*.key
+/.idea
+/.vscode
+.env
+Homestead.json
+Homestead.yaml
+npm-debug.log
+yarn-error.log
+.env.testing
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# IDE specific files
+*.sublime-project
+*.sublime-workspace
+*.vscode
+.idea/
+*.swp
+.htaccess
+
+# Laravel Horizon specific
+horizon/.gitignore
+
+# Laravel Telescope specific
+telescope/.gitignore
