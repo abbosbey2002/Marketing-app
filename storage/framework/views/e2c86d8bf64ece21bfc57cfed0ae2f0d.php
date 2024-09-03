@@ -89,7 +89,7 @@
                             <ul class="list-unstyled mb-4">
                                 <li class="hstack justify-content-between mb-4">
                                     <span class="text-muted fw-medium hstack gap-3"><i class="feather-map-pin"></i>Location</span>
-                                    <a href="javascript:void(0);" class="float-end">California, USA</a>
+                                    <a href="javascript:void(0);" class="float-end"><?php echo e(old('tagline', $provider->address)); ?></a>
                                 </li>
                                 <li class="hstack justify-content-between mb-4">
                                     <span class="text-muted fw-medium hstack gap-3"><i class="feather-phone"></i>Phone</span>
@@ -185,13 +185,14 @@
                                     <div class="row g-0 mb-4">
                                         <div class="col-sm-6 text-muted">Manzil:</div>
                                         <div class="col-sm-6 fw-semibold">
-                                            <input type="text" class="form-control" id="addressInput" placeholder="Address" name="address" value="California, United States">
+                                            <input type="text" class="form-control" id="addressInput" placeholder="Address" name="address" value="<?php echo e(old('tagline', $provider->address)); ?>">
                                         </div>
                                     </div>
 
                                     <div class="row g-0 mb-4">
                                         <div class="col-sm-6 text-muted">Telefon raqam:</div>
                                         <div class="col-sm-6 fw-semibold">
+
                                             <input type="tel" class="form-control" id="phoneInput" placeholder="Email" name="phone" value="+998 (93) 932 12 12">
                                         </div>
                                     </div>
@@ -211,6 +212,22 @@
                                                 <?php $__currentLoopData = $services; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $service): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                                     <option value="<?php echo e($service->id); ?>" <?php echo e($provider->service_id == $service->id ? 'selected' : ''); ?>>
                                                         <?php echo e($service->name); ?>
+
+                                                    </option>
+                                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="row g-0 mb-4">
+                                        <div class="col-sm-6 text-muted">Languages:</div>
+                                        <div class="col-sm-6 fw-semibold">
+                                            <select class="form-select form-control max-select" data-select2-selector="tag" multiple>
+                                                <option value="success" data-bg="bg-success">Tanlang</option>
+                                                <?php $__currentLoopData = $languages; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $language): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                    <option value="<?php echo e($language->code); ?>" 
+                                                        <?php if(in_array($language->code, $providerLanguageCodes)): ?> selected <?php endif; ?> >
+                                                        <?php echo e($language->name); ?>
 
                                                     </option>
                                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

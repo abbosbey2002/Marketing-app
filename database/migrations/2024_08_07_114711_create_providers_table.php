@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->rememberToken();
-            $table->bigInteger('language_id')->unsigned();
+            $table->foreignId('language_id')->constrained()->onDelete('cascade');
             $table->bigInteger('service_id')->unsigned();
             $table->timestamps();
         });

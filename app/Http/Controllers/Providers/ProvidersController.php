@@ -30,7 +30,9 @@ class ProvidersController extends Controller
         $services = Service::all();
         $providers = ProviderManager::where('provider_id', $provider->id)->get();
         $categories = Category::all();
-        return view('admin.providers.profile.index', compact('provider', 'services', 'providers'));
+        $languages = Language::all();
+        $providerLanguageCodes = $provider->languages ? $provider->languages->pluck('code')->toArray() : [];
+        return view('admin.providers.profile.index', compact('provider', 'services', 'providers', 'languages', 'providerLanguageCodes'));
     }
 
     public function show($id)
