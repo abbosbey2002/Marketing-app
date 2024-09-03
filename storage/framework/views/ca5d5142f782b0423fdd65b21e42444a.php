@@ -45,29 +45,29 @@
 
     <!--! The above 6 meta tags *must* come first in the head; any other head content must come *after* these tags !-->
     <!--! BEGIN: Apps Title-->
-    <title>Маркетинговая Ассоциация Узбекистана - Marketing.uz | By DORA® System</title>
+    <title>DORA Academy</title>
     <!--! END:  Apps Title-->
     <!--! BEGIN: Favicon-->
-    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('admin/assets/images/favicon.ico') }}">
+    <link rel="shortcut icon" type="image/x-icon" href="<?php echo e(asset('admin/assets/images/favicon.ico')); ?>">
     <!--! END: Favicon-->
     <!--! BEGIN: Bootstrap CSS-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('admin/assets/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('admin/assets/css/bootstrap.min.css')); ?>">
     <!--! END: Bootstrap CSS-->
     <!--! BEGIN: Vendors CSS-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('admin/assets/vendors/css/vendors.min.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('admin/assets/vendors/css/dataTables.bs5.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('admin/assets/vendors/css/vendors.min.css')); ?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('admin/assets/vendors/css/dataTables.bs5.min.css')); ?>">
 
-    <!-- <link rel="stylesheet" type="text/css" href="{{ asset('admin/assets/vendors/css/select2.min.css') }}"> -->
-    <link rel="stylesheet" type="text/css" href="{{ asset('admin/assets/vendors/css/select2-theme.min.css') }}">
+    <!-- <link rel="stylesheet" type="text/css" href="<?php echo e(asset('admin/assets/vendors/css/select2.min.css')); ?>"> -->
+    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('admin/assets/vendors/css/select2-theme.min.css')); ?>">
 
     <!-- For employees CSS-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('admin/assets/vendors/css/jquery.steps.min.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('admin/assets/vendors/css/quill.min.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('admin/assets/vendors/css/datepicker.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('admin/assets/vendors/css/jquery.steps.min.css')); ?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('admin/assets/vendors/css/quill.min.css')); ?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('admin/assets/vendors/css/datepicker.min.css')); ?>">
     <!--! END: Vendors CSS-->
 
     <!--! BEGIN: Custom CSS-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('admin/assets/css/theme.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('admin/assets/css/theme.min.css')); ?>">
     <!-- Add in your <head> section -->
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet"/>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
@@ -89,7 +89,7 @@
 <!--! ================================================================ !-->
 <!--! [Start] Navigation Manu !-->
 <!--! ================================================================ !-->
-@include('admin.components.sidebar')
+<?php echo $__env->make('admin.components.sidebar', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 <!--! ================================================================ !-->
 <!--! [End]  Navigation Manu !-->
 <!--! ================================================================ !-->
@@ -97,39 +97,39 @@
 <!--! ================================================================ !-->
 <!--! [Start] Header !-->
 <!--! ================================================================ !-->
-@include('components.header')
+<?php echo $__env->make('components.header', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 <!--! ================================================================ !-->
 <!--! [End] Header !-->
 <!--! ================================================================ !-->
 <main class="nxl-container">
-    @yield('content')
-    @include('admin.components.footer')
+    <?php echo $__env->yieldContent('content'); ?>
+    <?php echo $__env->make('admin.components.footer', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 </main>
 <!--! Footer Script !-->
 <!--! ================================================================ !-->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <!--! BEGIN: Vendors JS !-->
-<script src="{{ asset('admin/assets/vendors/js/vendors.min.js') }}"></script>
+<script src="<?php echo e(asset('admin/assets/vendors/js/vendors.min.js')); ?>"></script>
 <!-- vendors.min.js {always must need to be top} -->
-<script src="{{ asset('admin/assets/vendors/js/apexcharts.min.js') }}"></script>
-<script src="{{ asset('admin/assets/vendors/js/circle-progress.min.js') }}"></script>
-<script src="{{ asset('admin/assets/vendors/js/select2.min.js') }}"></script>
-<script src="{{ asset('admin/assets/vendors/js/select2-active.min.js') }}"></script>
+<script src="<?php echo e(asset('admin/assets/vendors/js/apexcharts.min.js')); ?>"></script>
+<script src="<?php echo e(asset('admin/assets/vendors/js/circle-progress.min.js')); ?>"></script>
+<script src="<?php echo e(asset('admin/assets/vendors/js/select2.min.js')); ?>"></script>
+<script src="<?php echo e(asset('admin/assets/vendors/js/select2-active.min.js')); ?>"></script>
 <!-- For employees JS-->
 <!-- SweetAlert2 JS -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script src="{{ asset('admin/assets/vendors/js/quill.min.js') }}"></script>
-<script src="{{ asset('admin/assets/vendors/js/datepicker.min.js') }}"></script>
+<script src="<?php echo e(asset('admin/assets/vendors/js/quill.min.js')); ?>"></script>
+<script src="<?php echo e(asset('admin/assets/vendors/js/datepicker.min.js')); ?>"></script>
 <!--! END: Vendors JS !-->
 <!--! BEGIN: Apps Init  !-->
-<script src="{{ asset('admin/assets/js/common-init.min.js') }}"></script>
-<script src="{{ asset('admin/assets/js/reports-leads-init.min.js') }}"></script>
+<script src="<?php echo e(asset('admin/assets/js/common-init.min.js')); ?>"></script>
+<script src="<?php echo e(asset('admin/assets/js/reports-leads-init.min.js')); ?>"></script>
 <!--! END: Apps Init !-->
 <!--! BEGIN: Apps Init  !-->
-<script src="{{ asset('admin/assets/js/payment-init.min.js') }}"></script>
+<script src="<?php echo e(asset('admin/assets/js/payment-init.min.js')); ?>"></script>
 <!--! END: Apps Init !-->
 <!--! BEGIN: Theme Customizer  !-->
-<script src="{{ asset('admin/assets/js/theme-customizer-init.min.js') }}"></script>
+<script src="<?php echo e(asset('admin/assets/js/theme-customizer-init.min.js')); ?>"></script>
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
 <script>
     function confirmDelete(event) {
@@ -179,3 +179,4 @@
 </body>
 
 </html>
+<?php /**PATH /home/nazarbek/server/MARKETING/resources/views/admin/layouts/main.blade.php ENDPATH**/ ?>

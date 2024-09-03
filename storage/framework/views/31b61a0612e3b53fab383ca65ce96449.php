@@ -1,8 +1,6 @@
-@extends('layouts.login')
+<?php $__env->startSection('title', 'Company Details'); ?>
 
-@section('title', 'Company Details')
-
-@section('content')
+<?php $__env->startSection('content'); ?>
 <script>
     window.addEventListener("load", function (event) {
         document.getElementById('loginLogo').src = '/assets/imgs/template/logo-black.svg';
@@ -59,18 +57,18 @@
         <div class="col-lg-6">
             <div class="box-form-register">
                 <h3 class="title-register">Welcome Back</h3>
-                <form class="form-register row" action="{{ route('providerRegisterStep2') }}" method="POST">
-                    @csrf
+                <form class="form-register row" action="<?php echo e(route('providerRegisterStep2')); ?>" method="POST">
+                    <?php echo csrf_field(); ?>
                     <!-- Xatolarni ko'rsatish uchun blok -->
-                    @if ($errors->any())
+                    <?php if($errors->any()): ?>
                         <div class="alert alert-danger">
                             <ul>
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
+                                <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <li><?php echo e($error); ?></li>
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             </ul>
                         </div>
-                    @endif
+                    <?php endif; ?>
                     <div class="form-group col-lg-6 col-sm-12">
                         <label>Address<span class="brand-1">*</span></label>
                         <input type="text" name="company_address" id="company_address" class="form-control text-center" placeholder="Enter your company address" >
@@ -136,11 +134,11 @@
     </section>
 </main>
 
-@endsection
+<?php $__env->stopSection(); ?>
 <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
-@section('scripts')
+<?php $__env->startSection('scripts'); ?>
 <script>
     $(document).ready(function() {
         $('.select2').select2({
@@ -149,4 +147,6 @@
         });
     });
 </script>
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.login', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /home/nazarbek/server/MARKETING/resources/views/auth/provider/register/step2.blade.php ENDPATH**/ ?>

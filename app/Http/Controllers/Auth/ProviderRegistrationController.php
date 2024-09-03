@@ -46,15 +46,16 @@ class ProviderRegistrationController extends Controller
     // Step 2: Kompaniya qo'shimcha ma'lumotlarini qabul qilish
     public function handleCompanyDetails(Request $request)
     {
+
     $validatedData = $request->validate([
         'company_address' => 'required|string|max:255',
         'company_website' => 'required|url|max:255',
         'company_phone' => 'required|string|max:15',
         'teamSize' => 'required|integer',
-        'language_id' => 'required|array',
-        'language_id.*' => 'integer|exists:languages,id',
-        'service_id' => 'required|array',
-        'service_id.*' => 'integer|exists:services,id',
+//        'language_id' => 'required|array',
+//        'language_id.*' => 'integer|exists:languages,id',
+//        'service_id' => 'required|array',
+//        'service_id.*' => 'integer|exists:services,id',
     ]);
 
     // Store the data in the session
@@ -62,8 +63,8 @@ class ProviderRegistrationController extends Controller
     session()->put('company_website', $validatedData['company_website']);
     session()->put('company_phone', $validatedData['company_phone']);
     session()->put('teamSize', $validatedData['teamSize']);
-    session()->put('language_id', $validatedData['language_id']);
-    session()->put('service_id', $validatedData['service_id']);
+//    session()->put('language_id', $validatedData['language_id']);
+//    session()->put('service_id', $validatedData['service_id']);
 
     return redirect()->route('providerRegisterStep3');
     }
@@ -78,6 +79,7 @@ class ProviderRegistrationController extends Controller
     // Step 3: Manager hisobini qabul qilish va yaratish
     public function handleManagerCreation(Request $request)
     {
+        // Validatsiya qilish
         $validatedData = $request->validate([
             'manager_name' => 'required|string|max:255',
             'manager_email' => 'required|string|email|max:255|unique:providers_manager,manager_email',
@@ -90,14 +92,12 @@ class ProviderRegistrationController extends Controller
         $companyWebsite = session('company_website');
         $companyPhone = session('company_phone');
         $teamSize = session('teamSize');
-        $languageId = session('language_id');
-        $serviceId = session('service_id');
-        
 
-        // Tranzaktsiya ichida saqlash jarayonini boshlash
-        DB::beginTransaction();
+//        $languageId = session('language_id'); // Agar kerak bo'lsa
+//        $serviceId = session('service_id');   // Agar kerak bo'lsa
 
-        try {
+
+
             // Provider modeliga barcha ma'lumotlarni vaqtincha saqlash
             $provider = Provider::create([
                 'name' => $companyName,
@@ -105,9 +105,13 @@ class ProviderRegistrationController extends Controller
                 'company_website' => $companyWebsite,
                 'company_phone' => $companyPhone,
                 'teamSize' => $teamSize,
-                'language_id' => $languageId,
-                'service_id' => $serviceId,
+                'turnover' => 'ass',
+                 'email' =>   $request->input('manager_email'),
+                  'password' => bcrypt($request->input('manager_password')),
+//                'language_id' => $languageId, // Agar kerak bo'lsa
+//                'service_id' => $serviceId,   // Agar kerak bo'lsa
             ]);
+
 
             // ProviderManager jadvaliga manager ma'lumotlarini saqlash
             ProviderManager::create([
@@ -123,26 +127,18 @@ class ProviderRegistrationController extends Controller
 
             // Barcha sessiya ma'lumotlarini tozalash
             session()->forget([
-                'company_name',
+                'name',
                 'company_address',
                 'company_website',
                 'company_phone',
-                'turnover',
                 'teamSize',
                 'language_id',
                 'service_id',
             ]);
 
-            return view('admin.providers.main')->with('success', 'Provider registration completed successfully.');
+            return view('admin.layouts.main')->with('success', 'Provider registration completed successfully.');
 
-        } catch (\Exception $e) {
-            // Agar biror operatsiya muvaffaqiyatsiz bo'lsa, tranzaktsiyani bekor qilamiz
-            DB::rollBack();
 
-            // Xatolikni logga yozib qo'yamiz va foydalanuvchini qaytaramiz
-            Log::error('Provider registration failed: ' . $e->getMessage());
-            return back()->withErrors(['error' => 'Provider registration failed, please try again.']);
-        }
     }
 
 }

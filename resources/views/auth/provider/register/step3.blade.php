@@ -16,7 +16,7 @@
           height: 93vh;
         }
         .gap-sb-3{
-            gap: 3rem; 
+            gap: 3rem;
         }
     }
 
@@ -57,7 +57,7 @@
         <div class="col-lg-6">
             <div class="box-form-register">
                 <h3 class="title-register">Welcome Back</h3>
-                <form class="form-register row" action="{{ route('providerRegisterStep3') }}">
+                <form class="form-register row" action="{{ route('providerRegisterStep3') }}" method="POST">
                     @csrf
                     <!-- Xatolarni ko'rsatish uchun blok -->
                     @if ($errors->any())
@@ -85,9 +85,9 @@
                         <label>Manager's password<span class="brand-1">*</span></label>
                         <input type="password" name="manager_password_confirmation" class="form-control text-center" placeholder="Confirm manager's password" required>
                     </div>
-                   
+
                     <div class="form-group col-lg-12">
-                        <button class="btn btn-black btn-rounded">Complete Registration
+                        <button class="btn btn-black btn-rounded" type="submit">Complete Registration
                             <svg xmlns="http://www.w3.org/2000/svg" width="23" height="8" viewbox="0 0 23 8" fill="none">
                             <path d="M22.5 4.00032L18.9791 0.479492V3.3074H0.5V4.69333H18.9791V7.52129L22.5 4.00032Z" fill=""></path>
                             </svg>

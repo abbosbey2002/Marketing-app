@@ -14,18 +14,18 @@ return new class extends Migration
         Schema::create('providers', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->bigInteger('turnover');
-            $table->bigInteger('teamSize');
+            $table->bigInteger('turnover')->nullable();
+            $table->bigInteger('teamSize')->nullable();
             $table->string('tagline')->nullable();
-            $table->date('foundedAt');
+            $table->date('foundedAt')->nullable();
             $table->text('description')->nullable();
             $table->string('logo')->nullable();
             $table->string('cover')->nullable();
             $table->string('email')->unique();
             $table->string('password');
             $table->rememberToken();
-            $table->bigInteger('language_id')->unsigned();
-            $table->bigInteger('service_id')->unsigned();
+            $table->bigInteger('language_id')->unsigned()->nullable();
+            $table->bigInteger('service_id')->unsigned()->nullable();
             $table->timestamps();
         });
     }
