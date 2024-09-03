@@ -179,4 +179,4 @@
 </body>
 
 </html>
-<?php /**PATH D:\projects\MARKETING\resources\views/admin/layouts/main.blade.php ENDPATH**/ ?>
+<?php /**PATH C:\Users\Owner\Desktop\Web project\marketing.dora.uz\public_html\resources\views/admin/layouts/main.blade.php ENDPATH**/ ?>

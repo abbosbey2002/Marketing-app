@@ -45,7 +45,7 @@
 
     <!--! The above 6 meta tags *must* come first in the head; any other head content must come *after* these tags !-->
     <!--! BEGIN: Apps Title-->
-    <title>DORA Academy</title>
+    <title>Маркетинговая Ассоциация Узбекистана - Marketing.uz | By DORA® System</title>
     <!--! END:  Apps Title-->
     <!--! BEGIN: Favicon-->
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('admin/assets/images/favicon.ico') }}">

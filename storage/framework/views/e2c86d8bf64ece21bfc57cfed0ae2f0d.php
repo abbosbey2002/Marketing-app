@@ -95,6 +95,7 @@
                                     <span class="text-muted fw-medium hstack gap-3"><i class="feather-phone"></i>Phone</span>
                                     <a href="javascript:void(0);" class="float-end">+01 (375) 2589 645</a>
                                 </li>
+                                
                                 <li class="hstack justify-content-between mb-0">
                                     <span class="text-muted fw-medium hstack gap-3"><i class="feather-mail"></i>Email</span>
                                     <a href="javascript:void(0);" class="float-end"><?php echo e(old('email', $provider->email)); ?></a>
