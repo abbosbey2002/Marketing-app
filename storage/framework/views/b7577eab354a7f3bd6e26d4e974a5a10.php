@@ -1,0 +1,1 @@
+<?php /**PATH C:\Users\Owner\Desktop\Web project\marketing.dora.uz\public_html\resources\views/errors/404.blade.php ENDPATH**/ ?>

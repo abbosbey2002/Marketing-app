@@ -12,7 +12,7 @@
     <link rel="shortcut icon" type="image/x-icon" href="/assets/imgs/template/favicon.svg">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="/assets/css/style.css?v=1.0.0" rel="stylesheet">
-    <title>Маркетинговая Ассоциация Узбекистана - Marketing.uz | By DORA® System</title>
+    <title>Marketing | By DORA System</title>
   </head>
   <body>
     <div id="preloader-active">
@@ -34,11 +34,11 @@
             <div class="header-nav">
               <nav class="nav-main-menu d-none d-xl-block">
                 <ul class="main-menu">
-                  <li><a class="active" href="{{ route('home') }}">Home</a></li>
-                  <li><a href="{{ route('providers') }}">Providers</a></li>
-                  <li><a href="{{ route('marketers') }}">Marketers</a></li>
-                  <li><a href="{{ route('partners') }}">Partners</a></li>
-                  <li class="has-children"><a href="{{ route('contacts') }}">Contact</a></li>
+                  <li><a class="active" href="<?php echo e(route('home')); ?>">Home</a></li>
+                  <li><a href="<?php echo e(route('providers')); ?>">Providers</a></li>
+                  <li><a href="<?php echo e(route('marketers')); ?>">Marketers</a></li>
+                  <li><a href="<?php echo e(route('partners')); ?>">Partners</a></li>
+                  <li class="has-children"><a href="<?php echo e(route('contacts')); ?>">Contact</a></li>
                 </ul>
               </nav>
             </div>
@@ -52,7 +52,7 @@
               <div class="popular-keywords text-start mt-20">
                 <p class="mb-10 color-white">Popular search:</p><a class="color-gray-600 mr-10 font-xs" href="#">Platform,</a><a class="color-gray-600 mr-10 font-xs" href="#"># Database,</a><a class="color-gray-600 mr-10 font-xs" href="#"># Price</a>
               </div>
-            </div><a class="btn btn-brand-4-medium hover-up" href="{{ route('login') }}">Login
+            </div><a class="btn btn-brand-4-medium hover-up" href="<?php echo e(route('login')); ?>">Login
               <svg width="22" height="22" viewbox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M22 11.0003L18.4791 7.47949V10.3074H0V11.6933H18.4791V14.5213L22 11.0003Z" fill=""></path>
               </svg></a>
@@ -148,7 +148,7 @@
         </div>
       </div>
     </div>
-      @yield('content')
+      <?php echo $__env->yieldContent('content'); ?>
         <!-- Footer -->
     <footer class="footer footer-style-3 footer-style-5">
       <div class="container">
@@ -265,4 +265,4 @@
     <!--Custom script for this template-->
     <script src="/assets/js/main.js?v=1.0.0"></script>
   </body>
-</html>
+</html><?php /**PATH C:\Users\Owner\Desktop\Web project\marketing.dora.uz\public_html\resources\views/layouts/main.blade.php ENDPATH**/ ?>

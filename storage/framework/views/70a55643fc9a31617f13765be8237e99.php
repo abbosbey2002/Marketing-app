@@ -10,4 +10,4 @@
         <a href="javascript:void(0);" class="fs-11 fw-semibold text-uppercase">Terms</a>
         <a href="javascript:void(0);" class="fs-11 fw-semibold text-uppercase">Privacy</a>
     </div>
-</footer>
+</footer><?php /**PATH C:\Users\Owner\Desktop\Web project\marketing.dora.uz\public_html\resources\views/admin/components/footer.blade.php ENDPATH**/ ?>
