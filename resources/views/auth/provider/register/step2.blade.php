@@ -59,7 +59,7 @@
         <div class="col-lg-6">
             <div class="box-form-register">
                 <h3 class="title-register">Welcome Back</h3>
-                <form class="form-register row" action="{{ route('providerRegisterStep2') }}" method="POST">
+                <form class="form-register row" method="POST" action="{{ route('providerRegisterStepPost2', ['provider_id' => $provider_id]) }}">
                     @csrf
                     <!-- Xatolarni ko'rsatish uchun blok -->
                     @if ($errors->any())

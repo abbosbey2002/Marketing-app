@@ -179,4 +179,4 @@
 </body>
 
 </html>
-<?php /**PATH /home/nazarbek/server/MARKETING/resources/views/admin/layouts/main.blade.php ENDPATH**/ ?>
+<?php /**PATH /home/nazarbek/server/MARKETING/resources/views/layouts/admin.blade.php ENDPATH**/ ?>

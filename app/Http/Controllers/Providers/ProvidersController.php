@@ -11,6 +11,7 @@ use App\Models\Language;
 use App\Models\Service;
 use App\Models\Category;
 use App\Models\ProviderManager;
+
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
@@ -23,15 +24,17 @@ class ProvidersController extends Controller
      */
     public function index()
     {
-        $user = Auth::user();
+        $user = Auth::guard('provider_manager')->user();
         $provider = $user->provider;
-        $portfolios = Portfolio::where('provider_id',$user->provider_id)->get();
-        $reviews = Review::where('provider_id',$user->provider_id)->get();
-        dd($reviews);
+
+//        $portfolios = Portfolio::where('provider_id', $user->provider_id)->get();
+//        $reviews = Review::where('provider_id', $user->provider_id)->get();
         $services = Service::all();
         $providers = ProviderManager::where('provider_id', $provider->id)->get();
-        $categories = Category::all();
-        return view('admin.providers.profile.index', compact('provider', 'services', 'providers'));
+
+//        $categories = Category::all();
+
+        return view('admin.providers.profile.index', compact('provider', 'providers','services'));
     }
 
     public function show($id)
@@ -42,7 +45,7 @@ class ProvidersController extends Controller
     }
 
 
-   
+
     public function edit()
     {
         $user = Auth::user();
@@ -56,7 +59,7 @@ class ProvidersController extends Controller
 
          // Get the authenticated provider
     $provider = Auth()->user()->provider()->first();
- 
+
     // Validate the incoming request
     // $request->validate([
     //     'service-type' => 'required|integer',
@@ -68,7 +71,7 @@ class ProvidersController extends Controller
 
     // Attach the skills to the provider
     $provider->skills()->sync($request->input('skills'));
- 
+
     // You can also save other fields like 'priceService' or 'description' to the provider
     $provider->update([
         'startingPrice' => $request->input('priceService'),
@@ -79,7 +82,7 @@ class ProvidersController extends Controller
     return  response()->json([$provider, $provider->skills()]);
     }
 
-    
+
     public function update(Request $request)
     {
 

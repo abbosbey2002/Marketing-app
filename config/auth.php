@@ -34,18 +34,38 @@ return [
     | Supported: "session"
     |
     */
-
     'guards' => [
         'web' => [
             'driver' => 'session',
             'provider' => 'users',
         ],
 
-        'provider' => [
+        'api' => [
+            'driver' => 'token',
+            'provider' => 'users',
+            'hash' => false,
+        ],
+
+        'provider_manager' => [
             'driver' => 'session',
-            'provider' => 'providers_manager',
+            'provider' => 'provider_managers',
         ],
     ],
+
+
+    'providers' => [
+        'users' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\User::class,
+        ],
+
+        'provider_managers' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\ProviderManager::class,  // Make sure this points to your actual model
+        ],
+    ],
+
+
 
     /*
     |--------------------------------------------------------------------------
@@ -64,18 +84,16 @@ return [
     |
     */
 
-    'providers' => [
-    'users' => [
-        'driver' => 'eloquent',
-        'model' => App\Models\ProviderManager::class,
-    ],
+// config/auth.php
+
+
 
 
         // 'users' => [
         //     'driver' => 'database',
         //     'table' => 'users',
         // ],
-    ],
+
 
     /*
     |--------------------------------------------------------------------------
@@ -99,11 +117,17 @@ return [
     'passwords' => [
         'users' => [
             'provider' => 'users',
-            'table' => 'password_reset_tokens',
+            'table' => 'password_resets',
             'expire' => 60,
-            'throttle' => 60,
+        ],
+
+        'provider_managers' => [
+            'provider' => 'provider_managers',
+            'table' => 'provider_manager_password_resets',
+            'expire' => 60,
         ],
     ],
+
 
     /*
     |--------------------------------------------------------------------------

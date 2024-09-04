@@ -68,30 +68,27 @@ class AuthController extends Controller
     }
 
     // Provider login funksiyasi (providers_manager jadvali uchun)
+// AuthController.php
     protected function providerLoginHandler(Request $request)
     {
         $request->validate([
             'manager_email' => 'required|email',
             'manager_password' => 'required|string',
         ]);
+
         $providerManager = ProviderManager::where('manager_email', $request->input('manager_email'))->first();
 
         if ($providerManager && Hash::check($request->input('manager_password'), $providerManager->manager_password)) {
-            // Foydalanuvchini tizimga kirgizish
-            Auth::guard('web')->login($providerManager);
-            
-            // Tekshirish uchun:
-            if (Auth::check()) {
-                // Foydalanuvchini to'g'ridan-to'g'ri provider dashboard-ga yo'naltirish
-                return redirect()->route('provider.dashboard');
-            }
+            // Change 'provider' to 'provider_manager'
+            Auth::guard('provider_manager')->login($providerManager);
+            return redirect()->route('provider.dashboard');
         }
 
-        // Agar login muvaffaqiyatsiz bo'lsa, xatolik bilan qaytarish
         return back()->withErrors([
             'manager_email' => 'The provided credentials do not match our records.',
         ]);
     }
+
 
     // Logout qilish
     public function logout()

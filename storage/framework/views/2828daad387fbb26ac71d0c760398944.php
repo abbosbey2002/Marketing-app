@@ -308,4 +308,4 @@
             height: 100vh; /* Bo'lim balandligini ekran balandligi bilan moslashtiradi */
             overflow: auto; /* Agar bo'lim juda uzun bo'lsa, scroll bo'lishini ta'minlaydi */
         }
-    </style><?php /**PATH /home/dorauz/domains/marketing.dora.uz/public_html/resources/views/admin/components/portfolios/provider-portfolio-modal.blade.php ENDPATH**/ ?>
+    </style><?php /**PATH /home/nazarbek/server/MARKETING/resources/views/admin/components/portfolios/provider-portfolio-modal.blade.php ENDPATH**/ ?>

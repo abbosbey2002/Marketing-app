@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProviderSearchController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\RegisterController;
@@ -8,7 +9,7 @@ use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\Auth\ProviderRegistrationController;
 use App\Http\Controllers\Providers\ProviderDashboardController;
-use App\Http\Controllers\Providers\ProviderSearchController;
+
 use App\Http\Controllers\Services\ServicesController;
 use App\Http\Controllers\Awards\AwardsController;
 use App\Http\Controllers\Reviews\ReviewsController;
@@ -67,14 +68,15 @@ Route::get('/search-companies', [ProviderSearchController::class, 'search'])->na
 // >namespace('App\Http\Controllers\Providers')
 Route::prefix('provider')->group(function () {
     Route::get('/register/company', [ProviderRegistrationController::class, 'showCompanyNameForm'])->name('providerRegisterStep1');
-    Route::post('/register/company', [ProviderRegistrationController::class, 'handleCompanyName'])->name('providerRegisterStep1');
-    Route::get('/register/details', [ProviderRegistrationController::class, 'showCompanyDetailsForm'])->name('providerRegisterStep2');
-    Route::post('/register/details', [ProviderRegistrationController::class, 'handleCompanyDetails'])->name('providerRegisterStep2');
-    Route::get('/register/manager', [ProviderRegistrationController::class, 'showManagerForm'])->name('providerRegisterStep3');
-    Route::post('/register/manager', [ProviderRegistrationController::class, 'handleManagerCreation'])->name('providerRegisterStep3');
+    Route::post('/register/company', [ProviderRegistrationController::class, 'handleCompanyName'])->name('providerRegisterStepPost1');
+    Route::get('/register/details/{provider_id}', [ProviderRegistrationController::class, 'showCompanyDetailsForm'])->name('providerRegisterStep2');
+    Route::post('/register/details/{provider_id}', [ProviderRegistrationController::class, 'handleCompanyDetails'])->name('providerRegisterStepPost2');
+    Route::get('/register/manager/{provider_id}', [ProviderRegistrationController::class, 'showManagerForm'])->name('providerRegisterStep3');
+    Route::post('/register/manager/{provider_id}', [ProviderRegistrationController::class, 'handleManagerCreation'])->name('providerRegisterStepPost3');
+
 
     Route::post('add-akills', [ProvidersController::class, 'addSkills'])->name('provider.add.skills');
-  
+
 
 
     Route::resource('services', ServicesController::class);
@@ -90,14 +92,15 @@ Route::prefix('provider')->group(function () {
     Route::resource('teams', TeamController::class);
     Route::resource('managers', ManagerController::class);
     Route::get('/managers/{id}/data', [ManagerController::class, 'getManager']);
-  
+
     Route::get('/login', [AuthController::class, 'showProviderLoginForm'])->name('login.provider');
     Route::post('/login', [AuthController::class, 'providerLogin'])->name('provider.login');
 
-
-    Route::middleware('auth')->group(function () {
+    Route::prefix('provider')->middleware('auth:provider_manager')->group(function () {
         Route::get('/dashboard', [ProviderDashboardController::class, 'index'])->name('provider.dashboard');
+
     });
+
 });
 
 

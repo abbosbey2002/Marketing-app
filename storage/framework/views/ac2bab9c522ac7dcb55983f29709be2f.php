@@ -1,6 +1,6 @@
 <footer class="footer">
     <p class="fs-11 text-muted fw-medium text-uppercase mb-0 copyright">
-        <span>DORA ©</span>
+        <span>DORA® | International Marketing Company</span>
         <script>
             document.write(new Date().getFullYear());
         </script>

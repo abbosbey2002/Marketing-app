@@ -24,11 +24,15 @@ class ProviderManager extends Authenticatable
         'manager_password',
         'remember_token',
     ];
+    public function getAuthPassword()
+    {
+        return $this->manager_password;
+    }
 
     protected $casts = [
         'manager_password' => 'hashed',
     ];
-    
+
     public function provider()
     {
         return $this->belongsTo(Provider::class);

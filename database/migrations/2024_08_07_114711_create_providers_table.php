@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::create('providers', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('name')->nullable();;
+            $table->string('phone')->nullable();
             $table->bigInteger('turnover')->nullable();
             $table->bigInteger('teamSize')->nullable();
             $table->string('tagline')->nullable();
@@ -21,8 +22,8 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->string('logo')->nullable();
             $table->string('cover')->nullable();
-            $table->string('email')->unique();
-            $table->string('password');
+            $table->string('email')->unique()->nullable();
+            $table->string('password')->nullable();
             $table->rememberToken();
             $table->bigInteger('language_id')->unsigned()->nullable();
             $table->bigInteger('service_id')->unsigned()->nullable();

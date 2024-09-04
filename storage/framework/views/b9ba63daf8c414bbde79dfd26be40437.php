@@ -12,7 +12,7 @@
     <link rel="shortcut icon" type="image/x-icon" href="/assets/imgs/template/favicon.svg">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="/assets/css/style.css?v=1.0.0" rel="stylesheet">
-    <title>Marketing | By DORA System</title>
+    <title>Маркетинговая Ассоциация Узбекистана - Marketing.uz | By DORA® System</title>
   </head>
   <body>
     <div id="preloader-active">
@@ -232,7 +232,7 @@
                   </div>
                 </div>
                 <div class="col-md-6 mb-20">
-                  <p class="text-sm neutral-600">Copyright &copy; 2024 DORA System. All rights reserved.</p>
+                  <p class="text-sm neutral-600">Copyright &copy; 2024 DORA® System</p>
                 </div>
               </div>
             </div>
