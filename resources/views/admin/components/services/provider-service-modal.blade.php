@@ -8,7 +8,7 @@
 <!--! ================================================================ !-->
 <!--! [Start] Tasks Details Offcanvas !-->
 <!--! ================================================================ !-->
-<form action="{{ route('services.store') }}" method="post">
+<form action="{{ route('providers.add.service') }}" method="post">
     @csrf
     <div class="offcanvas offcanvas-end w-50" tabindex="-1" id="serviceProviderOffcanvas">
         <div class="offcanvas-header border-bottom" style="padding-top: 20px; padding-bottom: 20px">
@@ -28,7 +28,7 @@
                     <div class="form-group mb-4">
                         <label class="form-label">Service Type:</label>
                         <select name="service-type" id="service-type" class="form-control select2">
-                            <!-- Options will be populated via JavaScript -->
+                            
                         </select>
                     </div>
                 </div>
@@ -91,7 +91,7 @@
                     </div>
                 </div>
             </div>
-            <input type="hidden" value="{{ auth()->user()->provider_id }}" name="provider_id">
+            <input type="hidden" value="{{ auth()->user()->manager->provider_id }}" name="provider_id">
             <div class="row">
                 <div class="col-12">
                     <div class="form-group">
@@ -110,7 +110,7 @@ $(document).ready(function () {
     const serviceTypeSelect = $('#service-type');
 
     $.ajax({
-        url: 'https://marketing.dora.uz/api/service-lists',
+        url: '/api/service-lists',
         method: 'GET',
         success: function (data) {
             console.log('Service Lists Data:', data); // Check what is being returned
@@ -118,7 +118,7 @@ $(document).ready(function () {
                 data.data.forEach(function (service) {
                     const option = $('<option class="text-black"></option>').val(service.id).text(service.name_en);
                     serviceTypeSelect.append(option);
-                });
+                }); 
             } else {
                 console.error('Unexpected data format:', data);
             }
@@ -133,7 +133,7 @@ $(document).ready(function () {
         const selectedServiceId = $(this).val();
 
         $.ajax({
-            url: 'https://marketing.dora.uz/api/skills',
+            url: '/api/skills',
             method: 'GET',
             success: function (data) {
                 console.log('Skills Data:', data); // Check what is being returned
@@ -141,7 +141,7 @@ $(document).ready(function () {
                 skillsList.empty(); // Clear existing options
 
                 if (Array.isArray(data)) {
-                    const filteredSkills = data.filter(skill => parseInt(skill.service_list_id) === parseInt(selectedServiceId));
+                    const filteredSkills = data.filter(skill => parseInt(skill.service_id) === parseInt(selectedServiceId));
                     console.log(filteredSkills);
                     filteredSkills.forEach(function (skill) {
                         console.log(skill.name_en);

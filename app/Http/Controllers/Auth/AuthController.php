@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use App\Models\ProviderManager;
+
 
 class AuthController extends Controller
 {
@@ -70,23 +70,22 @@ class AuthController extends Controller
     // Provider login funksiyasi (providers_manager jadvali uchun)
     protected function providerLoginHandler(Request $request)
     {
-        $request->validate([
+    $request->validate([
             'manager_email' => 'required|email',
             'manager_password' => 'required|string',
         ]);
-        $providerManager = ProviderManager::where('manager_email', $request->input('manager_email'))->first();
 
-        if ($providerManager && Hash::check($request->input('manager_password'), $providerManager->manager_password)) {
-            // Foydalanuvchini tizimga kirgizish
-            Auth::guard('web')->login($providerManager);
-            
-            // Tekshirish uchun:
-            if (Auth::check()) {
-                // Foydalanuvchini to'g'ridan-to'g'ri provider dashboard-ga yo'naltirish
-                return redirect()->route('provider.dashboard');
-            }
+        // Attempt to authenticate the user
+        if (Auth::attempt([
+            'email' => $request->manager_email,
+            'password' => $request->manager_password
+        ])) {
+            // If successful, regenerate session to prevent session fixation attacks
+            $request->session()->regenerate();
+
+            // Redirect to intended page or a specific route
+            return redirect()->route('provider.dashboard');
         }
-
         // Agar login muvaffaqiyatsiz bo'lsa, xatolik bilan qaytarish
         return back()->withErrors([
             'manager_email' => 'The provided credentials do not match our records.',

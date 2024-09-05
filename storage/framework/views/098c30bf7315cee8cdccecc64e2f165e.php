@@ -108,6 +108,8 @@
     <!--! Footer Script !-->
     <!--! ================================================================ !-->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+   
+
     <!--! BEGIN: Vendors JS !-->
     <script src="<?php echo e(asset('admin/assets/vendors/js/vendors.min.js')); ?>"></script>
     <!-- vendors.min.js {always must need to be top} -->
@@ -127,6 +129,8 @@
     <!--! END: Apps Init !-->
     <!--! BEGIN: Apps Init  !-->
     <script src="<?php echo e(asset('admin/assets/js/payment-init.min.js')); ?>"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+    <script src="<?php echo e(asset('admin/assets/js/formatter.js')); ?>"></script>
     <!--! END: Apps Init !-->
     <!--! BEGIN: Theme Customizer  !-->
     <script src="<?php echo e(asset('admin/assets/js/theme-customizer-init.min.js')); ?>"></script>

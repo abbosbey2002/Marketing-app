@@ -66,8 +66,7 @@
                                     </div>
                                 </div>
                                 <div class="mb-4">
-                                <?php echo e($provider); ?>
-
+                              
                                     <a href="javascript:void(0);" class="fs-14 fw-bold d-block"> <?php echo e(old('name', $provider->name)); ?></a>
                                     <a href="javascript:void(0);" class="fs-12 fw-normal text-muted d-block"><?php echo e(old('email', $provider->email)); ?></a>
                                 </div>
@@ -93,7 +92,7 @@
                                 </li>
                                 <li class="hstack justify-content-between mb-4">
                                     <span class="text-muted fw-medium hstack gap-3"><i class="feather-phone"></i>Phone</span>
-                                    <a href="javascript:void(0);" class="float-end">+01 (375) 2589 645</a>
+                                    <a href="javascript:void(0);" class="float-end"><?php echo e(old('tagline', $provider->phone)); ?></a>
                                 </li>
                                 
                                 <li class="hstack justify-content-between mb-0">
@@ -122,6 +121,16 @@
                                         style="cursor: pointer;"></i>
                                         <input type="file" class="form-control" id="coverInput" name="cover" style="opacity: 0; visibility: hidden;" accept="image/*">
                                     </label>
+                                    <?php $__errorArgs = ['cover'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                        <div class="alert alert-danger"><?php echo e($message); ?></div>
+                                    <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                 </div>
                             </div>
                         </div>
@@ -192,8 +201,7 @@
                                     <div class="row g-0 mb-4">
                                         <div class="col-sm-6 text-muted">Telefon raqam:</div>
                                         <div class="col-sm-6 fw-semibold">
-
-                                            <input type="tel" class="form-control" id="phoneInput" placeholder="Email" name="phone" value="+998 (93) 932 12 12">
+                                            <input type="tel" class="form-control" id="phoneInput" placeholder="Phone number" name="phone" value="<?php echo e(old('phone', $provider->phone)); ?>">
                                         </div>
                                     </div>
 
@@ -222,11 +230,12 @@
                                     <div class="row g-0 mb-4">
                                         <div class="col-sm-6 text-muted">Languages:</div>
                                         <div class="col-sm-6 fw-semibold">
-                                            <select class="form-select form-control max-select" data-select2-selector="tag" multiple>
-                                                <option value="success" data-bg="bg-success">Tanlang</option>
+                                           
+                                            <select class="form-select form-control max-select" name="languages[]" data-select2-selector="tag" multiple>
+                                                <option value="" disabled>Tanlang</option>
                                                 <?php $__currentLoopData = $languages; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $language): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                                     <option value="<?php echo e($language->code); ?>" 
-                                                        <?php if(in_array($language->code, $providerLanguageCodes)): ?> selected <?php endif; ?> >
+                                                        <?php if(in_array($language->code, $providerLanguageCodes)): ?> selected <?php endif; ?>>
                                                         <?php echo e($language->name); ?>
 
                                                     </option>
@@ -249,19 +258,11 @@
                                         </div>
                                     </div>
 
+
                                     <div class="row g-0 mb-4">
                                         <div class="col-sm-6 text-muted">Jamoa hajmi:</div>
                                         <div class="col-sm-6 fw-semibold">
-                                            <select class="form-select form-control" id="teamSizeInput"  name="teamSize">
-                                                <option value="success" data-bg="bg-success">Tanlang</option>
-                                                <option value="1-5" data-bg="bg-success">1-5</option>
-                                                <option value="5-10" data-bg="bg-success">5-10</option>
-                                                <option value="11-20" data-bg="bg-success">11-20</option>
-                                                <option value="20-30" data-bg="bg-success">20-30</option>
-                                                <option value="50-100" data-bg="bg-success">50-100</option>
-                                                <option value="100-1000" data-bg="bg-success">100-1000</option>
-                                            </select>
-                                            
+                                                <input type="number" class="form-control" id="teamSizeInput" name="teamSize" value="<?php echo e(old('foundedAt', $provider->teamSize)); ?>">
                                         </div>
                                     </div>
 

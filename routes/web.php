@@ -17,12 +17,12 @@ use App\Http\Controllers\Portfolios\PortfoliosController;
 use App\Http\Controllers\Teams\TeamController;
 use App\Http\Controllers\Providers\ProvidersController;
 use App\Http\Controllers\Managers\ManagerController;
-
+use App\Models\Service;
 
 /*****************************************************************************
-* Display Head routes
-* @author Doniyor Rajapov
-*****************************************************************************/
+ * Display Head routes
+ * @author Doniyor Rajapov
+ *****************************************************************************/
 Route::get('/', [MainController::class, 'home'])->name('home');
 
 Route::get('/providers', [MainController::class, 'pageProvider'])->name('providers');
@@ -60,52 +60,60 @@ Route::prefix('auth')->namespace('App\Http\Controllers\Auth')->group(function ()
 
 
 /*****************************************************************************
-* Display Provider routes
-* @author Doniyor Rajapov
-*****************************************************************************/
+ * Display Provider routes
+ * @author Doniyor Rajapov
+ *****************************************************************************/
 Route::get('/search-companies', [ProviderSearchController::class, 'search'])->name('search.companies');
 // >namespace('App\Http\Controllers\Providers')
 Route::prefix('provider')->group(function () {
+
     Route::get('/register/company', [ProviderRegistrationController::class, 'showCompanyNameForm'])->name('providerRegisterStep1');
-    Route::post('/register/company', [ProviderRegistrationController::class, 'handleCompanyName'])->name('providerRegisterStep1');
+    Route::post('/register/company', [ProviderRegistrationController::class, 'handleCompanyName'])->name('providerRegisterStep1store');
     Route::get('/register/details', [ProviderRegistrationController::class, 'showCompanyDetailsForm'])->name('providerRegisterStep2');
-    Route::post('/register/details', [ProviderRegistrationController::class, 'handleCompanyDetails'])->name('providerRegisterStep2');
+    Route::post('/register/details', [ProviderRegistrationController::class, 'handleCompanyDetails'])->name('providerRegisterStep2store');
     Route::get('/register/manager', [ProviderRegistrationController::class, 'showManagerForm'])->name('providerRegisterStep3');
-    Route::post('/register/manager', [ProviderRegistrationController::class, 'handleManagerCreation'])->name('providerRegisterStep3');
+    Route::post('/register/manager', [ProviderRegistrationController::class, 'storeproviderwithmanager'])->name('providerRegisterStepstore');
 
-    Route::post('add-akills', [ProvidersController::class, 'addSkills'])->name('provider.add.skills');
-  
-
-
-    Route::resource('services', ServicesController::class);
-    Route::resource('providers', ProvidersController::class);
-    Route::resource('categories', CategoriesController::class);
-    Route::resource('contacts', ContactController::class);
-    Route::resource('marketers', MarketersController::class);
-    Route::resource('partners', PartnersController::class);
-    Route::resource('awards', AwardsController::class);
-    Route::resource('users', UsersController::class);
-    Route::resource('reviews', ReviewsController::class);
-    Route::resource('portfolios', PortfoliosController::class);
-    Route::resource('teams', TeamController::class);
-    Route::resource('managers', ManagerController::class);
-    Route::get('/managers/{id}/data', [ManagerController::class, 'getManager']);
-  
     Route::get('/login', [AuthController::class, 'showProviderLoginForm'])->name('login.provider');
     Route::post('/login', [AuthController::class, 'providerLogin'])->name('provider.login');
 
-
     Route::middleware('auth')->group(function () {
         Route::get('/dashboard', [ProviderDashboardController::class, 'index'])->name('provider.dashboard');
+        Route::post('add-akills', [ProvidersController::class, 'addSkills'])->name('provider.add.skills');
+
+
+        // service
+        Route::get('services', [ProvidersController::class, 'service'])->name('providers.service');
+        Route::post('add-service/', [ProvidersController::class, 'addservice'])->name('providers.add.service');
+        Route::put('update-service/', [ProvidersController::class, 'updateservice'])->name('providers.service.update');
+        Route::delete('/service/delete', [ProvidersController::class, 'deleteService'])->name('deleteService');
+        // service
+
+        Route::get('profile', [ProvidersController::class, 'profile'])->name('providers.profile');
+
+
+        Route::resource('providers', ProvidersController::class);
+        Route::resource('providers', ProvidersController::class);
+        Route::resource('categories', CategoriesController::class);
+        Route::resource('contacts', ContactController::class);
+        Route::resource('marketers', MarketersController::class);
+        Route::resource('partners', PartnersController::class);
+        Route::resource('awards', AwardsController::class);
+        Route::resource('users', UsersController::class);
+        Route::resource('reviews', ReviewsController::class);
+        Route::resource('portfolios', PortfoliosController::class);
+        Route::resource('teams', TeamController::class);
+        Route::resource('managers', ManagerController::class);
+        Route::get('/managers/{id}/data', [ManagerController::class, 'getManager']);
     });
 });
 
-
+Route::resource('services', ServicesController::class);
 
 /*****************************************************************************
-* Display Marketer routes
-* @author Doniyor Rajapov
-*****************************************************************************/
+ * Display Marketer routes
+ * @author Doniyor Rajapov
+ *****************************************************************************/
 Route::prefix('marketer')->namespace('App\Http\Controllers')->group(function () {
     Route::get('/login', [AuthController::class, 'showMarketerLoginForm'])->name('login.marketer');
     Route::post('/login', [AuthController::class, 'marketerLogin'])->name('marketer.login');
@@ -116,9 +124,9 @@ Route::prefix('marketer')->namespace('App\Http\Controllers')->group(function () 
 
 
 /*****************************************************************************
-* Display Partner routes
-* @author Doniyor Rajapov
-*****************************************************************************/
+ * Display Partner routes
+ * @author Doniyor Rajapov
+ *****************************************************************************/
 Route::prefix('partner')->namespace('App\Http\Controllers')->group(function () {
     // Client login
     Route::get('/login', [AuthController::class, 'showClientLoginForm'])->name('login.client');
@@ -128,9 +136,9 @@ Route::prefix('partner')->namespace('App\Http\Controllers')->group(function () {
 });
 
 /*****************************************************************************
-* Display Admin routes
-* @author Doniyor Rajapov
-*****************************************************************************/
+ * Display Admin routes
+ * @author Doniyor Rajapov
+ *****************************************************************************/
 // Route::prefix('admin')->namespace('App\Http\Controllers')->middleware('auth')->group(function () {
 //     Route::view('/dashboard', 'admin')->name('dashboard');
 //     Route::resource('services', ServicesController::class);
@@ -148,7 +156,7 @@ Route::prefix('partner')->namespace('App\Http\Controllers')->group(function () {
 // });
 
 
-Route::get('/{lang}' , function ($lang){
-    session(['lang' =>$lang]);
+Route::get('/{lang}', function ($lang) {
+    session(['lang' => $lang]);
     return back();
-})->where('lang' , 'uz|ru');
+})->where('lang', 'uz|ru');

@@ -21,8 +21,15 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'phone',
         'role',
     ];
+
+
+    public function manager()
+    {
+        return $this->hasOne(Manager::class);
+    }
 
     public static function roles()
     {

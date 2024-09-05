@@ -18,7 +18,7 @@ class ProviderDashboardController extends Controller
         // Hozirgi foydalanuvchi (provider manager) ma'lumotlarini oling
         $providerManager = Auth::user();
 
-        return redirect()->route('providers.index');
+        return redirect()->route('providers.profile');
         /*
         * Author: Abbos Qudratov
         * Date: 2024-09-03

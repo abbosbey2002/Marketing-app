@@ -3,7 +3,7 @@ namespace App\Http\Controllers\Managers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\ProviderManager;
+use App\Models\Manager;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
@@ -13,12 +13,12 @@ class ManagerController extends Controller
     public function index()
     {
 
-        $managers = ProviderManager::where('provider_id', Auth::user()->provider_id)->paginate(10);
+        $managers = Manager::where('provider_id', Auth::user()->provider_id)->paginate(10);
         return view('admin.providers.managers.index', compact('managers'));
     }
     public function getManager($id)
     {
-        $manager = ProviderManager::findOrFail($id);
+        $manager = Manager::findOrFail($id);
         return response()->json($manager);
     }
     public function create()
@@ -35,7 +35,7 @@ class ManagerController extends Controller
             'role' => 'required|string|max:255',
         ]);
 
-        $provider = ProviderManager::create([
+        $provider = Manager::create([
             'provider_id' => Auth::user()->provider_id,
             'manager_name' => $request->manager_name,
             'manager_email' => $request->manager_email,
@@ -47,7 +47,7 @@ class ManagerController extends Controller
 
     public function show($id)
     {
-        $manager = ProviderManager::findOrFail($id);
+        $manager = Manager::findOrFail($id);
         return view('admin.providers.managers.show', compact('manager'));
     }
 
@@ -57,13 +57,13 @@ class ManagerController extends Controller
     
 
      // POST yoki GET so'rovi orqali kelgan ID ni olamiz
-    $manager = ProviderManager::findOrFail($id); // ID bo'yicha managerni topamiz
+    $manager = Manager::findOrFail($id); // ID bo'yicha managerni topamiz
 
     return view('admin.providers.managers.edit', compact('manager'));
 }
     public function update(Request $request, $id)
     {
-        $manager = ProviderManager::findOrFail($id);
+        $manager = Manager::findOrFail($id);
 
         // Validation
         $request->validate([
@@ -92,7 +92,7 @@ class ManagerController extends Controller
 
     public function destroy($id)
     {
-        $manager = ProviderManager::findOrFail($id);
+        $manager = Manager::findOrFail($id);
         $manager->delete();
 
         return redirect()->route('managers.index')->with('success', 'Manager deleted successfully.');

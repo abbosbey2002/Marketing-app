@@ -5,6 +5,7 @@
 </style>
 
 @foreach($services as $service)
+
 <!-- Modal for Editing Service -->
 <div class="offcanvas offcanvas-end w-50" id="editServiceModal{{ $service->id }}" tabindex="-1">
     <div class="offcanvas-header border-bottom" style="padding-top: 20px; padding-bottom: 20px">
@@ -17,7 +18,7 @@
         </div>
     </div>
     <div class="offcanvas-body">
-        <form action="{{ route('services.update', $service->id) }}" method="post">
+        <form action="{{ route('providers.service.update', $service->id) }}" method="post">
             @csrf
             @method('PUT')
 
@@ -28,7 +29,7 @@
                         <label class="form-label">Service Type:</label>
                         <select name="service-type" id="edit-service-type-{{ $service->id }}" class="form-control">
                             @foreach($serviceTypes as $serviceType)
-                                <option class="text-black"  value="{{ $serviceType->id }}" {{ $serviceType->id == $service->service_type ? 'selected' : '' }}>
+                                <option class="text-black"  value="{{ $serviceType->id }}" {{ $serviceType->id == $service->id ? 'selected' : '' }}>
                                     {{ $serviceType->name_en }}
                                 </option>
                             @endforeach
@@ -40,10 +41,10 @@
                     <div class="form-group mb-4">
                         <label class="form-label">Skills:</label>
                         <select name="skills[]" id="edit-skills-list-{{ $service->id }}" class=" select22" multiple="multiple">
-                            @foreach($skills as $skill)
-                                <option value="{{ $skill->id }}"
-                                    @if(in_array($skill->id, $service->skills->pluck('id')->toArray())) selected @endif>
-                                    {{ $skill->name_en ?? $skill->name }}
+                            @foreach($service->providerSkills()->get() as $skill)
+                                <option value="{{ $skill->skill->id }}"
+                                    @if(in_array($skill->skill->id, $service->skills->pluck('id')->toArray())) selected @endif>
+                                    {{ $skill->skill->name_en ?? $skill->skill->name }}
                                 </option>
                             @endforeach
                         </select>
@@ -57,23 +58,24 @@
                         <div class="row mt-2">
                             <div class="col d-flex align-items-center">
                                 <label for="edit-custom-price-{{ $service->id }}" class="d-flex align-items-center">
-                                    <input type="number" class="ms-2 p-1" id="edit-custom-price-input-{{ $service->id }}" name="startingPrice" value="{{ $service->startingPrice }}" placeholder="€20000"/>
+                                    <input type="number" class="ms-2 p-1" id="edit-custom-price-input-{{ $service->id }}" name="startingPrice" value="{{($service->providerService->price) }}" placeholder="€20000"/>
                                 </label>
                             </div>
                         </div>
                     </div>
                 </div>
 
+
                 <!-- Description -->
                 <div class="col-12">
                     <div class="form-group mb-4">
                         <label class="form-label">Description (optional):</label>
-                        <textarea class="form-control" name="description" style="height: 18em;">{{ $service->description }}</textarea>
+                        <textarea class="form-control" name="description" style="height: 18em;">{{($service->providerService->description) }}</textarea>
                     </div>
                 </div>
             </div>
 
-            <input type="hidden" value="{{ auth()->user()->provider_id }}" name="provider_id">
+            <input type="hidden" value="{{ auth()->user()->manager->provider_id }}" name="provider_id">
             
             <div class="row">
                 <div class="form-group">
@@ -94,15 +96,17 @@ $(document).ready(function () {
         const selectedServiceId = $(this).val();
         const skillsList = $(`#edit-skills-list-${serviceId}`);
 
+
         $.ajax({
-            url: 'https://marketing.dora.uz/api/skills',
+            url: '/api/skills',
             method: 'GET',
             success: function (data) {
-                console.log('Skills Data:', data); // Check what is being returned
+                 
                 skillsList.empty(); // Clear existing options
 
                 if (Array.isArray(data)) {
-                    const filteredSkills = data.filter(skill => skill.service_list_id == parseInt(selectedServiceId));
+                    const filteredSkills = data.filter(skill => skill.service_id == parseInt(selectedServiceId));
+                    console.log('Skills Data:', filteredSkills, skillsList);
                     filteredSkills.forEach(function (skill) {
                         const option = $('<option></option>').val(skill.id).text(skill.name_en);
                         skillsList.append(option);

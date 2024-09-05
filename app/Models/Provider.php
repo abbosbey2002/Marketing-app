@@ -13,6 +13,8 @@ class Provider extends Model
 
     protected $fillable = [
         'name',
+        'phone',
+        'address',
         'turnover',
         'teamSize',
         'tagline',
@@ -21,25 +23,28 @@ class Provider extends Model
         'logo',
         'cover',
         'email',
-        'password', 
+        'password',
         'language_id',
         'service_id'
     ];
 
-     public function skills()
+
+    public function services()
     {
-        return $this->belongsToMany(Skill::class, 'provider_skill');
+        return $this->belongsToMany(Service::class, 'provider_service', 'provider_id');
     }
 
-    public function language()
+    public function skills()
     {
-        return $this->belongsTo(Language::class);
+        return $this->hasManyThrough(Skill::class, ProviderService::class, 'provider_id', 'id', 'id', 'service_id');
     }
 
-    public function service()
+    public function languages()
     {
-        return $this->belongsTo(ServiceList::class);
+        return $this->belongsToMany(Language::class, 'provider_language');
     }
+
+    
 
     public function awards()
     {
