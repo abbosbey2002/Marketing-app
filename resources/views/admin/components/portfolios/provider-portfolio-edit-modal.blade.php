@@ -101,13 +101,13 @@
                                         <div class="col-md-12 mt-3">
                                             <h5> Start date </h5>
                                                 <div class="mb-4">
-                                                    <input type="month" class="form-control" name="start_date" placeholder="Enter a budjet..." value="{{$portfolio->start_date}}">
+                                                    <input type="date" class="form-control" name="start_date" placeholder="Enter a budjet..." value="{{$portfolio->start_date}}">
                                                 </div>
                                             </div>
                                             <div class="col-md-12 mt-3">
                                             <h5> End date</h5>
                                                 <div class="mb-4">
-                                                    <input type="month" class="form-control" name="end_date" placeholder="Enter a budjet..." value="{{$portfolio->end_date}}">
+                                                    <input type="date" class="form-control" name="end_date" placeholder="Enter a budjet..." value="{{$portfolio->end_date}}">
                                                 </div>
                                             </div>
 
@@ -282,7 +282,7 @@
                     </div>
 
 
-                            <input type="hidden" name="provider_id" value="{{ auth()->user()->provider_id }}">
+                            <input type="hidden" name="provider_id" value="{{ auth()->user()->manager->provider_id }}">
                             <button type="submit">Submit</button>
                     </div>    
             </form>    

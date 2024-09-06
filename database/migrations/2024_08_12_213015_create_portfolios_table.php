@@ -17,7 +17,8 @@ return new class extends Migration
             $table->foreignId('provider_id')->constrained('providers')->cascadeOnDelete();
             $table->string('name');
             $table->string('image');
-            $table->text('skills');
+            $table->string('youtube_url')->nullable(); // Youtube URL maydoni
+            $table->string('expertise')->nullable(); // Expertise maydoni qo'shildi
             $table->bigInteger('budget');
             $table->date('start_date');
             $table->date('end_date');
@@ -28,9 +29,10 @@ return new class extends Migration
             $table->text('link');
             $table->string('company_name');
             $table->string('company_location');
-            $table->text('sector');
-            $table->text('audience');
-            $table->string('email');
+            $table->string('sector'); // Sector maydoni, o'zgartirilgan turi textdan stringga
+            $table->string('geographic_scope')->nullable(); // Geographic scope maydoni qo'shildi
+            $table->string('audience'); // Audience maydoni, o'zgartirilgan turi textdan stringga
+            $table->string('email')->nullable(); // Agar email kerak bo'lsa, saqlang
             $table->timestamps();
         });
     }

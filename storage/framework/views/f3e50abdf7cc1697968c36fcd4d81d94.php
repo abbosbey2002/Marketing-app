@@ -72,12 +72,12 @@
                           <h5> Expertise</h5>
                             <div class="form-group mb-4">
                                 <label class="form-label">Indicate the fields of expertise requested for the work you delivered.</label>
-                                <select class="form-control" data-select2-selector="status" name="expertise">
-                                    <option value="primary" data-bg="bg-primary" selected>Inprogress</option>
-                                    <option value="secondary" data-bg="bg-secondary">Pending</option>
-                                    <option value="success" data-bg="bg-success">Completed</option>
-                                    <option value="danger" data-bg="bg-danger">Rejected</option>
-                                    <option value="warning" data-bg="bg-warning">Upcoming</option>
+                                <select class="form-control" data-select2-selector="status" name="service_id">
+                                    
+                                    <?php $__currentLoopData = $services; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $service): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <option value="<?php echo e($service->id); ?>" data-bg="bg-warning"><?php echo e($service->name_en); ?></option>
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+
                                 </select>
                             </div>
                         </div>
@@ -91,13 +91,13 @@
                         <div class="col-md-12 mt-3">
                            <h5> Start date </h5>
                             <div class="mb-4">
-                                <input type="month" class="form-control" name="start_date" placeholder="Enter a budjet...">
+                                <input type="date" class="form-control" name="start_date" placeholder="Enter a budjet...">
                             </div>
                         </div>
                         <div class="col-md-12 mt-3">
                            <h5> End date</h5>
                             <div class="mb-4">
-                                <input type="month" class="form-control" name="end_date" placeholder="Enter a budjet...">
+                                <input type="date" class="form-control" name="end_date" placeholder="Enter a budjet...">
                             </div>
                         </div>
                         <div class="col-md-12 mt-3">
@@ -268,7 +268,7 @@
                         </div>
                   </div>
                 </div>
-                <input type="hidden" name="provider_id" value="<?php echo e(auth()->user()->provider_id); ?>">
+                <input type="hidden" name="provider_id" value="<?php echo e(auth()->user()->manager->provider_id); ?>">
                 <button type="submit">Submit</button>
             </div>    
             </form>    
