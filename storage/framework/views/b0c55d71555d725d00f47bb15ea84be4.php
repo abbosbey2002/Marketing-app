@@ -58,7 +58,7 @@
             <?php echo csrf_field(); ?>
             <?php echo method_field('PUT'); ?>
             <div class="row">
-                
+
                 <div class="col-xxl-4 col-xl-6">
                     <div class="card stretch stretch-full">
                         <div class="card-body">
@@ -69,7 +69,7 @@
                                     </div>
                                     <div class="wd-10 ht-10 text-success rounded-circle position-absolute translate-middle" style="top: 68%; right: 18px">
                                         <label for="logoInput" class="overflow-hidden">
-                                            <i class="fa-solid fa-pen-to-square border rounded-circle p-3 bg-light" 
+                                            <i class="fa-solid fa-pen-to-square border rounded-circle p-3 bg-light"
                                             style="cursor: pointer;"></i>
                                             <input type="file" class="form-control" id="logoInput" name="logo" style="opacity: 0; visibility: hidden;" accept="image/*">
                                         </label>
@@ -112,22 +112,22 @@
                             </ul>
                         </div>
                     </div>
-                
+
                 </div>
                 <div class="col-xxl-8 col-xl-6">
                     <div class="col-12">
                         <div class="card stretch stretch-full border-0 rounded">
                             <div class="position-relative">
                                 <?php if($provider->cover): ?>
-                                    <img id="coverPreview" src="<?php echo e(asset('storage/' . $provider->cover)); ?>" alt="Cover" 
+                                    <img id="coverPreview" src="<?php echo e(asset('storage/' . $provider->cover)); ?>" alt="Cover"
                                         style="height: 18em; width: 100%; object-fit: cover;"/>
                                 <?php else: ?>
-                                    <img id="coverPreview" src="" alt="Cover" 
+                                    <img id="coverPreview" src="" alt="Cover"
                                         style="height: 18em; width: 100%; object-fit: cover; display: none;"/>
                                 <?php endif; ?>
                                 <div class="wd-10 ht-10 text-success rounded-circle position-absolute translate-middle" style="bottom: 10%; right: 3%;">
                                     <label for="coverInput" class="overflow-hidden">
-                                        <i class="fa-solid fa-pen-to-square border rounded-circle p-3 bg-light" 
+                                        <i class="fa-solid fa-pen-to-square border rounded-circle p-3 bg-light"
                                         style="cursor: pointer;"></i>
                                         <input type="file" class="form-control" id="coverInput" name="cover" style="opacity: 0; visibility: hidden;" accept="image/*">
                                     </label>
@@ -238,7 +238,7 @@ unset($__errorArgs, $__bag); ?>
                                             </select>
                                         </div>
                                     </div>
-                                    
+
                                     <div class="row g-0 mb-4">
                                         <div class="col-sm-6 text-muted">Tashkil etilgan sana:</div>
                                         <div class="col-sm-6 fw-semibold">
@@ -264,7 +264,7 @@ unset($__errorArgs, $__bag); ?>
                                     <div class="row g-0 mb-4 providerSubmit" id="providerSubmit" style="display: none;">
                                         <button type="submit" class="btn btn-primary">Saqlash</button>
                                     </div>
-                                    
+
                                 </div>
                                 <div class="alert alert-dismissible mb-4 p-4 d-flex alert-soft-warning-message profile-overview-alert" role="alert">
                                     <div class="me-4 d-none d-md-block">
@@ -289,7 +289,7 @@ unset($__errorArgs, $__bag); ?>
                                             <div class="table-responsive">
                                                 <table class="table">
                                                     <tbody>
-                                                    
+
                                                         <tr>
                                                             <td>
                                                                 <div class="hstack gap-3">
@@ -305,12 +305,12 @@ unset($__errorArgs, $__bag); ?>
                                                             <td>23 Avg 2024</td>
                                                             <td class="text-end">Suhrob manager</td>
                                                         </tr>
-                                                        
+
                                                     </tbody>
                                                 </table>
                                             </div>
                                         </div>
-                                        <a href="javascript:void(0);" class="card-footer fs-11 fw-bold text-uppercase text-center" 
+                                        <a href="javascript:void(0);" class="card-footer fs-11 fw-bold text-uppercase text-center"
                                             data-bs-toggle="offcanvas" data-bs-target="#portfolioProviderOffcanvas">Add New</a>
                                     </div>
                                 </div>
@@ -365,9 +365,9 @@ unset($__errorArgs, $__bag); ?>
                                             </div>
                                         </div>
 
-                                        <a href="javascript:void(0);" class="card-footer fs-11 fw-bold text-uppercase text-center" 
+                                        <a href="javascript:void(0);" class="card-footer fs-11 fw-bold text-uppercase text-center"
                                             data-bs-toggle="offcanvas" data-bs-target="#awardProviderOffcanvas">Add New</a>
-                                        
+
                                     </div>
                                 </div>
                             </div>
@@ -420,9 +420,9 @@ unset($__errorArgs, $__bag); ?>
                                             </div>
                                         </div>
 
-                                        <a href="javascript:void(0);" class="card-footer fs-11 fw-bold text-uppercase text-center" 
+                                        <a href="javascript:void(0);" class="card-footer fs-11 fw-bold text-uppercase text-center"
                                             data-bs-toggle="offcanvas" data-bs-target="#managerProviderOffcanvas">Add New</a>
-                                        
+
                                     </div>
                                 </div>
                             </div>
@@ -482,9 +482,9 @@ unset($__errorArgs, $__bag); ?>
                                             </div>
                                         </div>
 
-                                        <a href="javascript:void(0);" class="card-footer fs-11 fw-bold text-uppercase text-center" 
+                                        <a href="javascript:void(0);" class="card-footer fs-11 fw-bold text-uppercase text-center"
                                             data-bs-toggle="offcanvas" data-bs-target="#reviewProviderOffcanvas">Add New</a>
-                                        
+
                                     </div>
                                 </div>
                             </div>
@@ -542,4 +542,4 @@ unset($__errorArgs, $__bag); ?>
 
 <?php $__env->stopSection(); ?>
 
-<?php echo $__env->make('admin.layouts.main', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /home/abbos/Desktop/projects/MARKETING/resources/views/admin/providers/profile/index.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layouts.layout', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /home/abbos/Desktop/projects/MARKETING/resources/views/admin/providers/profile/index.blade.php ENDPATH**/ ?>
