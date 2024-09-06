@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProviderSearchController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\RegisterController;
@@ -8,7 +9,7 @@ use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\Auth\ProviderRegistrationController;
 use App\Http\Controllers\Providers\ProviderDashboardController;
-use App\Http\Controllers\Providers\ProviderSearchController;
+
 use App\Http\Controllers\Services\ServicesController;
 use App\Http\Controllers\Awards\AwardsController;
 use App\Http\Controllers\Reviews\ReviewsController;
@@ -106,6 +107,7 @@ Route::prefix('provider')->group(function () {
         Route::resource('managers', ManagerController::class);
         Route::get('/managers/{id}/data', [ManagerController::class, 'getManager']);
     });
+
 });
 
 Route::resource('services', ServicesController::class);

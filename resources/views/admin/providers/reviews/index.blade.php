@@ -7,7 +7,7 @@
     <div class="main-content d-flex">
         <!-- [ Content Sidebar ] start -->
         @include('admin.components.single-sidebar')
-        <!-- [ Content Sidebar  ] end -->        
+        <!-- [ Content Sidebar  ] end -->
         <!-- [ Main Area  ] start -->
         <div class="content-area" data-scrollbar-target="#psScrollbarInit">
             <div class="content-area-header bg-white sticky-top">
@@ -78,7 +78,7 @@
                                                                         <i class="feather feather-trash-2 me-3"></i>
                                                                         Delete
                                                                     </button>
-                                                                </form>                                                                
+                                                                </form>
                                                             </li>
                                                         </ul>
                                                     </div>
@@ -89,13 +89,13 @@
                                     </tbody>
                                 </table>
                             </div>
-                            </div>                         
+                            </div>
                         </div>
                         <!--! END: [Users] !-->
                     </div>
                 </div>
             </div>
-            
+
         </div>
         <!-- [ Content Area ] end -->
     </div>
@@ -103,7 +103,7 @@
 </div>
 @include('admin.components.reviews.provider-review-modal')
 @include('admin.components.reviews.provider-review-edit-modal')
-@include('admin.components.reviews.provider-review-view-modal')
+{{--@include('admin.components.reviews.provider-review-view-modal')--}}
 
 
 <script>

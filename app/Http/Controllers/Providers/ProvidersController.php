@@ -177,6 +177,7 @@ class ProvidersController extends Controller
     }
 
 
+
     public function edit()
     {
         $user = Auth::user();
@@ -212,6 +213,7 @@ class ProvidersController extends Controller
 
         return  response()->json([$provider, $provider->skills()]);
     }
+
 
 
     public function update(Request $request)

@@ -1503,8 +1503,8 @@
                                 <div class="d-flex align-items-center">
                                     <img src="/admin/assets/images/avatar/1.png" alt="user-image" class="img-fluid user-avtar">
                                     <div>
-                                        <h6 class="text-dark mb-0">{{ Auth()->user()->manager_name}}<span class="badge bg-soft-success text-success ms-1">PRO</span></h6>
-                                        <span class="fs-12 fw-medium text-muted">{{ Auth()->user()->manager_email}}</span>
+                                        <h6 class="text-dark mb-0"><?php echo e(Auth()->user()->manager_name); ?><span class="badge bg-soft-success text-success ms-1">PRO</span></h6>
+                                        <span class="fs-12 fw-medium text-muted"><?php echo e(Auth()->user()->manager_email); ?></span>
                                     </div>
                                 </div>
                             </div>
@@ -1628,8 +1628,8 @@
                             </a>
                             <div class="dropdown-divider"></div>
 
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                @csrf
+                            <form id="logout-form" action="<?php echo e(route('logout')); ?>" method="POST" style="display: none;">
+                                <?php echo csrf_field(); ?>
                             </form>
                             <a href="/logout" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="dropdown-item">
                                 Logout
@@ -1641,3 +1641,4 @@
             <!--! [End] Header Right !-->
         </div>
     </header>
+<?php /**PATH /home/nazarbek/server/MARKETING/resources/views/components/header.blade.php ENDPATH**/ ?>

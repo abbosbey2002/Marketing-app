@@ -1,6 +1,6 @@
 <footer class="footer">
     <p class="fs-11 text-muted fw-medium text-uppercase mb-0 copyright">
-        <span>DORA ©</span>
+        <span>DORA® | International Marketing Company</span>
         <script>
             document.write(new Date().getFullYear());
         </script>
@@ -10,4 +10,4 @@
         <a href="javascript:void(0);" class="fs-11 fw-semibold text-uppercase">Terms</a>
         <a href="javascript:void(0);" class="fs-11 fw-semibold text-uppercase">Privacy</a>
     </div>
-</footer>
+</footer><?php /**PATH /home/nazarbek/server/MARKETING/resources/views/admin/components/footer.blade.php ENDPATH**/ ?>

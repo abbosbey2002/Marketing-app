@@ -6,12 +6,12 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Provider;
 use App\Models\Manager;
-use Illuminate\Support\Facades\Log;
 use App\Models\Language;
 use App\Models\Service;
 use App\Models\User;
-use Illuminate\Support\Facades\DB; // Tranzaktsiyalar uchun DB facade'dan foydalaniladi
-use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 
 class ProviderRegistrationController extends Controller
@@ -37,14 +37,14 @@ class ProviderRegistrationController extends Controller
     
 
     // Step 2: Kompaniya qo'shimcha ma'lumotlar formasini ko'rsatish
-    public function showCompanyDetailsForm()
+    public function showCompanyDetailsForm($provider_id)
     {
         // Blade shabloniga tillar va xizmatlarni yuborish
         return view('auth.provider.register.step2');
     }
 
     // Step 2: Kompaniya qo'shimcha ma'lumotlarini qabul qilish
-    public function handleCompanyDetails(Request $request)
+    public function handleCompanyDetails(Request $request, $provider_id)
     {
         $validatedData = $request->validate([
             'company_address' => 'required|string|max:255',
@@ -65,11 +65,10 @@ class ProviderRegistrationController extends Controller
         return redirect()->route('providerRegisterStep3');
     }
 
-
     // Step 3: Manager hisobini yaratish
-    public function showManagerForm()
+    public function showManagerForm($provider_id)
     {
-        return view('auth.provider.register.step3');
+        return view('auth.provider.register.step3', ['provider_id' => $provider_id]);
     }
 
     // Step 3: Manager hisobini qabul qilish va yaratish

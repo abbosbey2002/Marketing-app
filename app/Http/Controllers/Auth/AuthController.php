@@ -68,6 +68,7 @@ class AuthController extends Controller
     }
 
     // Provider login funksiyasi (providers_manager jadvali uchun)
+// AuthController.php
     protected function providerLoginHandler(Request $request)
     {
     $request->validate([
@@ -86,11 +87,11 @@ class AuthController extends Controller
             // Redirect to intended page or a specific route
             return redirect()->route('provider.dashboard');
         }
-        // Agar login muvaffaqiyatsiz bo'lsa, xatolik bilan qaytarish
         return back()->withErrors([
             'manager_email' => 'The provided credentials do not match our records.',
         ]);
     }
+
 
     // Logout qilish
     public function logout()
@@ -99,3 +100,4 @@ class AuthController extends Controller
         return redirect('/');
     }
 }
+
