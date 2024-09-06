@@ -29,8 +29,8 @@
                         <span class="nxl-mtext">Provider</span><span class="nxl-arrow"><i class="feather-chevron-right"></i></span>
                     </a>
                     <ul class="nxl-submenu">
-                        <li class="nxl-item <?php echo e(request()->is('providers.index') ? 'active' : ''); ?>">
-                            <a class="nxl-link" href="<?php echo e(route('providers.index')); ?>">Overview</a>
+                        <li class="nxl-item <?php echo e(request()->is('providers.profile') ? 'active' : ''); ?>">
+                            <a class="nxl-link" href="<?php echo e(route('providers.profile')); ?>">Overview</a>
                         </li>
                         <li class="nxl-item <?php echo e(request()->is('services.index') ? 'active' : ''); ?>">
                             <a class="nxl-link" href="<?php echo e(route('services.index')); ?>">Services</a>
@@ -54,8 +54,8 @@
                 </li>
 
                 <?php else: ?>
-                <li class="nxl-item <?php echo e(request()->is('providers.index') ? 'active' : ''); ?>">
-                    <a href="<?php echo e(route('providers.index')); ?>" class="nxl-link">
+                <li class="nxl-item <?php echo e(request()->is('providers.profile') ? 'active' : ''); ?>">
+                    <a href="<?php echo e(route('providers.profile')); ?>" class="nxl-link">
                         <span class="nxl-micon"><i class="fa-regular fa-building"></i></span>
                         <span class="nxl-mtext">Provider</span><span class="nxl-arrow"></span>
                     </a>

@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('name_ru');
             $table->string('name_uz');
             $table->string('category');
+            $table->foreignId('service_id')->constrained('services')->onDelete('cascade'); // Xorijiy kalit
             $table->timestamps();
         });
     }

@@ -94,44 +94,48 @@
 <!--! [End]  Navigation Manu !-->
 <!--! ================================================================ !-->
 
-<!--! ================================================================ !-->
-<!--! [Start] Header !-->
-<!--! ================================================================ !-->
-@include('components.header')
-<!--! ================================================================ !-->
-<!--! [End] Header !-->
-<!--! ================================================================ !-->
-<main class="nxl-container">
-    @yield('content')
-    @include('admin.components.footer')
-</main>
-<!--! Footer Script !-->
-<!--! ================================================================ !-->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<!--! BEGIN: Vendors JS !-->
-<script src="{{ asset('admin/assets/vendors/js/vendors.min.js') }}"></script>
-<!-- vendors.min.js {always must need to be top} -->
-<script src="{{ asset('admin/assets/vendors/js/apexcharts.min.js') }}"></script>
-<script src="{{ asset('admin/assets/vendors/js/circle-progress.min.js') }}"></script>
-<script src="{{ asset('admin/assets/vendors/js/select2.min.js') }}"></script>
-<script src="{{ asset('admin/assets/vendors/js/select2-active.min.js') }}"></script>
-<!-- For employees JS-->
-<!-- SweetAlert2 JS -->
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script src="{{ asset('admin/assets/vendors/js/quill.min.js') }}"></script>
-<script src="{{ asset('admin/assets/vendors/js/datepicker.min.js') }}"></script>
-<!--! END: Vendors JS !-->
-<!--! BEGIN: Apps Init  !-->
-<script src="{{ asset('admin/assets/js/common-init.min.js') }}"></script>
-<script src="{{ asset('admin/assets/js/reports-leads-init.min.js') }}"></script>
-<!--! END: Apps Init !-->
-<!--! BEGIN: Apps Init  !-->
-<script src="{{ asset('admin/assets/js/payment-init.min.js') }}"></script>
-<!--! END: Apps Init !-->
-<!--! BEGIN: Theme Customizer  !-->
-<script src="{{ asset('admin/assets/js/theme-customizer-init.min.js') }}"></script>
-<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
-<script>
+    <!--! ================================================================ !-->
+    <!--! [Start] Header !-->
+    <!--! ================================================================ !-->
+    @include('admin.components.header')
+    <!--! ================================================================ !-->
+    <!--! [End] Header !-->
+    <!--! ================================================================ !-->
+    <main class="nxl-container">
+        @yield('content')
+        @include('admin.components.footer')
+    </main>
+    <!--! Footer Script !-->
+    <!--! ================================================================ !-->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+   
+
+    <!--! BEGIN: Vendors JS !-->
+    <script src="{{ asset('admin/assets/vendors/js/vendors.min.js') }}"></script>
+    <!-- vendors.min.js {always must need to be top} -->
+    <script src="{{ asset('admin/assets/vendors/js/apexcharts.min.js') }}"></script>
+    <script src="{{ asset('admin/assets/vendors/js/circle-progress.min.js') }}"></script>
+    <script src="{{ asset('admin/assets/vendors/js/select2.min.js') }}"></script>
+    <script src="{{ asset('admin/assets/vendors/js/select2-active.min.js') }}"></script>
+    <!-- For employees JS-->
+     <!-- SweetAlert2 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="{{ asset('admin/assets/vendors/js/quill.min.js') }}"></script>
+    <script src="{{ asset('admin/assets/vendors/js/datepicker.min.js') }}"></script>
+    <!--! END: Vendors JS !-->
+    <!--! BEGIN: Apps Init  !-->
+    <script src="{{ asset('admin/assets/js/common-init.min.js') }}"></script>
+    <script src="{{ asset('admin/assets/js/reports-leads-init.min.js') }}"></script>
+    <!--! END: Apps Init !-->
+    <!--! BEGIN: Apps Init  !-->
+    <script src="{{ asset('admin/assets/js/payment-init.min.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+    <script src="{{ asset('admin/assets/js/formatter.js') }}"></script>
+    <!--! END: Apps Init !-->
+    <!--! BEGIN: Theme Customizer  !-->
+    <script src="{{ asset('admin/assets/js/theme-customizer-init.min.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+    <script>
     function confirmDelete(event) {
         event.preventDefault();
         var num1 = Math.floor(Math.random() * 10) + 1;

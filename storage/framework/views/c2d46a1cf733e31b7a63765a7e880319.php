@@ -1,0 +1,1 @@
+<?php /**PATH /home/abbos/Desktop/projects/MARKETING/resources/views/errors/419.blade.php ENDPATH**/ ?>

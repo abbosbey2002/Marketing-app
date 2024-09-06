@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use App\Models\ProviderManager;
+
 
 class AuthController extends Controller
 {
@@ -71,19 +71,22 @@ class AuthController extends Controller
 // AuthController.php
     protected function providerLoginHandler(Request $request)
     {
-        $request->validate([
+    $request->validate([
             'manager_email' => 'required|email',
             'manager_password' => 'required|string',
         ]);
 
-        $providerManager = ProviderManager::where('manager_email', $request->input('manager_email'))->first();
+        // Attempt to authenticate the user
+        if (Auth::attempt([
+            'email' => $request->manager_email,
+            'password' => $request->manager_password
+        ])) {
+            // If successful, regenerate session to prevent session fixation attacks
+            $request->session()->regenerate();
 
-        if ($providerManager && Hash::check($request->input('manager_password'), $providerManager->manager_password)) {
-            // Change 'provider' to 'provider_manager'
-            Auth::guard('provider_manager')->login($providerManager);
+            // Redirect to intended page or a specific route
             return redirect()->route('provider.dashboard');
         }
-
         return back()->withErrors([
             'manager_email' => 'The provided credentials do not match our records.',
         ]);
@@ -97,3 +100,4 @@ class AuthController extends Controller
         return redirect('/');
     }
 }
+

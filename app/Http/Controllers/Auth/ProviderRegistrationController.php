@@ -5,12 +5,14 @@ namespace App\Http\Controllers\Auth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Provider;
-use App\Models\ProviderManager;
+use App\Models\Manager;
 use App\Models\Language;
 use App\Models\Service;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Hash;use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 
 class ProviderRegistrationController extends Controller
 {
@@ -24,28 +26,21 @@ class ProviderRegistrationController extends Controller
     public function handleCompanyName(Request $request)
     {
         $validatedData = $request->validate([
-            'name' => 'required|string|max:255',
+            'name' => 'required|string|max:255|unique:providers,name', // Ensures 'name' is unique in the 'managers' table
         ]);
+        
+        $request->session()->put('provider', $validatedData);
 
-        // Yangi provayderni yaratib, faqat kompaniya nomini saqlaymiz
-        $provider = Provider::create([
-            'name' => $validatedData['name'],
-            'email' => '',
-            'password' => '',
-        ]);
-
-        // Yaratilgan provayder ID'sini qaytaramiz va bu ID ni keyingi qadamda ishlatamiz
-        return redirect()->route('providerRegisterStep2', ['provider_id' => $provider->id]);
+        return redirect()->route('providerRegisterStep2');
     }
 
+    
 
     // Step 2: Kompaniya qo'shimcha ma'lumotlar formasini ko'rsatish
     public function showCompanyDetailsForm($provider_id)
     {
-        $languages = Language::all();
-        $services = Service::all();
-
-        return view('auth.provider.register.step2', compact('languages', 'services', 'provider_id'));
+        // Blade shabloniga tillar va xizmatlarni yuborish
+        return view('auth.provider.register.step2');
     }
 
     // Step 2: Kompaniya qo'shimcha ma'lumotlarini qabul qilish
@@ -58,16 +53,16 @@ class ProviderRegistrationController extends Controller
             'teamSize' => 'required|integer',
         ]);
 
-        // Avval yaratilgan provayderni yangilaymiz
-        $provider = Provider::findOrFail($provider_id);
-        $provider->update([
-            'company_address' => $validatedData['company_address'],
-            'company_website' => $validatedData['company_website'],
-            'company_phone' => $validatedData['company_phone'],
-            'teamSize' => $validatedData['teamSize'],
-        ]);
+        // Mavjud provider sessiyasini olish va yangilash
+        $providerData = $request->session()->get('provider');
 
-        return redirect()->route('providerRegisterStep3', ['provider_id' => $provider->id]);
+        $providerData = array_merge($providerData, $validatedData);
+
+        
+        // Yangilangan provider massivni sessiyaga saqlash
+        $request->session()->put('provider', $providerData);
+
+        return redirect()->route('providerRegisterStep3');
     }
 
     // Step 3: Manager hisobini yaratish
@@ -77,48 +72,53 @@ class ProviderRegistrationController extends Controller
     }
 
     // Step 3: Manager hisobini qabul qilish va yaratish
-    public function handleManagerCreation(Request $request, $provider_id)
+    public function storeproviderwithmanager(Request $request)
     {
         $validatedData = $request->validate([
-            'manager_name' => 'required|string|max:255',
-            'manager_email' => 'required|string|email|max:255|unique:providers_manager,manager_email',
-            'manager_password' => 'required|string|confirmed|min:8',
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users,email',
+            'password' => 'required|string|confirmed|min:8',
         ]);
 
-        DB::transaction(function () use ($validatedData, $provider_id, $request) {
-            // Providerni topamiz
-            $provider = Provider::findOrFail($provider_id);
 
-            // ProviderManager jadvaliga manager ma'lumotlarini saqlaymiz
-            $providerManager = ProviderManager::create([
-                'provider_id' => $provider->id,
-                'manager_name' => $validatedData['manager_name'],
-                'manager_email' => $validatedData['manager_email'],
-                'manager_password' => bcrypt($validatedData['manager_password']),
-                'role' => 'admin', // Avtomatik ravishda admin roli beriladi
-            ]);
+        // Sessiyadagi kompaniya ma'lumotlarini olish
+        // Sessiyadagi provider ma'lumotlarini olish
+        $providerData = session()->get('provider');
 
-            // Provayderning email va parolini yangilaymiz
-            $provider->update([
-                'email' => $request->input('manager_email'),
-                'password' => bcrypt($request->input('manager_password')),
-            ]);
-        });
+        // dd($providerData);
 
-        // Foydalanuvchini tizimga kiritamiz
-        $providerManager = ProviderManager::where('manager_email', $request->input('manager_email'))->first();
-        Auth::login($providerManager);
-
-        // Tekshirib ko'ring, agar foydalanuvchi topilsa va parol to'g'ri bo'lsa
-        if ($providerManager && Hash::check($request->input('manager_password'), $providerManager->manager_password)) {
-            Auth::guard('provider_manager')->login($providerManager);
-            return redirect()->route('provider.dashboard')->with('success', 'Provider registration completed successfully.');
+        if (!$providerData) {
+            // return redirect()->back()->with('error', 'Provider data not found in session.');
+            return redirect()->route('providerRegisterStep1')->with('error', 'Provider data not found in session.');
         }
 
+        $provider = Provider::create([
+            'turnover' => null,
+            'name' => $providerData['name'],
+            'company_address' => $providerData['company_address'],
+            'company_website' => $providerData['company_website'],
+            'company_phone' => $providerData['company_phone'],
+            'teamSize' => $providerData['teamSize'],
+        ]);
+
+        $user = User::create([
+            'name' => $validatedData['name'],
+            'email' => $validatedData['email'],
+            'password' => Hash::make($validatedData['password']),
+        ]);
+
+        // Manager jadvaliga manager ma'lumotlarini saqlash
+        Manager::create([
+            'provider_id' => $provider->id,
+            'user_id' => $user->id,
+        ]);
+
+        Auth::login($user);
+
+        // Barcha sessiya ma'lumotlarini tozalash
+       session()->forget('provider');
 
 
-        return redirect()->route('providers.index')->with('success', 'Provider registration completed successfully.');
+       return redirect()->route('providers.profile')->with('success', 'Profile updated successfully');
     }
-
-
 }

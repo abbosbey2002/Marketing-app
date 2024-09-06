@@ -3,8 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SkillsController;
-use App\Http\Controllers\ServiceListController;
-
+use App\Http\Controllers\ServicesApiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,4 +21,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/skills', [SkillsController::class, 'index']);
-Route::get('/service-lists', [ServiceListController::class, 'index']);
+Route::get('/service-lists', [ServicesApiController::class, 'index']);

@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Services;
 
 use App\Models\Service;
-use App\Models\ServiceList;
 use App\Models\Category;
 use App\Models\Skill;
 use Illuminate\Http\Request;
@@ -14,7 +13,7 @@ class ServicesController extends Controller
     public function index()
     {
         $services = Service::with('skills')->get(); // Eager loading skills relationship
-        $serviceTypes = ServiceList::all();
+        $serviceTypes = Service::all();
         $skills = Skill::all();
         return view('admin.providers.services.index', compact('services', 'serviceTypes', 'skills'));
     }
@@ -23,7 +22,7 @@ class ServicesController extends Controller
     {
         $categories = Category::all();
         $skills = Skill::all(); // Pass skills to the view to allow selection
-        $serviceTypes = ServiceList::all(); // Pass service types to the view
+        $serviceTypes = Service::all(); // Pass service types to the view
         return view('admin.providers.services.create', compact('categories', 'skills', 'serviceTypes'));
     }
 
@@ -63,7 +62,7 @@ class ServicesController extends Controller
     {
         $categories = Category::all();
         $skills = Skill::all(); // Get all skills for selection
-        $serviceTypes = ServiceList::all(); // Get all service types for selection
+        $serviceTypes = Service::all(); // Get all service types for selection
         return view('admin.providers.services.edit', compact('service', 'categories', 'skills', 'serviceTypes'));
     }
 

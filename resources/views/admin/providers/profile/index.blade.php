@@ -46,6 +46,16 @@
     <!-- [ page-header ] end -->
     <!-- [ Main Content ] start -->
     <div class="main-content">
+        @if ($errors->any())
+    <div class="alert alert-danger">
+        <strong>Whoops! Something went wrong!</strong>
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
         <form action="{{ route('providers.update', $provider->id) }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
@@ -68,7 +78,7 @@
                                     </div>
                                 </div>
                                 <div class="mb-4">
-
+                              
                                     <a href="javascript:void(0);" class="fs-14 fw-bold d-block"> {{ old('name', $provider->name) }}</a>
                                     <a href="javascript:void(0);" class="fs-12 fw-normal text-muted d-block">{{ old('email', $provider->email) }}</a>
                                 </div>
@@ -90,12 +100,13 @@
                             <ul class="list-unstyled mb-4">
                                 <li class="hstack justify-content-between mb-4">
                                     <span class="text-muted fw-medium hstack gap-3"><i class="feather-map-pin"></i>Location</span>
-                                    <a href="javascript:void(0);" class="float-end">California, USA</a>
+                                    <a href="javascript:void(0);" class="float-end">{{ old('tagline', $provider->address) }}</a>
                                 </li>
                                 <li class="hstack justify-content-between mb-4">
                                     <span class="text-muted fw-medium hstack gap-3"><i class="feather-phone"></i>Phone</span>
-                                    <a href="javascript:void(0);" class="float-end">+01 (375) 2589 645</a>
+                                    <a href="javascript:void(0);" class="float-end">{{ old('tagline', $provider->phone) }}</a>
                                 </li>
+                                
                                 <li class="hstack justify-content-between mb-0">
                                     <span class="text-muted fw-medium hstack gap-3"><i class="feather-mail"></i>Email</span>
                                     <a href="javascript:void(0);" class="float-end">{{ old('email', $provider->email) }}</a>
@@ -122,6 +133,9 @@
                                         style="cursor: pointer;"></i>
                                         <input type="file" class="form-control" id="coverInput" name="cover" style="opacity: 0; visibility: hidden;" accept="image/*">
                                     </label>
+                                    @error('cover')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
                                 </div>
                             </div>
                         </div>
@@ -185,14 +199,14 @@
                                     <div class="row g-0 mb-4">
                                         <div class="col-sm-6 text-muted">Manzil:</div>
                                         <div class="col-sm-6 fw-semibold">
-                                            <input type="text" class="form-control" id="addressInput" placeholder="Address" name="address" value="California, United States">
+                                            <input type="text" class="form-control" id="addressInput" placeholder="Address" name="address" value="{{ old('tagline', $provider->address) }}">
                                         </div>
                                     </div>
 
                                     <div class="row g-0 mb-4">
                                         <div class="col-sm-6 text-muted">Telefon raqam:</div>
                                         <div class="col-sm-6 fw-semibold">
-                                            <input type="tel" class="form-control" id="phoneInput" placeholder="Email" name="phone" value="+998 (93) 932 12 12">
+                                            <input type="tel" class="form-control" id="phoneInput" placeholder="Phone number" name="phone" value="{{ old('phone', $provider->phone) }}">
                                         </div>
                                     </div>
 
@@ -204,13 +218,15 @@
                                     </div>
 
                                     <div class="row g-0 mb-4">
-                                        <div class="col-sm-6 text-muted">Xizmatlar:</div>
+                                        <div class="col-sm-6 text-muted">Languages:</div>
                                         <div class="col-sm-6 fw-semibold">
-                                            <select class="form-select form-control max-select" data-select2-selector="tag" multiple>
-                                                <option value="success" data-bg="bg-success">Tanlang</option>
-                                                @foreach($services as $service)
-                                                    <option value="{{ $service->id }}" {{ $provider->service_id == $service->id ? 'selected' : '' }}>
-                                                        {{ $service->name }}
+                                           
+                                            <select class="form-select form-control max-select" name="languages[]" data-select2-selector="tag" multiple>
+                                                <option value="" disabled>Tanlang</option>
+                                                @foreach($languages as $language)
+                                                    <option value="{{ $language->code }}" 
+                                                        @if(in_array($language->code, $providerLanguageCodes)) selected @endif>
+                                                        {{ $language->name }}
                                                     </option>
                                                 @endforeach
                                             </select>
@@ -231,19 +247,11 @@
                                         </div>
                                     </div>
 
+
                                     <div class="row g-0 mb-4">
                                         <div class="col-sm-6 text-muted">Jamoa hajmi:</div>
                                         <div class="col-sm-6 fw-semibold">
-                                            <select class="form-select form-control" id="teamSizeInput"  name="teamSize">
-                                                <option value="success" data-bg="bg-success">Tanlang</option>
-                                                <option value="1-5" data-bg="bg-success">1-5</option>
-                                                <option value="5-10" data-bg="bg-success">5-10</option>
-                                                <option value="11-20" data-bg="bg-success">11-20</option>
-                                                <option value="20-30" data-bg="bg-success">20-30</option>
-                                                <option value="50-100" data-bg="bg-success">50-100</option>
-                                                <option value="100-1000" data-bg="bg-success">100-1000</option>
-                                            </select>
-
+                                                <input type="number" class="form-control" id="teamSizeInput" name="teamSize" value="{{ old('foundedAt', $provider->teamSize) }}">
                                         </div>
                                     </div>
 

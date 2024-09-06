@@ -16,4 +16,9 @@ class Language extends Model
         'code',
     ];
 
+
+    public function providers()
+    {
+        return $this->belongsToMany(Provider::class, 'provider_language');
+    }
 }
