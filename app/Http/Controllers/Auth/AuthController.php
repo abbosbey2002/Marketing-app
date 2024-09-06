@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\ProviderManager;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use App\Models\ProviderManager;
 
 class AuthController extends Controller
 {
@@ -68,7 +68,7 @@ class AuthController extends Controller
     }
 
     // Provider login funksiyasi (providers_manager jadvali uchun)
-// AuthController.php
+    // AuthController.php
     protected function providerLoginHandler(Request $request)
     {
         $request->validate([
@@ -81,6 +81,7 @@ class AuthController extends Controller
         if ($providerManager && Hash::check($request->input('manager_password'), $providerManager->manager_password)) {
             // Change 'provider' to 'provider_manager'
             Auth::guard('provider_manager')->login($providerManager);
+
             return redirect()->route('provider.dashboard');
         }
 
@@ -89,11 +90,11 @@ class AuthController extends Controller
         ]);
     }
 
-
     // Logout qilish
     public function logout()
     {
         Auth::logout();
+
         return redirect('/');
     }
 }

@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Contact;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\Contact;
+use Illuminate\Http\Request;
 
 class ContactController extends Controller
 {
@@ -15,6 +15,7 @@ class ContactController extends Controller
     {
         $user = Auth()->user();
         $contacts = Contact::where('provider_id', $user->provider_id)->paginate(10);
+
         return view('admin.providers.contacts.index', compact('contacts'));
     }
 
@@ -41,7 +42,7 @@ class ContactController extends Controller
 
         Contact::create($validatedData);
 
-        return redirect()->route('contacts.index')->with('success', "kontakt muvaffaqiyatli yaratildi");
+        return redirect()->route('contacts.index')->with('success', 'kontakt muvaffaqiyatli yaratildi');
     }
 
     /**
@@ -50,6 +51,7 @@ class ContactController extends Controller
     public function show(string $id)
     {
         $contact = Contact::findOrFail($id);
+
         return view('admin.providers.contacts.show', compact('contact'));
     }
 
@@ -85,6 +87,7 @@ class ContactController extends Controller
     public function destroy(Contact $contact)
     {
         $contact->delete();
+
         return redirect()->route('contacts.index')->with('success', 'Contact deleted successfully.');
     }
 }

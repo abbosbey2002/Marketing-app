@@ -1,12 +1,12 @@
 <?php
+
 namespace App\Http\Controllers\Managers;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\ProviderManager;
-use App\Models\User;
-use Illuminate\Support\Facades\Hash;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class ManagerController extends Controller
 {
@@ -14,13 +14,17 @@ class ManagerController extends Controller
     {
 
         $managers = ProviderManager::where('provider_id', Auth::user()->provider_id)->paginate(10);
+
         return view('admin.providers.managers.index', compact('managers'));
     }
+
     public function getManager($id)
     {
         $manager = ProviderManager::findOrFail($id);
+
         return response()->json($manager);
     }
+
     public function create()
     {
         return view('admin.providers.managers.create');
@@ -42,25 +46,27 @@ class ManagerController extends Controller
             'manager_password' => Hash::make($request->manager_password),
             'role' => $request->role,
         ]);
+
         return redirect()->route('managers.index')->with('success', 'Manager created successfully.');
     }
 
     public function show($id)
     {
         $manager = ProviderManager::findOrFail($id);
+
         return view('admin.providers.managers.show', compact('manager'));
     }
 
-  public function edit(Request $request)
-{
-    $id = $request->input('forGetId');
-    
+    public function edit(Request $request)
+    {
+        $id = $request->input('forGetId');
 
-     // POST yoki GET so'rovi orqali kelgan ID ni olamiz
-    $manager = ProviderManager::findOrFail($id); // ID bo'yicha managerni topamiz
+        // POST yoki GET so'rovi orqali kelgan ID ni olamiz
+        $manager = ProviderManager::findOrFail($id); // ID bo'yicha managerni topamiz
 
-    return view('admin.providers.managers.edit', compact('manager'));
-}
+        return view('admin.providers.managers.edit', compact('manager'));
+    }
+
     public function update(Request $request, $id)
     {
         $manager = ProviderManager::findOrFail($id);
@@ -68,7 +74,7 @@ class ManagerController extends Controller
         // Validation
         $request->validate([
             'manager_name' => 'required|string|max:255',
-            'manager_email' => 'required|string|email|max:255|unique:providers_manager,manager_email,' . $manager->id,
+            'manager_email' => 'required|string|email|max:255|unique:providers_manager,manager_email,'.$manager->id,
             'manager_password' => 'nullable|string|min:8',
             'role' => 'required|string',
         ]);
@@ -88,7 +94,6 @@ class ManagerController extends Controller
         // Qayta yo'naltirish
         return redirect()->route('managers.index')->with('success', 'Manager updated successfully.');
     }
-
 
     public function destroy($id)
     {

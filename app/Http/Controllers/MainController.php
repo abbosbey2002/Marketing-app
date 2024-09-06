@@ -2,9 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\App;
-
 class MainController extends Controller
 {
     // home
@@ -12,20 +9,24 @@ class MainController extends Controller
     {
         return view('pages.home');
     }
+
     // Page Provider
     public function pageProvider()
     {
         return view('pages.page-provider');
     }
+
     public function searchProviders()
     {
         return view('pages.search-provider');
     }
+
     public function singleProviders()
     {
         return view('pages.single-provider');
     }
-    public function singleReviews() 
+
+    public function singleReviews()
     {
         return view('pages.single-reviews');
     }
@@ -35,10 +36,12 @@ class MainController extends Controller
     {
         return view('pages.page-marketers');
     }
+
     public function singleMarketers()
     {
         return view('pages.single-marketers');
     }
+
     public function searchMarketers()
     {
         return view('pages.search-marketers');
@@ -49,15 +52,18 @@ class MainController extends Controller
     {
         return view('pages.page-partners');
     }
+
     public function singlePartners()
     {
         return view('pages.single-partners');
     }
+
     public function searchPartners()
     {
         return view('pages.search-partners');
     }
-      public function contact()
+
+    public function contact()
     {
         return view('pages.contact');
     }

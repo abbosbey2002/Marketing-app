@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Auth;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Language;
 use App\Models\Provider;
 use App\Models\ProviderManager;
-use App\Models\Language;
 use App\Models\Service;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -37,7 +37,6 @@ class ProviderRegistrationController extends Controller
         // Yaratilgan provayder ID'sini qaytaramiz va bu ID ni keyingi qadamda ishlatamiz
         return redirect()->route('providerRegisterStep2', ['provider_id' => $provider->id]);
     }
-
 
     // Step 2: Kompaniya qo'shimcha ma'lumotlar formasini ko'rsatish
     public function showCompanyDetailsForm($provider_id)
@@ -112,13 +111,10 @@ class ProviderRegistrationController extends Controller
         // Tekshirib ko'ring, agar foydalanuvchi topilsa va parol to'g'ri bo'lsa
         if ($providerManager && Hash::check($request->input('manager_password'), $providerManager->manager_password)) {
             Auth::guard('provider_manager')->login($providerManager);
+
             return redirect()->route('provider.dashboard')->with('success', 'Provider registration completed successfully.');
         }
 
-
-
         return redirect()->route('providers.index')->with('success', 'Provider registration completed successfully.');
     }
-
-
 }
