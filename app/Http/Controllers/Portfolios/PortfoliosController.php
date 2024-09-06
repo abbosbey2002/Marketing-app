@@ -14,8 +14,7 @@ class PortfoliosController extends Controller
     public function index()
     {
         $services = Service::all();
-        $portfolios = Portfolio::where('provider_id', Auth()->user()->manager->provider_id)->orderBy('id', 'DESC')->paginate(20);
-
+        $portfolios = Portfolio::where('provider_id', Auth()->user()->manager->provider_id)->orderBy('id', "DESC")->paginate(20);
         return view('admin.providers.portfolios.index', compact('portfolios', 'services'));
     }
 
@@ -53,19 +52,21 @@ class PortfoliosController extends Controller
             'service_id' => 'nullable|exists:services,id',
         ]);
 
-
-
+        // Agar fayl yuklangan bo'lsa
         // Agar fayl yuklangan bo'lsa
         if ($request->hasFile('image')) {
+            // Faylni saqlash
+            $path = $request->file('image')->store('images/portfolyo', 'public');
 
-            $path = $request->file('image')->store('portfolyo', 'public');
+            // Fayl nomini olish
+            $filename = basename($path);
 
             // Fayl nomini validatsiya qilingan ma'lumotlarga qo'shish
-            $validatedData['image'] = $path;
+            $validatedData['image'] = $filename;
         }
 
         // Yangi portfolio yaratish
-        $portfolio =  Portfolio::create($validatedData);
+        Portfolio::create($validatedData);
 
         // Portfolio index sahifasiga qaytish
         return redirect()->route('portfolios.index')->with('success', 'Portfolio muvaffaqiyatli yaratildi!');
@@ -80,12 +81,13 @@ class PortfoliosController extends Controller
     }
 
 
+
     public function update(Request $request, Portfolio $portfolio)
     {
-        // Ma'lumotlarni validatsiya qilish
+        // Ma'lumotlarni validatsiya qilish (kommentariyani olib tashlang)
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
-            'image' => 'required|image|max:2048', // Ensure it's an image
+            'image' => 'nullable|max:2048',
             'youtube_url' => 'nullable|string|max:255',
             'expertise' => 'nullable|string|max:255',
             'skills' => 'nullable|string',
@@ -106,28 +108,29 @@ class PortfoliosController extends Controller
             'service_id' => 'nullable|exists:services,id',
         ]);
 
-        dd($validatedData);
-
         // Yangi tasvir yuklanganligini tekshirish
         if ($request->hasFile('image')) {
-            // Delete the old image if it exists
-            if ($portfolio->image && Storage::disk('public')->exists($portfolio->image)) {
-                Storage::disk('public')->delete($portfolio->image);
+            // Eski tasvirni o'chirish
+            if ($portfolio->image) {
+                Storage::disk('public')->delete('images/' . $portfolio->image);
             }
 
-            // Store the new image
-            $path = $request->file('image')->store('portfolyo', 'public');
+            // Yangi tasvirni saqlash
+            $path = $request->file('image')->store('images', 'public');
+            $filename = basename($path);
 
-            // Add the new image path to the validated data
-            $validatedData['image'] = $path;
+            // Yangi tasvir nomini yangilash
+            $portfolio->image = $filename;
         }
 
-        // Boshqa maydonlarni yangilash, including the image if it was updated
-        $portfolio->update($validatedData);
+        // Boshqa maydonlarni yangilash
+        $portfolio->update($request->except(['image']));
+
+        // Yangilangan tasvir nomini saqlash
+        $portfolio->save();
 
         return redirect()->route('portfolios.index')->with('success', 'Portfolio muvaffaqiyatli yangilandi.');
     }
-
 
 
     public function destroy(Portfolio $portfolio)
@@ -137,6 +140,8 @@ class PortfoliosController extends Controller
         return redirect()->route('portfolios.index');
     }
 
+    public function show(Portfolio $portfolio)
+    {
     public function show(Portfolio $portfolio)
     {
         return view('admin.providers.portfolios.show', compact('portfolio'));

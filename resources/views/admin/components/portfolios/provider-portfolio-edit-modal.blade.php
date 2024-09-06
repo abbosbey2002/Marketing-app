@@ -116,20 +116,18 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-12 mt-3">
-                                <h5> Start date </h5>
-                                <div class="mb-4">
-                                    <input type="date" class="form-control" name="start_date"
-                                        placeholder="Enter a budjet..." value="{{ $portfolio->start_date }}">
-                                </div>
-                            </div>
-                            <div class="col-md-12 mt-3">
-                                <h5> End date</h5>
-                                <div class="mb-4">
-                                    <input type="date" class="form-control" name="end_date"
-                                        placeholder="Enter a budjet..." value="{{ $portfolio->end_date }}">
-                                </div>
-                            </div>
+                                        <div class="col-md-12 mt-3">
+                                            <h5> Start date </h5>
+                                                <div class="mb-4">
+                                                    <input type="date" class="form-control" name="start_date" placeholder="Enter a budjet..." value="{{$portfolio->start_date}}">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12 mt-3">
+                                            <h5> End date</h5>
+                                                <div class="mb-4">
+                                                    <input type="date" class="form-control" name="end_date" placeholder="Enter a budjet..." value="{{$portfolio->end_date}}">
+                                                </div>
+                                            </div>
 
                             <div class="col-md-12 mt-3">
                                 <h5> Budget <span> (optional) </span></h5>
@@ -427,10 +425,10 @@
                     </div>
 
 
-                    <input type="hidden" name="provider_id" value="{{ auth()->user()->manager->provider_id }}">
-                    <button type="submit">Submit</button>
-                </div>
-            </form>
+                            <input type="hidden" name="provider_id" value="{{ auth()->user()->manager->provider_id }}">
+                            <button type="submit">Submit</button>
+                    </div>    
+            </form>    
         </div>
 
     </div>
