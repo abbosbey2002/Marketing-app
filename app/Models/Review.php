@@ -24,11 +24,13 @@ class Review extends Model
         'provider_id',
     ];
 
-    public function language(){
+    public function language()
+    {
         return $this->belongsTo(Language::class);
     }
 
-    public function provider(){
+    public function provider()
+    {
         return $this->belongsTo(Provider::class);
     }
 }

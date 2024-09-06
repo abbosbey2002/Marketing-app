@@ -1,6 +1,6 @@
 <?php
 
-return[
+return [
     'home' => 'bosh sahifa',
     'test' => 'test uz',
 ];

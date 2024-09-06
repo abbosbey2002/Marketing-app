@@ -17,8 +17,8 @@ class Contact extends Model
         'location',
     ];
 
-    public function provider(){
+    public function provider()
+    {
         return $this->belongsTo(Provider::class);
     }
-
 }

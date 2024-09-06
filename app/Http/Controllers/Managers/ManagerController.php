@@ -3,9 +3,8 @@
 namespace App\Http\Controllers\Managers;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\Manager;
-use App\Models\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
 class ManagerController extends Controller
@@ -14,12 +13,14 @@ class ManagerController extends Controller
     {
 
         $managers = Manager::where('provider_id', Auth::user()->provider_id)->paginate(10);
+
         return view('admin.providers.managers.index', compact('managers'));
     }
 
     public function getManager($id)
     {
         $manager = Manager::findOrFail($id);
+
         return response()->json($manager);
     }
 
@@ -51,6 +52,7 @@ class ManagerController extends Controller
     public function show($id)
     {
         $manager = Manager::findOrFail($id);
+
         return view('admin.providers.managers.show', compact('manager'));
     }
 
@@ -58,8 +60,8 @@ class ManagerController extends Controller
     {
         $id = $request->input('forGetId');
 
-     // POST yoki GET so'rovi orqali kelgan ID ni olamiz
-    $manager = Manager::findOrFail($id); // ID bo'yicha managerni topamiz
+        // POST yoki GET so'rovi orqali kelgan ID ni olamiz
+        $manager = Manager::findOrFail($id); // ID bo'yicha managerni topamiz
 
         return view('admin.providers.managers.edit', compact('manager'));
     }

@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers\Teams;
 
+use App\Http\Controllers\Controller;
 use App\Models\Team;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
-
 
 class TeamController extends Controller
 {
@@ -17,6 +16,7 @@ class TeamController extends Controller
     {
         $team = Team::where('provider_id', Auth()->user()->provider_id)->latest()->first();
         $teams = Team::all();
+
         return view('admin.providers.team.index', compact('team', 'teams'));
     }
 
@@ -37,7 +37,7 @@ class TeamController extends Controller
         $validatedData = $request->validate([
             'image' => 'nullable|image|mimes:jpg,jpeg,png|max:4048',
             'description' => 'required|string',
-            'provider_id' => 'required|exists:providers,id'
+            'provider_id' => 'required|exists:providers,id',
         ]);
 
         // Initialize $path to null
@@ -52,13 +52,12 @@ class TeamController extends Controller
         Team::create([
             'image' => $path,
             'description' => $validatedData['description'],
-            'provider_id' => $validatedData['provider_id']
+            'provider_id' => $validatedData['provider_id'],
         ]);
 
         // Redirect back to the teams index with a success message
         return redirect()->route('teams.index')->with('success', 'Team image successfully saved');
     }
-
 
     /**
      * Display the specified resource.
@@ -84,7 +83,7 @@ class TeamController extends Controller
         $validatedData = $request->validate([
             'image' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:4048',
             'description' => 'required|string',
-            'provider_id' => 'required|exists:providers,id'
+            'provider_id' => 'required|exists:providers,id',
         ]);
 
         // Check if the request contains an image file and store it
@@ -95,9 +94,9 @@ class TeamController extends Controller
 
         // Create a new team with the validated data
         $team->update([
-        'image' => $path ?? $team->image,
-        'description' => $validatedData['description'],
-        'provider_id' => $validatedData['provider_id']
+            'image' => $path ?? $team->image,
+            'description' => $validatedData['description'],
+            'provider_id' => $validatedData['provider_id'],
         ]);
 
         // Redirect back to the teams index with a success message
@@ -109,11 +108,12 @@ class TeamController extends Controller
      */
     public function destroy(Team $team)
     {
-        if($team->image){
+        if ($team->image) {
             Storage::delete($team->image);
         }
 
         $team->delete();
+
         return redirect()->back()->with('success', 'team information successfully deleted');
     }
 }

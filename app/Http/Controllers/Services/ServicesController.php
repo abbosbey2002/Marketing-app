@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Services;
 
-use App\Models\Service;
+use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Service;
 use App\Models\Skill;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 
 class ServicesController extends Controller
 {
@@ -15,6 +15,7 @@ class ServicesController extends Controller
         $services = Service::with('skills')->get(); // Eager loading skills relationship
         $serviceTypes = Service::all();
         $skills = Skill::all();
+
         return view('admin.providers.services.index', compact('services', 'serviceTypes', 'skills'));
     }
 
@@ -23,12 +24,14 @@ class ServicesController extends Controller
         $categories = Category::all();
         $skills = Skill::all(); // Pass skills to the view to allow selection
         $serviceTypes = Service::all(); // Pass service types to the view
+
         return view('admin.providers.services.create', compact('categories', 'skills', 'serviceTypes'));
     }
 
     public function show(Service $service)
     {
         $service->load('skills'); // Eager load skills for the service
+
         return view('admin.providers.services.show', compact('service'));
     }
 
@@ -49,11 +52,12 @@ class ServicesController extends Controller
             'startingPrice' => $request->input('startingPrice'),
             'description' => $request->input('description'),
             'provider_id' => $request->input('provider_id'),
-            'category_id' => $request->input('category_id')
+            'category_id' => $request->input('category_id'),
         ]);
 
         // Attach the selected skills to the service
         $service->skills()->attach($request->input('skills'));
+
         // Redirect to the services index page with a success message
         return redirect()->route('services.index')->with('success', 'Service created successfully.');
     }
@@ -63,6 +67,7 @@ class ServicesController extends Controller
         $categories = Category::all();
         $skills = Skill::all(); // Get all skills for selection
         $serviceTypes = Service::all(); // Get all service types for selection
+
         return view('admin.providers.services.edit', compact('service', 'categories', 'skills', 'serviceTypes'));
     }
 

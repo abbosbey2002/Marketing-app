@@ -3,12 +3,10 @@
 namespace App\Http\Controllers\Reviews;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use App\Models\Award;
-use App\Models\Review;
-use App\Models\Category;
-use App\Models\Provider;
 use App\Models\Language;
+use App\Models\Provider;
+use App\Models\Review;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class ReviewsController extends Controller
@@ -18,6 +16,7 @@ class ReviewsController extends Controller
     {
         // Retrieve all reviews, optionally paginated
         $reviews = Review::with('language', 'provider')->paginate(10); // Adjust pagination as needed
+
         return view('admin.providers.reviews.index', compact('reviews'));
     }
 
@@ -70,6 +69,7 @@ class ReviewsController extends Controller
 
         return redirect()->route('reviews.index')->with('success', 'Review created successfully.');
     }
+
     public function show($id)
     {
         // Retrieve the specific review by its ID, along with its related language and provider
@@ -78,6 +78,7 @@ class ReviewsController extends Controller
         // Return the show view with the review data
         return view('admin.providers.reviews.show', compact('review'));
     }
+
     // Show the form for editing a specific review
     public function edit(Review $review)
     {

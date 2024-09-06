@@ -11,9 +11,8 @@ class Skill extends Model
 
     protected $fillable = ['name_en', 'name_uz', 'name_ru', 'service_list_id'];
 
-    public function serviceList(){
+    public function serviceList()
+    {
         return $this->belongsTo(serviceList::class);
     }
-
-    
 }

@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -18,17 +19,16 @@ class Service extends Model
 
     public function providerSkills()
     {
-        return $this->hasMany(ProviderServiceSkill::class,);  // `provider_id` bo'yicha filtrlash
+        return $this->hasMany(ProviderServiceSkill::class);  // `provider_id` bo'yicha filtrlash
     }
 
     public function providerService()
     {
-        return $this->hasOne(ProviderService::class,);  // `provider_id` bo'yicha filtrlash
+        return $this->hasOne(ProviderService::class);  // `provider_id` bo'yicha filtrlash
     }
 
     public function providers()
     {
         return $this->belongsToMany(Provider::class, 'provider_service', 'service_id', 'provider_id');
     }
-
 }

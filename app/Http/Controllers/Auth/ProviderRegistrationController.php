@@ -3,16 +3,13 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Models\Language;
-use App\Models\Provider;
 use App\Models\Manager;
-use App\Models\Language;
-use App\Models\Service;
+use App\Models\Provider;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Hash;
 
 class ProviderRegistrationController extends Controller
 {
@@ -28,13 +25,11 @@ class ProviderRegistrationController extends Controller
         $validatedData = $request->validate([
             'name' => 'required|string|max:255|unique:providers,name', // Ensures 'name' is unique in the 'managers' table
         ]);
-        
+
         $request->session()->put('provider', $validatedData);
 
         return redirect()->route('providerRegisterStep2');
     }
-
-    
 
     // Step 2: Kompaniya qo'shimcha ma'lumotlar formasini ko'rsatish
     public function showCompanyDetailsForm($provider_id)
@@ -58,7 +53,6 @@ class ProviderRegistrationController extends Controller
 
         $providerData = array_merge($providerData, $validatedData);
 
-        
         // Yangilangan provider massivni sessiyaga saqlash
         $request->session()->put('provider', $providerData);
 
@@ -80,14 +74,13 @@ class ProviderRegistrationController extends Controller
             'password' => 'required|string|confirmed|min:8',
         ]);
 
-
         // Sessiyadagi kompaniya ma'lumotlarini olish
         // Sessiyadagi provider ma'lumotlarini olish
         $providerData = session()->get('provider');
 
         // dd($providerData);
 
-        if (!$providerData) {
+        if (! $providerData) {
             // return redirect()->back()->with('error', 'Provider data not found in session.');
             return redirect()->route('providerRegisterStep1')->with('error', 'Provider data not found in session.');
         }
@@ -116,9 +109,8 @@ class ProviderRegistrationController extends Controller
         Auth::login($user);
 
         // Barcha sessiya ma'lumotlarini tozalash
-       session()->forget('provider');
+        session()->forget('provider');
 
-
-       return redirect()->route('providers.profile')->with('success', 'Profile updated successfully');
+        return redirect()->route('providers.profile')->with('success', 'Profile updated successfully');
     }
 }

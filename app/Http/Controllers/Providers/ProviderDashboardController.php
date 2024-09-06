@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Providers;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class ProviderDashboardController extends Controller
@@ -25,7 +24,6 @@ class ProviderDashboardController extends Controller
         * This redirects to the providers index page.
         * After the dashboard is completed, change the route to the dashboard route.
         */
-
 
         // return view('admin.layouts.main', [
         //     'providerManager' => $providerManager,

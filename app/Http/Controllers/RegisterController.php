@@ -15,7 +15,7 @@ class RegisterController extends Controller
     // Tanlangan ro'lni qabul qilish va tegishli ro'yxatdan o'tish jarayoniga yo'naltirish
     public function handleRoleSelection($role)
     {
-        if (!in_array($role, ['provider', 'partner', 'marketer'])) {
+        if (! in_array($role, ['provider', 'partner', 'marketer'])) {
             return redirect()->route('register')->with('error', 'Invalid role selected.');
         }
 

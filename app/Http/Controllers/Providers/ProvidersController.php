@@ -3,21 +3,19 @@
 namespace App\Http\Controllers\Providers;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use App\Models\Provider;
-use App\Models\Portfolio;
-use App\Models\Review;
-use App\Models\Language;
-use App\Models\Service;
 use App\Models\Category;
+use App\Models\Language;
 use App\Models\Manager;
+use App\Models\Portfolio;
+use App\Models\Provider;
 use App\Models\ProviderService;
 use App\Models\ProviderServiceSkill;
+use App\Models\Review;
+use App\Models\Service;
 use App\Models\Skill;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
-
-
 
 class ProvidersController extends Controller
 {
@@ -36,19 +34,17 @@ class ProvidersController extends Controller
         $categories = Category::all();
         $languages = Language::all();
         $providerLanguageCodes = $provider->languages ? $provider->languages->pluck('code')->toArray() : [];
+
         return view('admin.providers.profile.index', compact('provider', 'services', 'providers', 'languages', 'providerLanguageCodes'));
     }
-
-
-
 
     public function show($id)
     {
         $user = Auth::user();
         $provider = $user->provider;
+
         return view('admin.providers.profile.show', compact('provider'));
     }
-
 
     public function service()
     {
@@ -56,6 +52,7 @@ class ProvidersController extends Controller
         $services = $provider->services ?? [];
         $serviceTypes = Service::all();
         $skills = Skill::all();
+
         return view('admin.providers.service.index', compact('services', 'serviceTypes', 'skills'));
     }
 
@@ -95,8 +92,6 @@ class ProvidersController extends Controller
         return redirect()->back()->with(['message' => __('messages.service_save')]);
     }
 
-
-
     public function updateservice(Request $request)
     {
         // Validate the incoming request data
@@ -116,7 +111,7 @@ class ProvidersController extends Controller
             ->first();
 
         // If ProviderService doesn't exist, return an error message
-        if (!$providerService) {
+        if (! $providerService) {
             return redirect()->back()->withErrors(['message' => 'Service not found for this provider.']);
         }
 
@@ -160,7 +155,7 @@ class ProvidersController extends Controller
             ->first();
 
         // If ProviderService doesn't exist, return an error message
-        if (!$providerService) {
+        if (! $providerService) {
             return redirect()->back()->withErrors(['message' => 'Service not found for this provider.']);
         }
 
@@ -176,13 +171,12 @@ class ProvidersController extends Controller
         return redirect()->back()->with(['message' => 'Xizmat muvaffaqiyatli o\'chirildi!']);
     }
 
-
-
     public function edit()
     {
         $user = Auth::user();
         $provider = $user->provider;
         $services = Service::all();
+
         return view('admin.providers.profile.edit', compact('provider', 'services'));
     }
 
@@ -211,10 +205,8 @@ class ProvidersController extends Controller
             'description' => $request->input('description'),
         ]);
 
-        return  response()->json([$provider, $provider->skills()]);
+        return response()->json([$provider, $provider->skills()]);
     }
-
-
 
     public function update(Request $request)
     {
@@ -249,8 +241,6 @@ class ProvidersController extends Controller
             $validatedData['password'] = bcrypt($request->input('password'));
         }
 
-
-
         // save language
         if ($request->has('languages')) {
             // Get the language codes from the request, ensuring it's an array
@@ -271,7 +261,7 @@ class ProvidersController extends Controller
         $provider->update($validatedData);
 
         // Redirect back with a success message
-        return redirect()->route('providers.profile')->with('success',  __('messages.profile_update'));
+        return redirect()->route('providers.profile')->with('success', __('messages.profile_update'));
     }
 
     /**
@@ -281,6 +271,7 @@ class ProvidersController extends Controller
     {
         $provider = Provider::findOrFail($id);
         $provider->delete();
+
         return redirect()->route('providers.profile')->with('success', 'Provider deleted successfully.');
     }
 }
