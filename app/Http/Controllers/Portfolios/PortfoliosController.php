@@ -52,21 +52,20 @@ class PortfoliosController extends Controller
             'service_id' => 'nullable|exists:services,id',
         ]);
 
+
+
         // Agar fayl yuklangan bo'lsa
         // Agar fayl yuklangan bo'lsa
         if ($request->hasFile('image')) {
-            // Faylni saqlash
-            $path = $request->file('image')->store('images/portfolyo', 'public');
 
-            // Fayl nomini olish
-            $filename = basename($path);
+            $path = $request->file('image')->store('portfolyo', 'public');
 
             // Fayl nomini validatsiya qilingan ma'lumotlarga qo'shish
-            $validatedData['image'] = $filename;
+            $validatedData['image'] = $path;
         }
 
         // Yangi portfolio yaratish
-        Portfolio::create($validatedData);
+        $portfolio =  Portfolio::create($validatedData);
 
         // Portfolio index sahifasiga qaytish
         return redirect()->route('portfolios.index')->with('success', 'Portfolio muvaffaqiyatli yaratildi!');
@@ -84,10 +83,10 @@ class PortfoliosController extends Controller
 
     public function update(Request $request, Portfolio $portfolio)
     {
-        // Ma'lumotlarni validatsiya qilish (kommentariyani olib tashlang)
+        // Ma'lumotlarni validatsiya qilish
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
-            'image' => 'nullable|max:2048',
+            'image' => 'required|image|max:2048', // Ensure it's an image
             'youtube_url' => 'nullable|string|max:255',
             'expertise' => 'nullable|string|max:255',
             'skills' => 'nullable|string',
@@ -108,29 +107,28 @@ class PortfoliosController extends Controller
             'service_id' => 'nullable|exists:services,id',
         ]);
 
+        dd($validatedData);
+
         // Yangi tasvir yuklanganligini tekshirish
         if ($request->hasFile('image')) {
-            // Eski tasvirni o'chirish
-            if ($portfolio->image) {
-                Storage::disk('public')->delete('images/' . $portfolio->image);
+            // Delete the old image if it exists
+            if ($portfolio->image && Storage::disk('public')->exists($portfolio->image)) {
+                Storage::disk('public')->delete($portfolio->image);
             }
 
-            // Yangi tasvirni saqlash
-            $path = $request->file('image')->store('images', 'public');
-            $filename = basename($path);
+            // Store the new image
+            $path = $request->file('image')->store('portfolyo', 'public');
 
-            // Yangi tasvir nomini yangilash
-            $portfolio->image = $filename;
+            // Add the new image path to the validated data
+            $validatedData['image'] = $path;
         }
 
-        // Boshqa maydonlarni yangilash
-        $portfolio->update($request->except(['image']));
-
-        // Yangilangan tasvir nomini saqlash
-        $portfolio->save();
+        // Boshqa maydonlarni yangilash, including the image if it was updated
+        $portfolio->update($validatedData);
 
         return redirect()->route('portfolios.index')->with('success', 'Portfolio muvaffaqiyatli yangilandi.');
     }
+
 
 
     public function destroy(Portfolio $portfolio)
