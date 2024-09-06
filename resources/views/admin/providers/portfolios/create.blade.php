@@ -34,7 +34,7 @@
                                     </ul>
                                 </div>
                             @endif
-                            <form action="{{ route('portfolios.store') }}" method="POST">
+                            <form action="{{ route('portfolios.store') }}" enctype='multipart/form-data' method="POST">
                                 @csrf
 
                                 <div class="row mb-4 align-items-center">
@@ -51,7 +51,7 @@
                                         <label for="imageInput" class="fw-semibold">Image URL:</label>
                                     </div>
                                     <div class="col-lg-8">
-                                        <input type="url" class="form-control" id="imageInput" placeholder="Image URL" name="image" required>
+                                        {{-- <input type="url" class="form-control" id="imageInput"  placeholder="Image URL" name="image" required> --}}
                                     </div>
                                 </div>
                                 

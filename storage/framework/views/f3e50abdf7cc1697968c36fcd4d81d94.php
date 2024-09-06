@@ -12,7 +12,7 @@
             </div>
         </div>
         <div class="offcanvas-body">
-            <form action="<?php echo e(route('portfolios.store')); ?>" method="POST">
+            <form action="<?php echo e(route('portfolios.store')); ?>" enctype='multipart/form-data' method="POST">
             <?php echo csrf_field(); ?>
             <div class="row">
                 <div class="col-md-7"> 

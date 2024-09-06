@@ -12,7 +12,7 @@
             </div>
         </div>
         <div class="offcanvas-body">
-            <form action="{{ route('portfolios.store')}}" method="POST">
+            <form action="{{ route('portfolios.store')}}" enctype='multipart/form-data' method="POST">
             @csrf
             <div class="row">
                 <div class="col-md-7"> 
