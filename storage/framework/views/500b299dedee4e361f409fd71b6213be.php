@@ -9,39 +9,39 @@
     <meta name="keyword" content="">
     <meta name="author" content="theme_ocean">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
-   
+
 
     <style>
-    /* Style for Select2 dropdown */
-    .select2-container--default .select2-selection--multiple {
-        background-color: #fff;
-        border: 1px solid #ced4da;
-        border-radius: 4px;
-        color: black !important; /* Text color */
-        min-height: 38px; /* Adjust height as needed */
-    }
+        /* Style for Select2 dropdown */
+        .select2-container--default .select2-selection--multiple {
+            background-color: #fff;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            color: black !important; /* Text color */
+            min-height: 38px; /* Adjust height as needed */
+        }
 
-    .select2-container--default .select2-selection--multiple .select2-selection__choice {
-        background-color: #007bff;
-        border-color: #007bff;
-        color: black !important; /* Text color */
-    }
+        .select2-container--default .select2-selection--multiple .select2-selection__choice {
+            background-color: #007bff;
+            border-color: #007bff;
+            color: black !important; /* Text color */
+        }
 
-    .select2-container--default .select2-selection--multiple .select2-selection__choice__remove {
-        color: black !important; /* Text color */
-    }
+        .select2-container--default .select2-selection--multiple .select2-selection__choice__remove {
+            color: black !important; /* Text color */
+        }
 
-    .select2-container--default .select2-selection--multiple .select2-selection__choice__remove:hover {
-        background-color: #0056b3;
-        border-color: #0056b3;
-        color: black !important; /* Text color */
-    }
+        .select2-container--default .select2-selection--multiple .select2-selection__choice__remove:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+            color: black !important; /* Text color */
+        }
 
-    /* Ensure text color inside Select2 dropdown */
-    .select2-container--default .select2-results__option {
-        color: black !important; /* Text color */
-    }
-</style>
+        /* Ensure text color inside Select2 dropdown */
+        .select2-container--default .select2-results__option {
+            color: black !important; /* Text color */
+        }
+    </style>
 
     <!--! The above 6 meta tags *must* come first in the head; any other head content must come *after* these tags !-->
     <!--! BEGIN: Apps Title-->
@@ -69,30 +69,30 @@
     <!--! BEGIN: Custom CSS-->
     <link rel="stylesheet" type="text/css" href="<?php echo e(asset('admin/assets/css/theme.min.css')); ?>">
     <!-- Add in your <head> section -->
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet"/>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.5/lottie.min.js"></script>
 
 
-<!-- Add before the closing </body> tag -->
+    <!-- Add before the closing </body> tag -->
 
     <!--! END: Custom CSS-->
     <!--! HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries !-->
     <!--! WARNING: Respond.js doesn"t work if you view the page via file: !-->
     <!--[if lt IE 9]>
-        <script src="https:oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-        <script src="https:oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <script src="https:oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https:oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
 
 <body>
-    <!--! ================================================================ !-->
-    <!--! [Start] Navigation Manu !-->
-    <!--! ================================================================ !-->
-    <?php echo $__env->make('admin.components.sidebar', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-    <!--! ================================================================ !-->
-    <!--! [End]  Navigation Manu !-->
-    <!--! ================================================================ !-->
+<!--! ================================================================ !-->
+<!--! [Start] Navigation Manu !-->
+<!--! ================================================================ !-->
+<?php echo $__env->make('admin.components.sidebar', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+<!--! ================================================================ !-->
+<!--! [End]  Navigation Manu !-->
+<!--! ================================================================ !-->
 
     <!--! ================================================================ !-->
     <!--! [Start] Header !-->
@@ -177,9 +177,9 @@
             }
         });
     }
- </script>
+</script>
 
-    <!--! END: Theme Customizer !-->
+<!--! END: Theme Customizer !-->
 </body>
 
 </html>
