@@ -2,144 +2,43 @@
 
 return [
 
-    /*
-    |--------------------------------------------------------------------------
-    | Authentication Defaults
-    |--------------------------------------------------------------------------
-    |
-    | This option controls the default authentication "guard" and password
-    | reset options for your application. You may change these defaults
-    | as required, but they're a perfect start for most applications.
-    |
-    */
-
     'defaults' => [
-        'guard' => 'web',
-        'passwords' => 'users',
+        'guard' => 'web',  // Default guard set to 'web'
+        'passwords' => 'users',  // Password reset settings for users
     ],
 
-    /*
-    |--------------------------------------------------------------------------
-    | Authentication Guards
-    |--------------------------------------------------------------------------
-    |
-    | Next, you may define every authentication guard for your application.
-    | Of course, a great default configuration has been defined for you
-    | here which uses session storage and the Eloquent user provider.
-    |
-    | All authentication drivers have a user provider. This defines how the
-    | users are actually retrieved out of your database or other storage
-    | mechanisms used by this application to persist your user's data.
-    |
-    | Supported: "session"
-    |
-    */
     'guards' => [
         'web' => [
-            'driver' => 'session',
-            'provider' => 'users',
+            'driver' => 'session',  // Using session driver for web guard
+            'provider' => 'users',  // Provider is set to 'users'
         ],
 
-        'api' => [
-            'driver' => 'token',
-            'provider' => 'users',
-            'hash' => false,
-        ],
-
-        'provider_manager' => [
-            'driver' => 'session',
-            'provider' => 'provider_managers',
+        'provider' => [
+            'driver' => 'session',  // Using session driver for provider guard
+            'provider' => 'providers',  // Corrected to 'providers'
         ],
     ],
-
 
     'providers' => [
         'users' => [
-            'driver' => 'eloquent',
-            'model' => App\Models\User::class,
+            'driver' => 'eloquent',  // Eloquent provider for User model
+            'model' => App\Models\User::class,  // The User model
         ],
 
-        'provider_managers' => [
-            'driver' => 'eloquent',
-            'model' => App\Models\ProviderManager::class,  // Make sure this points to your actual model
+        'providers' => [
+            'driver' => 'eloquent',  // Eloquent provider for Provider model
+            'model' => App\Models\Provider::class,  // The Provider model
         ],
     ],
-
-
-
-    /*
-    |--------------------------------------------------------------------------
-    | User Providers
-    |--------------------------------------------------------------------------
-    |
-    | All authentication drivers have a user provider. This defines how the
-    | users are actually retrieved out of your database or other storage
-    | mechanisms used by this application to persist your user's data.
-    |
-    | If you have multiple user tables or models you may configure multiple
-    | sources which represent each model / table. These sources may then
-    | be assigned to any extra authentication guards you have defined.
-    |
-    | Supported: "database", "eloquent"
-    |
-    */
-
-// config/auth.php
-
-
-
-
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
-
-
-    /*
-    |--------------------------------------------------------------------------
-    | Resetting Passwords
-    |--------------------------------------------------------------------------
-    |
-    | You may specify multiple password reset configurations if you have more
-    | than one user table or model in the application and you want to have
-    | separate password reset settings based on the specific user types.
-    |
-    | The expiry time is the number of minutes that each reset token will be
-    | considered valid. This security feature keeps tokens short-lived so
-    | they have less time to be guessed. You may change this as needed.
-    |
-    | The throttle setting is the number of seconds a user must wait before
-    | generating more password reset tokens. This prevents the user from
-    | quickly generating a very large amount of password reset tokens.
-    |
-    */
 
     'passwords' => [
         'users' => [
-            'provider' => 'users',
-            'table' => 'password_resets',
-            'expire' => 60,
-        ],
-
-        'provider_managers' => [
-            'provider' => 'provider_managers',
-            'table' => 'provider_manager_password_resets',
-            'expire' => 60,
+            'provider' => 'users',  // Password resets for users
+            'table' => 'password_reset_tokens',  // Table for reset tokens
+            'expire' => 60,  // Expiry time in minutes
+            'throttle' => 60,  // Throttle time in seconds
         ],
     ],
 
-
-    /*
-    |--------------------------------------------------------------------------
-    | Password Confirmation Timeout
-    |--------------------------------------------------------------------------
-    |
-    | Here you may define the amount of seconds before a password confirmation
-    | times out and the user is prompted to re-enter their password via the
-    | confirmation screen. By default, the timeout lasts for three hours.
-    |
-    */
-
-    'password_timeout' => 10800,
-
+    'password_timeout' => 10800,  // Password confirmation timeout
 ];

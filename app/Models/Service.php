@@ -8,30 +8,27 @@ class Service extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'service_list_id',
-        'startingPrice',
-        'description',
-        'provider_id',
-    ];
+    protected $fillable = ['name_en', 'name_uz', 'name_ru'];
 
-    public function category()
-    {
-        return $this->belongsTo(Category::class);
-    }
-
-    public function serviceList(){
-        return $this->belongsTo(serviceList::class);
-    }
-    public function provider()
-    {
-        return $this->belongsTo(Provider::class);
-    }
-
-    // If a service can have multiple skills
+    // Optional: If a ServiceList has many Skills
     public function skills()
-{
-    return $this->belongsToMany(Skill::class);
-}
+    {
+        return $this->hasMany(Skill::class);
+    }
+
+    public function providerSkills()
+    {
+        return $this->hasMany(ProviderServiceSkill::class,);  // `provider_id` bo'yicha filtrlash
+    }
+
+    public function providerService()
+    {
+        return $this->hasOne(ProviderService::class,);  // `provider_id` bo'yicha filtrlash
+    }
+
+    public function providers()
+    {
+        return $this->belongsToMany(Provider::class, 'provider_service', 'service_id', 'provider_id');
+    }
 
 }

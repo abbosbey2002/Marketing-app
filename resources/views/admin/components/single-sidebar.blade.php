@@ -5,7 +5,7 @@
     <div class="content-sidebar-body">
         <ul class="nav flex-column nxl-content-sidebar-item">
             <li class="nav-item">
-                <a class="nav-link {{ Request::routeIs('providers.index') ? 'active' : '' }}" href="{{ route('providers.index') }}">
+                <a class="nav-link {{ Request::routeIs('providers.profile') ? 'active' : '' }}" href="{{ route('providers.profile') }}">
                     <i class="feather-airplay"></i>
                     <span>Overview</span>
                 </a>
