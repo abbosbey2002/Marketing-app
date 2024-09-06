@@ -9,7 +9,6 @@ class Award extends Model
 {
     use HasFactory;
 
-
     protected $fillable = [
         'category_id',
         'provider_id',

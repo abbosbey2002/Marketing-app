@@ -12,12 +12,14 @@ class CategoriesController extends Controller
     public function index()
     {
         $categories = Category::paginate(10);
+
         return view('categories.index', compact('categories'));
     }
 
     public function create()
     {
         $providers = Provider::all();
+
         return view('categories.create', compact('providers'));
     }
 
@@ -29,12 +31,14 @@ class CategoriesController extends Controller
         ]);
 
         Category::create($request->all());
+
         return redirect()->route('categories.index');
     }
 
     public function edit(Categories $category)
     {
         $providers = Provider::all();
+
         return view('categories.edit', compact('category', 'providers'));
     }
 
@@ -46,12 +50,14 @@ class CategoriesController extends Controller
         ]);
 
         $category->update($request->all());
+
         return redirect()->route('categories.index');
     }
 
     public function destroy(Category $category)
     {
         $category->delete();
+
         return redirect()->route('categories.index');
     }
 }

@@ -8,11 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class ProviderService extends Model
 {
     use HasFactory;
-    
-
 
     protected $table = 'provider_service';
-
 
     protected $fillable = [
         'provider_id',
@@ -27,7 +24,8 @@ class ProviderService extends Model
         'skills' => 'array',
     ];
 
-    public function skilldata(){
+    public function skilldata()
+    {
         return $this->skills;
     }
 
@@ -40,5 +38,4 @@ class ProviderService extends Model
     {
         return $this->belongsTo(Service::class, 'service_id');
     }
-
 }

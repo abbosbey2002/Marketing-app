@@ -11,7 +11,7 @@ class CreateManagersTable extends Migration
         Schema::create('managers', function (Blueprint $table) {
             $table->id();
             $table->foreignId('provider_id')->constrained()->onDelete('cascade');
-            $table->foreignId('user_id')->constrained()->onDelete('cascade'); 
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

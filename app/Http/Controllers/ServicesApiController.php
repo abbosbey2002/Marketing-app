@@ -12,10 +12,11 @@ class ServicesApiController extends Controller
     public function index()
     {
         $servicestype = Service::all();
-          return response()->json([
-        'status' => 'success',
-        'data' => $servicestype
-    ], 200); // 200 status kodi - OK
+
+        return response()->json([
+            'status' => 'success',
+            'data' => $servicestype,
+        ], 200); // 200 status kodi - OK
     }
 
     /**
@@ -29,7 +30,6 @@ class ServicesApiController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    
 
     /**
      * Display the specified resource.
@@ -42,7 +42,6 @@ class ServicesApiController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-   
 
     /**
      * Remove the specified resource from storage.

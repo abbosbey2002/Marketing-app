@@ -3,21 +3,21 @@
 namespace App\Http\Controllers\Awards;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\Award;
 use App\Models\Category;
-use App\Models\Provider;
 use App\Models\Portfolio;
-
+use App\Models\Provider;
+use Illuminate\Http\Request;
 
 class AwardsController extends Controller
 {
     public function index()
     {
-         $categories = Category::all();
+        $categories = Category::all();
         $providers = Provider::all();
         $awards = Award::with(['category', 'provider'])->paginate(10);
-        return view('admin.providers.awards.index', compact('awards','providers','categories'));
+
+        return view('admin.providers.awards.index', compact('awards', 'providers', 'categories'));
     }
 
     public function create()
@@ -25,6 +25,7 @@ class AwardsController extends Controller
         $categories = Category::all();
         $providers = Provider::all();
         $portfolios = Portfolio::all();
+
         return view('admin.providers.awards.create', compact('categories', 'providers', 'portfolios'));
     }
 
@@ -34,25 +35,26 @@ class AwardsController extends Controller
         $request->validate([
             'category_id' => 'nullable|exists:categories,id',
             'provider_id' => 'nullable|exists:providers,id',
-            'name' => 'nullable|string|max:255|unique:awards,name', 
+            'name' => 'nullable|string|max:255|unique:awards,name',
             'date' => 'required',
             'link' => 'nullable',
         ]);
 
         try {
             Award::create($request->all());
+
             return redirect()->route('awards.index')->with('success', 'Award created successfully.');
         } catch (\Exception $e) {
             return redirect()->route('awards.index')->with('error', 'The award name already exists.');
         }
     }
 
-
     public function edit(Award $award)
     {
         $categories = Category::all();
         $providers = Provider::all();
         $portfolios = Portfolio::all();
+
         return view('admin.providers.awards.edit', compact('award', 'categories', 'providers', 'portfolios'));
     }
 
@@ -78,7 +80,8 @@ class AwardsController extends Controller
         return redirect()->route('awards.index')->with('success', 'Award deleted successfully.');
     }
 
-    public function show(Award $award){
+    public function show(Award $award)
+    {
         return view('admin.providers.awards.show', compact('award'));
     }
 }

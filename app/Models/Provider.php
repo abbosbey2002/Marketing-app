@@ -25,9 +25,8 @@ class Provider extends Model
         'email',
         'password',
         'language_id',
-        'service_id'
+        'service_id',
     ];
-
 
     public function services()
     {
@@ -43,8 +42,6 @@ class Provider extends Model
     {
         return $this->belongsToMany(Language::class, 'provider_language');
     }
-
-    
 
     public function awards()
     {

@@ -3,7 +3,8 @@
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-return new class extends Seeder {
+return new class extends Seeder
+{
     public function run(): void
     {
         DB::table('providers')->insert([

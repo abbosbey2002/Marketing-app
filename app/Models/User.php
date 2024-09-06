@@ -25,7 +25,6 @@ class User extends Authenticatable
         'role',
     ];
 
-
     public function manager()
     {
         return $this->hasOne(Manager::class);
@@ -40,7 +39,6 @@ class User extends Authenticatable
             'partner' => 'Partner',
         ];
     }
-
 
     /**
      * The attributes that should be hidden for serialization.
@@ -62,15 +60,10 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-
-
     public function provider()
     {
         return $this->hasOne(Provider::class);
     }
 
-
-
     public $timestamps = false;
-
 }

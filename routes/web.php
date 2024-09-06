@@ -1,24 +1,23 @@
 <?php
 
-use App\Http\Controllers\ProviderSearchController;
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\MainController;
-use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
-use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\Auth\ProviderRegistrationController;
-use App\Http\Controllers\Providers\ProviderDashboardController;
-
-use App\Http\Controllers\Services\ServicesController;
+use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\Awards\AwardsController;
-use App\Http\Controllers\Reviews\ReviewsController;
 use App\Http\Controllers\Contact\ContactController;
-use App\Http\Controllers\Portfolios\PortfoliosController;
-use App\Http\Controllers\Teams\TeamController;
-use App\Http\Controllers\Providers\ProvidersController;
+use App\Http\Controllers\MainController;
 use App\Http\Controllers\Managers\ManagerController;
+use App\Http\Controllers\Portfolios\PortfoliosController;
+use App\Http\Controllers\Providers\ProviderDashboardController;
+use App\Http\Controllers\Providers\ProvidersController;
+use App\Http\Controllers\ProviderSearchController;
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\Reviews\ReviewsController;
+use App\Http\Controllers\Services\ServicesController;
+use App\Http\Controllers\Teams\TeamController;
 use App\Models\Service;
+use Illuminate\Support\Facades\Route;
 
 /*****************************************************************************
  * Display Head routes
@@ -41,7 +40,6 @@ Route::get('/contacts', [MainController::class, 'contact'])->name('contacts');
 Route::get('/single-reviews', [MainController::class, 'singleReviews'])->name('singleReviews');
 // Loyiha ohirida olib tashlanadi, single-kerak emas.
 
-
 // Auth (Autentifikatsiya) yo'nalishlari
 Route::prefix('auth')->namespace('App\Http\Controllers\Auth')->group(function () {
     // Ro'l tanlash va yo'naltirish
@@ -58,7 +56,6 @@ Route::prefix('auth')->namespace('App\Http\Controllers\Auth')->group(function ()
     Route::get('/password/reset/{token}', [ResetPasswordController::class, 'showResetForm'])->name('password.reset');
     Route::post('/password/reset', [ResetPasswordController::class, 'reset'])->name('password.update');
 });
-
 
 /*****************************************************************************
  * Display Provider routes
@@ -82,7 +79,6 @@ Route::prefix('provider')->group(function () {
         Route::get('/dashboard', [ProviderDashboardController::class, 'index'])->name('provider.dashboard');
         Route::post('add-akills', [ProvidersController::class, 'addSkills'])->name('provider.add.skills');
 
-
         // service
         Route::get('services', [ProvidersController::class, 'service'])->name('providers.service');
         Route::post('add-service/', [ProvidersController::class, 'addservice'])->name('providers.add.service');
@@ -91,7 +87,6 @@ Route::prefix('provider')->group(function () {
         // service
 
         Route::get('profile', [ProvidersController::class, 'profile'])->name('providers.profile');
-
 
         Route::resource('providers', ProvidersController::class);
         Route::resource('providers', ProvidersController::class);
@@ -122,8 +117,6 @@ Route::prefix('marketer')->namespace('App\Http\Controllers')->group(function () 
 
     // Marketer uchun boshqa yo'nalishlar (agar mavjud bo'lsa, qo'shing)
 });
-
-
 
 /*****************************************************************************
  * Display Partner routes
@@ -157,8 +150,8 @@ Route::prefix('partner')->namespace('App\Http\Controllers')->group(function () {
 //     Route::resource('managers', ManagerController::class);
 // });
 
-
 Route::get('/{lang}', function ($lang) {
     session(['lang' => $lang]);
+
     return back();
 })->where('lang', 'uz|ru');

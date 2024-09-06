@@ -12,7 +12,7 @@ class Team extends Model
     protected $fillable = [
         'image',
         'description',
-        'provider_id'
+        'provider_id',
     ];
 
     public function provider()

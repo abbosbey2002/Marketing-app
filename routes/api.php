@@ -1,9 +1,9 @@
 <?php
 
+use App\Http\Controllers\ServicesApiController;
+use App\Http\Controllers\SkillsController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\SkillsController;
-use App\Http\Controllers\ServicesApiController;
 
 /*
 |--------------------------------------------------------------------------

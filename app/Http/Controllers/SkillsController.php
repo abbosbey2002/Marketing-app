@@ -35,7 +35,6 @@ class SkillsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -50,6 +49,6 @@ class SkillsController extends Controller
         Skill::create($request->all());
 
         // Muvaffaqiyatli qo'shilgandan so'ng, skill ro'yxatiga qaytish
-        return null;
+
     }
 }
