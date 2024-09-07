@@ -102,17 +102,14 @@ class PortfoliosController extends Controller
             'provider_id' => 'nullable|exists:providers,id',
             'service_id' => 'nullable|exists:services,id',
         ]);
-
         // Yangi tasvir yuklanganligini tekshirish
         if ($request->hasFile('image')) {
             // Delete the old image if it exists
             if ($portfolio->image && Storage::disk('public')->exists($portfolio->image)) {
                 Storage::disk('public')->delete($portfolio->image);
             }
-
             // Store the new image
             $path = $request->file('image')->store('portfolyo', 'public');
-
             // Add the new image path to the validated data
             $validatedData['image'] = $path;
         }

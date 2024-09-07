@@ -16,7 +16,6 @@ use App\Models\Skill;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\Validator;
 
 class ProvidersController extends Controller
 {
@@ -26,7 +25,6 @@ class ProvidersController extends Controller
     public function profile()
     {
         $user = Auth::user()->manager; // Get the authenticated user
-
         $provider = $user->provider;
         $portfolios = Portfolio::where('provider_id', $user->provider_id)->get();
         $reviews = Review::where('provider_id', $user->provider_id)->get();
@@ -63,7 +61,6 @@ class ProvidersController extends Controller
             'service-type' => 'required|exists:services,id', // Xizmat ID mavjudligini tekshirish
             'skills' => 'required|array', // Skills array kerak
             'skills.*' => 'exists:skills,id', // Har bir skill mavjudligini tekshirish
-            'startingPrice' => 'required|numeric',
             'startingPrice' => 'nullable|numeric',
             'description' => 'required|string',
             'provider_id' => 'required|exists:providers,id', // Provayder ID mavjudligini tekshirish
@@ -88,8 +85,6 @@ class ProvidersController extends Controller
             'description' => $validatedData['description'],
         ]);
 
-        $providerService->update();
-
         return redirect()->back()->with(['message' => __('messages.service_save')]);
     }
 
@@ -100,7 +95,6 @@ class ProvidersController extends Controller
             'service-type' => 'required|exists:services,id', // Service ID must exist
             'skills' => 'required|array', // Skills must be an array
             'skills.*' => 'exists:skills,id', // Each skill ID must exist
-            'startingPrice' => 'required|numeric',
             'startingPrice' => 'nullable|numeric',
             'description' => 'required|string',
             'provider_id' => 'required|exists:providers,id', // Provider ID must exist
@@ -118,7 +112,6 @@ class ProvidersController extends Controller
 
         // Update ProviderService fields
         $providerService->update([
-            'price' => $validatedData['startingPrice'],
             'price' => $validatedData['startingPrice'],
             'description' => $validatedData['description'],
         ]);
@@ -183,18 +176,8 @@ class ProvidersController extends Controller
 
     public function addSkills(Request $request)
     {
-
         // Get the authenticated provider
         $provider = Auth()->user()->manager->provider();
-
-        // Validate the incoming request
-        // $request->validate([
-        //     'service-type' => 'required|integer',
-        //     'skills' => 'required|array',
-        //     'skills.*' => 'integer|exists:skills,id',
-        //     'priceService' => 'required|numeric',
-        //     'description' => 'nullable|string',
-        // ]);
 
         // Attach the skills to the provider
         $provider->skills()->sync($request->input('skills'));
@@ -211,8 +194,7 @@ class ProvidersController extends Controller
 
     public function update(Request $request)
     {
-
-        $validatedData = $request->validate( [
+        $validatedData = $request->validate([
             'name' => 'required|string|max:255',
             'turnover' => 'nullable|integer|min:0',
             'teamSize' => 'required|integer|min:1',
@@ -231,6 +213,7 @@ class ProvidersController extends Controller
 
         $user = Auth::user()->manager;
         $provider = $user->provider;
+
         // Handle file uploads
         if ($request->hasFile('logo')) {
             // Delete the old logo if it exists
@@ -257,7 +240,7 @@ class ProvidersController extends Controller
             $validatedData['password'] = bcrypt($request->input('password'));
         }
 
-        // save language
+        // Save language
         if ($request->has('languages')) {
             // Get the language codes from the request, ensuring it's an array
             $languageCodes = $validatedData['languages'];
@@ -271,7 +254,6 @@ class ProvidersController extends Controller
             // If no languages are provided, clear the languages or leave them unchanged based on your business logic
             $provider->languages()->sync([]); // This clears all associated languages
         }
-        ///
 
         // Update the provider's profile
         $provider->update($validatedData);
