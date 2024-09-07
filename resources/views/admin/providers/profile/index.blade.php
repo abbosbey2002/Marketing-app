@@ -222,7 +222,6 @@
                                         <div class="col-sm-6 fw-semibold">
                                            
                                             <select class="form-select form-control max-select" name="languages[]" data-select2-selector="tag" multiple>
-                                                <option value="" disabled>Tanlang</option>
                                                 @foreach($languages as $language)
                                                     <option value="{{ $language->code }}" 
                                                         @if(in_array($language->code, $providerLanguageCodes)) selected @endif>

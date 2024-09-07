@@ -227,7 +227,6 @@ unset($__errorArgs, $__bag); ?>
                                         <div class="col-sm-6 fw-semibold">
                                            
                                             <select class="form-select form-control max-select" name="languages[]" data-select2-selector="tag" multiple>
-                                                <option value="" disabled>Tanlang</option>
                                                 <?php $__currentLoopData = $languages; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $language): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                                     <option value="<?php echo e($language->code); ?>" 
                                                         <?php if(in_array($language->code, $providerLanguageCodes)): ?> selected <?php endif; ?>>

@@ -16,6 +16,7 @@ use App\Models\Skill;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Validation\Rule;
 
 class ProvidersController extends Controller
 {
@@ -201,14 +202,17 @@ class ProvidersController extends Controller
             'tagline' => 'nullable|string|max:255',
             'foundedAt' => 'nullable|date',
             'description' => 'nullable|string',
-            'logo' => 'nullable|string|max:255',
-            'cover' => 'nullable|string|max:255',
+            'logo' => 'nullable|image|max:255',
+            'cover' => 'nullable|image|max:255',
             'address' => 'nullable|string|max:255',
             'phone' => 'nullable|string|max:20',
-            'email' => 'nullable|email|max:255|unique:providers,email',
+            'email' => [
+                'nullable',
+                'email',
+                'max:255',
+                Rule::unique('providers')->ignore(Auth::user()->manager->provider_id),
+            ],
             'password' => 'nullable|string|min:8',
-            'language_id' => 'nullable|exists:languages,id',
-            'service_id' => 'nullable|exists:services,id',
         ]);
 
         $user = Auth::user()->manager;
@@ -243,7 +247,7 @@ class ProvidersController extends Controller
         // Save language
         if ($request->has('languages')) {
             // Get the language codes from the request, ensuring it's an array
-            $languageCodes = $validatedData['languages'];
+            $languageCodes = $request->input('languages');
 
             // Find the corresponding language IDs based on the codes
             $languageIds = Language::whereIn('code', $languageCodes)->pluck('id')->toArray();
