@@ -18,7 +18,6 @@ return new class extends Migration
             $table->bigInteger('teamSize');
             $table->string('tagline')->nullable();
             $table->date('foundedAt')->nullable();
-            $table->date('foundedAt')->nullable();
             $table->text('description')->nullable();
             $table->string('logo')->nullable();
             $table->string('cover')->nullable();

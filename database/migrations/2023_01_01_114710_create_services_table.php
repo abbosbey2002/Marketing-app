@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('name_uz');
             $table->string('name_en');
             $table->bigInteger('category_id');
-            $table->timestamps(); // created_at ва updated_at колонкалари учун
+            $table->timestamps();// created_at ва updated_at колонкалари учун
         });
     }
 
