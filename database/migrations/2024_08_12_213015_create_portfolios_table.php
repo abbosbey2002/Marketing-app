@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('service_id')->constrained('services')->cascadeOnDelete();
             $table->foreignId('provider_id')->constrained('providers')->cascadeOnDelete();
             $table->string('name');
+            $table->string('skills');
             $table->string('image');
             $table->string('youtube_url')->nullable(); // Youtube URL maydoni
             $table->string('expertise')->nullable(); // Expertise maydoni qo'shildi

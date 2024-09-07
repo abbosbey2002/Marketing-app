@@ -69,8 +69,7 @@
                                                 <div id="inputContainer">
                                                     <div id="imageInput" class="input-field" style="display: none;">
                                                         <label for="imageFile">Upload Image:</label>
-                                                        <input type="file" id="imageFile" name="image"
-                                                            accept="image/*">
+                                                        <<input type="file" id="imageFile" name="image" accept="image/*">
                                                     </div>
                                                     <div id="youtubeInput" class="input-field" style="display: none;">
                                                         <label for="youtubeUrl">Add your YouTube Video URL:</label>
@@ -116,6 +115,20 @@
                                 </div>
                             </div>
 
+                            <div class="col-md-12 mt-3">
+                                <h5> Start date </h5>
+                                <div class="mb-4">
+                                    <input type="date" class="form-control" name="start_date"
+                                        placeholder="Enter a budjet..." value="<?php echo e($portfolio->start_date); ?>">
+                                </div>
+                            </div>
+                            <div class="col-md-12 mt-3">
+                                <h5> End date</h5>
+                                <div class="mb-4">
+                                    <input type="date" class="form-control" name="end_date"
+                                        placeholder="Enter a budjet..." value="<?php echo e($portfolio->end_date); ?>">
+                                </div>
+                            </div>
                             <div class="col-md-12 mt-3">
                                 <h5> Start date </h5>
                                 <div class="mb-4">
@@ -470,5 +483,4 @@
         overflow: auto;
         /* Agar bo'lim juda uzun bo'lsa, scroll bo'lishini ta'minlaydi */
     }
-</style>
-<?php /**PATH /home/abbos/Desktop/projects/MARKETING/resources/views/admin/components/portfolios/provider-portfolio-edit-modal.blade.php ENDPATH**/ ?>
+</style><?php /**PATH /home/abbos/Desktop/projects/MARKETING/resources/views/admin/components/portfolios/provider-portfolio-edit-modal.blade.php ENDPATH**/ ?>

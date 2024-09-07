@@ -83,7 +83,6 @@ class PortfoliosController extends Controller
         // Ma'lumotlarni validatsiya qilish
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
-            'image' => 'required|image|max:2048', // Ensure it's an image
             'youtube_url' => 'nullable|string|max:255',
             'expertise' => 'nullable|string|max:255',
             'skills' => 'nullable|string',
