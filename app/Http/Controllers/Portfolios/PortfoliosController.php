@@ -107,7 +107,6 @@ class PortfoliosController extends Controller
             'service_id' => 'nullable|exists:services,id',
         ]);
 
-        dd($validatedData);
 
         // Yangi tasvir yuklanganligini tekshirish
         if ($request->hasFile('image')) {
