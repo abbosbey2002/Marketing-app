@@ -16,6 +16,7 @@ use App\Models\Skill;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 
 class ProvidersController extends Controller
 {
@@ -211,7 +212,22 @@ class ProvidersController extends Controller
     public function update(Request $request)
     {
 
-        $validatedData = $request->all();
+        $validatedData = $request->validate( [
+            'name' => 'required|string|max:255',
+            'turnover' => 'nullable|integer|min:0',
+            'teamSize' => 'required|integer|min:1',
+            'tagline' => 'nullable|string|max:255',
+            'foundedAt' => 'nullable|date',
+            'description' => 'nullable|string',
+            'logo' => 'nullable|string|max:255',
+            'cover' => 'nullable|string|max:255',
+            'address' => 'nullable|string|max:255',
+            'phone' => 'nullable|string|max:20',
+            'email' => 'nullable|email|max:255|unique:providers,email',
+            'password' => 'nullable|string|min:8',
+            'language_id' => 'nullable|exists:languages,id',
+            'service_id' => 'nullable|exists:services,id',
+        ]);
 
         $user = Auth::user()->manager;
         $provider = $user->provider;

@@ -3,6 +3,7 @@
 /node_modules
 /public/storage
 /storage/logs/*
+/storage/framework/*
 /public/storage/logs/laravel.log
 /storage/*.key
 /.idea
