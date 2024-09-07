@@ -18,7 +18,6 @@ return new class extends Migration
             $table->decimal('price', 10, 2)->nullable();
             $table->string('description', 255)->nullable();
             $table->timestamps();
-            
             // Foreign keys
             $table->foreign('provider_id')->references('id')->on('providers')->onDelete('cascade');
             $table->foreign('service_id')->references('id')->on('services')->onDelete('cascade');
