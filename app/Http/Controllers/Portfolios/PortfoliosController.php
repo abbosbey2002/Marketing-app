@@ -14,7 +14,10 @@ class PortfoliosController extends Controller
     public function index()
     {
         $services = Service::all();
-        $portfolios = Portfolio::where('provider_id', Auth()->user()->manager->provider_id)->orderBy('id', "DESC")->paginate(20);
+        $portfolios = Portfolio::where('provider_id', Auth()->user()->manager->provider_id)
+            ->orderBy('id', 'DESC')
+            ->paginate(20);
+
         return view('admin.providers.portfolios.index', compact('portfolios', 'services'));
     }
 
@@ -52,12 +55,8 @@ class PortfoliosController extends Controller
             'service_id' => 'nullable|exists:services,id',
         ]);
 
-
-
-        // Agar fayl yuklangan bo'lsa
         // Agar fayl yuklangan bo'lsa
         if ($request->hasFile('image')) {
-
             $path = $request->file('image')->store('portfolyo', 'public');
 
             // Fayl nomini validatsiya qilingan ma'lumotlarga qo'shish
@@ -65,7 +64,7 @@ class PortfoliosController extends Controller
         }
 
         // Yangi portfolio yaratish
-        $portfolio =  Portfolio::create($validatedData);
+        $portfolio = Portfolio::create($validatedData);
 
         // Portfolio index sahifasiga qaytish
         return redirect()->route('portfolios.index')->with('success', 'Portfolio muvaffaqiyatli yaratildi!');
@@ -78,8 +77,6 @@ class PortfoliosController extends Controller
 
         return view('admin.providers.portfolios.edit', compact('portfolio', 'providers', 'services'));
     }
-
-
 
     public function update(Request $request, Portfolio $portfolio)
     {
@@ -107,7 +104,6 @@ class PortfoliosController extends Controller
             'service_id' => 'nullable|exists:services,id',
         ]);
 
-
         // Yangi tasvir yuklanganligini tekshirish
         if ($request->hasFile('image')) {
             // Delete the old image if it exists
@@ -128,14 +124,13 @@ class PortfoliosController extends Controller
         return redirect()->route('portfolios.index')->with('success', 'Portfolio muvaffaqiyatli yangilandi.');
     }
 
-
-
     public function destroy(Portfolio $portfolio)
     {
         $portfolio->delete();
 
         return redirect()->route('portfolios.index');
     }
+
     public function show(Portfolio $portfolio)
     {
         return view('admin.providers.portfolios.show', compact('portfolio'));
