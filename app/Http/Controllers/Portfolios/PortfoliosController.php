@@ -137,9 +137,6 @@ class PortfoliosController extends Controller
 
         return redirect()->route('portfolios.index');
     }
-
-    public function show(Portfolio $portfolio)
-    {
     public function show(Portfolio $portfolio)
     {
         return view('admin.providers.portfolios.show', compact('portfolio'));
