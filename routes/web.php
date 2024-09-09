@@ -84,9 +84,9 @@ Route::prefix('provider')->group(function () {
         Route::put('update-service/', [ProvidersController::class, 'updateservice'])->name('providers.service.update');
         Route::delete('/service/delete', [ProvidersController::class, 'deleteService'])->name('deleteService');
         // service
-        
+
         Route::get('profile', [ProvidersController::class, 'profile'])->name('providers.profile');
-        
+
         Route::resource('reviews', ReviewsController::class);
         Route::resource('providers', ProvidersController::class);
         Route::resource('categories', CategoriesController::class);
