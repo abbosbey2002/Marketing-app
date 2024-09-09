@@ -31,7 +31,8 @@
                     <?php endif; ?>
 
                     <div class="card mb-0">
-                        <form action="<?php echo e(route('providers.update', $provider->id)); ?>" method="POST" enctype="multipart/form-data">
+                        <form action="<?php echo e(route('providers.update', $provider->id)); ?>" method="POST"
+                            enctype="multipart/form-data">
                             <?php echo csrf_field(); ?>
                             <?php echo method_field('PUT'); ?>
                             <div class="row">
@@ -42,27 +43,30 @@
                                                 <div class="wd-150 ht-150 mx-auto mb-3 position-relative">
                                                     <div
                                                         class="avatar-image wd-150 ht-150 border border-5 border-gray-3 position-relative">
-                                                        <img id="avatarPreview" src="<?php echo e(asset('storage/' . $provider->logo)); ?>"
-                                                            alt="" class="img-fluid" />
+                                                        <img id="avatarPreview"
+                                                            src="<?php echo e(asset('storage/' . $provider->logo)); ?>" alt=""
+                                                            class="img-fluid" />
                                                     </div>
                                                     <div class="wd-10 ht-10 text-success rounded-circle position-absolute translate-middle"
                                                         style="top: 68%; right: 18px">
                                                         <label for="logoInput" class="overflow-hidden">
                                                             <i class="fa-solid fa-pen-to-square border rounded-circle p-3 bg-light"
                                                                 style="cursor: pointer;"></i>
-                                                            <input type="file" class="form-control" id="logoInput" name="logo"
-                                                                style="opacity: 0; visibility: hidden;" accept="image/*">
+                                                            <input type="file" class="form-control" id="logoInput"
+                                                                name="logo" style="opacity: 0; visibility: hidden;"
+                                                                accept="image/*">
                                                         </label>
                                                     </div>
                                                 </div>
                                                 <div class="mb-4">
-            
+
                                                     <a href="javascript:void(0);" class="fs-14 fw-bold d-block">
                                                         <?php echo e(old('name', $provider->name)); ?></a>
                                                     <a href="javascript:void(0);"
                                                         class="fs-12 fw-normal text-muted d-block"><?php echo e(old('email', $provider->email)); ?></a>
                                                 </div>
-                                                <div class="fs-12 fw-normal text-muted text-center d-flex flex-wrap gap-3 mb-4">
+                                                <div
+                                                    class="fs-12 fw-normal text-muted text-center d-flex flex-wrap gap-3 mb-4">
                                                     <div
                                                         class="flex-fill py-3 px-4 rounded-1 d-none d-sm-block border border-dashed border-gray-5">
                                                         <h6 class="fs-15 fw-bolder">28.65K</h6>
@@ -93,7 +97,7 @@
                                                     <a href="javascript:void(0);"
                                                         class="float-end"><?php echo e(old('tagline', $provider->phone)); ?></a>
                                                 </li>
-            
+
                                                 <li class="hstack justify-content-between mb-0">
                                                     <span class="text-muted fw-medium hstack gap-3"><i
                                                             class="feather-mail"></i>Email</span>
@@ -103,7 +107,7 @@
                                             </ul>
                                         </div>
                                     </div>
-            
+
                                 </div>
                                 <div class="col-xxl-8 col-xl-6">
                                     <div class="col-12">
@@ -111,7 +115,8 @@
                                             <div class="position-relative">
                                                 <?php if($provider->cover): ?>
                                                     <img id="coverPreview" src="<?php echo e(asset('storage/' . $provider->cover)); ?>"
-                                                        alt="Cover" style="height: 18em; width: 100%; object-fit: cover;" />
+                                                        alt="Cover"
+                                                        style="height: 18em; width: 100%; object-fit: cover;" />
                                                 <?php else: ?>
                                                     <img id="coverPreview" src="" alt="Cover"
                                                         style="height: 18em; width: 100%; object-fit: cover; display: none;" />
@@ -121,8 +126,9 @@
                                                     <label for="coverInput" class="overflow-hidden">
                                                         <i class="fa-solid fa-pen-to-square border rounded-circle p-3 bg-light"
                                                             style="cursor: pointer;"></i>
-                                                        <input type="file" class="form-control" id="coverInput" name="cover"
-                                                            style="opacity: 0; visibility: hidden;" accept="image/*">
+                                                        <input type="file" class="form-control" id="coverInput"
+                                                            name="cover" style="opacity: 0; visibility: hidden;"
+                                                            accept="image/*">
                                                     </label>
                                                     <?php $__errorArgs = ['cover'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
@@ -139,14 +145,14 @@ unset($__errorArgs, $__bag); ?>
                                         </div>
                                     </div>
                                     <div class="card border-top-0">
-            
+
                                         <div class="card-header p-0">
                                             <!-- Nav tabs -->
-                                            <ul class="nav nav-tabs flex-wrap w-100 text-center customers-nav-tabs" id="myTab"
-                                                role="tablist">
+                                            <ul class="nav nav-tabs flex-wrap w-100 text-center customers-nav-tabs"
+                                                id="myTab" role="tablist">
                                                 <li class="nav-item flex-fill border-top" role="presentation">
-                                                    <a href="javascript:void(0);" class="nav-link active" data-bs-toggle="tab"
-                                                        data-bs-target="#overviewTab"
+                                                    <a href="javascript:void(0);" class="nav-link active"
+                                                        data-bs-toggle="tab" data-bs-target="#overviewTab"
                                                         role="tab"><?php echo e(old('name', $provider->name) ?: 'Kompaniya'); ?></a>
                                                 </li>
                                                 <li class="nav-item flex-fill border-top" role="presentation">
@@ -163,7 +169,8 @@ unset($__errorArgs, $__bag); ?>
                                                 </li>
                                                 <li class="nav-item flex-fill border-top" role="presentation">
                                                     <a href="javascript:void(0);" class="nav-link" data-bs-toggle="tab"
-                                                        data-bs-target="#badgesTab" role="tab">Hamkorlik havolalari</a>
+                                                        data-bs-target="#badgesTab" role="tab">Hamkorlik
+                                                        havolalari</a>
                                                 </li>
                                                 <li class="nav-item flex-fill border-top" role="presentation">
                                                     <a href="javascript:void(0);" class="nav-link" data-bs-toggle="tab"
@@ -171,13 +178,14 @@ unset($__errorArgs, $__bag); ?>
                                                 </li>
                                             </ul>
                                         </div>
-            
+
                                         <div class="tab-content">
-            
+
                                             <div class="tab-pane fade show active p-4" id="overviewTab" role="tabpanel">
                                                 <div class="about-section mb-5">
                                                     <div class="mb-4 d-flex align-items-center justify-content-between">
-                                                        <h5 class="fw-bold mb-0"><?php echo e(old('name', $provider->name) ?: 'Kompaniya'); ?>
+                                                        <h5 class="fw-bold mb-0">
+                                                            <?php echo e(old('name', $provider->name) ?: 'Kompaniya'); ?>
 
                                                             haqida:</h5>
                                                     </div>
@@ -189,7 +197,7 @@ unset($__errorArgs, $__bag); ?>
                                                     <div class="mb-4 d-flex align-items-center justify-content-between">
                                                         <h5 class="fw-bold mb-0">Profile:</h5>
                                                     </div>
-            
+
                                                     <div class="row g-0 mb-4">
                                                         <div class="col-sm-6 text-muted">Kompaniya nomi:</div>
                                                         <div class="col-sm-6 fw-semibold">
@@ -198,7 +206,7 @@ unset($__errorArgs, $__bag); ?>
                                                                 value="<?php echo e(old('name', $provider->name)); ?>">
                                                         </div>
                                                     </div>
-            
+
                                                     <div class="row g-0 mb-4">
                                                         <div class="col-sm-6 text-muted">Shior:</div>
                                                         <div class="col-sm-6 fw-semibold">
@@ -207,7 +215,7 @@ unset($__errorArgs, $__bag); ?>
                                                                 value="<?php echo e(old('tagline', $provider->tagline)); ?>">
                                                         </div>
                                                     </div>
-            
+
                                                     <div class="row g-0 mb-4">
                                                         <div class="col-sm-6 text-muted">Manzil:</div>
                                                         <div class="col-sm-6 fw-semibold">
@@ -216,7 +224,7 @@ unset($__errorArgs, $__bag); ?>
                                                                 value="<?php echo e(old('tagline', $provider->address)); ?>">
                                                         </div>
                                                     </div>
-            
+
                                                     <div class="row g-0 mb-4">
                                                         <div class="col-sm-6 text-muted">Telefon raqam:</div>
                                                         <div class="col-sm-6 fw-semibold">
@@ -225,7 +233,7 @@ unset($__errorArgs, $__bag); ?>
                                                                 value="<?php echo e(old('phone', $provider->phone)); ?>">
                                                         </div>
                                                     </div>
-            
+
                                                     <div class="row g-0 mb-4">
                                                         <div class="col-sm-6 text-muted">Email:</div>
                                                         <div class="col-sm-6 fw-semibold">
@@ -234,13 +242,13 @@ unset($__errorArgs, $__bag); ?>
                                                                 value="<?php echo e(old('email', $provider->email)); ?>">
                                                         </div>
                                                     </div>
-            
+
                                                     <div class="row g-0 mb-4">
                                                         <div class="col-sm-6 text-muted">Languages:</div>
                                                         <div class="col-sm-6 fw-semibold">
-            
-                                                            <select class="form-select form-control max-select" name="languages[]"
-                                                                data-select2-selector="tag" multiple>
+
+                                                            <select class="form-select form-control max-select"
+                                                                name="languages[]" data-select2-selector="tag" multiple>
                                                                 <?php $__currentLoopData = $languages; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $language): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                                                     <option value="<?php echo e($language->code); ?>"
                                                                         <?php if(in_array($language->code, $providerLanguageCodes)): ?> selected <?php endif; ?>>
@@ -251,16 +259,16 @@ unset($__errorArgs, $__bag); ?>
                                                             </select>
                                                         </div>
                                                     </div>
-            
+
                                                     <div class="row g-0 mb-4">
                                                         <div class="col-sm-6 text-muted">Tashkil etilgan sana:</div>
                                                         <div class="col-sm-6 fw-semibold">
-                                                            <input type="date" class="form-control" id="foundedAtInput"
-                                                                name="foundedAt"
+                                                            <input type="date" class="form-control"
+                                                                id="foundedAtInput" name="foundedAt"
                                                                 value="<?php echo e(old('foundedAt', $provider->foundedAt)); ?>">
                                                         </div>
                                                     </div>
-            
+
                                                     <div class="row g-0 mb-4">
                                                         <div class="col-sm-6 text-muted">Xizmat narxi:</div>
                                                         <div class="col-sm-6 fw-semibold">
@@ -269,21 +277,22 @@ unset($__errorArgs, $__bag); ?>
                                                                 value="<?php echo e(old('turnover', $provider->turnover)); ?>">
                                                         </div>
                                                     </div>
-            
-            
+
+
                                                     <div class="row g-0 mb-4">
                                                         <div class="col-sm-6 text-muted">Jamoa hajmi:</div>
                                                         <div class="col-sm-6 fw-semibold">
                                                             <input type="number" class="form-control" id="teamSizeInput"
-                                                                name="teamSize" value="<?php echo e(old('foundedAt', $provider->teamSize)); ?>">
+                                                                name="teamSize"
+                                                                value="<?php echo e(old('foundedAt', $provider->teamSize)); ?>">
                                                         </div>
                                                     </div>
-            
+
                                                     <div class="row g-0 mb-4 providerSubmit" id="providerSubmit"
                                                         style="display: none;">
                                                         <button type="submit" class="btn btn-primary">Saqlash</button>
                                                     </div>
-            
+
                                                 </div>
                                                 <div class="alert alert-dismissible mb-4 p-4 d-flex alert-soft-warning-message profile-overview-alert"
                                                     role="alert">
@@ -291,9 +300,11 @@ unset($__errorArgs, $__bag); ?>
                                                         <i class="feather feather-alert-triangle fs-1"></i>
                                                     </div>
                                                     <div>
-                                                        <p class="fw-bold mb-1 text-truncate-1-line">Hisobingizni doimiy yurutib
+                                                        <p class="fw-bold mb-1 text-truncate-1-line">Hisobingizni doimiy
+                                                            yurutib
                                                             borishingiz kerak</p>
-                                                        <p class="fs-10 fw-medium text-uppercase text-truncate-1-line">So'ngi
+                                                        <p class="fs-10 fw-medium text-uppercase text-truncate-1-line">
+                                                            So'ngi
                                                             yangilanish: <strong>31 Avg, 2024</strong></p>
                                                         <a href="javascript:void(0);"
                                                             class="btn btn-sm bg-soft-warning text-warning d-inline-block">Batafsil
@@ -303,7 +314,7 @@ unset($__errorArgs, $__bag); ?>
                                                     </div>
                                                 </div>
                                             </div>
-            
+
                                             <div class="tab-pane fade p-4" id="portfolioTab" role="tabpanel">
                                                 <div class="col-12">
                                                     <div class="card stretch stretch-full">
@@ -314,19 +325,22 @@ unset($__errorArgs, $__bag); ?>
                                                             <div class="table-responsive">
                                                                 <table class="table">
                                                                     <tbody>
-            
+
                                                                         <tr>
                                                                             <td>
                                                                                 <div class="hstack gap-3">
-                                                                                    <div class="avatar-image avatar-lg rounded">
+                                                                                    <div
+                                                                                        class="avatar-image avatar-lg rounded">
                                                                                         <img class="img-fluid"
                                                                                             src="assets/images/gallery/1.png"
                                                                                             alt="">
                                                                                     </div>
                                                                                     <div>
                                                                                         <a href="javascript:void(0);"
-                                                                                            class="d-block">Headphones JBL</a>
-                                                                                        <span class="fs-12 text-muted">Electronics
+                                                                                            class="d-block">Headphones
+                                                                                            JBL</a>
+                                                                                        <span
+                                                                                            class="fs-12 text-muted">Electronics
                                                                                         </span>
                                                                                     </div>
                                                                                 </div>
@@ -334,7 +348,7 @@ unset($__errorArgs, $__bag); ?>
                                                                             <td>23 Avg 2024</td>
                                                                             <td class="text-end">Suhrob manager</td>
                                                                         </tr>
-            
+
                                                                     </tbody>
                                                                 </table>
                                                             </div>
@@ -346,7 +360,7 @@ unset($__errorArgs, $__bag); ?>
                                                     </div>
                                                 </div>
                                             </div>
-            
+
                                             <div class="tab-pane fade p-4" id="awardsTab" role="tabpanel">
                                                 <div class="col-12">
                                                     <div class="card stretch stretch-full">
@@ -366,23 +380,27 @@ unset($__errorArgs, $__bag); ?>
                                                                         </tr>
                                                                     </thead>
                                                                     <tbody>
-            
+
                                                                         <tr>
                                                                             <td>
-                                                                                <div class="d-flex align-items-center gap-3">
+                                                                                <div
+                                                                                    class="d-flex align-items-center gap-3">
                                                                                     <div class="avatar-image rounded">
                                                                                         <img src="assets/images/avatar/2.png"
-                                                                                            alt="" class="img-fluid">
+                                                                                            alt=""
+                                                                                            class="img-fluid">
                                                                                     </div>
                                                                                     <a href="javascript:void(0);">
-                                                                                        <span class="d-block">Archie Cantones</span>
+                                                                                        <span class="d-block">Archie
+                                                                                            Cantones</span>
                                                                                         <span
                                                                                             class="fs-12 d-block fw-normal text-muted">arcie.tones@gmail.com</span>
                                                                                     </a>
                                                                                 </div>
                                                                             </td>
                                                                             <td>
-                                                                                <span class="badge bg-gray-200 text-dark">Sent</span>
+                                                                                <span
+                                                                                    class="badge bg-gray-200 text-dark">Sent</span>
                                                                             </td>
                                                                             <td>11/06/2023 10:53</td>
                                                                             <td>
@@ -394,17 +412,18 @@ unset($__errorArgs, $__bag); ?>
                                                                                         class="feather-more-vertical"></i></a>
                                                                             </td>
                                                                         </tr>
-            
+
                                                                     </tbody>
                                                                 </table>
                                                             </div>
                                                         </div>
-            
+
                                                         <a href="javascript:void(0);"
                                                             class="card-footer fs-11 fw-bold text-uppercase text-center"
-                                                            data-bs-toggle="offcanvas" data-bs-target="#awardProviderOffcanvas">Add
+                                                            data-bs-toggle="offcanvas"
+                                                            data-bs-target="#awardProviderOffcanvas">Add
                                                             New</a>
-            
+
                                                     </div>
                                                 </div>
                                             </div>
@@ -430,10 +449,12 @@ unset($__errorArgs, $__bag); ?>
                                                                         <?php $__currentLoopData = $providers; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $provider): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                                                             <tr>
                                                                                 <td>
-                                                                                    <div class="d-flex align-items-center gap-3">
+                                                                                    <div
+                                                                                        class="d-flex align-items-center gap-3">
                                                                                         <div class="avatar-image">
                                                                                             <img src="assets/images/avatar/2.png"
-                                                                                                alt="" class="img-fluid">
+                                                                                                alt=""
+                                                                                                class="img-fluid">
                                                                                         </div>
                                                                                         <a href="javascript:void(0);">
                                                                                             <span
@@ -462,22 +483,23 @@ unset($__errorArgs, $__bag); ?>
                                                                 </table>
                                                             </div>
                                                         </div>
-            
+
                                                         <a href="javascript:void(0);"
                                                             class="card-footer fs-11 fw-bold text-uppercase text-center"
-                                                            data-bs-toggle="offcanvas" data-bs-target="#managerProviderOffcanvas">Add
+                                                            data-bs-toggle="offcanvas"
+                                                            data-bs-target="#managerProviderOffcanvas">Add
                                                             New</a>
-            
+
                                                     </div>
                                                 </div>
                                             </div>
-            
+
                                             <div class="tab-pane fade p-4" id="badgesTab" role="tabpanel">
                                                 <h4>
                                                     Badges
                                                 </h4>
                                             </div>
-            
+
                                             <div class="tab-pane fade p-4" id="reviewsTab" role="tabpanel">
                                                 <div class="col-12">
                                                     <div class="card stretch stretch-full">
@@ -497,23 +519,27 @@ unset($__errorArgs, $__bag); ?>
                                                                         </tr>
                                                                     </thead>
                                                                     <tbody>
-            
+
                                                                         <tr>
                                                                             <td>
-                                                                                <div class="d-flex align-items-center gap-3">
+                                                                                <div
+                                                                                    class="d-flex align-items-center gap-3">
                                                                                     <div class="avatar-image rounded">
                                                                                         <img src="assets/images/avatar/2.png"
-                                                                                            alt="" class="img-fluid">
+                                                                                            alt=""
+                                                                                            class="img-fluid">
                                                                                     </div>
                                                                                     <a href="javascript:void(0);">
-                                                                                        <span class="d-block">Archie Cantones</span>
+                                                                                        <span class="d-block">Archie
+                                                                                            Cantones</span>
                                                                                         <span
                                                                                             class="fs-12 d-block fw-normal text-muted">arcie.tones@gmail.com</span>
                                                                                     </a>
                                                                                 </div>
                                                                             </td>
                                                                             <td>
-                                                                                <span class="badge bg-gray-200 text-dark">Sent</span>
+                                                                                <span
+                                                                                    class="badge bg-gray-200 text-dark">Sent</span>
                                                                             </td>
                                                                             <td>11/06/2023 10:53</td>
                                                                             <td>
@@ -525,23 +551,24 @@ unset($__errorArgs, $__bag); ?>
                                                                                         class="feather-more-vertical"></i></a>
                                                                             </td>
                                                                         </tr>
-            
+
                                                                     </tbody>
                                                                 </table>
                                                             </div>
                                                         </div>
-            
+
                                                         <a href="javascript:void(0);"
                                                             class="card-footer fs-11 fw-bold text-uppercase text-center"
-                                                            data-bs-toggle="offcanvas" data-bs-target="#reviewProviderOffcanvas">Add
+                                                            data-bs-toggle="offcanvas"
+                                                            data-bs-target="#reviewProviderOffcanvas">Add
                                                             New</a>
-            
+
                                                     </div>
                                                 </div>
                                             </div>
-            
+
                                         </div>
-            
+
                                     </div>
                                 </div>
                             </div>
