@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Managers;
 use App\Http\Controllers\Controller;
 use App\Models\Manager;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class ManagerController extends Controller

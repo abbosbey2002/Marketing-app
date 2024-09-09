@@ -14,6 +14,7 @@
                 <div class="card mb-0">
                     <div class="card-body">
                         <!--! BEGIN: [Users] !-->
+                        @if ( isset($team))
                         <div class="card stretch stretch-full">
                             <div class="card-header">
                                 <h5 class="card-title">Team</h5>
@@ -62,6 +63,11 @@
                             </form>
                            
                         </div>
+                        @else
+                            <div class="card container py-3">
+                                    <h3 class="h3 text-center">Sizda hali jamoa  yo'q</h3>
+                            </div>
+                        @endif
                         <!--! END: [Users] !-->
                     </div>
                 </div>

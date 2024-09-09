@@ -63,8 +63,8 @@ Route::prefix('auth')->namespace('App\Http\Controllers\Auth')->group(function ()
  *****************************************************************************/
 Route::get('/search-companies', [ProviderSearchController::class, 'search'])->name('search.companies');
 // >namespace('App\Http\Controllers\Providers')
-Route::prefix('provider')->group(function () {
 
+Route::prefix('provider')->group(function () {
     Route::get('/register/company', [ProviderRegistrationController::class, 'showCompanyNameForm'])->name('providerRegisterStep1');
     Route::post('/register/company', [ProviderRegistrationController::class, 'handleCompanyName'])->name('providerRegisterStep1store');
     Route::get('/register/details', [ProviderRegistrationController::class, 'showCompanyDetailsForm'])->name('providerRegisterStep2');
@@ -78,17 +78,16 @@ Route::prefix('provider')->group(function () {
     Route::middleware('auth')->group(function () {
         Route::get('/dashboard', [ProviderDashboardController::class, 'index'])->name('provider.dashboard');
         Route::post('add-akills', [ProvidersController::class, 'addSkills'])->name('provider.add.skills');
-
         // service
         Route::get('services', [ProvidersController::class, 'service'])->name('providers.service');
         Route::post('add-service/', [ProvidersController::class, 'addservice'])->name('providers.add.service');
         Route::put('update-service/', [ProvidersController::class, 'updateservice'])->name('providers.service.update');
         Route::delete('/service/delete', [ProvidersController::class, 'deleteService'])->name('deleteService');
         // service
-
+        
         Route::get('profile', [ProvidersController::class, 'profile'])->name('providers.profile');
-
-        Route::resource('providers', ProvidersController::class);
+        
+        Route::resource('reviews', ReviewsController::class);
         Route::resource('providers', ProvidersController::class);
         Route::resource('categories', CategoriesController::class);
         Route::resource('contacts', ContactController::class);
@@ -96,7 +95,6 @@ Route::prefix('provider')->group(function () {
         Route::resource('partners', PartnersController::class);
         Route::resource('awards', AwardsController::class);
         Route::resource('users', UsersController::class);
-        Route::resource('reviews', ReviewsController::class);
         Route::resource('portfolios', PortfoliosController::class);
         Route::resource('teams', TeamController::class);
         Route::resource('managers', ManagerController::class);
