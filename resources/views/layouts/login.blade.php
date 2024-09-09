@@ -26,12 +26,12 @@
       <div class="container">
         <div class="main-header">
           <div class="header-left">
-            <div class="header-logo"><a class="d-flex" href="/"><img alt="Nivia" id="loginLogo" src="/assets/imgs/template/logo.svg"></a></div>
+            <div class="header-logo"><a class="d-flex" href="/"><img alt="Nivia" id="loginLogo" src="/assets/imgs/template/marketing-white.png" style="width: 150px"></a></div>
             <div class="header-nav">
-            
+
             </div>
           </div>
-        
+
         </div>
       </div>
     </header>
@@ -125,7 +125,7 @@
     @yield('content')
     <footer class="footer footer-style-3 footer-style-5">
       <div class="container" >
-       
+
         <div class="footer-bottom mt-0" style="text-align: center; display: flex; align-items: center; justify-content: center;">
                 <div class="col-md-6">
                   <p class="text-sm neutral-600">Copyright &copy; 2024 DORA System. All rights reserved.</p>

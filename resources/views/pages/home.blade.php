@@ -20,28 +20,29 @@
                   </svg></a>
                 <h1 class="display-2 mb-30 mt-25 neutral-0">Find the perfect service provider</h1>
                 <p class="text-lg neutral-500 mb-55">
-                  Markaziy Osiyodagi eng yirik biznes-hamjamiyatga xush kelibsiz! 
-                  Biz O‘zbekistonda marketing yordamida biznesni rivojlantirayotganlarni birlashtiramiz.
+                    Welcome to the largest business community in Central Asia! We unite those who are developing business in Uzbekistan with the help of marketing.
                 </p>
               </div>
             </div>
           </div>
-          <div class="banner-inner-bottom">
-            <div class="container">
-              <div class="box-joined">
-                <div class="box-authors"><span class="item-author"><img src="assets/imgs/page/homepage1/author.png" alt="Nivia"></span><span class="item-author"><img src="assets/imgs/page/homepage1/author2.png" alt="Nivia"></span><span class="item-author"><img src="assets/imgs/page/homepage1/author3.png" alt="Nivia"></span><span class="item-author"><span class="text-num-author text-md-bold color-brand-2">+2k</span></span></div><span class="text-lg d-inline-block">Join thousands of users in using<br class="d-none d-md-block">the Marketing platform!</span>
-              </div>
-            </div>
-          </div>
+{{--          <div class="banner-inner-bottom">--}}
+{{--            <div class="container">--}}
+{{--              <div class="box-joined">--}}
+{{--                <div class="box-authors"><span class="item-author"><img src="assets/imgs/page/homepage1/author.png" alt="Nivia"></span><span class="item-author"><img src="assets/imgs/page/homepage1/author2.png" alt="Nivia"></span><span class="item-author"><img src="assets/imgs/page/homepage1/author3.png" alt="Nivia"></span><span class="item-author"><span class="text-num-author text-md-bold color-brand-2">+2k</span></span></div><span class="text-lg d-inline-block">Join thousands of users in using<br class="d-none d-md-block">the Marketing platform!</span>--}}
+{{--              </div>--}}
+{{--            </div>--}}
+{{--          </div>--}}
         </div>
       </section>
       <section class="section-box wow animate__animated animate__fadeIn box-logos-2">
         <div class="container">
           <div class="carouselTickerLogos2 carouselTicker_vertical" id="slide-logos">
             <ul class="carouselTicker__list list-logos">
-              <li class="carouselTicker__item">
-                <div class="item-logo"><img src="assets/imgs/Chinor Print.png" alt="Nivia"></div>
-              </li>
+                @foreach($partners as $partner)
+                    <li class="carouselTicker__item">
+                        <div class="item-logo"><img src="/storage/{{ $partner->logo }}" alt="{{ $partner->title }}"></div>
+                    </li>
+                @endforeach
               <li class="carouselTicker__item">
                 <div class="item-logo"><img src="assets/imgs/Dora Academy.png" alt="Nivia"></div>
               </li>
@@ -74,205 +75,154 @@
         </div>
       </section>
         <section class="section-box wow animate__animated animate__fadeIn box-how-it-work">
-        <div class="container"><a class="btn btn-brand-4-sm" href="#">How It Works</a>
-          <h2 class="mt-15 mb-20">Just 3 simple and quick steps to have a<br class="d-none d-lg-block">perfect automatic money making system</h2>
-          <p class="text-lg neutral-500 mb-55">Bole nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo conididunt ut labore et dolore<br class="d-none d-lg-block">magna aliqua ut enim ad minim veniam</p>
-            <div class="row">
-            <div class="col-lg-4">
-              <div class="box-border-rounded">
-                <div class="card-casestudy">
-                  <div class="card-title mb-30">
-                    <h6 style="font-size: 22px !important;"><span class="number">1</span>Advertising</h6>
+            <div class="container">
+{{--                <a class="btn btn-brand-4-sm" href="#">How It Works</a>--}}
+{{--              <h2 class="mt-15 mb-20">Just 3 simple and quick steps to have a<br class="d-none d-lg-block">perfect automatic money making system</h2>--}}
+{{--              <p class="text-lg neutral-500 mb-55">Bole nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo conididunt ut labore et dolore<br class="d-none d-lg-block">magna aliqua ut enim ad minim veniam</p>--}}
+                <div class="row">
+                    <div class="col-lg-4">
+                      <div class="box-border-rounded">
+                        <div class="card-casestudy">
+                          <div class="card-title mb-30">
+                            <h6 style="font-size: 22px !important;"><span class="number">1</span>Advertising</h6>
+                          </div>
+                          <div class="card-desc">
+                           <a href="#"> <span>Advertising </span><i class="fa-solid fa-arrow-right"></i></a>
+                            <a href="#"><span>Advertising Campaign </span><i class="fa-solid fa-arrow-right"></i></a>
+                            <a href="#"><span>Advertising Production </span><i class="fa-solid fa-arrow-right"></i></a>
+                            <a href="#"><span>Creative </span><i class="fa-solid fa-arrow-right"></i></a>
+                            <a href="#"><span>Full-Service </span><i class="fa-solid fa-arrow-right"></i></a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-4">
+                      <div class="box-border-rounded">
+                        <div class="card-casestudy">
+                          <div class="card-title mb-30">
+                            <h6 style="font-size: 22px !important;"><span class="number">2</span>Creative & Visual</h6>
+                          </div>
+                          <div class="card-desc">
+                            <a href="#"> <span>Advertising </span><i class="fa-solid fa-arrow-right"></i></a>
+                             <a href="#"><span>Advertising Campaign </span><i class="fa-solid fa-arrow-right"></i></a>
+                             <a href="#"><span>Advertising Production </span><i class="fa-solid fa-arrow-right"></i></a>
+                             <a href="#"><span>Creative </span><i class="fa-solid fa-arrow-right"></i></a>
+                             <a href="#"><span>Full-Service </span><i class="fa-solid fa-arrow-right"></i></a>
+                           </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-4">
+                      <div class="box-border-rounded">
+                        <div class="card-casestudy">
+                          <div class="card-title mb-30">
+                            <h6 style="font-size: 22px !important;"><span class="number">3</span>Development & Product</h6>
+                          </div>
+                          <div class="card-desc">
+                            <a href="#"> <span>Advertising </span><i class="fa-solid fa-arrow-right"></i></a>
+                             <a href="#"><span>Advertising Campaign </span><i class="fa-solid fa-arrow-right"></i></a>
+                             <a href="#"><span>Advertising Production </span><i class="fa-solid fa-arrow-right"></i></a>
+                             <a href="#"><span>Creative </span><i class="fa-solid fa-arrow-right"></i></a>
+                             <a href="#"><span>Full-Service </span><i class="fa-solid fa-arrow-right"></i></a>
+                           </div>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+              <div class="row">
+                <div class="col-lg-4">
+                  <div class="box-border-rounded">
+                    <div class="card-casestudy">
+                      <div class="card-title mb-30">
+                        <h6 style="font-size: 22px !important;"><span class="number">4</span>Digital Marketing</h6>
+                      </div>
+                      <div class="card-desc">
+                        <a href="#"> <span>Advertising </span><i class="fa-solid fa-arrow-right"></i></a>
+                         <a href="#"><span>Advertising Campaign </span><i class="fa-solid fa-arrow-right"></i></a>
+                         <a href="#"><span>Advertising Production </span><i class="fa-solid fa-arrow-right"></i></a>
+                         <a href="#"><span>Creative </span><i class="fa-solid fa-arrow-right"></i></a>
+                         <a href="#"><span>Full-Service </span><i class="fa-solid fa-arrow-right"></i></a>
+                       </div>
+                    </div>
                   </div>
-                  <div class="card-desc">
-                   <a href="#"> <span>Advertising </span><i class="fa-solid fa-arrow-right"></i></a>
-                    <a href="#"><span>Advertising Campaign </span><i class="fa-solid fa-arrow-right"></i></a>
-                    <a href="#"><span>Advertising Production </span><i class="fa-solid fa-arrow-right"></i></a>
-                    <a href="#"><span>Creative </span><i class="fa-solid fa-arrow-right"></i></a>
-                    <a href="#"><span>Full-Service </span><i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+                <div class="col-lg-4">
+                  <div class="box-border-rounded">
+                    <div class="card-casestudy">
+                      <div class="card-title mb-30">
+                        <h6 style="font-size: 22px !important;"><span class="number">5</span>IT Services</h6>
+                      </div>
+                      <div class="card-desc">
+                        <a href="#"> <span>Advertising </span><i class="fa-solid fa-arrow-right"></i></a>
+                         <a href="#"><span>Advertising Campaign </span><i class="fa-solid fa-arrow-right"></i></a>
+                         <a href="#"><span>Advertising Production </span><i class="fa-solid fa-arrow-right"></i></a>
+                         <a href="#"><span>Creative </span><i class="fa-solid fa-arrow-right"></i></a>
+                         <a href="#"><span>Full-Service </span><i class="fa-solid fa-arrow-right"></i></a>
+                       </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-4">
+                  <div class="box-border-rounded">
+                    <div class="card-casestudy">
+                      <div class="card-title mb-30">
+                        <h6 style="font-size: 22px !important;"><span class="number">6</span>Marketing</h6>
+                      </div>
+                      <div class="card-desc">
+                        <a href="#"> <span>Advertising </span><i class="fa-solid fa-arrow-right"></i></a>
+                         <a href="#"><span>Advertising Campaign </span><i class="fa-solid fa-arrow-right"></i></a>
+                         <a href="#"><span>Advertising Production </span><i class="fa-solid fa-arrow-right"></i></a>
+                         <a href="#"><span>Creative </span><i class="fa-solid fa-arrow-right"></i></a>
+                         <a href="#"><span>Full-Service </span><i class="fa-solid fa-arrow-right"></i></a>
+                       </div>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="col-lg-4">
-              <div class="box-border-rounded">
-                <div class="card-casestudy">
-                  <div class="card-title mb-30">
-                    <h6 style="font-size: 22px !important;"><span class="number">2</span>Creative & Visual</h6>
-                  </div>
-                  <div class="card-desc">
-                    <a href="#"> <span>Advertising </span><i class="fa-solid fa-arrow-right"></i></a>
-                     <a href="#"><span>Advertising Campaign </span><i class="fa-solid fa-arrow-right"></i></a>
-                     <a href="#"><span>Advertising Production </span><i class="fa-solid fa-arrow-right"></i></a>
-                     <a href="#"><span>Creative </span><i class="fa-solid fa-arrow-right"></i></a>
-                     <a href="#"><span>Full-Service </span><i class="fa-solid fa-arrow-right"></i></a>
-                   </div>
-                </div>
+            <div class="container mt-25">
+              <div class="box-newsletter mb-0"
+                    style="background-image: url(https://marketing.uz/uploads/sections/846/original.jpg); background-size: cover; height: 347px;">
               </div>
             </div>
-            <div class="col-lg-4">
-              <div class="box-border-rounded">
-                <div class="card-casestudy">
-                  <div class="card-title mb-30">
-                    <h6 style="font-size: 22px !important;"><span class="number">3</span>Development & Product</h6>
-                  </div>
-                  <div class="card-desc">
-                    <a href="#"> <span>Advertising </span><i class="fa-solid fa-arrow-right"></i></a>
-                     <a href="#"><span>Advertising Campaign </span><i class="fa-solid fa-arrow-right"></i></a>
-                     <a href="#"><span>Advertising Production </span><i class="fa-solid fa-arrow-right"></i></a>
-                     <a href="#"><span>Creative </span><i class="fa-solid fa-arrow-right"></i></a>
-                     <a href="#"><span>Full-Service </span><i class="fa-solid fa-arrow-right"></i></a>
-                   </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-lg-4">
-              <div class="box-border-rounded">
-                <div class="card-casestudy">
-                  <div class="card-title mb-30">
-                    <h6 style="font-size: 22px !important;"><span class="number">4</span>Digital Marketing</h6>
-                  </div>
-                  <div class="card-desc">
-                    <a href="#"> <span>Advertising </span><i class="fa-solid fa-arrow-right"></i></a>
-                     <a href="#"><span>Advertising Campaign </span><i class="fa-solid fa-arrow-right"></i></a>
-                     <a href="#"><span>Advertising Production </span><i class="fa-solid fa-arrow-right"></i></a>
-                     <a href="#"><span>Creative </span><i class="fa-solid fa-arrow-right"></i></a>
-                     <a href="#"><span>Full-Service </span><i class="fa-solid fa-arrow-right"></i></a>
-                   </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4">
-              <div class="box-border-rounded">
-                <div class="card-casestudy">
-                  <div class="card-title mb-30">
-                    <h6 style="font-size: 22px !important;"><span class="number">5</span>IT Services</h6>
-                  </div>
-                  <div class="card-desc">
-                    <a href="#"> <span>Advertising </span><i class="fa-solid fa-arrow-right"></i></a>
-                     <a href="#"><span>Advertising Campaign </span><i class="fa-solid fa-arrow-right"></i></a>
-                     <a href="#"><span>Advertising Production </span><i class="fa-solid fa-arrow-right"></i></a>
-                     <a href="#"><span>Creative </span><i class="fa-solid fa-arrow-right"></i></a>
-                     <a href="#"><span>Full-Service </span><i class="fa-solid fa-arrow-right"></i></a>
-                   </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4">
-              <div class="box-border-rounded">
-                <div class="card-casestudy">
-                  <div class="card-title mb-30">
-                    <h6 style="font-size: 22px !important;"><span class="number">6</span>Marketing</h6>
-                  </div>
-                  <div class="card-desc">
-                    <a href="#"> <span>Advertising </span><i class="fa-solid fa-arrow-right"></i></a>
-                     <a href="#"><span>Advertising Campaign </span><i class="fa-solid fa-arrow-right"></i></a>
-                     <a href="#"><span>Advertising Production </span><i class="fa-solid fa-arrow-right"></i></a>
-                     <a href="#"><span>Creative </span><i class="fa-solid fa-arrow-right"></i></a>
-                     <a href="#"><span>Full-Service </span><i class="fa-solid fa-arrow-right"></i></a>
-                   </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="container mt-25">
-          <div class="box-newsletter mb-0" 
-                style="background-image: url(https://marketing.uz/uploads/sections/846/original.jpg); background-size: cover; height: 347px;">
-          </div>
-        </div>
       </section>
-      <section class="section-box wow animate__animated animate__fadeIn box-our-track">
-        <div class="container">
-          <div class="row align-items-center">
-            <div class="col-lg-6 text-center mb-40"><img src="assets/imgs/page/homepage1/img-track.png" alt="Nivia"></div>
-            <div class="col-lg-6 mb-40">
-              <div class="box-padding-left-50">
-                <div class="strate-icon"><span></span> Strategies that work</div>
-                <h2 class="heading-2 mb-20">Track the progress towards objectives with key results</h2>
-                <p class="text-lg neutral-700">Nivia is an independent web design studio with a rich history. Founded in 1999, it gathered the best web designers &amp; developers.</p>
-                <div class="row mt-50">
-                  <div class="col-lg-6 col-sm-6">
-                    <div class="card-feature-2">
-                      <div class="card-image"><img src="assets/imgs/page/homepage3/marketing.svg"></div>
-                      <div class="card-info"><a href="#">
-                          <h3 class="text-22-bold">Intuitive Dashboard</h3></a>
-                        <p class="text-md neutral-700">Unlocking Audience Insights: A Deep Dive into Engagement Analysis</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-lg-6 col-sm-6">
-                    <div class="card-feature-2">
-                      <div class="card-image"><img src="assets/imgs/page/homepage3/digital.svg"></div>
-                      <div class="card-info"><a href="#">
-                          <h3 class="text-22-bold">Engagement Analysis</h3></a>
-                        <p class="text-md neutral-700">Measuring Digital Success: The Power of Engagement Analysis</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-lg-6 col-sm-6">
-                    <div class="card-feature-2">
-                      <div class="card-image"><img src="assets/imgs/page/homepage3/product.svg"></div>
-                      <div class="card-info"><a href="#">
-                          <h3 class="text-22-bold">Advanced Security</h3></a>
-                        <p class="text-md neutral-700">Boosting Conversions: Strategies Informed by Engagement Analysis</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-lg-6 col-sm-6">
-                    <div class="card-feature-2">
-                      <div class="card-image"><img src="assets/imgs/page/homepage3/social.svg"></div>
-                      <div class="card-info"><a href="#">
-                          <h3 class="text-22-bold">Weekly Email Reports</h3></a>
-                        <p class="text-md neutral-700">Data-Driven Decisions: Leveraging Engagement Analysis for Growth</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <section class="section-box wow animate__animated animate__fadeIn box-preparing-2">
-        <div class="container">
-          <div class="text-center">
-            <h2 class="mb-15">Preparing For Your Success,<br class="d-none d-lg-block">We Provide Truly Prominent IT Solutions</h2>
-            <p class="text-lg neutral-700">Nivia is an independent web design studio with a rich history.<br>Founded in 1999, it gathered the best web designers & developers.</p>
-          </div>
-          <div class="row mt-90">
-            <div class="col-lg-4 col-md-6">
-              <div class="card-preparing">
-                <div class="card-image"><img class="wow fadeInUp" src="assets/imgs/page/homepage1/img-prepare.png" alt="Nivia"></div>
-                <div class="card-info">
-                  <h5>Easy Control Panel</h5>
-                  <p class="text-lg neutral-700 w-85 mx-auto">Mastering Your Domain with Effortless Control: Elevate Your Management Experience to New Heights of Ease and Efficiency.</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-              <div class="card-preparing">
-                <div class="card-image"><img class="wow fadeInUp" src="assets/imgs/page/homepage1/img-prepare2.png" alt="Nivia"></div>
-                <div class="card-info">
-                  <h5>Details Reporting</h5>
-                  <p class="text-lg neutral-700 w-85 mx-auto">Achieve Business Excellence with Comprehensive Details Reporting: The Key to Informed Decision-Making and Strategic Growth</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-              <div class="card-preparing">
-                <div class="card-image"><img class="wow fadeInUp" src="assets/imgs/page/homepage1/img-prepare3.png" alt="Nivia"></div>
-                <div class="card-info">
-                  <h5>Sales Comparison</h5>
-                  <p class="text-lg neutral-700 w-85 mx-auto">Maximizing Your Data Potential: A Deep Dive into the World of Detailed Reporting for Informed, Strategic Decision-Making</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+{{--      <section class="section-box wow animate__animated animate__fadeIn box-preparing-2">--}}
+{{--        <div class="container">--}}
+{{--          <div class="text-center">--}}
+{{--            <h2 class="mb-15">Preparing For Your Success,<br class="d-none d-lg-block">We Provide Truly Prominent IT Solutions</h2>--}}
+{{--            <p class="text-lg neutral-700">Nivia is an independent web design studio with a rich history.<br>Founded in 1999, it gathered the best web designers & developers.</p>--}}
+{{--          </div>--}}
+{{--          <div class="row mt-90">--}}
+{{--            <div class="col-lg-4 col-md-6">--}}
+{{--              <div class="card-preparing">--}}
+{{--                <div class="card-image"><img class="wow fadeInUp" src="assets/imgs/page/homepage1/img-prepare.png" alt="Nivia"></div>--}}
+{{--                <div class="card-info">--}}
+{{--                  <h5>Easy Control Panel</h5>--}}
+{{--                  <p class="text-lg neutral-700 w-85 mx-auto">Mastering Your Domain with Effortless Control: Elevate Your Management Experience to New Heights of Ease and Efficiency.</p>--}}
+{{--                </div>--}}
+{{--              </div>--}}
+{{--            </div>--}}
+{{--            <div class="col-lg-4 col-md-6">--}}
+{{--              <div class="card-preparing">--}}
+{{--                <div class="card-image"><img class="wow fadeInUp" src="assets/imgs/page/homepage1/img-prepare2.png" alt="Nivia"></div>--}}
+{{--                <div class="card-info">--}}
+{{--                  <h5>Details Reporting</h5>--}}
+{{--                  <p class="text-lg neutral-700 w-85 mx-auto">Achieve Business Excellence with Comprehensive Details Reporting: The Key to Informed Decision-Making and Strategic Growth</p>--}}
+{{--                </div>--}}
+{{--              </div>--}}
+{{--            </div>--}}
+{{--            <div class="col-lg-4 col-md-6">--}}
+{{--              <div class="card-preparing">--}}
+{{--                <div class="card-image"><img class="wow fadeInUp" src="assets/imgs/page/homepage1/img-prepare3.png" alt="Nivia"></div>--}}
+{{--                <div class="card-info">--}}
+{{--                  <h5>Sales Comparison</h5>--}}
+{{--                  <p class="text-lg neutral-700 w-85 mx-auto">Maximizing Your Data Potential: A Deep Dive into the World of Detailed Reporting for Informed, Strategic Decision-Making</p>--}}
+{{--                </div>--}}
+{{--              </div>--}}
+{{--            </div>--}}
+{{--          </div>--}}
+{{--        </div>--}}
+{{--      </section>--}}
       <section class="section-box wow animate__animated animate__fadeIn box-our-track-2">
         <div class="container">
           <div class="row align-items-center">
@@ -526,293 +476,6 @@
           </div>
         </div>
       </section>
-      <section class="section-box box-pricing-2 box-pricing-3">
-        <div class="container">
-          <div class="text-center"> <a class="btn btn-brand-4-sm" href="#">Pricing Plan</a>
-            <h2 class="mb-20 mt-15">Ready to Get Started? Don't Worry,<br class="d-none d-lg-block"> We'll Keep You Under Budget</h2>
-            <p class="text-lg neutral-500 mb-65">Get started with a 5-day trial, 25% off for Yearly Plan, Cancel anytime.</p>
-          </div>
-          <div class="block-pricing">
-            <div class="row">
-              <div class="col-lg-4 col-md-6">
-                <div class="card-pricing card-pricing-style-2 card-pricing-style-3">
-                  <div class="card-title">
-                    <h6>Basic</h6>
-                  </div>
-                  <div class="card-price">
-                    <div class="for-month">
-                      <h1 class="heading-1">$99</h1><span class="text-20-medium color-grey">per monthly</span>
-                    </div>
-                    <div class="for-year">
-                      <h1 class="heading-1">$1,188</h1><span class="text-20-medium color-grey">yearly</span>
-                    </div>
-                  </div>
-                  <div class="card-button"><a class="btn btn-get-started" href="#">Get started
-                      <svg width="23" height="8" viewbox="0 0 23 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M22.5 3.99934L18.9791 0.478516V3.30642H0.5V4.69236H18.9791V7.52031L22.5 3.99934Z" fill=""></path>
-                      </svg></a></div>
-                  <div class="card-lists"><strong class="text-18-bold">What&rsquo;s included</strong>
-                    <ul class="list-feature">
-                      <li>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewbox="0 0 26 26" fill="none">
-                          <g clip-path="url(#clip0_51_57)">
-                            <path d="M13 26C20.1799 26 26 20.1799 26 13C26 5.8201 20.1799 0 13 0C5.8201 0 0 5.8201 0 13C0 20.1799 5.8201 26 13 26Z" fill="#C5FF55"></path>
-                            <path d="M7.11719 13.8396L10.479 17.2014L18.8835 8.79688" stroke="#191919" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                          </g>
-                          <defs>
-                            <clippath id="clip0_51_57">
-                              <rect width="26" height="26" fill="white"></rect>
-                            </clippath>
-                          </defs>
-                        </svg>                                            5,000 Monthly Word Limit
-                      </li>
-                      <li>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewbox="0 0 26 26" fill="none">
-                          <g clip-path="url(#clip0_51_57)">
-                            <path d="M13 26C20.1799 26 26 20.1799 26 13C26 5.8201 20.1799 0 13 0C5.8201 0 0 5.8201 0 13C0 20.1799 5.8201 26 13 26Z" fill="#C5FF55"></path>
-                            <path d="M7.11719 13.8396L10.479 17.2014L18.8835 8.79688" stroke="#191919" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                          </g>
-                          <defs>
-                            <clippath id="clip0_51_57">
-                              <rect width="26" height="26" fill="white"></rect>
-                            </clippath>
-                          </defs>
-                        </svg>                                            50+ Languages
-                      </li>
-                      <li>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewbox="0 0 26 26" fill="none">
-                          <g clip-path="url(#clip0_51_57)">
-                            <path d="M13 26C20.1799 26 26 20.1799 26 13C26 5.8201 20.1799 0 13 0C5.8201 0 0 5.8201 0 13C0 20.1799 5.8201 26 13 26Z" fill="#C5FF55"></path>
-                            <path d="M7.11719 13.8396L10.479 17.2014L18.8835 8.79688" stroke="#191919" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                          </g>
-                          <defs>
-                            <clippath id="clip0_51_57">
-                              <rect width="26" height="26" fill="white"></rect>
-                            </clippath>
-                          </defs>
-                        </svg>                                            Advance Editor Tool
-                      </li>
-                      <li>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewbox="0 0 26 26" fill="none">
-                          <g clip-path="url(#clip0_51_57)">
-                            <path d="M13 26C20.1799 26 26 20.1799 26 13C26 5.8201 20.1799 0 13 0C5.8201 0 0 5.8201 0 13C0 20.1799 5.8201 26 13 26Z" fill="#C5FF55"></path>
-                            <path d="M7.11719 13.8396L10.479 17.2014L18.8835 8.79688" stroke="#191919" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                          </g>
-                          <defs>
-                            <clippath id="clip0_51_57">
-                              <rect width="26" height="26" fill="white"></rect>
-                            </clippath>
-                          </defs>
-                        </svg>                                            50 Accounts
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-4 col-md-6">
-                <div class="card-pricing card-pricing-style-2 card-pricing-style-3 card-pricing-popular"><a class="btn btn-popular" href="#">Popular</a>
-                  <div class="card-title">
-                    <h6>Professional</h6>
-                  </div>
-                  <div class="card-price">
-                    <div class="for-month">
-                      <h1 class="heading-1">$199</h1><span class="text-20-medium color-grey">per monthly</span>
-                    </div>
-                    <div class="for-year">
-                      <h1 class="heading-1">$2,388</h1><span class="text-20-medium color-grey">yearly</span>
-                    </div>
-                  </div>
-                  <div class="card-button"><a class="btn btn-get-started" href="#">Get started
-                      <svg width="23" height="8" viewbox="0 0 23 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M22.5 3.99934L18.9791 0.478516V3.30642H0.5V4.69236H18.9791V7.52031L22.5 3.99934Z" fill=""></path>
-                      </svg></a></div>
-                  <div class="card-lists"><strong class="text-18-bold">What&rsquo;s included</strong>
-                    <ul class="list-feature">
-                      <li>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewbox="0 0 26 26" fill="none">
-                          <g clip-path="url(#clip0_51_57)">
-                            <path d="M13 26C20.1799 26 26 20.1799 26 13C26 5.8201 20.1799 0 13 0C5.8201 0 0 5.8201 0 13C0 20.1799 5.8201 26 13 26Z" fill="#C5FF55"></path>
-                            <path d="M7.11719 13.8396L10.479 17.2014L18.8835 8.79688" stroke="#191919" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                          </g>
-                          <defs>
-                            <clippath id="clip0_51_57">
-                              <rect width="26" height="26" fill="white"></rect>
-                            </clippath>
-                          </defs>
-                        </svg>                                            5,000 Monthly Word Limit
-                      </li>
-                      <li>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewbox="0 0 26 26" fill="none">
-                          <g clip-path="url(#clip0_51_57)">
-                            <path d="M13 26C20.1799 26 26 20.1799 26 13C26 5.8201 20.1799 0 13 0C5.8201 0 0 5.8201 0 13C0 20.1799 5.8201 26 13 26Z" fill="#C5FF55"></path>
-                            <path d="M7.11719 13.8396L10.479 17.2014L18.8835 8.79688" stroke="#191919" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                          </g>
-                          <defs>
-                            <clippath id="clip0_51_57">
-                              <rect width="26" height="26" fill="white"></rect>
-                            </clippath>
-                          </defs>
-                        </svg>                                            50+ Languages
-                      </li>
-                      <li>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewbox="0 0 26 26" fill="none">
-                          <g clip-path="url(#clip0_51_57)">
-                            <path d="M13 26C20.1799 26 26 20.1799 26 13C26 5.8201 20.1799 0 13 0C5.8201 0 0 5.8201 0 13C0 20.1799 5.8201 26 13 26Z" fill="#C5FF55"></path>
-                            <path d="M7.11719 13.8396L10.479 17.2014L18.8835 8.79688" stroke="#191919" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                          </g>
-                          <defs>
-                            <clippath id="clip0_51_57">
-                              <rect width="26" height="26" fill="white"></rect>
-                            </clippath>
-                          </defs>
-                        </svg>                                            Advance Editor Tool
-                      </li>
-                      <li>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewbox="0 0 26 26" fill="none">
-                          <g clip-path="url(#clip0_51_57)">
-                            <path d="M13 26C20.1799 26 26 20.1799 26 13C26 5.8201 20.1799 0 13 0C5.8201 0 0 5.8201 0 13C0 20.1799 5.8201 26 13 26Z" fill="#C5FF55"></path>
-                            <path d="M7.11719 13.8396L10.479 17.2014L18.8835 8.79688" stroke="#191919" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                          </g>
-                          <defs>
-                            <clippath id="clip0_51_57">
-                              <rect width="26" height="26" fill="white"></rect>
-                            </clippath>
-                          </defs>
-                        </svg>                                            50 Accounts
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-4 col-md-6">
-                <div class="card-pricing card-pricing-style-2 card-pricing-style-3">
-                  <div class="card-title">
-                    <h6>Enterprise</h6>
-                  </div>
-                  <div class="card-price">
-                    <div class="for-month">
-                      <h1 class="heading-1">$399</h1><span class="text-20-medium color-grey">per monthly</span>
-                    </div>
-                    <div class="for-year">
-                      <h1 class="heading-1">$4,788</h1><span class="text-20-medium color-grey">per yearly</span>
-                    </div>
-                  </div>
-                  <div class="card-button"><a class="btn btn-get-started" href="#">Get started
-                      <svg width="23" height="8" viewbox="0 0 23 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M22.5 3.99934L18.9791 0.478516V3.30642H0.5V4.69236H18.9791V7.52031L22.5 3.99934Z" fill=""></path>
-                      </svg></a></div>
-                  <div class="card-lists"><strong class="text-18-bold">What&rsquo;s included</strong>
-                    <ul class="list-feature">
-                      <li>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewbox="0 0 26 26" fill="none">
-                          <g clip-path="url(#clip0_51_57)">
-                            <path d="M13 26C20.1799 26 26 20.1799 26 13C26 5.8201 20.1799 0 13 0C5.8201 0 0 5.8201 0 13C0 20.1799 5.8201 26 13 26Z" fill="#C5FF55"></path>
-                            <path d="M7.11719 13.8396L10.479 17.2014L18.8835 8.79688" stroke="#191919" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                          </g>
-                          <defs>
-                            <clippath id="clip0_51_57">
-                              <rect width="26" height="26" fill="white"></rect>
-                            </clippath>
-                          </defs>
-                        </svg>                                            5,000 Monthly Word Limit
-                      </li>
-                      <li>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewbox="0 0 26 26" fill="none">
-                          <g clip-path="url(#clip0_51_57)">
-                            <path d="M13 26C20.1799 26 26 20.1799 26 13C26 5.8201 20.1799 0 13 0C5.8201 0 0 5.8201 0 13C0 20.1799 5.8201 26 13 26Z" fill="#C5FF55"></path>
-                            <path d="M7.11719 13.8396L10.479 17.2014L18.8835 8.79688" stroke="#191919" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                          </g>
-                          <defs>
-                            <clippath id="clip0_51_57">
-                              <rect width="26" height="26" fill="white"></rect>
-                            </clippath>
-                          </defs>
-                        </svg>                                            50+ Languages
-                      </li>
-                      <li>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewbox="0 0 26 26" fill="none">
-                          <g clip-path="url(#clip0_51_57)">
-                            <path d="M13 26C20.1799 26 26 20.1799 26 13C26 5.8201 20.1799 0 13 0C5.8201 0 0 5.8201 0 13C0 20.1799 5.8201 26 13 26Z" fill="#C5FF55"></path>
-                            <path d="M7.11719 13.8396L10.479 17.2014L18.8835 8.79688" stroke="#191919" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                          </g>
-                          <defs>
-                            <clippath id="clip0_51_57">
-                              <rect width="26" height="26" fill="white"></rect>
-                            </clippath>
-                          </defs>
-                        </svg>                                            Advance Editor Tool
-                      </li>
-                      <li>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewbox="0 0 26 26" fill="none">
-                          <g clip-path="url(#clip0_51_57)">
-                            <path d="M13 26C20.1799 26 26 20.1799 26 13C26 5.8201 20.1799 0 13 0C5.8201 0 0 5.8201 0 13C0 20.1799 5.8201 26 13 26Z" fill="#C5FF55"></path>
-                            <path d="M7.11719 13.8396L10.479 17.2014L18.8835 8.79688" stroke="#191919" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                          </g>
-                          <defs>
-                            <clippath id="clip0_51_57">
-                              <rect width="26" height="26" fill="white"></rect>
-                            </clippath>
-                          </defs>
-                        </svg>                                            50 Accounts
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <section class="section-box box-faqs-3">
-        <div class="container">
-          <div class="row"> 
-            <div class="col-lg-5">
-              <div class="box-faq-left"><a class="btn btn-brand-4-sm" href="#">Frequently Asked Questions</a>
-                <h2 class="heading-2 mb-20 mt-20">Do you have any questions?</h2>
-                <p class="text-lg neutral-700">Below you’ll find answers to the most common questions you may have on Nivia Platform & Online Advertising. Also, please feel free to check out our Facebook & Google Advertising Guides & Academy. If you still can’t find the answer you’re looking for, just <a class="text-18-bold brand-1-1" href="#">Contact us</a></p>
-              </div>
-            </div>
-            <div class="col-lg-7">
-              <div class="accordion accordion-flush accordion-style-2" id="accordionFAQS">
-                <div class="accordion-item">
-                  <h2 class="accordion-header" id="flush-headingOne">
-                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">What audiences can I target when creating my Facebook campaigns?</button>
-                  </h2>
-                  <div class="accordion-collapse collapse show" id="flush-collapseOne" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFAQS">
-                    <div class="accordion-body">
-                      <p>Discover what sets this apart as the market's easiest and most powerful video interviewing platform, and why hiring managers consistently choose us over the competition. Discover what sets this apart as the market's easiest and most powerful video interviewing platform, and why hiring managers consistently choose us over the competition</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="accordion-item">
-                  <h2 class="accordion-header" id="flush-headingTwo">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">Can you provide benchmarks for Facebook advertising costs?</button>
-                  </h2>
-                  <div class="accordion-collapse collapse" id="flush-collapseTwo" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFAQS">
-                    <div class="accordion-body">Discover what sets this apart as the market's easiest and most powerful video interviewing platform, and why hiring managers consistently choose us over the competition. Discover what sets this apart as the market's easiest and most powerful video interviewing platform, and why hiring managers consistently choose us over the competition</div>
-                  </div>
-                </div>
-                <div class="accordion-item">
-                  <h2 class="accordion-header" id="flush-headingThree">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">Where will my Google Ads be shown?</button>
-                  </h2>
-                  <div class="accordion-collapse collapse" id="flush-collapseThree" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFAQS">
-                    <div class="accordion-body">Discover what sets this apart as the market's easiest and most powerful video interviewing platform, and why hiring managers consistently choose us over the competition. Discover what sets this apart as the market's easiest and most powerful video interviewing platform, and why hiring managers consistently choose us over the competition</div>
-                  </div>
-                </div>
-                <div class="accordion-item">
-                  <h2 class="accordion-header" id="flush-headingFour">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">Which keywords should I use for my Google Ads campaigns?</button>
-                  </h2>
-                  <div class="accordion-collapse collapse" id="flush-collapseFour" aria-labelledby="flush-headingFour" data-bs-parent="#accordionFAQS">
-                    <div class="accordion-body">Discover what sets this apart as the market's easiest and most powerful video interviewing platform, and why hiring managers consistently choose us over the competition. Discover what sets this apart as the market's easiest and most powerful video interviewing platform, and why hiring managers consistently choose us over the competition</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
       <section class="section-box wow animate__animated animate__fadeIn box-testimonials-3">
         <div class="container">
           <div class="row">
@@ -955,5 +618,5 @@
           </div>
         </div>
       </section>
-    </main>        
+    </main>
 @endsection

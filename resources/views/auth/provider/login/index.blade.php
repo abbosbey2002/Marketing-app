@@ -6,7 +6,7 @@
 
 <script>
     window.addEventListener("load", function (event) {
-        document.getElementById('loginLogo').src = '/assets/imgs/template/logo-black.svg';
+        document.getElementById('loginLogo').src = '/assets/imgs/template/marketing-black.png';
     });
 </script>
 <main class="main">
@@ -79,7 +79,7 @@
           height: 93vh;
         }
         .gap-sb-3{
-            gap: 3rem; 
+            gap: 3rem;
         }
     }
 

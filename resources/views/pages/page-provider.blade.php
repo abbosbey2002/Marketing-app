@@ -6,19 +6,19 @@
 
 @section('content')
 <main class="main">
-  <section class="section-box box-connecting">
-    <div class="box-connecting-inner"><span class="planet shape-1"></span><span class="arrow-left shape-2"></span>
-      <div class="container">
-        <div class="text-center"><a class="btn btn-brand-4-sm" href="#">Connecting platforms</a>
-          <h2 class="heading-2 mb-15 mt-15">Integrated with tools you <br class="d-none d-lg-block">already know & love</h2>
-          <p class="text-lg neutral-500 mb-15">Easily connect the tools you use every day</p>
-        </div>
-        <div class="mt-55 text-center"> 
-          <div class="box-logo-integration"><img src="/assets/imgs/page/integration/logo.png" alt="Nivia"><img src="/assets/imgs/page/integration/logo2.png" alt="Nivia"><img src="/assets/imgs/page/integration/logo3.png" alt="Nivia"><img src="/assets/imgs/page/integration/logo4.png" alt="Nivia"><img src="/assets/imgs/page/integration/logo5.png" alt="Nivia"><img src="/assets/imgs/page/integration/logo6.png" alt="Nivia"><br class="d-none d-lg-block"><img src="/assets/imgs/page/integration/logo7.png" alt="Nivia"><img src="/assets/imgs/page/integration/logo8.png" alt="Nivia"><img src="/assets/imgs/page/integration/logo9.png" alt="Nivia"><img src="/assets/imgs/page/integration/logo10.png" alt="Nivia"><img src="/assets/imgs/page/integration/logo11.png" alt="Nivia"></div>
-        </div>
-      </div>
-    </div>
-  </section>
+{{--  <section class="section-box box-connecting">--}}
+{{--    <div class="box-connecting-inner"><span class="planet shape-1"></span><span class="arrow-left shape-2"></span>--}}
+{{--      <div class="container">--}}
+{{--        <div class="text-center"><a class="btn btn-brand-4-sm" href="#">Connecting platforms</a>--}}
+{{--          <h2 class="heading-2 mb-15 mt-15">Integrated with tools you <br class="d-none d-lg-block">already know & love</h2>--}}
+{{--          <p class="text-lg neutral-500 mb-15">Easily connect the tools you use every day</p>--}}
+{{--        </div>--}}
+{{--        <div class="mt-55 text-center">--}}
+{{--          <div class="box-logo-integration"><img src="/assets/imgs/page/integration/logo.png" alt="Nivia"><img src="/assets/imgs/page/integration/logo2.png" alt="Nivia"><img src="/assets/imgs/page/integration/logo3.png" alt="Nivia"><img src="/assets/imgs/page/integration/logo4.png" alt="Nivia"><img src="/assets/imgs/page/integration/logo5.png" alt="Nivia"><img src="/assets/imgs/page/integration/logo6.png" alt="Nivia"><br class="d-none d-lg-block"><img src="/assets/imgs/page/integration/logo7.png" alt="Nivia"><img src="/assets/imgs/page/integration/logo8.png" alt="Nivia"><img src="/assets/imgs/page/integration/logo9.png" alt="Nivia"><img src="/assets/imgs/page/integration/logo10.png" alt="Nivia"><img src="/assets/imgs/page/integration/logo11.png" alt="Nivia"></div>--}}
+{{--        </div>--}}
+{{--      </div>--}}
+{{--    </div>--}}
+{{--  </section>--}}
   <section class="section-box box-all-integrations">
         <div class="container" style="display: flex; gap: 30px;">
           <div id="filter-box-1" class="sidebar-shadow none-shadow mb-30 filter-box" style="width: 27%; padding: 30px 20px; background-color: #E9ECEF; border-radius: 16px; margin-bottom: 30px !important; height: 100%;">
@@ -106,13 +106,13 @@
                 </div>
             </div>
         </div>
-        
+
           <div style="width: 70%;" class="right-side-search-provider">
             <div class="row">
               <button id="change-filter-btn" class="filter-button-responsive" onClick="toggleFilter()">
                 Show Filter
             </button>
-           
+
                 <div id="filter-box-2" class="sidebar-shadow none-shadow mb-30 filter-box-responsive" style="border:none; border-radius:0 !important; box-shadow: 0 0 0 0 rgba(0, 0, 0, 0); width: 100%; padding: 30px 20px; background-color: #E9ECEF; margin-bottom: 30px !important; height: 100%; position:fixed; top:0; z-index:999; overflow: auto;">
                   <div class="sidebar-filters ">
                       <div class="filter-block mb-30">
@@ -160,7 +160,7 @@
                                   </div>
                               </div>
                               <div class="card-conteiner">
-                                <div class="card-content" style="max-width: 100%;">  
+                                <div class="card-content" style="max-width: 100%;">
                                   <div class="rangeslider">
                                     <input class="min input-ranges" name="range_1" type="range" min="1" max="10000" value="735">
                                     <input class="max input-ranges" name="range_1" type="range" min="1" max="10000" value="6465">
@@ -199,7 +199,7 @@
                       </div>
                   </div>
               </div>
-           
+
                 <div class="col-lg-6 col-md-6 card-integration-big">
                   <div class="card-integration">
                     <div class="card-image">
@@ -344,12 +344,12 @@
                     </div>
                   </div>
                 </div>
-                
-                
+
+
                 <div class="text-center card-integration-big">
                   <nav aria-label="Page navigation example">
                     <ul class="pagination">
-                      <li class="page-item"><a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true"> 
+                      <li class="page-item"><a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewbox="0 0 16 16" fill="none">
                               <path d="M10 3.33398L5.33333 8.00065L10 12.6673" stroke="#191919" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"></path>
                             </svg></span></a></li>
@@ -359,7 +359,7 @@
                       <li class="page-item"><a class="page-link" href="#">4</a></li>
                       <li class="page-item"><a class="page-link" href="#">5</a></li>
                       <li class="page-item"><a class="page-link" href="#">6</a></li>
-                      <li class="page-item"><a class="page-link" href="#" aria-label="Next"><span aria-hidden="true"> 
+                      <li class="page-item"><a class="page-link" href="#" aria-label="Next"><span aria-hidden="true">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewbox="0 0 16 16" fill="none">
                               <path d="M6 3.33398L10.6667 8.00065L6 12.6673" stroke="#191919" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"></path>
                             </svg></span></a></li>
@@ -373,7 +373,7 @@
   <section class="section-box wow animate__animated animate__fadeIn box-how-it-work">
     <div class="container"><a class="btn btn-brand-4-sm" href="#">How It Works</a>
       <h2 class="mt-15 mb-20">Just 3 simple and quick steps to have a<br class="d-none d-lg-block">perfect automatic money making system</h2>
-      <p class="text-lg neutral-500 mb-55">Bole nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo conididunt ut labore et dolore<br class="d-none d-lg-block">magna aliqua ut enim ad minim veniam</p>
+{{--      <p class="text-lg neutral-500 mb-55">Bole nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo conididunt ut labore et dolore<br class="d-none d-lg-block">magna aliqua ut enim ad minim veniam</p>--}}
       <div class="row">
         <div class="col-lg-4">
           <div class="box-border-rounded">

@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Provider;
+
 class MainController extends Controller
 {
     // home
     public function home()
     {
-        return view('pages.home');
+        $partners = Provider::all();
+        return view('pages.home', compact('partners'));
     }
 
     // Page Provider

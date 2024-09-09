@@ -69,12 +69,12 @@
           </div>
         </div>
       </section>
-      <section class="section-box box-get-touch-section box-contact-form"> 
+      <section class="section-box box-get-touch-section box-contact-form">
         <div class="container">
           <div class="row">
-            <div class="col-lg-6 mb-30">  
+            <div class="col-lg-6 mb-30">
               <div class="block-map">
-                <div class="box-map"> 
+                <div class="box-map">
                   <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d193595.2527999867!2d-74.14448761897569!3d40.6976312333577!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2zVGjDoG5oIHBo4buRIE5ldyBZb3JrLCBUaeG7g3UgYmFuZyBOZXcgWW9yaywgSG9hIEvhu7M!5e0!3m2!1svi!2s!4v1697559878485!5m2!1svi!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
                 <p class="text-md neutral-600 text-center">Hours: 8:00 - 17:00, Mon - Sat </p>
@@ -83,24 +83,24 @@
             <div class="col-lg-6 mb-30"><a class="btn btn-brand-4-sm" href="#">Contact Us</a>
               <h2 class="mb-20 mt-20">Get in Touch</h2>
               <p class="text-md neutral-700">Contact us below and we will get back to you shortly.</p>
-              <div class="block-form-contact mt-45"> 
+              <div class="block-form-contact mt-45">
                 <form action="#">
-                  <div class="form-group"> 
+                  <div class="form-group">
                     <label for="fullname">
                        Your Name *</label>
                     <input class="form-control" type="text" placeholder="Name">
                   </div>
-                  <div class="form-group"> 
+                  <div class="form-group">
                     <label for="fullname">
                        Your Email *</label>
                     <input class="form-control" type="text" placeholder="email@website.com">
                   </div>
-                  <div class="form-group"> 
+                  <div class="form-group">
                     <label for="fullname">
                        Message *</label>
                     <textarea class="form-control" rows="7" placeholder="How can we help you?"></textarea>
                   </div>
-                  <div class="form-group"> 
+                  <div class="form-group">
                     <button class="btn btn-black btn-rounded" type="submit">Send Message
                       <svg width="22" height="8" viewbox="0 0 22 8" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M22 3.99934L18.4791 0.478516V3.30642H0V4.69236H18.4791V7.52031L22 3.99934Z" fill=""></path>

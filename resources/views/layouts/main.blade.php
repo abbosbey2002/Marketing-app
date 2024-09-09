@@ -212,7 +212,7 @@
               <div class="form-newsletter form-newsletter-2">
                 <form>
                   <input class="form-control" type="text" placeholder="email address">
-                  <button class="btn btn-brand-4-medium">Subscribe 
+                  <button class="btn btn-brand-4-medium">Subscribe
                     <svg width="22" height="22" viewbox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path d="M22 11.0003L18.4791 7.47949V10.3074H0V11.6933H18.4791V14.5213L22 11.0003Z" fill=""></path>
                     </svg>
