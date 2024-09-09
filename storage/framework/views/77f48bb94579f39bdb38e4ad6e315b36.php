@@ -1,5 +1,4 @@
 <?php $__env->startSection('content'); ?>
-
     <div class="nxl-content without-header nxl-full-content">
         <!-- [ Main Content ] start -->
         <div class="main-content d-flex">
@@ -35,7 +34,7 @@
                             <!--! BEGIN: [Users] !-->
                             <div class="card stretch stretch-full">
                                 <div class="table-responsive">
-                                    <div class="table-responsive min-vh-500">
+                                    <div class="table-responsive" style="min-height: 500px">
                                         <table class="table table-hover" id="reviewsList">
                                             <thead>
                                                 <tr>

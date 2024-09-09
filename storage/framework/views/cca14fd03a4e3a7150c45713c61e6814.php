@@ -58,7 +58,7 @@ $portfolios = Portfolio::all();
                     </div>
                 </div>
             </div>
-            <input type="hidden" name="provider_id" value="<?php echo e(auth()->user()->provider_id); ?>">
+            <input type="hidden" name="provider_id" value="<?php echo e(auth()->user()->manager->provider_id); ?>">
             <button type="submit" class="btn btn-primary">Save</button>
         </form>
     </div>

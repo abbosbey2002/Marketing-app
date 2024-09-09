@@ -11,7 +11,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link {{ Request::routeIs('services.index') ? 'active' : '' }}" href="{{ route('services.index') }}">
+                <a class="nav-link {{ Request::routeIs('services.index') ? 'active' : '' }}" href="{{ route('providers.service') }}">
                     <i class="feather-search"></i>
                     <span>Services</span>
                 </a>
