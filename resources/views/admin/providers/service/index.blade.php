@@ -85,13 +85,14 @@
                                                 </a>
 
                                                 <!-- Delete Button -->
-                                                <form class="avatar-text avatar-md" action="{{ route('deleteService') }}" method="POST"
-                                                    onsubmit="confirmDelete(event)"
+                                                <form class="avatar-text avatar-md" action="{{ route('deleteService') }}"
+                                                    method="POST" onsubmit="confirmDelete(event)"
                                                     action="{{ route('services.destroy', $service->id) }}">
                                                     @csrf
                                                     @method('DELETE')
                                                     <input type="hidden" name="service-type" value="{{ $service->id }}">
-                                                    <input type="hidden" name="provider_id" value="{{ auth()->user()->manager->provider->id }}">
+                                                    <input type="hidden" name="provider_id"
+                                                        value="{{ auth()->user()->manager->provider->id }}">
                                                     <button type="submit" class="btn text-dark p-0 border-0"
                                                         style="background: none;">
                                                         <i class="feather feather-trash-2"></i>

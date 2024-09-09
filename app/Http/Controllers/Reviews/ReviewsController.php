@@ -37,20 +37,21 @@ class ReviewsController extends Controller
     {
         // Validate the request data
         $validatedData = $request->validate([
-            'rating' => 'required|integer|min:1|max:5',
-            'description_summary' => 'required|string|max:255',
-            'origin' => 'required|string|max:255',
-            'user_full_name' => 'required|string|max:255',
-            'email' => 'required|email|max:255',
-            'user_job_title' => 'nullable|string|max:255',
-            'user_company_name' => 'nullable|string|max:255',
-            'company_industry' => 'nullable|string|max:255',
-            'company_size' => 'nullable|string|max:255',
-            'providing_service' => 'nullable|string|max:255',
-            'language_id' => 'required|exists:languages,id',
+            'rating' => 'required|integer|min:1|max:5', // rating maydoni, 1-5 oralig'idagi butun son bo'lishi kerak
+            'description_summary' => 'nullable|string|max:1000', // ixtiyoriy maydon, maksimum 1000 ta belgidan oshmasligi kerak
+            'origin' => 'nullable|string|max:255', // ixtiyoriy maydon, maksimum 255 ta belgidan oshmasligi kerak
+            'user_full_name' => 'nullable|string|max:255', // ixtiyoriy maydon, maksimum 255 ta belgidan oshmasligi kerak
+            'email' => 'nullable|email|max:255', // email formati bo'lishi kerak
+            'user_job_title' => 'nullable|string|max:255', // ixtiyoriy maydon, maksimum 255 ta belgidan oshmasligi kerak
+            'user_company_name' => 'nullable|string|max:255', // ixtiyoriy maydon, maksimum 255 ta belgidan oshmasligi kerak
+            'company_industry' => 'nullable|string|max:255', // ixtiyoriy maydon, maksimum 255 ta belgidan oshmasligi kerak
+            'company_size' => 'nullable|integer', // ixtiyoriy maydon, butun son bo'lishi kerak
+            'providing_service' => 'nullable|string|max:255', // ixtiyoriy maydon, maksimum 255 ta belgidan oshmasligi kerak
+            'language_id' => 'required|exists:languages,id', // `languages` jadvalida mavjud bo'lgan `id` bo'lishi kerak
+            'provider_id' => 'required|exists:providers,id', // `providers` jadvalida mavjud bo'lgan `id` bo'lishi kerak
         ]);
         // Automatically associate the review with the authenticated provider
-        $providerId = Auth::id();
+        $providerId = Auth::user()->manager->provider_id;
         // Create and save the review
         Review::create([
             'rating' => $validatedData['rating'],

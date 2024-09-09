@@ -48,7 +48,7 @@ class ProvidersController extends Controller
 
     public function service()
     {
-        $provider = Auth()->user()->manager->provider()->first();
+        $provider = Auth::user()->manager->provider;
         $services = $provider->services ?? [];
         $serviceTypes = Service::all();
         $skills = Skill::all();

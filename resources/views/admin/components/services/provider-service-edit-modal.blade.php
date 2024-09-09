@@ -5,7 +5,6 @@
 </style>
 
 @foreach($services as $service)
-
 <!-- Modal for Editing Service -->
 <div class="offcanvas offcanvas-end w-50" id="editServiceModal{{ $service->id }}" tabindex="-1">
     <div class="offcanvas-header border-bottom" style="padding-top: 20px; padding-bottom: 20px">
@@ -36,17 +35,18 @@
                         </select>
                     </div>
                 </div>
-
+                
                 <div class="col-sm-12 col-lg-12">
                     <div class="form-group mb-4">
                         <label class="form-label">Skills:</label>
                         <select name="skills[]" id="edit-skills-list-{{ $service->id }}" class=" select22" multiple="multiple">
-                            @foreach($service->providerSkills()->get() as $skill)
-                                <option value="{{ $skill->skill->id }}"
-                                    @if(in_array($skill->skill->id, $service->skills->pluck('id')->toArray())) selected @endif>
-                                    {{ $skill->skill->name_en ?? $skill->skill->name }}
-                                </option>
-                            @endforeach
+                            @foreach($service->skills as $skill)
+                            <option value="{{ $skill->skill_id }}"
+                                @if($service->providerSkills->pluck('id')->contains($skill->skill_id)) selected @endif>
+                                {{ $skill->name_en ?? $skill->skill->name }}
+                            </option>
+                        @endforeach
+                        
                         </select>
                     </div>
                 </div>

@@ -59,7 +59,7 @@
                                 </select>
                         </div>
                     </div>
-                      <input type="hidden" name="provider_id" value="{{ auth()->user()->provider_id }}">
+                      <input type="hidden" name="provider_id" value="{{ auth()->user()->manager->provider_id }}">
                       <button type="submit" class="btn btn-primary">Update</button>
                 </div>
                 

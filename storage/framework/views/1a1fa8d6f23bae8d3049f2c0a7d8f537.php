@@ -11,7 +11,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link <?php echo e(Request::routeIs('services.index') ? 'active' : ''); ?>" href="<?php echo e(route('services.index')); ?>">
+                <a class="nav-link <?php echo e(Request::routeIs('services.index') ? 'active' : ''); ?>" href="<?php echo e(route('providers.service')); ?>">
                     <i class="feather-search"></i>
                     <span>Services</span>
                 </a>

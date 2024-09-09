@@ -108,7 +108,7 @@ $languages = App\Models\Language::all();
                     </div>
                 </div>
 
-                <input type="hidden" name="provider_id" value="{{ auth()->user()->provider_id}}">
+                <input type="hidden" name="provider_id" value="{{ auth()->user()->manager->provider_id}}">
 
                 <!-- Submit Button -->
                 <div class="col-12">
