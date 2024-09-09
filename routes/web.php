@@ -102,7 +102,6 @@ Route::prefix('provider')->group(function () {
         Route::resource('managers', ManagerController::class);
         Route::get('/managers/{id}/data', [ManagerController::class, 'getManager']);
     });
-
 });
 
 Route::resource('services', ServicesController::class);

@@ -40,8 +40,9 @@ class AwardsController extends Controller
             'link' => 'nullable',
         ]);
 
-            Award::create($request->all());
-            return redirect()->route('awards.index')->with('success', 'Award created successfully.');
+        Award::create($request->all());
+
+        return redirect()->route('awards.index')->with('success', 'Award created successfully.');
     }
 
     public function edit(Award $award)

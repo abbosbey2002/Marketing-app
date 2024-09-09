@@ -12,16 +12,15 @@ use Illuminate\Support\Facades\Mail;
 
 class ManagerController extends Controller
 {
-
     public function inviteProvider(Request $request)
     {
         // Managerni topish
         $request->validate([
-            'email' => 'required|email'
+            'email' => 'required|email',
         ]);
 
         // Taklif linkini yaratish
-        $invitationLink = "link";
+        $invitationLink = 'link';
 
         // Email yuborish
         Mail::to($request->email)->send(new ProviderInvitation($invitationLink));
