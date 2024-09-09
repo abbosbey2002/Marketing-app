@@ -5,7 +5,6 @@
 </style>
 
 <?php $__currentLoopData = $services; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $service): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-
 <!-- Modal for Editing Service -->
 <div class="offcanvas offcanvas-end w-50" id="editServiceModal<?php echo e($service->id); ?>" tabindex="-1">
     <div class="offcanvas-header border-bottom" style="padding-top: 20px; padding-bottom: 20px">
@@ -37,18 +36,19 @@
                         </select>
                     </div>
                 </div>
-
+                
                 <div class="col-sm-12 col-lg-12">
                     <div class="form-group mb-4">
                         <label class="form-label">Skills:</label>
                         <select name="skills[]" id="edit-skills-list-<?php echo e($service->id); ?>" class=" select22" multiple="multiple">
-                            <?php $__currentLoopData = $service->providerSkills()->get(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $skill): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                <option value="<?php echo e($skill->skill->id); ?>"
-                                    <?php if(in_array($skill->skill->id, $service->skills->pluck('id')->toArray())): ?> selected <?php endif; ?>>
-                                    <?php echo e($skill->skill->name_en ?? $skill->skill->name); ?>
+                            <?php $__currentLoopData = $service->skills; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $skill): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <option value="<?php echo e($skill->skill_id); ?>"
+                                <?php if($service->providerSkills->pluck('id')->contains($skill->skill_id)): ?> selected <?php endif; ?>>
+                                <?php echo e($skill->name_en ?? $skill->skill->name); ?>
 
-                                </option>
-                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                            </option>
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                        
                         </select>
                     </div>
                 </div>

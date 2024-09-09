@@ -3,13 +3,32 @@
 namespace App\Http\Controllers\Managers;
 
 use App\Http\Controllers\Controller;
+use App\Mail\ProviderInvitation;
 use App\Models\Manager;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 
 class ManagerController extends Controller
 {
+
+    public function inviteProvider(Request $request)
+    {
+        // Managerni topish
+        $request->validate([
+            'email' => 'required|email'
+        ]);
+
+        // Taklif linkini yaratish
+        $invitationLink = "link";
+
+        // Email yuborish
+        Mail::to($request->email)->send(new ProviderInvitation($invitationLink));
+
+        return redirect()->back()->with('success', 'Providerga qo\'shilish taklifi yuborildi.');
+    }
+
     public function index()
     {
 

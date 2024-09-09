@@ -1,13 +1,15 @@
+<?php $__currentLoopData = $reviews; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $review): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 <!-- Review Details Offcanvas -->
-<div class="offcanvas offcanvas-end w-50" tabindex="-1" id="reviewDetailsOffcanvas">
+<div class="offcanvas offcanvas-end w-50" tabindex="-1" id="reviewDetailsOffcanvas<?php echo e($review->id); ?>">
     <div class="offcanvas-header border-bottom" style="padding-top: 20px; padding-bottom: 20px;">
         <div class="d-flex align-items-center">
             <div class="avatar-text avatar-md items-details-close-trigger" data-bs-dismiss="offcanvas" data-bs-toggle="tooltip" data-bs-trigger="hover" title="Close"><i class="feather-arrow-left"></i></div>
             <span class="vr text-muted mx-4"></span>
             <h2 class="fs-14 fw-bold text-truncate-1-line">Review Details</h2>
         </div>
-    </div>
-    <div class="offcanvas-body">
+    </div>        
+    
+     <div class="offcanvas-body">
         <div class="row">
             <!-- Rating -->
             <div class="col-md-12 mb-4">
@@ -98,5 +100,9 @@
             </div>
         </div>
     </div>
+
 </div>
+
+<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+
 <?php /**PATH /home/abbos/Desktop/projects/MARKETING/resources/views/admin/components/reviews/provider-review-view-modal.blade.php ENDPATH**/ ?>

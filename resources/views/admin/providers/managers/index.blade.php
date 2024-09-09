@@ -48,6 +48,21 @@
             <div class="content-area-body">
                 <div class="card mb-0">
                     <div class="card-body">
+                        <form action="{{ route('providers.invite') }}" method="POST">
+                            @csrf  <!-- CSRF token, xavfsizlik uchun -->
+                            <div class="form-group">
+                                <label for="email">Email:</label>
+                                <input type="email" name="email" class="form-control" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Taklif Yuborish</button>
+                        </form>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="content-area-body">
+                <div class="card mb-0">
+                    <div class="card-body">
                         <!--! BEGIN: [Users] !-->
                         <div class="card stretch stretch-full mb-0">
                             <div class="table-responsive">

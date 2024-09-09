@@ -86,13 +86,14 @@
                                                 </a>
 
                                                 <!-- Delete Button -->
-                                                <form class="avatar-text avatar-md" action="<?php echo e(route('deleteService')); ?>" method="POST"
-                                                    onsubmit="confirmDelete(event)"
+                                                <form class="avatar-text avatar-md" action="<?php echo e(route('deleteService')); ?>"
+                                                    method="POST" onsubmit="confirmDelete(event)"
                                                     action="<?php echo e(route('services.destroy', $service->id)); ?>">
                                                     <?php echo csrf_field(); ?>
                                                     <?php echo method_field('DELETE'); ?>
                                                     <input type="hidden" name="service-type" value="<?php echo e($service->id); ?>">
-                                                    <input type="hidden" name="provider_id" value="<?php echo e(auth()->user()->manager->provider->id); ?>">
+                                                    <input type="hidden" name="provider_id"
+                                                        value="<?php echo e(auth()->user()->manager->provider->id); ?>">
                                                     <button type="submit" class="btn text-dark p-0 border-0"
                                                         style="background: none;">
                                                         <i class="feather feather-trash-2"></i>

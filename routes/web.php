@@ -25,6 +25,8 @@ use Illuminate\Support\Facades\Route;
  *****************************************************************************/
 Route::get('/', [MainController::class, 'home'])->name('home');
 
+Route::post('/providers-invite', [ManagerController::class, 'inviteProvider'])->name('providers.invite');
+
 Route::get('/providers', [MainController::class, 'pageProvider'])->name('providers');
 Route::get('/marketers', [MainController::class, 'pageMarketers'])->name('marketers');
 Route::get('/partners', [MainController::class, 'pagePartners'])->name('partners');

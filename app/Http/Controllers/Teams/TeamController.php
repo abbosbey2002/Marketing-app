@@ -14,7 +14,7 @@ class TeamController extends Controller
      */
     public function index()
     {
-        $team = Team::where('provider_id', Auth()->user()->provider_id)->latest()->first();
+        $team = Team::where('provider_id', Auth()->user()->manager->provider_id)->latest()->first();
         $teams = Team::all();
 
         return view('admin.providers.team.index', compact('team', 'teams'));

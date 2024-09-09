@@ -60,7 +60,6 @@
             @csrf
             @method('PUT')
             <div class="row">
-
                 <div class="col-xxl-4 col-xl-6">
                     <div class="card stretch stretch-full">
                         <div class="card-body">
