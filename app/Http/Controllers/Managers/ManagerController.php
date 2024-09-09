@@ -27,11 +27,12 @@ class ManagerController extends Controller
 
         $providerId = $provider->id; // provider id
         $email = urlencode($request->input('email')); // email (gmail), URL uchun kodlanadi
-        $invitationLink = route('manager.invite', ['provider' => $providerId, 'email' => $email]); 
+        $invitationLink = route('manager.invite', ['provider' => $providerId, 'email' => $email]);
 
         // Email yuborish
         try {
             Mail::to($request->email)->send(new ProviderInvitation($invitationLink, $provider, $email));
+
             return redirect()->back()->with('success', 'Providerga qo\'shilish taklifi yuborildi.');
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Providerga qo\'shilish taklifini yuborishda xatolik yuz berdi.');
@@ -43,15 +44,14 @@ class ManagerController extends Controller
         $providerId = $request->input('provider');
         $email = urldecode($request->input('email'));
         $provider = Provider::find($providerId);
-        
-        if( !$provider ){
+
+        if (! $provider) {
             return response()->view('provider-notfound', [], 404);
             // provider topilmasa not found page optish
         }
 
         return view('pages.manager-invite', compact('providerId', 'email', 'provider')); // manager sahifasiga qaytish yoki boshqa harakatlar
     }
-
 
     public function storemanger(Request $request)
     {
@@ -67,16 +67,14 @@ class ManagerController extends Controller
             'email' => $validatedData['email'],
             'password' => Hash::make($validatedData['password']),
         ]);
-        
+
         Manager::create([
             'provider_id' => $validatedData['provider_id'],
             'user_id' => $user->id,
         ]);
 
-        
         return redirect()->route('providers.profile')->with('success', 'Profile updated successfully');
     }
-    
 
     public function index()
     {

@@ -13,9 +13,10 @@ class ProviderInvitation extends Mailable
     use Queueable, SerializesModels;
 
     public $invitationLink;
+
     public $provider;
+
     public $email;
-    
 
     /**
      * Create a new message instance.
