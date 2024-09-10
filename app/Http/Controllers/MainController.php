@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Provider;
 
 class MainController extends Controller
@@ -10,13 +11,15 @@ class MainController extends Controller
     public function home()
     {
         $partners = Provider::all();
-        return view('pages.home', compact('partners'));
+        $categories = Category::all();
+        return view('pages.home', compact('partners', 'categories'));
     }
 
     // Page Provider
     public function pageProvider()
     {
-        return view('pages.page-provider');
+        $providers = Provider::latest()->take(6)->get();
+        return view('pages.page-provider', compact('providers'));
     }
 
     public function searchProviders()

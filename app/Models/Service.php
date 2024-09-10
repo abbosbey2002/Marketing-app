@@ -9,12 +9,17 @@ class Service extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name_en', 'name_uz', 'name_ru'];
+    protected $fillable = ['name_en', 'name_uz', 'name_ru', 'category_id'];
 
     // Optional: If a ServiceList has many Skills
     public function skills()
     {
         return $this->hasMany(Skill::class);
+    }
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
     }
 
     public function providerSkills()

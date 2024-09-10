@@ -40,24 +40,24 @@
             <ul class="carouselTicker__list list-logos">
                 @foreach($partners as $partner)
                     <li class="carouselTicker__item">
-                        <div class="item-logo"><img src="/storage/{{ $partner->logo }}" alt="{{ $partner->title }}"></div>
+                        <div class="item-logo"><img src="/storage/logos/{{ $partner->logo }}" alt="{{ $partner->name }}" style="width: 70px;height: 70px"></div>
                     </li>
                 @endforeach
-              <li class="carouselTicker__item">
-                <div class="item-logo"><img src="assets/imgs/Dora Academy.png" alt="Nivia"></div>
-              </li>
-              <li class="carouselTicker__item">
-                <div class="item-logo"><img src="assets/imgs/Dora Branding.png" alt="Nivia"></div>
-              </li>
-              <li class="carouselTicker__item">
-                <div class="item-logo"><img src="assets/imgs/Dora Woman.png" alt="Nivia"></div>
-              </li>
-              <li class="carouselTicker__item">
-                <div class="item-logo"><img src="assets/imgs/Dora system.png" alt="Nivia"></div>
-              </li>
-              <li class="carouselTicker__item">
-                <div class="item-logo"><img src="assets/imgs/Dora.png" alt="Nivia"></div>
-              </li>
+    {{--              <li class="carouselTicker__item">--}}
+    {{--                <div class="item-logo"><img src="assets/imgs/Dora Academy.png" alt="Nivia"></div>--}}
+    {{--              </li>--}}
+    {{--              <li class="carouselTicker__item">--}}
+    {{--                <div class="item-logo"><img src="assets/imgs/Dora Branding.png" alt="Nivia"></div>--}}
+    {{--              </li>--}}
+    {{--              <li class="carouselTicker__item">--}}
+    {{--                <div class="item-logo"><img src="assets/imgs/Dora Woman.png" alt="Nivia"></div>--}}
+    {{--              </li>--}}
+    {{--              <li class="carouselTicker__item">--}}
+    {{--                <div class="item-logo"><img src="assets/imgs/Dora system.png" alt="Nivia"></div>--}}
+    {{--              </li>--}}
+    {{--              <li class="carouselTicker__item">--}}
+    {{--                <div class="item-logo"><img src="assets/imgs/Dora.png" alt="Nivia"></div>--}}
+    {{--              </li>--}}
               <li class="carouselTicker__item">
                 <div class="item-logo"><img src="assets/imgs/Chinor Print.png" alt="Nivia"></div>
               </li>
@@ -80,22 +80,30 @@
 {{--              <h2 class="mt-15 mb-20">Just 3 simple and quick steps to have a<br class="d-none d-lg-block">perfect automatic money making system</h2>--}}
 {{--              <p class="text-lg neutral-500 mb-55">Bole nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo conididunt ut labore et dolore<br class="d-none d-lg-block">magna aliqua ut enim ad minim veniam</p>--}}
                 <div class="row">
-                    <div class="col-lg-4">
-                      <div class="box-border-rounded">
-                        <div class="card-casestudy">
-                          <div class="card-title mb-30">
-                            <h6 style="font-size: 22px !important;"><span class="number">1</span>Advertising</h6>
-                          </div>
-                          <div class="card-desc">
-                           <a href="#"> <span>Advertising </span><i class="fa-solid fa-arrow-right"></i></a>
-                            <a href="#"><span>Advertising Campaign </span><i class="fa-solid fa-arrow-right"></i></a>
-                            <a href="#"><span>Advertising Production </span><i class="fa-solid fa-arrow-right"></i></a>
-                            <a href="#"><span>Creative </span><i class="fa-solid fa-arrow-right"></i></a>
-                            <a href="#"><span>Full-Service </span><i class="fa-solid fa-arrow-right"></i></a>
-                          </div>
+                    @foreach($categories as $category)
+                        <div class="col-lg-4">
+                            <div class="box-border-rounded">
+                                <div class="card-casestudy">
+                                    <div class="card-title mb-30">
+                                        <h6 style="font-size: 22px !important;">
+                                            <span class="number">{{ $loop->iteration }}</span>
+                                            {{ $category->name }}
+                                        </h6>
+                                    </div>
+                                    <div class="card-desc">
+                                        @if ($category->services->isNotEmpty())
+                                            @foreach ($category->services as $service)
+                                                <a href="#"><span>{{ $service->name_en }} </span><i class="fa-solid fa-arrow-right"></i></a>
+                                            @endforeach
+                                        @else
+                                            <p>No services available</p>
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                      </div>
-                    </div>
+                    @endforeach
+
                     <div class="col-lg-4">
                       <div class="box-border-rounded">
                         <div class="card-casestudy">
@@ -129,56 +137,6 @@
                       </div>
                     </div>
                 </div>
-              <div class="row">
-                <div class="col-lg-4">
-                  <div class="box-border-rounded">
-                    <div class="card-casestudy">
-                      <div class="card-title mb-30">
-                        <h6 style="font-size: 22px !important;"><span class="number">4</span>Digital Marketing</h6>
-                      </div>
-                      <div class="card-desc">
-                        <a href="#"> <span>Advertising </span><i class="fa-solid fa-arrow-right"></i></a>
-                         <a href="#"><span>Advertising Campaign </span><i class="fa-solid fa-arrow-right"></i></a>
-                         <a href="#"><span>Advertising Production </span><i class="fa-solid fa-arrow-right"></i></a>
-                         <a href="#"><span>Creative </span><i class="fa-solid fa-arrow-right"></i></a>
-                         <a href="#"><span>Full-Service </span><i class="fa-solid fa-arrow-right"></i></a>
-                       </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-4">
-                  <div class="box-border-rounded">
-                    <div class="card-casestudy">
-                      <div class="card-title mb-30">
-                        <h6 style="font-size: 22px !important;"><span class="number">5</span>IT Services</h6>
-                      </div>
-                      <div class="card-desc">
-                        <a href="#"> <span>Advertising </span><i class="fa-solid fa-arrow-right"></i></a>
-                         <a href="#"><span>Advertising Campaign </span><i class="fa-solid fa-arrow-right"></i></a>
-                         <a href="#"><span>Advertising Production </span><i class="fa-solid fa-arrow-right"></i></a>
-                         <a href="#"><span>Creative </span><i class="fa-solid fa-arrow-right"></i></a>
-                         <a href="#"><span>Full-Service </span><i class="fa-solid fa-arrow-right"></i></a>
-                       </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-4">
-                  <div class="box-border-rounded">
-                    <div class="card-casestudy">
-                      <div class="card-title mb-30">
-                        <h6 style="font-size: 22px !important;"><span class="number">6</span>Marketing</h6>
-                      </div>
-                      <div class="card-desc">
-                        <a href="#"> <span>Advertising </span><i class="fa-solid fa-arrow-right"></i></a>
-                         <a href="#"><span>Advertising Campaign </span><i class="fa-solid fa-arrow-right"></i></a>
-                         <a href="#"><span>Advertising Production </span><i class="fa-solid fa-arrow-right"></i></a>
-                         <a href="#"><span>Creative </span><i class="fa-solid fa-arrow-right"></i></a>
-                         <a href="#"><span>Full-Service </span><i class="fa-solid fa-arrow-right"></i></a>
-                       </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
             </div>
             <div class="container mt-25">
               <div class="box-newsletter mb-0"
