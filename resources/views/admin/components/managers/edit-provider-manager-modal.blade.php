@@ -22,13 +22,13 @@
                     <div class="col-12">
                         <div class="form-group">
                             <label for="manager_name" class="form-label">Manager Name:</label>
-                            <input type="text" class="form-control" id="manager_name" name="manager_name" value="{{ $manager->manager_name }}" required>
+                            <input type="text" class="form-control" id="manager_name" name="manager_name" value="{{ $manager->user->name }}" required>
                         </div>
                     </div>
                     <div class="col-12">
                         <div class="form-group">
                             <label for="manager_email" class="form-label">Manager Email:</label>
-                            <input type="email" class="form-control" id="manager_email" name="manager_email" value="{{$manager->manager_email}}" required>
+                            <input type="email" class="form-control" id="manager_email" name="manager_email" value="{{$manager->user->email}}" required>
                         </div>
                     </div>
                     <div class="col-12">
@@ -40,7 +40,7 @@
                     <div class="col-12">
                         <div class="form-group">
                             <label for="role" class="form-label">Role:</label>
-                            <input type="text" class="form-control" id="role" name="role" value="{{$manager->role}}" required>
+                            <input type="text" class="form-control" id="role" name="role" value="{{$manager->user->role}}" required>
                         </div>
                     </div>
                 </div>

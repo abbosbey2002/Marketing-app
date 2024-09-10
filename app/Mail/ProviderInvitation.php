@@ -14,12 +14,18 @@ class ProviderInvitation extends Mailable
 
     public $invitationLink;
 
+    public $provider;
+
+    public $email;
+
     /**
      * Create a new message instance.
      */
-    public function __construct($invitationLink)
+    public function __construct($invitationLink, $provider, $email)
     {
         $this->invitationLink = $invitationLink;
+        $this->provider = $provider;
+        $this->email = $email;
     }
 
     /**
@@ -41,6 +47,8 @@ class ProviderInvitation extends Mailable
             view: 'emails.provider_invitation',
             with: [
                 'invitationLink' => $this->invitationLink,
+                'provider' => $this->provider,
+                'email' => $this->email,
             ],
         );
     }

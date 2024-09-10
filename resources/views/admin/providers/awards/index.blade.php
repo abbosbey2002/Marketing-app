@@ -69,11 +69,11 @@
                                                     </td>
                                                     <td>
                                                         <div class="hstack gap-2 justify-content-end">
-                                                            <a href="javascript:void(0);" class="avatar-text avatar-md"
+                                                            {{-- <a href="javascript:void(0);" class="avatar-text avatar-md"
                                                                 data-bs-toggle="offcanvas"
                                                                 data-bs-target="#awardViewProviderOffcanvas">
                                                                 <i class="feather-eye"></i>
-                                                            </a>
+                                                            </a> --}}
 
                                                             <div class="dropdown">
                                                                 <a href="javascript:void(0)" class="avatar-text avatar-md"

@@ -46,6 +46,18 @@
                 </div>
             </div>
             <div class="content-area-body">
+                @if (session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+@endif
+
+@if (session('error'))
+    <div class="alert alert-danger">
+        {{ session('error') }}
+    </div>
+@endif
+
                 <div class="card mb-0">
                     <div class="card-body">
                         <form action="{{ route('providers.invite') }}" method="POST">
@@ -54,7 +66,10 @@
                                 <label for="email">Email:</label>
                                 <input type="email" name="email" class="form-control" required>
                             </div>
-                            <button type="submit" class="btn btn-primary">Taklif Yuborish</button>
+                            <div class="flex mt-3">
+                                <button type="submit" class="btn btn-primary">Taklif Yuborish</button>
+                            </div>
+                            
                         </form>
                         
                     </div>
@@ -78,9 +93,9 @@
                                     <tbody>
                                         @foreach ($managers as $manager)
                                         <tr data-id="{{ $manager->id }}">
-                                            <td>{{ $manager->manager_name }}</td>
-                                            <td>{{ $manager->manager_email }}</td>
-                                            <td>{{ $manager->role }}</td>
+                                            <td>{{ $manager->user->name }}</td>
+                                            <td>{{ $manager->user->email }}</td>
+                                            <td>{{ $manager->user->role }}</td>
                                             <td>
                                                 <div class="hstack gap-2 justify-content-end">
                                                     <a href="javascript:void(0);" class="avatar-text avatar-md" data-bs-toggle="offcanvas" data-bs-target="#managerViewProviderOffcanvas">

@@ -25,7 +25,8 @@ use Illuminate\Support\Facades\Route;
  *****************************************************************************/
 Route::get('/', [MainController::class, 'home'])->name('home');
 
-Route::post('/providers-invite', [ManagerController::class, 'inviteProvider'])->name('providers.invite');
+Route::get('/manager/invite', [ManagerController::class, 'invite'])->name('manager.invite');
+Route::post('/manager/add', [ManagerController::class, 'storemanger'])->name('mangager.store.provider');
 
 Route::get('/providers', [MainController::class, 'pageProvider'])->name('providers');
 Route::get('/marketers', [MainController::class, 'pageMarketers'])->name('marketers');
@@ -78,6 +79,7 @@ Route::prefix('provider')->group(function () {
     Route::post('/login', [AuthController::class, 'providerLogin'])->name('provider.login');
 
     Route::middleware('auth')->group(function () {
+        Route::post('/providers-invite', [ManagerController::class, 'inviteProvider'])->name('providers.invite');
         Route::get('/dashboard', [ProviderDashboardController::class, 'index'])->name('provider.dashboard');
         Route::post('add-akills', [ProvidersController::class, 'addSkills'])->name('provider.add.skills');
         // service
