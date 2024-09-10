@@ -111,38 +111,6 @@
                     @else
                         <p>No categories available</p>
                     @endif
-                    <div class="col-lg-4">
-                      <div class="box-border-rounded">
-                        <div class="card-casestudy">
-                          <div class="card-title mb-30">
-                            <h6 style="font-size: 22px !important;"><span class="number">2</span>Creative & Visual</h6>
-                          </div>
-                          <div class="card-desc">
-                            <a href="#"> <span>Advertising </span><i class="fa-solid fa-arrow-right"></i></a>
-                             <a href="#"><span>Advertising Campaign </span><i class="fa-solid fa-arrow-right"></i></a>
-                             <a href="#"><span>Advertising Production </span><i class="fa-solid fa-arrow-right"></i></a>
-                             <a href="#"><span>Creative </span><i class="fa-solid fa-arrow-right"></i></a>
-                             <a href="#"><span>Full-Service </span><i class="fa-solid fa-arrow-right"></i></a>
-                           </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-lg-4">
-                      <div class="box-border-rounded">
-                        <div class="card-casestudy">
-                          <div class="card-title mb-30">
-                            <h6 style="font-size: 22px !important;"><span class="number">3</span>Development & Product</h6>
-                          </div>
-                          <div class="card-desc">
-                            <a href="#"> <span>Advertising </span><i class="fa-solid fa-arrow-right"></i></a>
-                             <a href="#"><span>Advertising Campaign </span><i class="fa-solid fa-arrow-right"></i></a>
-                             <a href="#"><span>Advertising Production </span><i class="fa-solid fa-arrow-right"></i></a>
-                             <a href="#"><span>Creative </span><i class="fa-solid fa-arrow-right"></i></a>
-                             <a href="#"><span>Full-Service </span><i class="fa-solid fa-arrow-right"></i></a>
-                           </div>
-                        </div>
-                      </div>
-                    </div>
                 </div>
             </div>
             <div class="container mt-25">
