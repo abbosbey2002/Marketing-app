@@ -208,34 +208,37 @@
                   </div>
               </div>
           </div>
-
-            @foreach($providers as $provider)
-                <div class="col-lg-6 col-md-6 card-integration-big">
-                    <div class="card-integration">
-                        <div class="card-image">
-                            <div class="card-image-left" ><img  style="border-radius: 50%;" src="/storage/logos/{{ $provider->logo }}" alt="Nivia"></div>
-                            <div class="card-image-info">
-                                <h5>{{ $provider->name }}</h5>
-                                <p class="text-md neutral-500">Company</p>
+            @if ($providers->isNotEmpty())
+                @foreach($providers as $provider)
+                    <div class="col-lg-6 col-md-6 card-integration-big">
+                        <div class="card-integration">
+                            <div class="card-image">
+                                <div class="card-image-left" ><img  style="border-radius: 50%;" src="/storage/logos/{{ $provider->logo }}" alt="Nivia"></div>
+                                <div class="card-image-info">
+                                    <h5>{{ $provider->name }}</h5>
+                                    <p class="text-md neutral-500">Company</p>
+                                </div>
+                            </div>
+                            <div class="card-info">
+                                <p class="text-md size-text">{{ $provider->description }}</p>
+                                <a class="btn btn-learmore-2" href="{{ route('singleProviders') }}"><span>
+                          <svg width="13" height="13" viewbox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <g clip-path="url(#clip0_24_999)">
+                              <path d="M10.6557 3.81393L1.71996 12.7497L0.251953 11.2817L9.18664 2.34592H1.31195V0.269531H12.7321V11.6897H10.6557V3.81393Z" fill="#191919"></path>
+                            </g>
+                            <defs>
+                              <clippath id="clip0_24_999">
+                                <rect width="13" height="13" fill="white"></rect>
+                              </clippath>
+                            </defs>
+                          </svg></span>View Integration</a>
                             </div>
                         </div>
-                        <div class="card-info">
-                            <p class="text-md size-text">{{ $provider->description }}</p>
-                            <a class="btn btn-learmore-2" href="{{ route('singleProviders') }}"><span>
-                      <svg width="13" height="13" viewbox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <g clip-path="url(#clip0_24_999)">
-                          <path d="M10.6557 3.81393L1.71996 12.7497L0.251953 11.2817L9.18664 2.34592H1.31195V0.269531H12.7321V11.6897H10.6557V3.81393Z" fill="#191919"></path>
-                        </g>
-                        <defs>
-                          <clippath id="clip0_24_999">
-                            <rect width="13" height="13" fill="white"></rect>
-                          </clippath>
-                        </defs>
-                      </svg></span>View Integration</a>
-                        </div>
                     </div>
-                </div>
-            @endforeach
+                @endforeach
+            @else
+                <p>No providers available</p>
+            @endif
 
             <div class="text-center card-integration-big">
               <nav aria-label="Page navigation example">
