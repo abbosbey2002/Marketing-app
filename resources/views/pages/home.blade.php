@@ -38,11 +38,15 @@
         <div class="container">
           <div class="carouselTickerLogos2 carouselTicker_vertical" id="slide-logos">
             <ul class="carouselTicker__list list-logos">
-                @foreach($partners as $partner)
-                    <li class="carouselTicker__item">
-                        <div class="item-logo"><img src="/storage/logos/{{ $partner->logo }}" alt="{{ $partner->name }}" style="width: 70px;height: 70px"></div>
-                    </li>
-                @endforeach
+                @if ($partners->isNotEmpty())
+                    @foreach($partners as $partner)
+                        <li class="carouselTicker__item">
+                            <div class="item-logo"><img src="/storage/logos/{{ $partner->logo }}" alt="{{ $partner->name }}" style="width: 70px;height: 70px"></div>
+                        </li>
+                    @endforeach
+                @else
+                    <p>No partners logos available</p>
+                @endif
     {{--              <li class="carouselTicker__item">--}}
     {{--                <div class="item-logo"><img src="assets/imgs/Dora Academy.png" alt="Nivia"></div>--}}
     {{--              </li>--}}
@@ -80,30 +84,33 @@
 {{--              <h2 class="mt-15 mb-20">Just 3 simple and quick steps to have a<br class="d-none d-lg-block">perfect automatic money making system</h2>--}}
 {{--              <p class="text-lg neutral-500 mb-55">Bole nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo conididunt ut labore et dolore<br class="d-none d-lg-block">magna aliqua ut enim ad minim veniam</p>--}}
                 <div class="row">
-                    @foreach($categories as $category)
-                        <div class="col-lg-4">
-                            <div class="box-border-rounded">
-                                <div class="card-casestudy">
-                                    <div class="card-title mb-30">
-                                        <h6 style="font-size: 22px !important;">
-                                            <span class="number">{{ $loop->iteration }}</span>
-                                            {{ $category->name }}
-                                        </h6>
-                                    </div>
-                                    <div class="card-desc">
-                                        @if ($category->services->isNotEmpty())
-                                            @foreach ($category->services as $service)
-                                                <a href="#"><span>{{ $service->name_en }} </span><i class="fa-solid fa-arrow-right"></i></a>
-                                            @endforeach
-                                        @else
-                                            <p>No services available</p>
-                                        @endif
+                    @if ($categories->isNotEmpty())
+                        @foreach($categories as $category)
+                            <div class="col-lg-4">
+                                <div class="box-border-rounded">
+                                    <div class="card-casestudy">
+                                        <div class="card-title mb-30">
+                                            <h6 style="font-size: 22px !important;">
+                                                <span class="number">{{ $loop->iteration }}</span>
+                                                {{ $category->name }}
+                                            </h6>
+                                        </div>
+                                        <div class="card-desc">
+                                            @if ($category->services->isNotEmpty())
+                                                @foreach ($category->services as $service)
+                                                    <a href="#"><span>{{ $service->name_en }} </span><i class="fa-solid fa-arrow-right"></i></a>
+                                                @endforeach
+                                            @else
+                                                <p>No services available</p>
+                                            @endif
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    @endforeach
-
+                        @endforeach
+                    @else
+                        <p>No categories available</p>
+                    @endif
                     <div class="col-lg-4">
                       <div class="box-border-rounded">
                         <div class="card-casestudy">
