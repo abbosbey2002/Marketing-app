@@ -77,7 +77,7 @@
                                     </div>
                                 </div>
                                 <div class="mb-4">
-                              
+
                                     <a href="javascript:void(0);" class="fs-14 fw-bold d-block"> {{ old('name', $provider->name) }}</a>
                                     <a href="javascript:void(0);" class="fs-12 fw-normal text-muted d-block">{{ old('email', $provider->email) }}</a>
                                 </div>
@@ -105,7 +105,7 @@
                                     <span class="text-muted fw-medium hstack gap-3"><i class="feather-phone"></i>Phone</span>
                                     <a href="javascript:void(0);" class="float-end">{{ old('tagline', $provider->phone) }}</a>
                                 </li>
-                                
+
                                 <li class="hstack justify-content-between mb-0">
                                     <span class="text-muted fw-medium hstack gap-3"><i class="feather-mail"></i>Email</span>
                                     <a href="javascript:void(0);" class="float-end">{{ old('email', $provider->email) }}</a>
@@ -219,10 +219,10 @@
                                     <div class="row g-0 mb-4">
                                         <div class="col-sm-6 text-muted">Languages:</div>
                                         <div class="col-sm-6 fw-semibold">
-                                           
+
                                             <select class="form-select form-control max-select" name="languages[]" data-select2-selector="tag" multiple>
                                                 @foreach($languages as $language)
-                                                    <option value="{{ $language->code }}" 
+                                                    <option value="{{ $language->code }}"
                                                         @if(in_array($language->code, $providerLanguageCodes)) selected @endif>
                                                         {{ $language->name }}
                                                     </option>
