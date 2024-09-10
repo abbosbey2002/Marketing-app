@@ -5,7 +5,7 @@
 @section('content')
     <script>
         window.addEventListener("load", function(event) {
-            document.getElementById('loginLogo').src = '/assets/imgs/template/logo-black.svg';
+            document.getElementById('loginLogo').src = '/assets/imgs/template/marketing-black.png';
         });
     </script>
     <style>
