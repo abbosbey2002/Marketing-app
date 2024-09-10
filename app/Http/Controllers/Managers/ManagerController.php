@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Managers;
 use App\Http\Controllers\Controller;
 use App\Mail\ProviderInvitation;
 use App\Models\Manager;
+use App\Models\Provider;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -19,19 +21,64 @@ class ManagerController extends Controller
             'email' => 'required|email',
         ]);
 
+        $provider = Auth::user()->manager->provider()->first();
+
         // Taklif linkini yaratish
-        $invitationLink = 'link';
+
+        $providerId = $provider->id; // provider id
+        $email = urlencode($request->input('email')); // email (gmail), URL uchun kodlanadi
+        $invitationLink = route('manager.invite', ['provider' => $providerId, 'email' => $email]);
 
         // Email yuborish
-        Mail::to($request->email)->send(new ProviderInvitation($invitationLink));
+        try {
+            Mail::to($request->email)->send(new ProviderInvitation($invitationLink, $provider, $email));
 
-        return redirect()->back()->with('success', 'Providerga qo\'shilish taklifi yuborildi.');
+            return redirect()->back()->with('success', 'Providerga qo\'shilish taklifi yuborildi.');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Providerga qo\'shilish taklifini yuborishda xatolik yuz berdi.');
+        }
+    }
+
+    public function invite(Request $request)
+    {
+        $providerId = $request->input('provider');
+        $email = urldecode($request->input('email'));
+        $provider = Provider::find($providerId);
+
+        if (! $provider) {
+            return response()->view('provider-notfound', [], 404);
+            // provider topilmasa not found page optish
+        }
+
+        return view('pages.manager-invite', compact('providerId', 'email', 'provider')); // manager sahifasiga qaytish yoki boshqa harakatlar
+    }
+
+    public function storemanger(Request $request)
+    {
+        $validatedData = $request->validate([
+            'provider_id' => 'required|exists:providers,id',
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|string|min:6|confirmed',
+        ]);
+
+        $user = User::create([
+            'name' => $validatedData['name'],
+            'email' => $validatedData['email'],
+            'password' => Hash::make($validatedData['password']),
+        ]);
+
+        Manager::create([
+            'provider_id' => $validatedData['provider_id'],
+            'user_id' => $user->id,
+        ]);
+
+        return redirect()->route('providers.profile')->with('success', 'Profile updated successfully');
     }
 
     public function index()
     {
-
-        $managers = Manager::where('provider_id', Auth::user()->provider_id)->paginate(10);
+        $managers = Manager::where('provider_id', Auth::user()->manager->provider_id)->paginate(10);
 
         return view('admin.providers.managers.index', compact('managers'));
     }
