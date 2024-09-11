@@ -104,8 +104,8 @@
                                                 <li class="hstack justify-content-between mb-4">
                                                     <span class="text-muted fw-medium hstack gap-3"><i
                                                             class="feather-map-pin"></i>Location</span>
-                                                            <a href="javascript:void(0);" title="{{old('tagline', $provider->address)}}" class="float-end long-text" onclick="toggleAddress(this)">
-                                                                {{ Str::limit(old('tagline', $provider->address), 20) }} <!-- Laravel yordamida matnni cheklash -->
+                                                            <a href="javascript:void(0);" title="{{old('tagline', $provider->address)}}" class="float-end long-text text-center mx-1" onclick="toggleAddress(this)">
+                                                                {{ Str::limit(old('tagline', $provider->address), 100) }} <!-- Laravel yordamida matnni cheklash -->
                                                             </a>
                                                 </li>
                                             </ul>
