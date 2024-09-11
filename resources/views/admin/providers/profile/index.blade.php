@@ -47,7 +47,7 @@
                                                         class="avatar-image wd-150 ht-150 border border-5 border-gray-3 position-relative">
                                                         <img id="avatarPreview"
                                                         src="{{ $provider->logo ? asset('storage/' . $provider->logo) : $defaultimage }}" alt=""
-                                                        style="height: 18em; width: 100%; object-fit: cover;" 
+                                                        style="height: 18em; width: 100%; object-fit: cover;"
                                                             class="img-fluid" />
                                                     </div>
                                                     <div class="wd-10 ht-10 text-success rounded-circle position-absolute translate-middle"
@@ -73,17 +73,17 @@
                                                     <div
                                                         class="flex-fill py-3 px-4 rounded-1 d-none d-sm-block border border-dashed border-gray-5">
                                                         <h6 class="fs-15 fw-bolder">28.65K</h6>
-                                                        <p class="fs-12 text-muted mb-0">Obunachilar</p>
+                                                        <p class="fs-12 text-muted mb-0">Subscribers</p>
                                                     </div>
                                                     <div
                                                         class="flex-fill py-3 px-4 rounded-1 d-none d-sm-block border border-dashed border-gray-5">
                                                         <h6 class="fs-15 fw-bolder">38.85K</h6>
-                                                        <p class="fs-12 text-muted mb-0">Kuzatish</p>
+                                                        <p class="fs-12 text-muted mb-0">Follow up</p>
                                                     </div>
                                                     <div
                                                         class="flex-fill py-3 px-4 rounded-1 d-none d-sm-block border border-dashed border-gray-5">
                                                         <h6 class="fs-15 fw-bolder">43.67K</h6>
-                                                        <p class="fs-12 text-muted mb-0">Izoxlar</p>
+                                                        <p class="fs-12 text-muted mb-0">Comment</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -147,7 +147,7 @@
                                                         data-bs-toggle="tab" data-bs-target="#overviewTab"
                                                         role="tab">{{ old('name', $provider->name) ?: 'Kompaniya' }}</a>
                                                 </li>
-                                               
+
                                             </ul>
                                         </div> --}}
 
@@ -157,8 +157,8 @@
                                                 <div class="about-section mb-5">
                                                     <div class="mb-4 d-flex align-items-center justify-content-between">
                                                         <h5 class="fw-bold mb-0">
-                                                            {{ old('name', $provider->name) ?: 'Kompaniya' }}
-                                                            haqida:</h5>
+                                                            About: {{ old('name', $provider->name) ?: 'Kompaniya' }}
+                                                            </h5>
                                                     </div>
                                                     <div class="col-12">
                                                         <textarea class="form-control" name="description" style="height: 18em;">{{ old('description', $provider->description) }}</textarea>
@@ -170,7 +170,7 @@
                                                     </div>
 
                                                     <div class="row g-0 mb-4">
-                                                        <div class="col-sm-6 text-muted">Kompaniya nomi:</div>
+                                                        <div class="col-sm-6 text-muted">Company name:</div>
                                                         <div class="col-sm-6 fw-semibold">
                                                             <input type="text" class="form-control" id="nameInput"
                                                                 placeholder="Name" name="name"
@@ -179,7 +179,7 @@
                                                     </div>
 
                                                     <div class="row g-0 mb-4">
-                                                        <div class="col-sm-6 text-muted">Shior:</div>
+                                                        <div class="col-sm-6 text-muted">Motto:</div>
                                                         <div class="col-sm-6 fw-semibold">
                                                             <input type="text" class="form-control" id="taglineInput"
                                                                 placeholder="Tagline" name="tagline"
@@ -188,7 +188,7 @@
                                                     </div>
 
                                                     <div class="row g-0 mb-4">
-                                                        <div class="col-sm-6 text-muted">Manzil:</div>
+                                                        <div class="col-sm-6 text-muted">Address:</div>
                                                         <div class="col-sm-6 fw-semibold">
                                                             <input type="text" class="form-control" id="addressInput"
                                                                 placeholder="Address" name="address"
@@ -197,7 +197,7 @@
                                                     </div>
 
                                                     <div class="row g-0 mb-4">
-                                                        <div class="col-sm-6 text-muted">Telefon raqam:</div>
+                                                        <div class="col-sm-6 text-muted">Phone number:</div>
                                                         <div class="col-sm-6 fw-semibold">
                                                             <input type="tel" class="form-control" id="phoneInput"
                                                                 placeholder="Phone number" name="phone"
@@ -231,7 +231,7 @@
                                                     </div>
 
                                                     <div class="row g-0 mb-4">
-                                                        <div class="col-sm-6 text-muted">Tashkil etilgan sana:</div>
+                                                        <div class="col-sm-6 text-muted">Founded Date:</div>
                                                         <div class="col-sm-6 fw-semibold">
                                                             <input type="date" class="form-control"
                                                                 id="foundedAtInput" name="foundedAt"
@@ -240,7 +240,7 @@
                                                     </div>
 
                                                     <div class="row g-0 mb-4">
-                                                        <div class="col-sm-6 text-muted">Xizmat narxi:</div>
+                                                        <div class="col-sm-6 text-muted">Service price:</div>
                                                         <div class="col-sm-6 fw-semibold">
                                                             <input type="text" class="form-control" id="turnoverInput"
                                                                 placeholder="Turnover" name="turnover"
@@ -250,7 +250,7 @@
 
 
                                                     <div class="row g-0 mb-4">
-                                                        <div class="col-sm-6 text-muted">Jamoa hajmi:</div>
+                                                        <div class="col-sm-6 text-muted">Team size:</div>
                                                         <div class="col-sm-6 fw-semibold">
                                                             <input type="number" class="form-control" id="teamSizeInput"
                                                                 name="teamSize"
@@ -270,22 +270,18 @@
                                                         <i class="feather feather-alert-triangle fs-1"></i>
                                                     </div>
                                                     <div>
-                                                        <p class="fw-bold mb-1 text-truncate-1-line">Hisobingizni doimiy
-                                                            yurutib
-                                                            borishingiz kerak</p>
+                                                        <p class="fw-bold mb-1 text-truncate-1-line">You must maintain your account regularly</p>
                                                         <p class="fs-10 fw-medium text-uppercase text-truncate-1-line">
-                                                            So'ngi
-                                                            yangilanish: <strong>31 Avg, 2024</strong></p>
+                                                            Last update: <strong>31 Avg, 2024</strong></p>
                                                         <a href="javascript:void(0);"
-                                                            class="btn btn-sm bg-soft-warning text-warning d-inline-block">Batafsil
-                                                            o'qish</a>
+                                                            class="btn btn-sm bg-soft-warning text-warning d-inline-block">Read more</a>
                                                         <button type="button" class="btn-close" data-bs-dismiss="alert"
                                                             aria-label="Close"></button>
                                                     </div>
                                                 </div>
                                             </div>
 
-                                            
+
 
                                         </div>
 

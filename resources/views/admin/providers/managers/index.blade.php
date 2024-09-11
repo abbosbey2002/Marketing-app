@@ -4,7 +4,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
 <style>
     .swal2-cancel{
-        background-color: red !important; 
+        background-color: red !important;
         color: #fff !important;
     }
     .swal2-confirm{
@@ -31,7 +31,7 @@
     <div class="main-content d-flex">
         <!-- [ Content Sidebar ] start -->
         @include('admin.components.single-sidebar')
-        <!-- [ Content Sidebar  ] end -->        
+        <!-- [ Content Sidebar  ] end -->
         <!-- [ Main Area  ] start -->
         <div class="content-area" data-scrollbar-target="#psScrollbarInit">
             <div class="content-area-header bg-white sticky-top">
@@ -67,11 +67,11 @@
                                 <input type="email" name="email" class="form-control" required>
                             </div>
                             <div class="flex mt-3">
-                                <button type="submit" class="btn btn-primary">Taklif Yuborish</button>
+                                <button type="submit" class="btn btn-primary">Send an offer</button>
                             </div>
-                            
+
                         </form>
-                        
+
                     </div>
                 </div>
             </div>
@@ -131,13 +131,13 @@
                                         @endforeach
                                     </tbody>
                                 </table>
-                            </div>                         
+                            </div>
                         </div>
                         <!--! END: [Users] !-->
                     </div>
                 </div>
             </div>
-            
+
         </div>
         <!-- [ Content Area ] end -->
     </div>
