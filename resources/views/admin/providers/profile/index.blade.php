@@ -46,7 +46,8 @@
                                                     <div
                                                         class="avatar-image wd-150 ht-150 border border-5 border-gray-3 position-relative">
                                                         <img id="avatarPreview"
-                                                            src="{{ asset('storage/' . $provider->logo) }}" alt=""
+                                                        src="{{ $provider->logo ? asset('storage/' . $provider->logo) : $defaultimage }}" alt=""
+                                                        style="height: 18em; width: 100%; object-fit: cover;" 
                                                             class="img-fluid" />
                                                     </div>
                                                     <div class="wd-10 ht-10 text-success rounded-circle position-absolute translate-middle"
@@ -89,40 +90,36 @@
                                             <ul class="list-unstyled mb-4">
                                                 <li class="hstack justify-content-between mb-4">
                                                     <span class="text-muted fw-medium hstack gap-3"><i
-                                                            class="feather-map-pin"></i>Location</span>
-                                                    <a href="javascript:void(0);"
-                                                        class="float-end">{{ old('tagline', $provider->address) }}</a>
-                                                </li>
-                                                <li class="hstack justify-content-between mb-4">
-                                                    <span class="text-muted fw-medium hstack gap-3"><i
                                                             class="feather-phone"></i>Phone</span>
                                                     <a href="javascript:void(0);"
                                                         class="float-end">{{ old('tagline', $provider->phone) }}</a>
                                                 </li>
 
-                                                <li class="hstack justify-content-between mb-0">
+                                                <li class="hstack justify-content-between mb-4">
                                                     <span class="text-muted fw-medium hstack gap-3"><i
                                                             class="feather-mail"></i>Email</span>
                                                     <a href="javascript:void(0);"
                                                         class="float-end">{{ old('email', $provider->email) }}</a>
                                                 </li>
+                                                <li class="hstack justify-content-between mb-4">
+                                                    <span class="text-muted fw-medium hstack gap-3"><i
+                                                            class="feather-map-pin"></i>Location</span>
+                                                            <a href="javascript:void(0);" title="{{old('tagline', $provider->address)}}" class="float-end long-text" onclick="toggleAddress(this)">
+                                                                {{ Str::limit(old('tagline', $provider->address), 20) }} <!-- Laravel yordamida matnni cheklash -->
+                                                            </a>
+                                                </li>
                                             </ul>
                                         </div>
                                     </div>
-
                                 </div>
                                 <div class="col-xxl-8 col-xl-6">
                                     <div class="col-12">
                                         <div class="card stretch stretch-full border-0 rounded">
                                             <div class="position-relative">
-                                                @if ($provider->cover)
-                                                    <img id="coverPreview" src="{{ asset('storage/' . $provider->cover) }}"
+                                                    <img id="coverPreview"
+                                                    src="{{ $provider->cover ? asset('storage/' . $provider->cover) : $defaultimage }}"
                                                         alt="Cover"
                                                         style="height: 18em; width: 100%; object-fit: cover;" />
-                                                @else
-                                                    <img id="coverPreview" src="" alt="Cover"
-                                                        style="height: 18em; width: 100%; object-fit: cover; display: none;" />
-                                                @endif
                                                 <div class="wd-10 ht-10 text-success rounded-circle position-absolute translate-middle"
                                                     style="bottom: 10%; right: 3%;">
                                                     <label for="coverInput" class="overflow-hidden">
@@ -141,7 +138,7 @@
                                     </div>
                                     <div class="card border-top-0">
 
-                                        <div class="card-header p-0">
+                                        {{-- <div class="card-header p-0">
                                             <!-- Nav tabs -->
                                             <ul class="nav nav-tabs flex-wrap w-100 text-center customers-nav-tabs"
                                                 id="myTab" role="tablist">
@@ -150,29 +147,9 @@
                                                         data-bs-toggle="tab" data-bs-target="#overviewTab"
                                                         role="tab">{{ old('name', $provider->name) ?: 'Kompaniya' }}</a>
                                                 </li>
-                                                <li class="nav-item flex-fill border-top" role="presentation">
-                                                    <a href="javascript:void(0);" class="nav-link" data-bs-toggle="tab"
-                                                        data-bs-target="#portfolioTab" role="tab">Portfolio</a>
-                                                </li>
-                                                <li class="nav-item flex-fill border-top" role="presentation">
-                                                    <a href="javascript:void(0);" class="nav-link" data-bs-toggle="tab"
-                                                        data-bs-target="#awardsTab" role="tab">Mukofot</a>
-                                                </li>
-                                                <li class="nav-item flex-fill border-top" role="presentation">
-                                                    <a href="javascript:void(0);" class="nav-link" data-bs-toggle="tab"
-                                                        data-bs-target="#menenjerTab" role="tab">Menenjer</a>
-                                                </li>
-                                                <li class="nav-item flex-fill border-top" role="presentation">
-                                                    <a href="javascript:void(0);" class="nav-link" data-bs-toggle="tab"
-                                                        data-bs-target="#badgesTab" role="tab">Hamkorlik
-                                                        havolalari</a>
-                                                </li>
-                                                <li class="nav-item flex-fill border-top" role="presentation">
-                                                    <a href="javascript:void(0);" class="nav-link" data-bs-toggle="tab"
-                                                        data-bs-target="#reviewsTab" role="tab">Sharhlar</a>
-                                                </li>
+                                               
                                             </ul>
-                                        </div>
+                                        </div> --}}
 
                                         <div class="tab-content">
 
@@ -308,257 +285,7 @@
                                                 </div>
                                             </div>
 
-                                            <div class="tab-pane fade p-4" id="portfolioTab" role="tabpanel">
-                                                <div class="col-12">
-                                                    <div class="card stretch stretch-full">
-                                                        <div class="card-header">
-                                                            <h5 class="card-title">Portfolio</h5>
-                                                        </div>
-                                                        <div class="card-body p-0">
-                                                            <div class="table-responsive">
-                                                                <table class="table">
-                                                                    <tbody>
-
-                                                                        <tr>
-                                                                            <td>
-                                                                                <div class="hstack gap-3">
-                                                                                    <div
-                                                                                        class="avatar-image avatar-lg rounded">
-                                                                                        <img class="img-fluid"
-                                                                                            src="assets/images/gallery/1.png"
-                                                                                            alt="">
-                                                                                    </div>
-                                                                                    <div>
-                                                                                        <a href="javascript:void(0);"
-                                                                                            class="d-block">Headphones
-                                                                                            JBL</a>
-                                                                                        <span
-                                                                                            class="fs-12 text-muted">Electronics
-                                                                                        </span>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </td>
-                                                                            <td>23 Avg 2024</td>
-                                                                            <td class="text-end">Suhrob manager</td>
-                                                                        </tr>
-
-                                                                    </tbody>
-                                                                </table>
-                                                            </div>
-                                                        </div>
-                                                        <a href="javascript:void(0);"
-                                                            class="card-footer fs-11 fw-bold text-uppercase text-center"
-                                                            data-bs-toggle="offcanvas"
-                                                            data-bs-target="#portfolioProviderOffcanvas">Add New</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="tab-pane fade p-4" id="awardsTab" role="tabpanel">
-                                                <div class="col-12">
-                                                    <div class="card stretch stretch-full">
-                                                        <div class="card-header">
-                                                            <h5 class="card-title">Awards</h5>
-                                                        </div>
-                                                        <div class="card-body custom-card-action p-0">
-                                                            <div class="table-responsive">
-                                                                <table class="table table-hover mb-0">
-                                                                    <thead>
-                                                                        <tr class="border-b">
-                                                                            <th scope="row">Users</th>
-                                                                            <th>Proposal</th>
-                                                                            <th>Date</th>
-                                                                            <th>Status</th>
-                                                                            <th class="text-end">Actions</th>
-                                                                        </tr>
-                                                                    </thead>
-                                                                    <tbody>
-
-                                                                        <tr>
-                                                                            <td>
-                                                                                <div
-                                                                                    class="d-flex align-items-center gap-3">
-                                                                                    <div class="avatar-image rounded">
-                                                                                        <img src="assets/images/avatar/2.png"
-                                                                                            alt=""
-                                                                                            class="img-fluid">
-                                                                                    </div>
-                                                                                    <a href="javascript:void(0);">
-                                                                                        <span class="d-block">Archie
-                                                                                            Cantones</span>
-                                                                                        <span
-                                                                                            class="fs-12 d-block fw-normal text-muted">arcie.tones@gmail.com</span>
-                                                                                    </a>
-                                                                                </div>
-                                                                            </td>
-                                                                            <td>
-                                                                                <span
-                                                                                    class="badge bg-gray-200 text-dark">Sent</span>
-                                                                            </td>
-                                                                            <td>11/06/2023 10:53</td>
-                                                                            <td>
-                                                                                <span
-                                                                                    class="badge bg-soft-success text-success">Completed</span>
-                                                                            </td>
-                                                                            <td class="text-end">
-                                                                                <a href="javascript:void(0);"><i
-                                                                                        class="feather-more-vertical"></i></a>
-                                                                            </td>
-                                                                        </tr>
-
-                                                                    </tbody>
-                                                                </table>
-                                                            </div>
-                                                        </div>
-
-                                                        <a href="javascript:void(0);"
-                                                            class="card-footer fs-11 fw-bold text-uppercase text-center"
-                                                            data-bs-toggle="offcanvas"
-                                                            data-bs-target="#awardProviderOffcanvas">Add
-                                                            New</a>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="tab-pane fade p-4" id="menenjerTab" role="tabpanel">
-                                                <div class="col-12">
-                                                    <div class="card stretch stretch-full">
-                                                        <div class="card-header">
-                                                            <h5 class="card-title">Menenjer</h5>
-                                                        </div>
-                                                        <div class="card-body custom-card-action p-0">
-                                                            <div class="table-responsive">
-                                                                <table class="table table-hover mb-0">
-                                                                    <thead>
-                                                                        <tr class="border-b">
-                                                                            <th scope="row">Users</th>
-                                                                            <th>Proposal</th>
-                                                                            <th>Date</th>
-                                                                            <th>Status</th>
-                                                                            <th class="text-end">Actions</th>
-                                                                        </tr>
-                                                                    </thead>
-                                                                    <tbody>
-                                                                        @foreach ($providers as $provider)
-                                                                            <tr>
-                                                                                <td>
-                                                                                    <div
-                                                                                        class="d-flex align-items-center gap-3">
-                                                                                        <div class="avatar-image">
-                                                                                            <img src="assets/images/avatar/2.png"
-                                                                                                alt=""
-                                                                                                class="img-fluid">
-                                                                                        </div>
-                                                                                        <a href="javascript:void(0);">
-                                                                                            <span
-                                                                                                class="d-block">{{ $provider->manager_name }}</span>
-                                                                                            <span
-                                                                                                class="fs-12 d-block fw-normal text-muted">{{ $provider->manager_email }}</span>
-                                                                                        </a>
-                                                                                    </div>
-                                                                                </td>
-                                                                                <td>
-                                                                                    <span
-                                                                                        class="badge bg-gray-200 text-dark">Sent</span>
-                                                                                </td>
-                                                                                <td>11/06/2023 10:53</td>
-                                                                                <td>
-                                                                                    <span
-                                                                                        class="badge bg-soft-success text-success">Completed</span>
-                                                                                </td>
-                                                                                <td class="text-end">
-                                                                                    <a href="javascript:void(0);"><i
-                                                                                            class="feather-more-vertical"></i></a>
-                                                                                </td>
-                                                                            </tr>
-                                                                        @endforeach
-                                                                    </tbody>
-                                                                </table>
-                                                            </div>
-                                                        </div>
-
-                                                        <a href="javascript:void(0);"
-                                                            class="card-footer fs-11 fw-bold text-uppercase text-center"
-                                                            data-bs-toggle="offcanvas"
-                                                            data-bs-target="#managerProviderOffcanvas">Add
-                                                            New</a>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="tab-pane fade p-4" id="badgesTab" role="tabpanel">
-                                                <h4>
-                                                    Badges
-                                                </h4>
-                                            </div>
-
-                                            <div class="tab-pane fade p-4" id="reviewsTab" role="tabpanel">
-                                                <div class="col-12">
-                                                    <div class="card stretch stretch-full">
-                                                        <div class="card-header">
-                                                            <h5 class="card-title">Reviews</h5>
-                                                        </div>
-                                                        <div class="card-body custom-card-action p-0">
-                                                            <div class="table-responsive">
-                                                                <table class="table table-hover mb-0">
-                                                                    <thead>
-                                                                        <tr class="border-b">
-                                                                            <th scope="row">Users</th>
-                                                                            <th>Proposal</th>
-                                                                            <th>Date</th>
-                                                                            <th>Status</th>
-                                                                            <th class="text-end">Actions</th>
-                                                                        </tr>
-                                                                    </thead>
-                                                                    <tbody>
-
-                                                                        <tr>
-                                                                            <td>
-                                                                                <div
-                                                                                    class="d-flex align-items-center gap-3">
-                                                                                    <div class="avatar-image rounded">
-                                                                                        <img src="assets/images/avatar/2.png"
-                                                                                            alt=""
-                                                                                            class="img-fluid">
-                                                                                    </div>
-                                                                                    <a href="javascript:void(0);">
-                                                                                        <span class="d-block">Archie
-                                                                                            Cantones</span>
-                                                                                        <span
-                                                                                            class="fs-12 d-block fw-normal text-muted">arcie.tones@gmail.com</span>
-                                                                                    </a>
-                                                                                </div>
-                                                                            </td>
-                                                                            <td>
-                                                                                <span
-                                                                                    class="badge bg-gray-200 text-dark">Sent</span>
-                                                                            </td>
-                                                                            <td>11/06/2023 10:53</td>
-                                                                            <td>
-                                                                                <span
-                                                                                    class="badge bg-soft-success text-success">Completed</span>
-                                                                            </td>
-                                                                            <td class="text-end">
-                                                                                <a href="javascript:void(0);"><i
-                                                                                        class="feather-more-vertical"></i></a>
-                                                                            </td>
-                                                                        </tr>
-
-                                                                    </tbody>
-                                                                </table>
-                                                            </div>
-                                                        </div>
-
-                                                        <a href="javascript:void(0);"
-                                                            class="card-footer fs-11 fw-bold text-uppercase text-center"
-                                                            data-bs-toggle="offcanvas"
-                                                            data-bs-target="#reviewProviderOffcanvas">Add
-                                                            New</a>
-
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            
 
                                         </div>
 
@@ -575,10 +302,10 @@
         <!-- [ Main Content ] end -->
     </div>
 
-    @include('admin.components.portfolios.provider-portfolio-modal')
-    @include('admin.components.managers.provider-manager-modal')
-    @include('admin.components..awards.provider-award-modal')
-    @include('admin.components.reviews.provider-review-modal')
+    {{-- @include('admin.components.portfolios.provider-portfolio-modal') --}}
+    {{-- @include('admin.components.managers.provider-manager-modal') --}}
+    {{-- @include('admin.components..awards.provider-award-modal') --}}
+    {{-- @include('admin.components.reviews.provider-review-modal') --}}
 
     <script>
         const coverInput = document.getElementById('coverInput');
