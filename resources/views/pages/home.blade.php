@@ -44,6 +44,15 @@
                 @else
                     <p>No partners logos available</p>
                 @endif
+                    <li class="carouselTicker__item">
+                        <div class="item-logo"><img src="/storage/logos/x-partner.png" alt="chevrolet"></div>
+                    </li>
+                    <li class="carouselTicker__item">
+                        <div class="item-logo"><img src="/storage/logos/chevrolet.png" alt="chevrolet"></div>
+                    </li>
+                    <li class="carouselTicker__item">
+                        <div class="item-logo"><img src="/storage/logos/media.png" alt="chevrolet"></div>
+                    </li>
     {{--              <li class="carouselTicker__item">--}}
     {{--                <div class="item-logo"><img src="assets/imgs/Dora Academy.png" alt="Nivia"></div>--}}
     {{--              </li>--}}
