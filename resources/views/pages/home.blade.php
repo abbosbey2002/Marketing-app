@@ -265,7 +265,7 @@
       <section class="section-box wow animate__animated animate__fadeIn box-discover" style="background-color: #e7f4ee">
         <div class="container">
           <div class="row align-items-center">
-            <div class="col-lg-12 mt-30 mb-30">
+            <div class="col-lg-12 mt-80 mb-30">
                   <h2 class="text-center">Join the greatest community of service providers</h2>
 {{--                  <p class="text-lg neutral-500">Bole nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo conididunt ut labore et dolore magna aliqua ut enim ad minim veniam</p>--}}
                   {{--              <div class="box-buttons-feature-4"><a class="btn btn-brand-4-medium mr-20" href="#">Subscribe--}}
@@ -374,35 +374,35 @@
           </div>
         </div>
       </section>
-      <section class="section-box box-why-trusted box-why-trusted-black">
-        <div class="container">
-          <div class="row align-items-end">
-            <div class="col-lg-4 mb-30">
-              <h2 class="text-32-bold">See why we are<br class="d-none d-lg-block"> trusted the world over</h2>
-            </div>
-            <div class="col-lg-8 mb-30">
-              <div class="box-numbers">
-                <div class="item-number">
-                  <h3 class="heading-2"><span class="count">469</span><span>k</span></h3>
-                  <p class="text-xl neutral-700">Social followers</p>
-                </div>
-                <div class="item-number">
-                  <h3 class="heading-2"><span class="count">25</span><span>k+</span></h3>
-                  <p class="text-xl neutral-700">Happy Clients</p>
-                </div>
-                <div class="item-number">
-                  <h3 class="heading-2"><span class="count">756</span><span>+</span></h3>
-                  <p class="text-xl neutral-700">Projects Done</p>
-                </div>
-                <div class="item-number">
-                  <h3 class="heading-2"><span class="count">100</span><span>+</span></h3>
-                  <p class="text-xl neutral-700">Global branches</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+{{--      <section class="section-box box-why-trusted box-why-trusted-black">--}}
+{{--        <div class="container">--}}
+{{--          <div class="row align-items-end">--}}
+{{--            <div class="col-lg-4 mb-30">--}}
+{{--              <h2 class="text-32-bold">See why we are<br class="d-none d-lg-block"> trusted the world over</h2>--}}
+{{--            </div>--}}
+{{--            <div class="col-lg-8 mb-30">--}}
+{{--              <div class="box-numbers">--}}
+{{--                <div class="item-number">--}}
+{{--                  <h3 class="heading-2"><span class="count">469</span><span>k</span></h3>--}}
+{{--                  <p class="text-xl neutral-700">Social followers</p>--}}
+{{--                </div>--}}
+{{--                <div class="item-number">--}}
+{{--                  <h3 class="heading-2"><span class="count">25</span><span>k+</span></h3>--}}
+{{--                  <p class="text-xl neutral-700">Happy Clients</p>--}}
+{{--                </div>--}}
+{{--                <div class="item-number">--}}
+{{--                  <h3 class="heading-2"><span class="count">756</span><span>+</span></h3>--}}
+{{--                  <p class="text-xl neutral-700">Projects Done</p>--}}
+{{--                </div>--}}
+{{--                <div class="item-number">--}}
+{{--                  <h3 class="heading-2"><span class="count">100</span><span>+</span></h3>--}}
+{{--                  <p class="text-xl neutral-700">Global branches</p>--}}
+{{--                </div>--}}
+{{--              </div>--}}
+{{--            </div>--}}
+{{--          </div>--}}
+{{--        </div>--}}
+{{--      </section>--}}
 {{--      <section class="section-box wow animate__animated animate__fadeIn box-testimonials-3">--}}
 {{--        <div class="container">--}}
 {{--          <div class="row">--}}
