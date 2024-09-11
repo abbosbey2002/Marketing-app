@@ -30,7 +30,7 @@
                       <div class="card-image"><img src="assets/imgs/page/homepage3/marketing.svg"></div>
                       <div class="card-info">
                         <h3 class="text-22-bold">Address</h3>
-                        <p class="text-md neutral-700">4517 Washington Ave. Manchester, Kentucky 39495 58 Howard Street #2 San Francisco, CA 941</p>
+                        <p class="text-md neutral-700">ул. Чиланзар 2/2, Tashkent, Узбекистан</p>
                       </div>
                     </div>
                   </div>
@@ -41,8 +41,8 @@
                         <h3 class="text-22-bold">Phone</h3>
                         <div class="text-md neutral-700">
                           <div class="row">
-                            <div class="col-sm-6"><a href="tel:+1(800)9684021">+1 (800) 968-40-21</a><br><a href="tel:+(406)5550120">+(406) 555-0120</a></div>
-                            <div class="col-sm-6"><a href="tel:+1(800)9684021">(+68)1221 09876</a><br><a href="tel:+(406)5550120">(+47)1221 09878</a></div>
+                            <div class="col-sm-6"><a href="tel:+1(800)9684021">+998 (93) 512 53 24</a><br><a href="tel:+(406)5550120">+998 (93) 180 53 24</a></div>
+                            <div class="col-sm-6"><a href="tel:+1(800)9684021">+998 (93) 513 53 24</a><br><a href="tel:+(406)5550120">+998 (93) 705 74 72</a></div>
                           </div>
                         </div>
                       </div>
@@ -55,8 +55,8 @@
                         <h3 class="text-22-bold">Email</h3>
                         <div class="text-md neutral-700">
                           <div class="row">
-                            <div class="col-sm-6"><a class="neutral-700" href="mailto:sale@nivia.com">sale@nivia.com</a></div>
-                            <div class="col-sm-6"><a class="neutral-700" href="mailto:contact@nivia.com">contact@nivia.com</a></div>
+                            <div class="col-sm-6"><a class="neutral-700" href="mailto:sale@nivia.com">info@marketing.uz</a></div>
+                            <div class="col-sm-6"><a class="neutral-700" href="mailto:contact@nivia.com">info@dora.uz</a></div>
                           </div>
                         </div>
                       </div>
@@ -75,8 +75,7 @@
             <div class="col-lg-6 mb-30">
               <div class="block-map">
                 <div class="box-map">
-                  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d193595.2527999867!2d-74.14448761897569!3d40.6976312333577!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2zVGjDoG5oIHBo4buRIE5ldyBZb3JrLCBUaeG7g3UgYmFuZyBOZXcgWW9yaywgSG9hIEvhu7M!5e0!3m2!1svi!2s!4v1697559878485!5m2!1svi!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                </div>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d47963.39837018879!2d69.1584603486328!3d41.293363400000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38ae8b7bb3e26fc1%3A0x93f3f483b0ab19c6!2sDORA!5e0!3m2!1sru!2s!4v1726039295615!5m2!1sru!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>                </div>
                 <p class="text-md neutral-600 text-center">Hours: 8:00 - 17:00, Mon - Sat </p>
               </div>
             </div>

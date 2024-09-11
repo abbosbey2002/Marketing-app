@@ -241,26 +241,82 @@
             @endif
 
             <div class="text-center card-integration-big">
-              <nav aria-label="Page navigation example">
-                <ul class="pagination">
-                  <li class="page-item"><a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true">
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination">
+                        <!-- Previous sahifaga o'tish -->
+                        @if ($providers->onFirstPage())
+                            <li class="page-item disabled">
+                    <span class="page-link" aria-hidden="true">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewbox="0 0 16 16" fill="none">
-                          <path d="M10 3.33398L5.33333 8.00065L10 12.6673" stroke="#191919" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"></path>
-                        </svg></span></a></li>
-                  <li class="page-item"><a class="page-link" href="#">1</a></li>
-                  <li class="page-item"><a class="page-link active" href="#">2</a></li>
-                  <li class="page-item"><a class="page-link" href="#">3</a></li>
-                  <li class="page-item"><a class="page-link" href="#">4</a></li>
-                  <li class="page-item"><a class="page-link" href="#">5</a></li>
-                  <li class="page-item"><a class="page-link" href="#">6</a></li>
-                  <li class="page-item"><a class="page-link" href="#" aria-label="Next"><span aria-hidden="true">
+                            <path d="M10 3.33398L5.33333 8.00065L10 12.6673" stroke="#191919" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </svg>
+                    </span>
+                            </li>
+                        @else
+                            <li class="page-item">
+                                <a class="page-link" href="{{ $providers->previousPageUrl() }}" aria-label="Previous">
+                        <span aria-hidden="true">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewbox="0 0 16 16" fill="none">
+                                <path d="M10 3.33398L5.33333 8.00065L10 12.6673" stroke="#191919" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"></path>
+                            </svg>
+                        </span>
+                                </a>
+                            </li>
+                        @endif
+
+                        <!-- Sahifalar -->
+                        @foreach ($providers->links()->elements[0] as $page => $url)
+                            @if ($page == $providers->currentPage())
+                                <li class="page-item active"><a class="page-link" href="#">{{ $page }}</a></li>
+                            @else
+                                <li class="page-item"><a class="page-link" href="{{ $url }}">{{ $page }}</a></li>
+                            @endif
+                        @endforeach
+
+                        <!-- Next sahifaga o'tish -->
+                        @if ($providers->hasMorePages())
+                            <li class="page-item">
+                                <a class="page-link" href="{{ $providers->nextPageUrl() }}" aria-label="Next">
+                        <span aria-hidden="true">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewbox="0 0 16 16" fill="none">
+                                <path d="M6 3.33398L10.6667 8.00065L6 12.6673" stroke="#191919" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"></path>
+                            </svg>
+                        </span>
+                                </a>
+                            </li>
+                        @else
+                            <li class="page-item disabled">
+                    <span class="page-link" aria-hidden="true">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewbox="0 0 16 16" fill="none">
-                          <path d="M6 3.33398L10.6667 8.00065L6 12.6673" stroke="#191919" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"></path>
-                        </svg></span></a></li>
-                </ul>
-              </nav>
+                            <path d="M6 3.33398L10.6667 8.00065L6 12.6673" stroke="#191919" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </svg>
+                    </span>
+                            </li>
+                        @endif
+                    </ul>
+                </nav>
             </div>
-          </div>
+
+{{--            <style>--}}
+{{--                .page-link.active {--}}
+{{--                    background-color: #c5ff41 !important; /* Active bo'lgandagi rang */--}}
+{{--                    color: #191919; /* Matn rangi */--}}
+{{--                    border-color: #c5ff41; /* Chegarasi ham active rangda bo'ladi */--}}
+{{--                }--}}
+{{--            </style>--}}
+
+
+            <script>
+                $(document).ready(function() {
+                    $('.pagination .page-link').on('click', function(e) {
+                        e.preventDefault(); // Linkni sahifaga o'tishni to'xtatish uchun
+                        $('.pagination .page-link').removeClass('active'); // Barcha active klasslarini olib tashlash
+                        $(this).addClass('active'); // Bosilgan linkka active klassini qo'shish
+                    });
+                });
+            </script>
+
+        </div>
       </div>
     </div>
   </section>

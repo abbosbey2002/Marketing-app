@@ -19,8 +19,7 @@ class MainController extends Controller
     // Page Provider
     public function pageProvider()
     {
-        $providers = Provider::latest()->take(6)->get();
-
+        $providers = Provider::paginate(6);
         return view('pages.page-provider', compact('providers'));
     }
 

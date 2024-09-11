@@ -1037,7 +1037,7 @@ body {
     gap: 20px;
   }
   .star-review select {
-    width: 100% !important; 
+    width: 100% !important;
   }
   .box-of-review {
     border: none !important;
@@ -5324,7 +5324,7 @@ a.icon-socials:hover {
 }
 
 /***************************
-    Page section margin 
+    Page section margin
 ****************************/
 .mtb-0 {
   margin: 0;
@@ -6532,8 +6532,8 @@ a.icon-socials:hover {
 
 .carouselTicker_vertical .carouselTicker__item {
   width: 100%;
-  height: 367px;
-  margin-bottom: 24px;
+  /*height: 367px;*/
+  /*margin-bottom: 24px;*/
   overflow: hidden;
   border-radius: 32px;
 }
@@ -6916,7 +6916,7 @@ a.icon-socials:hover {
 }
 
 .box-why-trusted {
-  margin-top: 120px;
+  /*margin-top: 120px;*/
   padding: 85px 0px 55px 0px;
   background: #ECEEF2;
 }
@@ -7857,7 +7857,8 @@ a.icon-socials:hover {
   height: 100%;
 }
 .hero-5 .banner-image-main .img-bg {
-  background: url(../imgs/page/homepage1/screen.png) no-repeat bottom right;
+    margin-top: 70px;
+  background: url(../imgs/page/homepage1/keyboard1.png) no-repeat bottom right;
   background-size: contain;
   width: 100%;
   height: 100%;
@@ -8012,7 +8013,8 @@ a.icon-socials:hover {
 
 .box-image-neutral-1000 {
   background-color: #191919;
-  padding: 82px 50px;
+    border-radius: 10px;
+  padding: 32px 20px;
   text-align: center;
   display: inline-block;
   position: relative;
@@ -8159,7 +8161,7 @@ a.icon-socials:hover {
 }
 
 .box-how-it-work {
-  padding-top: 140px;
+  /*padding-top: 140px;*/
   padding-bottom: 64px;
 }
 
@@ -9657,7 +9659,7 @@ section {
   display: none;
   width: 100% !important;
   height: 100% !important;
-  
+
 }
 .filter-box-responsive .input-ranges[type='range'] {
   width: 370px !important;
@@ -9885,7 +9887,7 @@ section {
   }
   .filter-box {
     display: none !important;
-  }   
+  }
   .filter-button-responsive {
     display: block;
   }
@@ -10886,7 +10888,7 @@ section {
   padding-bottom: 5px;
 }
 .card-grid-2 .card-block-info .card-profile strong:hover {
- 
+
 }
 .card-grid-2 .card-block-info .card-profile > span {
   color: #88929b;

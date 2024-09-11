@@ -155,50 +155,50 @@
         <div class="row">
           <div class="col-md-6 col-sm-12 mb-30"><a href="/"><img alt="Marketing" src="/assets/imgs/template/marketing-white.png" style="height: 50px;"></a>
             <div class="mt-20 mb-20">
-              <p class="text-md neutral-600 mb-10">4517 Washington Ave. Manchester, Kentucky 39495</p>
-              <p class="text-md neutral-600">Hours: 8:00 - 17:00, Mon - Sat </p>
+              <p class="text-md neutral-600 mb-10">ул. Чиланзар 2/2, Tashkent, Узбекистан</p>
+{{--              <p class="text-md neutral-600">Hours: 8:00 - 17:00, Mon - Sat </p>--}}
             </div>
           </div>
           <div class="col-md-6 col-sm-12">
             <div class="row">
               <div class="col-lg-3 col-md-6 mb-30">
-                <h5 class="neutral-0 mb-10 text-18-semibold neutral-0">About</h5>
+                <h5 class="neutral-0 mb-10 text-18-semibold neutral-0">For Clients</h5>
                 <ul class="menu-footer">
-                  <li><a href="#">Company</a></li>
-                  <li><a href="#">Careers</a></li>
-                  <li><a href="#">Press media</a></li>
-                  <li><a href="#">History</a></li>
-                  <li><a href="#">Sitemap</a></li>
-                  <li><a href="#">Privacy Policy</a></li>
+                  <li><a href="#">Post a project</a></li>
+                  <li><a href="#">Axplore</a></li>
+                  <li><a href="#">Search</a></li>
+{{--                  <li><a href="#">History</a></li>--}}
+{{--                  <li><a href="#">Sitemap</a></li>--}}
+{{--                  <li><a href="#">Privacy Policy</a></li>--}}
                 </ul>
               </div>
               <div class="col-lg-3 col-md-6 mb-30">
-                <h5 class="neutral-0 mb-10 text-18-semibold neutral-0">Services</h5>
+                <h5 class="neutral-0 mb-10 text-18-semibold neutral-0">For Providers</h5>
                 <ul class="menu-footer">
-                  <li><a href="#">IT Consultancy</a></li>
-                  <li><a href="#">Data Security</a></li>
-                  <li><a href="#">Business Reform</a></li>
-                  <li><a href="#">Firewall Advance</a></li>
-                  <li> <a href="#">Interactions</a></li>
-                  <li> <a href="#">SEO</a></li>
+                  <li><a href="#">How it works</a></li>
+                  <li><a href="#">Pricing</a></li>
+{{--                  <li><a href="#">Business Reform</a></li>--}}
+{{--                  <li><a href="#">Firewall Advance</a></li>--}}
+{{--                  <li> <a href="#">Interactions</a></li>--}}
+{{--                  <li> <a href="#">SEO</a></li>--}}
                 </ul>
               </div>
               <div class="col-lg-3 col-md-6 mb-30">
                 <h5 class="neutral-0 mb-10 text-18-semibold neutral-0">Resource</h5>
                 <ul class="menu-footer">
-                  <li><a href="#">Community</a></li>
-                  <li><a href="#">Our Blog</a></li>
-                  <li><a href="#">Forums</a></li>
-                  <li><a href="#">Meetups</a></li>
-                  <li> <a href="#">Marketplace</a></li>
+                  <li><a href="#">Help and Support</a></li>
+{{--                  <li><a href="#">Our Blog</a></li>--}}
+{{--                  <li><a href="#">Forums</a></li>--}}
+{{--                  <li><a href="#">Meetups</a></li>--}}
+{{--                  <li> <a href="#">Marketplace</a></li>--}}
                 </ul>
               </div>
               <div class="col-lg-3 col-md-6 mb-30">
-                <h5 class="neutral-0 mb-10 text-18-semibold neutral-0">Support</h5>
+                <h5 class="neutral-0 mb-10 text-18-semibold neutral-0">Company</h5>
                 <ul class="menu-footer">
-                  <li><a href="#">Forum Support</a></li>
-                  <li><a href="#">Help & FAQ</a></li>
-                  <li><a href="#">Contact Us</a></li>
+                  <li><a href="javascript: void(0);">About </a></li>
+                  <li><a href="/contacts">Contact</a></li>
+{{--                  <li><a href="#">Contact Us</a></li>--}}
                 </ul>
               </div>
             </div>
