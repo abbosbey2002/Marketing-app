@@ -12,6 +12,7 @@ class MainController extends Controller
     {
         $partners = Provider::all();
         $categories = Category::all();
+
         return view('pages.home', compact('partners', 'categories'));
     }
 
@@ -19,6 +20,7 @@ class MainController extends Controller
     public function pageProvider()
     {
         $providers = Provider::paginate(6);
+
         return view('pages.page-provider', compact('providers'));
     }
 
