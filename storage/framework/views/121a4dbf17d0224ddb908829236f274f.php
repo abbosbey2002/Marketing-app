@@ -1,1 +1,0 @@
-<?php /**PATH /home/nazarbek/server/MARKETING/resources/views/errors/404.blade.php ENDPATH**/ ?>

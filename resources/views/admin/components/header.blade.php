@@ -1496,12 +1496,16 @@
                 </div>
                 <div class="dropdown nxl-h-item">
                     <a href="javascript:void(0);" data-bs-toggle="dropdown" role="button" data-bs-auto-close="outside">
-                        <img src="/admin/assets/images/avatar/1.png" alt="user-image" class="img-fluid user-avtar me-0">
+                        <?php
+                        $provider = \App\Models\Provider::inRandomOrder()->first();
+
+                        $logo = $provider ? $provider->logo : 'default-logo.png';                        ?>
+                        <img src="{{ asset('storage/' . $logo) }}" alt="user-image" class="img-fluid user-avtar me-0">
                     </a>
                     <div class="dropdown-menu dropdown-menu-end nxl-h-dropdown nxl-user-dropdown">
                         <div class="dropdown-header">
                             <div class="d-flex align-items-center">
-                                <img src="/admin/assets/images/avatar/1.png" alt="user-image" class="img-fluid user-avtar">
+                                <img src="{{ asset('storage/' . $provider->logo) }}" alt="user-image" class="img-fluid user-avtar me-0">
                                 <div>
                                     <h6 class="text-dark mb-0">{{ Auth()->user()->manager_name}}<span class="badge bg-soft-success text-success ms-1">PRO</span></h6>
                                     <span class="fs-12 fw-medium text-muted">{{ Auth()->user()->manager_email}}</span>

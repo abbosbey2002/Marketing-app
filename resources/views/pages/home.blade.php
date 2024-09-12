@@ -38,7 +38,7 @@
                 @if ($partners->isNotEmpty())
                     @foreach($partners as $partner)
                         <li class="carouselTicker__item">
-                            <div class="item-logo"><img src="/storage/logos/{{ $partner->logo }}" alt="{{ $partner->name }}"></div>
+                            <div class="item-logo"><img src="{{ asset('storage/' . $partner->logo) }}" alt="{{ $partner->name }}"></div>
                         </li>
                     @endforeach
                 @else
