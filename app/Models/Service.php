@@ -7,9 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Service extends Model
 {
+
     use HasFactory;
 
-    protected $fillable = ['name_en', 'name_uz', 'name_ru', 'category_id'];
+    protected $table = 'services';
+
+    protected $fillable = ['name_ru', 'name_uz', 'name_en', 'category_id'];
 
     // Optional: If a ServiceList has many Skills
     public function skills()
@@ -19,7 +22,7 @@ class Service extends Model
 
     public function category()
     {
-        return $this->belongsTo(Category::class);
+        return $this->belongsTo(Category::class,'category_id');
     }
 
     public function providerSkills()

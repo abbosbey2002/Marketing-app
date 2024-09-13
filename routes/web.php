@@ -1,10 +1,15 @@
 <?php
 
+use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\ServiceController;
+
+
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\ProviderRegistrationController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\Awards\AwardsController;
+
 use App\Http\Controllers\Contact\ContactController;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\Managers\ManagerController;
@@ -16,7 +21,6 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\Reviews\ReviewsController;
 use App\Http\Controllers\Services\ServicesController;
 use App\Http\Controllers\Teams\TeamController;
-use App\Models\Service;
 use Illuminate\Support\Facades\Route;
 
 /*****************************************************************************
@@ -93,7 +97,6 @@ Route::prefix('provider')->group(function () {
 
         Route::resource('reviews', ReviewsController::class);
         Route::resource('providers', ProvidersController::class);
-        Route::resource('categories', CategoriesController::class);
         Route::resource('contacts', ContactController::class);
         Route::resource('marketers', MarketersController::class);
         Route::resource('partners', PartnersController::class);
@@ -103,6 +106,10 @@ Route::prefix('provider')->group(function () {
         Route::resource('teams', TeamController::class);
         Route::resource('managers', ManagerController::class);
         Route::get('/managers/{id}/data', [ManagerController::class, 'getManager']);
+
+        // admin  category va service qo'shish uchun
+        Route::resource('services-admin', ServiceController::class);
+        Route::resource('categories', CategoryController::class);
     });
 });
 

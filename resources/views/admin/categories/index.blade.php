@@ -2,205 +2,81 @@
 
 @section('content')
 
-<!-- Start Main Content -->
-<main class="nxl-container" style="display: flex; flex-direction: column;justify-content: space-between;">
-    <div class="nxl-content">
-        <!-- Page Header -->
-        <div class="page-header">
-            <div class="page-header-left d-flex align-items-center">
-                <div class="page-header-title">
-                    <h5 class="m-b-10">{{ __('sidebar.general.branches') }}</h5>
-                </div>
-                <ul class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="/admin/dashboard">{{ __('sidebar.general.home') }}</a></li>
-                    <li class="breadcrumb-item">{{ __('messages.branch.list') }}</li>
-                </ul>
-            </div>
-            <div class="page-header-right ms-auto">
-                <div class="page-header-right-items">
-                    <div class="d-flex d-md-none">
-                        <a href="javascript:void(0)" class="page-header-right-close-toggle">
-                            <i class="feather-arrow-left me-2"></i>
-                            <span>{{ __('branch.back') }}</span>
-                        </a>
-                    </div>
-                    <div class="d-flex align-items-center gap-2 page-header-right-items-wrapper">
-                        <a href="javascript:void(0);" class="btn btn-icon btn-light-brand" data-bs-toggle="collapse" data-bs-target="#collapseOne">
-                            <i class="feather-bar-chart"></i>
-                        </a>
-                        <div class="dropdown d-none">
-                            <a class="btn btn-icon btn-light-brand" data-bs-toggle="dropdown" data-bs-offset="0, 10" data-bs-auto-close="outside">
-                                <i class="feather-filter"></i>
+    <main class="nxl-container">
+        <div class="nxl-content without-header nxl-full-content">
+        <!-- [ Main Content ] start -->
+        <div class="main-content  ">
+            <div class="content-area" data-scrollbar-target="#psScrollbarInit">
+                <div class="content-area-header bg-white sticky-top">
+                    <div class="page-header-right ms-auto">
+                        <div class="d-flex align-items-center gap-3 page-header-right-items-wrapper">
+                            <a href="javascript:void(0);" class="btn btn-primary"
+                               data-bs-toggle="offcanvas" data-bs-target="#serviceProviderOffcanvas">
+                                <i class="feather-plus me-2"></i>
+                                <span>Add New</span>
                             </a>
-                            <div class="dropdown-menu dropdown-menu-end">
-                                <a href="javascript:void(0);" class="dropdown-item">
-                                    <i class="feather-eye me-3"></i>
-                                    <span> {{ __('branch.all')}} </span>
-                                </a>
-                                <a href="javascript:void(0);" class="dropdown-item">
-                                    <i class="feather-users me-3"></i>
-                                    <span> {{ __('branch.group')}} </span>
-                                </a>
-                                <a href="javascript:void(0);" class="dropdown-item">
-                                    <i class="feather-flag me-3"></i>
-                                    <span> {{ __('branch.country')}} </span>
-                                </a>
-                                <a href="javascript:void(0);" class="dropdown-item">
-                                    <i class="feather-dollar-sign me-3"></i>
-                                    <span> {{ __('branch.invoice')}} </span>
-                                </a>
-                                <a href="javascript:void(0);" class="dropdown-item">
-                                    <i class="feather-briefcase me-3"></i>
-                                    <span> {{ __('branch.project')}} </span>
-                                </a>
-                                <a href="javascript:void(0);" class="dropdown-item">
-                                    <i class="feather-user-check me-3"></i>
-                                    <span> {{ __('branch.active')}} </span>
-                                </a>
-                                <a href="javascript:void(0);" class="dropdown-item">
-                                    <i class="feather-user-minus me-3"></i>
-                                    <span> {{ __('branch.inactive')}} </span>
-                                </a>
-                            </div>
                         </div>
-                        <div class="dropdown">
-                            <a class="btn btn-icon btn-light-brand" data-bs-toggle="dropdown" data-bs-offset="0, 10" data-bs-auto-close="outside">
-                                <i class="feather-paperclip"></i>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-end d-none">
-                                <a href="javascript:void(0);" class="dropdown-item">
-                                    <i class="bi bi-filetype-pdf me-3"></i>
-                                    <span>PDF</span>
-                                </a>
-                                <a href="javascript:void(0);" class="dropdown-item">
-                                    <i class="bi bi-filetype-csv me-3"></i>
-                                    <span>CSV</span>
-                                </a>
-                                <a href="javascript:void(0);" class="dropdown-item">
-                                    <i class="bi bi-filetype-xml me-3"></i>
-                                    <span>XML</span>
-                                </a>
-                                <a href="javascript:void(0);" class="dropdown-item">
-                                    <i class="bi bi-filetype-txt me-3"></i>
-                                    <span>Text</span>
-                                </a>
-                                <a href="javascript:void(0);" class="dropdown-item">
-                                    <i class="bi bi-filetype-exe me-3"></i>
-                                    <span>Excel</span>
-                                </a>
-                                <div class="dropdown-divider"></div>
-                                <a href="javascript:void(0);" class="dropdown-item">
-                                    <i class="bi bi-printer me-3"></i>
-                                    <span>Print</span>
-                                </a>
-                            </div>
-                        </div>
-                        <a href="{{ route('categories.create') }}" class="btn btn-primary">
-                            <i class="feather-plus me-2"></i>
-                            <span>{{ __('messages.branch.create') }}</span>
-                        </a>
                     </div>
                 </div>
-                <div class="d-md-none d-flex align-items-center">
-                    <a href="javascript:void(0)" class="page-header-right-open-toggle">
-                        <i class="feather-align-right fs-20"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-        <!-- End Page Header -->
-
-        <!-- Main Content -->
-        <div class="main-content">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="card stretch stretch-full">
-                        <div class="card-body p-0">
-                            <div class="table-responsive">
-                                <table class="table table-hover" id="branchList">
-                                    <thead>
-                                        <tr>
-                                            <th>Kategoriya</th>
-                                            <th>Provider</th>
-                                            <th class="text-end">Settings</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach ($categories as $category)
-                                        <tr>
-                                            <td>
-                                                <a href="{{ route('categories.show', $category->id) }}" class="hstack gap-3">
-                                                    <div>
-                                                        <span class="text-truncate-1-line">{{ $category->name }}</span>
-                                                    </div>
-                                                </a>
-                                            </td>
-                                            <td><a href="#">{{ $category->provider->name ?? null }}</a></td>
-                                            
-                                            <td>
-                                                <div class="hstack gap-2 justify-content-end">
-                                                    <a href="{{ route('categories.show', $category->id) }}" class="avatar-text avatar-md">
-                                                        <i class="feather-eye"></i>
+                <div class="content-area-body">
+                    <div class="card mb-0">
+                        <div class="card-body">
+                            <!--! BEGIN: [Users] !-->
+                            <div class="card stretch stretch-full mb-0">
+                                <div class="card-header">
+                                    <h5 class="card-title">Category</h5>
+                                </div>
+                                @foreach ($categories as $category)
+                                    <div class="card-body custom-card-action">
+                                        <div class="w-100 d-flex align-items-center justify-content-between">
+                                            <div class="d-flex align-items-center">
+                                                <div>
+                                                    <!-- Display Service List Name -->
+                                                    <a href="javascript:void(0)" class="d-flex align-items-center mb-1" data-bs-toggle="offcanvas" data-bs-target="#editServiceModal{{ $category->id }}">
+                                                        {{ $category->name_en ?? 'No Category List' }}
                                                     </a>
 
-                                                    <div class="dropdown">
-                                                        <a href="javascript:void(0)" class="avatar-text avatar-md" data-bs-toggle="dropdown" data-bs-offset="0,21">
-                                                            <i class="feather feather-more-horizontal"></i>
-                                                        </a>
-                                                        <ul class="dropdown-menu">
-                                                            <li>
-                                                                <a class="dropdown-item" href="{{ route('categories.edit', $category->id) }}">
-                                                                    <i class="feather feather-edit-3 me-3"></i>
-                                                                    <span>Edit</span>
-                                                                </a>
-                                                            </li>
-                                                            <li>
-                                                                <a class="dropdown-item printBTN" href="javascript:void(0)">
-                                                                    <i class="feather feather-printer me-3"></i>
-                                                                    <span>Print</span>
-                                                                </a>
-                                                            </li>
-                                                            <li>
-                                                                <a class="dropdown-item" href="javascript:void(0)">
-                                                                    <i class="feather feather-clock me-3"></i>
-                                                                    <span>Remind</span>
-                                                                </a>
-                                                            </li>
-                                                            <li class="dropdown-divider"></li>
-                                                            <li>
-                                                                <form class="dropdown-item" action="{{ route('categories.destroy', $category->id) }}" method="POST" onsubmit="confirmDelete(event)">
-                                                                    @csrf
-                                                                    @method('DELETE')
-                                                                    <button type="submit" style="background: none; border: none; padding: 0;">
-                                                                        <i class="feather feather-trash-2 me-3"></i>
-                                                                        Delete
-                                                                    </button>
-                                                                </form>                                                                
-                                                            </li>
-                                                        </ul>
-                                                    </div>
                                                 </div>
-                                            </td>
-                                        </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
+                                            </div>
 
+                                            <div class="hstack gap-2 justify-content-end">
+                                                <!-- Edit Button -->
+                                                <a href="javascript:void(0);" class="avatar-text avatar-md" data-bs-toggle="offcanvas" data-bs-target="#editServiceModal{{ $category->id }}">
+                                                    <i class="feather feather-edit-3"></i>
+                                                </a>
+
+                                                <!-- Delete Button -->
+                                                <form class="avatar-text avatar-md" method="POST" onsubmit="confirmDelete(event)" action="{{ route('categories.destroy', $category->id) }}">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn text-dark p-0 border-0" style="background: none;">
+                                                        <i class="feather feather-trash-2"></i>
+                                                    </button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                        <hr class="border-dashed my-3">
+                                    </div>
+                                @endforeach
+
+                                <a href="javascript:void(0);" class="card-footer fs-11 fw-bold text-uppercase text-center"
+                                   data-bs-toggle="offcanvas" data-bs-target="#serviceProviderOffcanvas">Add New
+                                </a>
+
+                            </div>
+
+                            <!--! END: [Users] !-->
+
+                        </div>
                     </div>
                 </div>
+
             </div>
-            <div class="row justify-content-center mt-4">
-                <div class="">
-                    {{ $categories->links() }}
-                </div>
-            </div>
+            <!-- [ Content Area ] end -->
         </div>
-        <!-- End Main Content -->
-    </div>
-</main>
-<!-- End Main Content -->
+        </div>
+        <!-- [ Main Content ] end -->
+    </main>
 <script>
     document.write(new Date().getFullYear());
 </script>
@@ -282,4 +158,7 @@ function confirmDelete(event) {
 }
 </script>
 
+
+@include('admin.components.categories.category-modal' )
+@include('admin.components.categories.category-edit-modal',$categories)
 @endsection

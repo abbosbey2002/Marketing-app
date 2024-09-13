@@ -23,46 +23,46 @@
                 </li>
 
                 @if (request()->is('provider/providers'))
-                <li class="nxl-item nxl-hasmenu {{ request()->is('provider/providers') ? 'active' : '' }}">
-                    <a href="javascript:void(0);" class="nxl-link">
-                        <span class="nxl-micon"><i class="fa-regular fa-building"></i></span>
-                        <span class="nxl-mtext">Provider</span><span class="nxl-arrow"><i class="feather-chevron-right"></i></span>
-                    </a>
-                    <ul class="nxl-submenu">
-                        <li class="nxl-item {{ request()->is('providers.index') ? 'active' : '' }}">
-                            <a class="nxl-link" href="{{ route('providers.index') }}">Overview</a>
-                        </li>
-                        <li class="nxl-item {{ request()->is('services.index') ? 'active' : '' }}">
-                            <a class="nxl-link" href="{{ route('services.index') }}">Services</a>
-                        </li>
-                        <li class="nxl-item {{ request()->is('reviews.index') ? 'active' : '' }}">
-                            <a class="nxl-link" href="{{ route('reviews.index') }}">Reviews</a>
-                        </li>
-                        <li class="nxl-item {{ request()->is('portfolios.index') ? 'active' : '' }}">
-                            <a class="nxl-link" href="{{ route('portfolios.index') }}">Portfolios</a>
-                        </li>
-                        <li class="nxl-item {{ request()->is('awards.index') ? 'active' : '' }}">
-                            <a class="nxl-link" href="{{ route('awards.index') }}">Awards</a>
-                        </li>
-                        <li class="nxl-item {{ request()->is('teams.index') ? 'active' : '' }}">
-                            <a class="nxl-link" href="{{ route('teams.index') }}">Team</a>
-                        </li>
-                        <li class="nxl-item {{ request()->is('managers.index') ? 'active' : '' }}">
-                            <a class="nxl-link" href="{{ route('managers.index') }}">Add manager</a>
-                        </li>
-                    </ul>
-                </li>
+                    <li class="nxl-item nxl-hasmenu {{ request()->is('provider/providers') ? 'active' : '' }}">
+                        <a href="javascript:void(0);" class="nxl-link">
+                            <span class="nxl-micon"><i class="fa-regular fa-building"></i></span>
+                            <span class="nxl-mtext">Provider</span><span class="nxl-arrow"><i class="feather-chevron-right"></i></span>
+                        </a>
+                        <ul class="nxl-submenu">
+                            <li class="nxl-item {{ request()->is('providers.profile') ? 'active' : '' }}">
+                                <a class="nxl-link" href="{{ route('providers.profile') }}">Overview</a>
+                            </li>
+                            <li class="nxl-item {{ request()->is('services.index') ? 'active' : '' }}">
+                                <a class="nxl-link" href="{{ route('services.index') }}">Services</a>
+                            </li>
+                            <li class="nxl-item {{ request()->is('reviews.index') ? 'active' : '' }}">
+                                <a class="nxl-link" href="{{ route('reviews.index') }}">Reviews</a>
+                            </li>
+                            <li class="nxl-item {{ request()->is('portfolios.index') ? 'active' : '' }}">
+                                <a class="nxl-link" href="{{ route('portfolios.index') }}">Portfolios</a>
+                            </li>
+                            <li class="nxl-item {{ request()->is('awards.index') ? 'active' : '' }}">
+                                <a class="nxl-link" href="{{ route('awards.index') }}">Awards</a>
+                            </li>
+                            <li class="nxl-item {{ request()->is('teams.index') ? 'active' : '' }}">
+                                <a class="nxl-link" href="{{ route('teams.index') }}">Team</a>
+                            </li>
+                            <li class="nxl-item {{ request()->is('managers.index') ? 'active' : '' }}">
+                                <a class="nxl-link" href="{{ route('managers.index') }}">Add manager</a>
+                            </li>
+                        </ul>
+                    </li>
 
                 @else
-                <li class="nxl-item {{ request()->is('providers.index') ? 'active' : '' }}">
-                    <a href="{{ route('providers.index') }}" class="nxl-link">
-                        <span class="nxl-micon"><i class="fa-regular fa-building"></i></span>
-                        <span class="nxl-mtext">Provider</span><span class="nxl-arrow"></span>
-                    </a>
-                </li>
+                    <li class="nxl-item {{ request()->is('providers.profile') ? 'active' : '' }}">
+                        <a href="{{ route('providers.profile') }}" class="nxl-link">
+                            <span class="nxl-micon"><i class="fa-regular fa-building"></i></span>
+                            <span class="nxl-mtext">Provider</span><span class="nxl-arrow"></span>
+                        </a>
+                    </li>
                 @endif
 
-                
+
                 <li class="nxl-item nxl-hasmenu {{ request()->is('marketer*') ? 'active' : '' }}">
                     <a href="javascript:void(0);" class="nxl-link">
                         <span class="nxl-micon"><i class="feather-user"></i></span>
@@ -84,6 +84,19 @@
                     </a>
                     <ul class="nxl-submenu">
                         <li class="nxl-item {{ request()->is('client/about') ? 'active' : '' }}"><a class="nxl-link" href="#">About</a></li>
+                    </ul>
+                </li>
+
+                <li class="nxl-item nxl-hasmenu }">
+                    <a href="javascript:void(0);" class="nxl-link">
+                        <span class="nxl-micon"><i class="fa-solid fa-gears"></i></span>
+                        <span class="nxl-mtext">settings</span><span class="nxl-arrow"><i class="feather-chevron-right"></i></span>
+                    </a>
+                    <ul class="nxl-submenu">
+                        <li class="nxl-item {{ request()->is('categories') ? 'active' : '' }}"><a class="nxl-link" href="{{route('categories.index')}}">Category</a></li>
+                    </ul>
+                    <ul class="nxl-submenu">
+                        <li class="nxl-item {{ request()->is('services-admin') ? 'active' : '' }}"><a class="nxl-link" href="{{route('services-admin.index')}}">Service</a></li>
                     </ul>
                 </li>
 
