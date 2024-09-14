@@ -10,8 +10,9 @@ class Category extends Model
     use HasFactory;
 
     protected $fillable = [
-        'provider_id',
-        'name',
+        'name_uz',
+        'name_ru',
+        'name_en',
     ];
 
     public function services()
@@ -19,8 +20,4 @@ class Category extends Model
         return $this->hasMany(Service::class);
     }
 
-    public function provider()
-    {
-        return $this->belongsTo(Provider::class);
-    }
 }

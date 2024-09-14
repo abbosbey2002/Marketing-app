@@ -14,7 +14,7 @@
             <div class="content-area-header bg-white sticky-top">
                 <div class="page-header-right ms-auto">
                     <div class="d-flex align-items-center gap-3 page-header-right-items-wrapper">
-                        <a href="javascript:void(0);" class="btn btn-primary" 
+                        <a href="javascript:void(0);" class="btn btn-primary"
                         data-bs-toggle="offcanvas" data-bs-target="#serviceProviderOffcanvas">
                             <i class="feather-plus me-2"></i>
                             <span>Add New</span>
@@ -39,7 +39,7 @@
                                                     <a href="javascript:void(0)" class="d-flex align-items-center mb-1" data-bs-toggle="offcanvas" data-bs-target="#editServiceModal{{ $service->id }}">
                                                         {{ $service->serviceList->name_en ?? 'No Service List' }}
                                                     </a>
-                                                    <div class="fs-12 fw-normal text-muted">       
+                                                    <div class="fs-12 fw-normal text-muted">
                                                         <!-- Display Skills -->
                                                         @if($service->skills->isNotEmpty())
                                                             <ul>
@@ -59,7 +59,7 @@
                                                 <a href="javascript:void(0);" class="avatar-text avatar-md" data-bs-toggle="offcanvas" data-bs-target="#editServiceModal{{ $service->id }}">
                                                     <i class="feather feather-edit-3"></i>
                                                 </a>
-                                                
+
                                                 <!-- Delete Button -->
                                                 <form class="avatar-text avatar-md" method="POST" onsubmit="confirmDelete(event)" action="{{ route('services.destroy', $service->id) }}">
                                                     @csrf
@@ -77,15 +77,15 @@
                                 <a href="javascript:void(0);" class="card-footer fs-11 fw-bold text-uppercase text-center"
                                             data-bs-toggle="offcanvas" data-bs-target="#serviceProviderOffcanvas">Add New
                                 </a>
-                                               
+
                         </div>
-                
+
                         <!--! END: [Users] !-->
-                   
+
                     </div>
                 </div>
             </div>
-            
+
         </div>
         <!-- [ Content Area ] end -->
     </div>
