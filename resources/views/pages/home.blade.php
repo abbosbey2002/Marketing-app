@@ -1,9 +1,6 @@
 @extends('layouts.main')
-
 @section('title', 'Маркетинговая Ассоциация Узбекистана')
 @section('description', 'Маркетинговая Ассоциация Узбекистана. Цель Ассоциации: объединение юридических лиц и экспертов, заинтересованных в развитии маркетинга в Узбекистане, представление профессиональных интересов, совершенствование профессиональных норм и развитие кадрового потенциала маркетинговой отрасли.')
-
-
 @section('content')
     <main class="main">
         <section class="section-box">
@@ -14,6 +11,13 @@
                 </div>
                 <div class="banner-inner-top">
                     <div class="container">
+                        <div class="box-banner-left">
+                            <a class="btn btn-brand-5-new" href="javascript:void(0);"><span>New</span> Version 2.0
+                                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewbox="0 0 22 22" fill="none">
+                                    <path d="M22 11.0003L18.4791 7.47949V10.3074H0V11.6933H18.4791V14.5213L22 11.0003Z" fill=""></path>
+                                </svg>
+                            </a>
+                        </div>
                         <div class="box-banner-left">
                             <h1 class="display-2 mb-30 mt-25 neutral-0">Find the perfect service provider</h1>
                             <p class="text-lg neutral-500 mb-55">
@@ -44,26 +48,16 @@
                         @else
                             <p>No partners logos available</p>
                         @endif
-                        <li class="carouselTicker__item">
-                            <div class="item-logo"><img src="/storage/logos/x-partner.png" alt="chevrolet"></div>
-                        </li>
-                        <li class="carouselTicker__item">
-                            <div class="item-logo"><img src="/storage/logos/chevrolet.png" alt="chevrolet"></div>
-                        </li>
-                        <li class="carouselTicker__item">
-                            <div class="item-logo"><img src="/storage/logos/media.png" alt="chevrolet"></div>
-                        </li>
                     </ul>
                 </div>
             </div>
         </section>
         <section class="section-box wow animate__animated animate__fadeIn box-how-it-work">
             <div class="container">
-                {{--                <a class="btn btn-brand-4-sm" href="#">How It Works</a>--}}
                 <h2 class="mt-35 mb-15 text-center">Direct access to verified service<br class="d-none d-lg-block">providers in 1000+ services.</h2>
                 <p class="text-lg neutral-500 mb-45 text-center">Discover the most relevant providers for your project based on your own specific requirements.</p>
                 <div class="row">
-                    @if ($categories->isNotEmpty())
+                @if ($categories->isNotEmpty())
                         @foreach($categories as $category)
                             <div class="col-lg-4">
                                 <div class="box-border-rounded">
@@ -77,7 +71,9 @@
                                         <div class="card-desc">
                                             @if ($category->services->isNotEmpty())
                                                 @foreach ($category->services as $service)
-                                                    <a href="#"><span>{{ $service->name_en }} </span><i class="fa-solid fa-arrow-right"></i></a>
+                                                    <a href="{{ route('services-providers', $service->id) }}">
+                                                        <span>{{ $service->name_en }} </span><i class="fa-solid fa-arrow-right"></i>
+                                                    </a>
                                                 @endforeach
                                             @else
                                                 <p>No services available</p>
@@ -93,111 +89,11 @@
                 </div>
             </div>
             <div class="container mt-25">
-                <div class="box-newsletter mb-0"
-                     style="background-image: url(https://marketing.uz/uploads/sections/846/original.jpg); background-size: cover; height: 347px;">
+                <div class="box-newsletter mb-0" style="background-image: url('https://marketing.uz/uploads/sections/846/original.jpg'); background-size: cover; height: 347px;">
                 </div>
             </div>
         </section>
-        {{--      <section class="section-box wow animate__animated animate__fadeIn box-preparing-2">--}}
-        {{--        <div class="container">--}}
-        {{--          <div class="text-center">--}}
-        {{--            <h2 class="mb-15">Preparing For Your Success,<br class="d-none d-lg-block">We Provide Truly Prominent IT Solutions</h2>--}}
-        {{--            <p class="text-lg neutral-700">Nivia is an independent web design studio with a rich history.<br>Founded in 1999, it gathered the best web designers & developers.</p>--}}
-        {{--          </div>--}}
-        {{--          <div class="row mt-90">--}}
-        {{--            <div class="col-lg-4 col-md-6">--}}
-        {{--              <div class="card-preparing">--}}
-        {{--                <div class="card-image"><img class="wow fadeInUp" src="assets/imgs/page/homepage1/img-prepare.png" alt="Nivia"></div>--}}
-        {{--                <div class="card-info">--}}
-        {{--                  <h5>Easy Control Panel</h5>--}}
-        {{--                  <p class="text-lg neutral-700 w-85 mx-auto">Mastering Your Domain with Effortless Control: Elevate Your Management Experience to New Heights of Ease and Efficiency.</p>--}}
-        {{--                </div>--}}
-        {{--              </div>--}}
-        {{--            </div>--}}
-        {{--            <div class="col-lg-4 col-md-6">--}}
-        {{--              <div class="card-preparing">--}}
-        {{--                <div class="card-image"><img class="wow fadeInUp" src="assets/imgs/page/homepage1/img-prepare2.png" alt="Nivia"></div>--}}
-        {{--                <div class="card-info">--}}
-        {{--                  <h5>Details Reporting</h5>--}}
-        {{--                  <p class="text-lg neutral-700 w-85 mx-auto">Achieve Business Excellence with Comprehensive Details Reporting: The Key to Informed Decision-Making and Strategic Growth</p>--}}
-        {{--                </div>--}}
-        {{--              </div>--}}
-        {{--            </div>--}}
-        {{--            <div class="col-lg-4 col-md-6">--}}
-        {{--              <div class="card-preparing">--}}
-        {{--                <div class="card-image"><img class="wow fadeInUp" src="assets/imgs/page/homepage1/img-prepare3.png" alt="Nivia"></div>--}}
-        {{--                <div class="card-info">--}}
-        {{--                  <h5>Sales Comparison</h5>--}}
-        {{--                  <p class="text-lg neutral-700 w-85 mx-auto">Maximizing Your Data Potential: A Deep Dive into the World of Detailed Reporting for Informed, Strategic Decision-Making</p>--}}
-        {{--                </div>--}}
-        {{--              </div>--}}
-        {{--            </div>--}}
-        {{--          </div>--}}
-        {{--        </div>--}}
-        {{--      </section>--}}
-        {{--      <section class="section-box wow animate__animated animate__fadeIn box-our-track-2">--}}
-        {{--        <div class="container">--}}
-        {{--          <div class="row align-items-center">--}}
-        {{--            <div class="col-lg-6 mb-40">--}}
-        {{--              <div class="strate-icon"><span></span> Strategies that work</div>--}}
-        {{--              <h2 class="heading-2 mb-20">Track the progress towards objectives with key results</h2>--}}
-        {{--              <p class="text-lg neutral-700">Nivia is an independent web design studio with a rich history. Founded in 1999, it gathered the best web designers & developers.</p>--}}
-        {{--              <div class="row mt-50">--}}
-        {{--                <div class="col-lg-12">--}}
-        {{--                  <div class="card-feature-2">--}}
-        {{--                    <div class="card-image"><img src="assets/imgs/page/homepage3/discover.svg"></div>--}}
-        {{--                    <div class="card-info"><a href="#">--}}
-        {{--                        <h3 class="text-22-bold">Discover your best and worst performing audiences</h3></a>--}}
-        {{--                      <p class="text-md neutral-700">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur, iste</p>--}}
-        {{--                    </div>--}}
-        {{--                  </div>--}}
-        {{--                </div>--}}
-        {{--                <div class="col-lg-12">--}}
-        {{--                  <div class="card-feature-2">--}}
-        {{--                    <div class="card-image"><img src="assets/imgs/page/homepage3/keep.svg"></div>--}}
-        {{--                    <div class="card-info"><a href="#">--}}
-        {{--                        <h3 class="text-22-bold">Keep your team in the loop</h3></a>--}}
-        {{--                      <p class="text-md neutral-700">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur, iste</p>--}}
-        {{--                    </div>--}}
-        {{--                  </div>--}}
-        {{--                </div>--}}
-        {{--              </div>--}}
-        {{--              <div class="box-buttons-feature-4"><a class="btn btn-brand-4-medium mr-20" href="#">Subscribe--}}
-        {{--                  <svg width="22" height="8" viewbox="0 0 22 8" fill="none" xmlns="http://www.w3.org/2000/svg">--}}
-        {{--                    <path d="M22 3.99934L18.4791 0.478516V3.30642H0V4.69236H18.4791V7.52031L22 3.99934Z" fill=""></path>--}}
-        {{--                  </svg></a><a class="btn btn-learmore-2" href="#"><span>--}}
-        {{--                    <svg width="39" height="38" viewbox="0 0 39 38" fill="none" xmlns="http://www.w3.org/2000/svg">--}}
-        {{--                      <rect x="0.5" width="38" height="38" rx="19" fill="#191919"></rect>--}}
-        {{--                      <g clip-path="url(#clip0_1_376)">--}}
-        {{--                        <path d="M24.1537 16.8139L15.218 25.7497L13.75 24.2817L22.6847 15.3459H14.81V13.2695H26.2301V24.6897H24.1537V16.8139Z" fill="#C5FF55"></path>--}}
-        {{--                      </g>--}}
-        {{--                      <defs>--}}
-        {{--                        <clippath id="clip0_1_376">--}}
-        {{--                          <rect width="13" height="13" fill="white" transform="translate(13.5 13)"></rect>--}}
-        {{--                        </clippath>--}}
-        {{--                      </defs>--}}
-        {{--                    </svg></span>Learn More</a></div>--}}
-        {{--            </div>--}}
-        {{--            <div class="col-lg-6 text-center mb-40">--}}
-        {{--              <div class="box-border-image">--}}
-        {{--                <div class="box-image-line-1">--}}
-        {{--                  <div class="wow fadeInDown img-1" data-wow-delay="0"><img src="assets/imgs/new/marketing_forum.png" alt="Nivia"></div>--}}
-        {{--                  <div class="wow fadeInDown img-1" data-wow-delay="0.3s"><img src="assets/imgs/new/tawkent_forum.png" alt="Nivia"></div>--}}
-        {{--                </div>--}}
-        {{--                <div class="box-image-line-2">--}}
-        {{--                  <div class="wow fadeInLeft img-1" data-wow-delay="0"><img src="assets/imgs/new/taf_1.png" alt="Nivia"></div>--}}
-        {{--                  <div class="wow fadeInRight img-1" data-wow-delay="0.2s"><img src="assets/imgs/new/yil_brend.png" alt="Nivia"></div>--}}
-        {{--                </div>--}}
-        {{--                <div class="box-image-line-3">--}}
-        {{--                  <div class="wow fadeInUp img-1" data-wow-delay="0"><img src="assets/imgs/new/taf_2.png" alt="Nivia"></div>--}}
-        {{--                  <div class="wow fadeInUp img-2" data-wow-delay="0.2s"><img src="assets/imgs/new/d_marketing.png" alt="Nivia"></div>--}}
-        {{--                  <div class="wow fadeInUp img-3" data-wow-delay="0.4s"><img src="assets/imgs/page/homepage1/img-track2-chevrolet.png" alt="Nivia"></div>--}}
-        {{--                </div>--}}
-        {{--              </div>--}}
-        {{--            </div>--}}
-        {{--          </div>--}}
-        {{--        </div>--}}
-        {{--      </section>--}}
+{{--        1-comment--}}
         <section class="section-box wow animate__animated animate__fadeIn box-preparing-3">
             <div class="container">
                 <div class="text-center">
@@ -264,64 +160,14 @@
                 <div class="row align-items-center">
                     <div class="col-lg-12 mt-60 mb-45">
                         <h2 class="text-center p-16">Join the greatest community of service providers</h2>
-                        {{--                  <p class="text-lg neutral-500">Bole nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo conididunt ut labore et dolore magna aliqua ut enim ad minim veniam</p>--}}
-                        {{--              <div class="box-buttons-feature-4"><a class="btn btn-brand-4-medium mr-20" href="#">Subscribe--}}
-                        {{--                  <svg width="22" height="8" viewbox="0 0 22 8" fill="none" xmlns="http://www.w3.org/2000/svg">--}}
-                        {{--                    <path d="M22 3.99934L18.4791 0.478516V3.30642H0V4.69236H18.4791V7.52031L22 3.99934Z" fill=""></path>--}}
-                        {{--                  </svg></a><a class="btn btn-learmore-2" href="#"><span>--}}
-                        {{--                    <svg width="39" height="38" viewbox="0 0 39 38" fill="none" xmlns="http://www.w3.org/2000/svg">--}}
-                        {{--                      <rect x="0.5" width="38" height="38" rx="19" fill="#191919"></rect>--}}
-                        {{--                      <g clip-path="url(#clip0_1_376)">--}}
-                        {{--                        <path d="M24.1537 16.8139L15.218 25.7497L13.75 24.2817L22.6847 15.3459H14.81V13.2695H26.2301V24.6897H24.1537V16.8139Z" fill="#C5FF55"></path>--}}
-                        {{--                      </g>--}}
-                        {{--                      <defs>--}}
-                        {{--                        <clippath id="clip0_1_376">--}}
-                        {{--                          <rect width="13" height="13" fill="white" transform="translate(13.5 13)"></rect>--}}
-                        {{--                        </clippath>--}}
-                        {{--                      </defs>--}}
-                        {{--                    </svg></span>Learn More</a>--}}
-                        {{--              </div>--}}
-                        {{--              <div class="box-reviews-home5">--}}
-                        {{--                <div class="box-swiper">--}}
-                        {{--                  <div class="swiper-container swiper-group-1">--}}
-                        {{--                    <div class="swiper-wrapper">--}}
-                        {{--                      <div class="swiper-slide">--}}
-                        {{--                        <div class="item-review-discover">--}}
-                        {{--                          <p class="text-lg">I've been working with this digital marketing agency for several months now, and I'm genuinely thrilled with the results. Their team has a deep understanding of SEO and social media marketing.</p>--}}
-                        {{--                          <div class="box-author-review">--}}
-                        {{--                            <div class="box-author"><a href="#"><img src="assets/imgs/page/homepage1/author.png" alt="Nivia"></a>--}}
-                        {{--                              <div class="author-info"><a href="#"><span class="author-name">Guy Hawkins</span></a><span class="text-sm color-600 department">Apple JSC</span></div>--}}
-                        {{--                            </div>--}}
-                        {{--                            <div class="author-brand"><a href="#"><img src="assets/imgs/page/homepage1/mint.png" alt="Nivia"></a></div>--}}
-                        {{--                          </div>--}}
-                        {{--                        </div>--}}
-                        {{--                      </div>--}}
-                        {{--                      <div class="swiper-slide">--}}
-                        {{--                        <div class="item-review-discover">--}}
-                        {{--                          <p class="text-lg">Their communication is exceptional; they keep me informed about progress and collaborate closely to ensure the best outcomes. If you're looking for a digital marketing agency, these folks are the real deal.</p>--}}
-                        {{--                          <div class="box-author-review">--}}
-                        {{--                            <div class="box-author"><a href="#"><img src="assets/imgs/page/homepage1/author2.png" alt="Nivia"></a>--}}
-                        {{--                              <div class="author-info"><a href="#"><span class="author-name">Rosie Jane</span></a><span class="text-sm color-600 department">Apple JSC</span></div>--}}
-                        {{--                            </div>--}}
-                        {{--                            <div class="author-brand"><a href="#"><img src="assets/imgs/page/homepage1/logo6.png" alt="Nivia"></a></div>--}}
-                        {{--                          </div>--}}
-                        {{--                        </div>--}}
-                        {{--                      </div>--}}
-                        {{--                    </div>--}}
-                        {{--                  </div>--}}
-                        {{--                </div>--}}
-                        {{--              </div>--}}
+{{--                        2-comment--}}
                     </div>
                     <div class="row align-items-center texts">
                         <div class="col-lg-6 mb-30">
                             <h2 class="mt-80">Drive revenue like never before.</h2>
                             <p class="text-lg neutral-500">Every month, more than 300k people search, compare, and hire service providers like yours on Sortlist.</p>
                             <div class="box-buttons-feature-4">
-                                {{--                          <a class="btn btn-brand-4-medium mr-20" href="#">Subscribe--}}
-                                {{--                              <svg width="22" height="8" viewbox="0 0 22 8" fill="none" xmlns="http://www.w3.org/2000/svg">--}}
-                                {{--                                  <path d="M22 3.99934L18.4791 0.478516V3.30642H0V4.69236H18.4791V7.52031L22 3.99934Z" fill=""></path>--}}
-                                {{--                              </svg>--}}
-                                {{--                          </a>--}}
+{{--                                3-comment--}}
                                 <a class="btn btn-learmore-2" href="/providers">
                               <span>
                                   <svg width="39" height="38" viewbox="0 0 39 38" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -342,28 +188,7 @@
                                 <div class="box-swiper">
                                     <div class="swiper-container swiper-group-1">
                                         <div class="swiper-wrapper">
-                                            {{--                                      <div class="swiper-slide">--}}
-                                            {{--                                          <div class="item-review-discover">--}}
-                                            {{--                                              <p class="text-lg">I've been working with this digital marketing agency for several months now, and I'm genuinely thrilled with the results. Their team has a deep understanding of SEO and social media marketing.</p>--}}
-                                            {{--                                              <div class="box-author-review">--}}
-                                            {{--                                                  <div class="box-author"><a href="#"><img src="assets/imgs/page/homepage1/author.png" alt="Nivia"></a>--}}
-                                            {{--                                                      <div class="author-info"><a href="#"><span class="author-name">Guy Hawkins</span></a><span class="text-sm color-600 department">Apple JSC</span></div>--}}
-                                            {{--                                                  </div>--}}
-                                            {{--                                                  <div class="author-brand"><a href="#"><img src="assets/imgs/page/homepage1/mint.png" alt="Nivia"></a></div>--}}
-                                            {{--                                              </div>--}}
-                                            {{--                                          </div>--}}
-                                            {{--                                      </div>--}}
-                                            {{--                                      <div class="swiper-slide">--}}
-                                            {{--                                          <div class="item-review-discover">--}}
-                                            {{--                                              <p class="text-lg">Their communication is exceptional; they keep me informed about progress and collaborate closely to ensure the best outcomes. If you're looking for a digital marketing agency, these folks are the real deal.</p>--}}
-                                            {{--                                              <div class="box-author-review">--}}
-                                            {{--                                                  <div class="box-author"><a href="#"><img src="assets/imgs/page/homepage1/author2.png" alt="Nivia"></a>--}}
-                                            {{--                                                      <div class="author-info"><a href="#"><span class="author-name">Rosie Jane</span></a><span class="text-sm color-600 department">Apple JSC</span></div>--}}
-                                            {{--                                                  </div>--}}
-                                            {{--                                                  <div class="author-brand"><a href="#"><img src="assets/imgs/page/homepage1/logo6.png" alt="Nivia"></a></div>--}}
-                                            {{--                                              </div>--}}
-                                            {{--                                          </div>--}}
-                                            {{--                                      </div>--}}
+{{--                                            4-comment--}}
                                         </div>
                                     </div>
                                 </div>
@@ -378,176 +203,6 @@
                 </div>
             </div>
         </section>
-        {{--      <section class="section-box box-why-trusted box-why-trusted-black">--}}
-        {{--        <div class="container">--}}
-        {{--          <div class="row align-items-end">--}}
-        {{--            <div class="col-lg-4 mb-30">--}}
-        {{--              <h2 class="text-32-bold">See why we are<br class="d-none d-lg-block"> trusted the world over</h2>--}}
-        {{--            </div>--}}
-        {{--            <div class="col-lg-8 mb-30">--}}
-        {{--              <div class="box-numbers">--}}
-        {{--                <div class="item-number">--}}
-        {{--                  <h3 class="heading-2"><span class="count">469</span><span>k</span></h3>--}}
-        {{--                  <p class="text-xl neutral-700">Social followers</p>--}}
-        {{--                </div>--}}
-        {{--                <div class="item-number">--}}
-        {{--                  <h3 class="heading-2"><span class="count">25</span><span>k+</span></h3>--}}
-        {{--                  <p class="text-xl neutral-700">Happy Clients</p>--}}
-        {{--                </div>--}}
-        {{--                <div class="item-number">--}}
-        {{--                  <h3 class="heading-2"><span class="count">756</span><span>+</span></h3>--}}
-        {{--                  <p class="text-xl neutral-700">Projects Done</p>--}}
-        {{--                </div>--}}
-        {{--                <div class="item-number">--}}
-        {{--                  <h3 class="heading-2"><span class="count">100</span><span>+</span></h3>--}}
-        {{--                  <p class="text-xl neutral-700">Global branches</p>--}}
-        {{--                </div>--}}
-        {{--              </div>--}}
-        {{--            </div>--}}
-        {{--          </div>--}}
-        {{--        </div>--}}
-        {{--      </section>--}}
-        {{--      <section class="section-box wow animate__animated animate__fadeIn box-testimonials-3">--}}
-        {{--        <div class="container">--}}
-        {{--          <div class="row">--}}
-        {{--            <div class="col-lg-6 mb-30"><img src="assets/imgs/page/homepage1/img-testimonial.png" alt="Nivia"></div>--}}
-        {{--            <div class="col-lg-6 mb-30">--}}
-        {{--              <div class="row align-items-end">--}}
-        {{--                <div class="col-lg-8 mb-50"><a class="btn btn-brand-4-sm" href="#">Testimonials</a>--}}
-        {{--                  <h3 class="mt-20 neutral-0">Here’s Why Our Customers Love Us</h3>--}}
-        {{--                </div>--}}
-        {{--                <div class="col-lg-4 mb-50">--}}
-        {{--                  <div class="box-button-slider box-button-slider-black">--}}
-        {{--                    <div class="swiper-button-prev swiper-button-prev-testimonials swiper-button-prev-3">--}}
-        {{--                      <svg width="16" height="16" viewbox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">--}}
-        {{--                        <path d="M6.66667 3.33398L2 8.00065M2 8.00065L6.66667 12.6673M2 8.00065H14" stroke="" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>--}}
-        {{--                      </svg>--}}
-        {{--                    </div>--}}
-        {{--                    <div class="swiper-button-next swiper-button-next-testimonials swiper-button-next-3">--}}
-        {{--                      <svg width="16" height="16" viewbox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">--}}
-        {{--                        <path d="M9.33333 3.33398L14 8.00065M14 8.00065L9.33333 12.6673M14 8.00065H2" stroke="" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>--}}
-        {{--                      </svg>--}}
-        {{--                    </div>--}}
-        {{--                  </div>--}}
-        {{--                </div>--}}
-        {{--              </div>--}}
-        {{--              <div class="box-swiper mt-30">--}}
-        {{--                <div class="swiper-container swiper-group-1">--}}
-        {{--                  <div class="swiper-wrapper">--}}
-        {{--                    <div class="swiper-slide">--}}
-        {{--                      <div class="card-testimonial-3">--}}
-        {{--                        <div class="card-image"><img src="assets/imgs/page/homepage1/img-review.png" alt="Nivia"></div>--}}
-        {{--                        <div class="card-info">--}}
-        {{--                          <p class="text-md neutral-500">“As a long-time user of Nivia Platform's digital marketing, I can confidently attest to the outstanding quality and reliability they offer. ”</p>--}}
-        {{--                          <div class="card-author-review">--}}
-        {{--                            <div class="card-author-info"><span class="author-name">ROBERT FOX</span><span class="author-tag">@Amazon</span></div>--}}
-        {{--                            <div class="card-rate"><img src="assets/imgs/page/homepage1/star.svg" alt="Nivia"><img src="assets/imgs/page/homepage1/star.svg" alt="Nivia"><img src="assets/imgs/page/homepage1/star.svg" alt="Nivia"><img src="assets/imgs/page/homepage1/star.svg" alt="Nivia"><img src="assets/imgs/page/homepage1/star.svg" alt="Nivia"></div>--}}
-        {{--                          </div>--}}
-        {{--                        </div>--}}
-        {{--                      </div>--}}
-        {{--                    </div>--}}
-        {{--                    <div class="swiper-slide">--}}
-        {{--                      <div class="card-testimonial-3">--}}
-        {{--                        <div class="card-image"><img src="assets/imgs/page/homepage1/img-review-ishonch.png" alt="Nivia"></div>--}}
-        {{--                        <div class="card-info">--}}
-        {{--                          <p class="text-md neutral-500">“I recently started using Nivia Platform, and the experience has been nothing short of exceptional. From the moment I made my first inquiry, their team has been consistently accommodating and attentive. ”</p>--}}
-        {{--                          <div class="card-author-review">--}}
-        {{--                            <div class="card-author-info"><span class="author-name">ALAN WALKER</span><span class="author-tag">@Facetime</span></div>--}}
-        {{--                            <div class="card-rate"><img src="assets/imgs/page/homepage1/star.svg" alt="Nivia"><img src="assets/imgs/page/homepage1/star.svg" alt="Nivia"><img src="assets/imgs/page/homepage1/star.svg" alt="Nivia"><img src="assets/imgs/page/homepage1/star.svg" alt="Nivia"><img src="assets/imgs/page/homepage1/star.svg" alt="Nivia"></div>--}}
-        {{--                          </div>--}}
-        {{--                        </div>--}}
-        {{--                      </div>--}}
-        {{--                    </div>--}}
-        {{--                  </div>--}}
-        {{--                </div>--}}
-        {{--              </div>--}}
-        {{--            </div>--}}
-        {{--          </div>--}}
-        {{--        </div>--}}
-        {{--      </section>--}}
-        {{--      <section class="section-box box-latest-news box-latest-news-2">--}}
-        {{--        <div class="container">--}}
-        {{--          <div class="row align-items-end">--}}
-        {{--            <div class="col-lg-8 mb-30">--}}
-        {{--              <h2 class="heading-2 mb-10">Latest News &amp; Stories</h2>--}}
-        {{--              <p class="text-lg neutral-700">Pellentesque at posuere tellus. Ut sed dui justo. Phasellus</p>--}}
-        {{--            </div>--}}
-        {{--            <div class="col-lg-4 mb-30">--}}
-        {{--              <div class="box-button-slider box-button-slider-team justify-content-end">--}}
-        {{--                <div class="swiper-button-prev swiper-button-prev-testimonials swiper-button-prev-3">--}}
-        {{--                  <svg width="16" height="16" viewbox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">--}}
-        {{--                    <path d="M6.66667 3.33398L2 8.00065M2 8.00065L6.66667 12.6673M2 8.00065H14" stroke="" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>--}}
-        {{--                  </svg>--}}
-        {{--                </div>--}}
-        {{--                <div class="swiper-button-next swiper-button-next-testimonials swiper-button-next-3">--}}
-        {{--                  <svg width="16" height="16" viewbox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">--}}
-        {{--                    <path d="M9.33333 3.33398L14 8.00065M14 8.00065L9.33333 12.6673M14 8.00065H2" stroke="" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>--}}
-        {{--                  </svg>--}}
-        {{--                </div>--}}
-        {{--              </div>--}}
-        {{--            </div>--}}
-        {{--          </div>--}}
-        {{--          <div class="box-swiper mt-30">--}}
-        {{--            <div class="swiper-container swiper-group-3">--}}
-        {{--              <div class="swiper-wrapper">--}}
-        {{--                <div class="swiper-slide">--}}
-        {{--                  <div class="card-news">--}}
-        {{--                    <div class="card-image"><a href="blog-post.html"><img src="assets/imgs/page/homepage1/img-news.png" alt="Nivia"></a></div>--}}
-        {{--                    <div class="card-info"><a class="heading-4" href="blog-post.html">Now the pain is very important, and the teaching is consistent.</a>--}}
-        {{--                      <p class="text-md neutral-700 mt-15 mb-35">Pellentesque at posuere tellus. Ut sed dui justo. Phasellus is scelerisque turpis arcu, ut pulvinar lectus tristique non. Nam laoreet, risus vel laoreet laoreet, mauris</p><a class="btn btn-learmore-2" href="blog-post.html"><span>--}}
-        {{--                          <svg width="13" height="13" viewbox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">--}}
-        {{--                            <g clip-path="url(#clip0_24_999)">--}}
-        {{--                              <path d="M10.6557 3.81393L1.71996 12.7497L0.251953 11.2817L9.18664 2.34592H1.31195V0.269531H12.7321V11.6897H10.6557V3.81393Z" fill="#191919"></path>--}}
-        {{--                            </g>--}}
-        {{--                            <defs>--}}
-        {{--                              <clippath id="clip0_24_999">--}}
-        {{--                                <rect width="13" height="13" fill="white"></rect>--}}
-        {{--                              </clippath>--}}
-        {{--                            </defs>--}}
-        {{--                          </svg></span>Learn More</a>--}}
-        {{--                    </div>--}}
-        {{--                  </div>--}}
-        {{--                </div>--}}
-        {{--                <div class="swiper-slide">--}}
-        {{--                  <div class="card-news">--}}
-        {{--                    <div class="card-image"><a href="blog-post.html"><img src="assets/imgs/page/homepage1/img-news2.png" alt="Nivia"></a></div>--}}
-        {{--                    <div class="card-info"><a class="heading-4" href="blog-post.html">The behavior of the pain itself is important, consistent with</a>--}}
-        {{--                      <p class="text-md neutral-700 mt-15 mb-35">Pellentesque at posuere tellus. Ut sed dui justo. Phasellus is scelerisque turpis arcu, ut pulvinar lectus tristique non. Nam laoreet, risus vel laoreet laoreet, mauris</p><a class="btn btn-learmore-2" href="blog-post.html"><span>--}}
-        {{--                          <svg width="13" height="13" viewbox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">--}}
-        {{--                            <g clip-path="url(#clip0_24_999)">--}}
-        {{--                              <path d="M10.6557 3.81393L1.71996 12.7497L0.251953 11.2817L9.18664 2.34592H1.31195V0.269531H12.7321V11.6897H10.6557V3.81393Z" fill="#191919"></path>--}}
-        {{--                            </g>--}}
-        {{--                            <defs>--}}
-        {{--                              <clippath id="clip0_24_999">--}}
-        {{--                                <rect width="13" height="13" fill="white"></rect>--}}
-        {{--                              </clippath>--}}
-        {{--                            </defs>--}}
-        {{--                          </svg></span>                                            Learn More</a>--}}
-        {{--                    </div>--}}
-        {{--                  </div>--}}
-        {{--                </div>--}}
-        {{--                <div class="swiper-slide">--}}
-        {{--                  <div class="card-news">--}}
-        {{--                    <div class="card-image"><a href="blog-post.html"><img src="assets/imgs/page/homepage1/img-news3.png" alt="Nivia"></a></div>--}}
-        {{--                    <div class="card-info"><a class="heading-4" href="blog-post.html">How startups can improve their chances of getting financing</a>--}}
-        {{--                      <p class="text-md neutral-700 mt-15 mb-35">Pellentesque at posuere tellus. Ut sed dui justo. Phasellus is scelerisque turpis arcu, ut pulvinar lectus tristique non. Nam laoreet, risus vel laoreet laoreet, mauris</p><a class="btn btn-learmore-2" href="blog-post.html"><span>--}}
-        {{--                          <svg width="13" height="13" viewbox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">--}}
-        {{--                            <g clip-path="url(#clip0_24_999)">--}}
-        {{--                              <path d="M10.6557 3.81393L1.71996 12.7497L0.251953 11.2817L9.18664 2.34592H1.31195V0.269531H12.7321V11.6897H10.6557V3.81393Z" fill="#191919"></path>--}}
-        {{--                            </g>--}}
-        {{--                            <defs>--}}
-        {{--                              <clippath id="clip0_24_999">--}}
-        {{--                                <rect width="13" height="13" fill="white"></rect>--}}
-        {{--                              </clippath>--}}
-        {{--                            </defs>--}}
-        {{--                          </svg></span>                                            Learn More</a>--}}
-        {{--                    </div>--}}
-        {{--                  </div>--}}
-        {{--                </div>--}}
-        {{--              </div>--}}
-        {{--            </div>--}}
-        {{--          </div>--}}
-        {{--        </div>--}}
-        {{--      </section>--}}
+{{--        5-comment--}}
     </main>
 @endsection

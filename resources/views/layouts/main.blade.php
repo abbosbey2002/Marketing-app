@@ -34,7 +34,7 @@
             <div class="header-nav">
               <nav class="nav-main-menu d-none d-xl-block">
                 <ul class="main-menu">
-                  <li><a class="active" href="{{ route('home') }}">Home</a></li>
+                  <li><a class="active" href="/">Home</a></li>
                   <li><a href="{{ route('providers') }}">Providers</a></li>
                   <li><a href="{{ route('marketers') }}">Marketers</a></li>
                   <li><a href="{{ route('partners') }}">Partners</a></li>
@@ -45,9 +45,9 @@
           </div>
           <div class="header-right"><a class="btn btn-search hover-up" href="#"></a>
             <div class="form-search p-20">
-              <form action="#">
-                <input class="form-control" type="text" placeholder="Search">
-                <input class="btn-search-2" type="submit" value="">
+              <form action="{{ route('search') }}" method="GET">
+                <input class="form-control" type="text" placeholder="Search" name="query" {{ request()->input('query') }}>
+                <input class="btn-search-2" value="" type="submit">
               </form>
               <div class="popular-keywords text-start mt-20">
                 <p class="mb-10 color-white">Popular search:</p><a class="color-gray-600 mr-10 font-xs" href="#">Platform,</a><a class="color-gray-600 mr-10 font-xs" href="#"># Database,</a><a class="color-gray-600 mr-10 font-xs" href="#"># Price</a>

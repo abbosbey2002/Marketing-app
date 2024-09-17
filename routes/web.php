@@ -114,7 +114,8 @@ Route::prefix('provider')->group(function () {
 });
 
 Route::resource('services', ServicesController::class);
-//Route::get('/services-admin', [ServiceController::class, 'index'])->name('services-admin');
+Route::get('/providers/{provider_id}', [MainController::class, 'pageProvider'])->name('services-providers');
+Route::get('/search', [MainController::class, 'search'])->name('search');
 /*****************************************************************************
  * Display Marketer routes
  * @author Doniyor Rajapov

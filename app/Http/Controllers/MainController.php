@@ -4,9 +4,46 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Provider;
+use Illuminate\Http\Request;
 
 class MainController extends Controller
 {
+
+    public function search(Request $request)
+    {
+        $query = $request->input('query');
+
+        // Barcha partnerlar va kategoriyalarni olish
+        $partners = Provider::all();
+        $categories = Category::all();
+
+        if ($query) {
+            // Kategoriyalarni qidiruv so'rovi bo'yicha filtrlash
+            $results = Category::where('name', 'LIKE', "%$query%")
+                ->orWhereHas('services', function($q) use ($query) {
+                    $q->where('name_en', 'LIKE', "%$query%");
+                })
+                ->get();
+
+            // Providerlarni qidiruv so'rovi bo'yicha filtrlash
+            $providers = Provider::where('name', 'LIKE', "%$query%")
+                ->orWhere('description', 'LIKE', "%$query%")
+                ->orWhere('tagline', 'LIKE', "%$query%")
+                ->get();
+        } else {
+            // Qidiruv bo'yicha natijalar bo'lmasa bo'sh kolleksiya
+            $results = collect();
+            $providers = collect();
+        }
+
+        return view('pages.home-search', [
+            'results' => $results,
+            'query' => $query,
+            'partners' => $partners,
+            'categories' => $categories,
+            'providers' => $providers
+        ]);
+    }
     // home
     public function home()
     {
