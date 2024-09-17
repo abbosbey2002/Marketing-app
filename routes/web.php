@@ -108,13 +108,13 @@ Route::prefix('provider')->group(function () {
         Route::get('/managers/{id}/data', [ManagerController::class, 'getManager']);
 
         // admin  category va service qo'shish uchun
-        Route::resource('services-admin', ServiceController::class);
+        Route::resource('services-admins', ServiceController::class);
         Route::resource('categories', CategoryController::class);
     });
 });
 
 Route::resource('services', ServicesController::class);
-
+//Route::get('/services-admin', [ServiceController::class, 'index'])->name('services-admin');
 /*****************************************************************************
  * Display Marketer routes
  * @author Doniyor Rajapov

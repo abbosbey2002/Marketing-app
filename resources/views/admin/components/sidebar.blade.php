@@ -96,7 +96,7 @@
                         <li class="nxl-item {{ request()->is('categories') ? 'active' : '' }}"><a class="nxl-link" href="{{route('categories.index')}}">Category</a></li>
                     </ul>
                     <ul class="nxl-submenu">
-                        <li class="nxl-item {{ request()->is('services-admin') ? 'active' : '' }}"><a class="nxl-link" href="{{route('services-admin.index')}}">Service</a></li>
+                        <li class="nxl-item {{ request()->is('services-admins') ? 'active' : '' }}"><a class="nxl-link" href="{{route('services-admins.index')}}">Service</a></li>
                     </ul>
                 </li>
 
