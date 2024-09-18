@@ -26,13 +26,12 @@
                         </div>
                     </div>
                 </div>
-                {{--          <div class="banner-inner-bottom">--}}
-                {{--            <div class="container">--}}
-                {{--              <div class="box-joined">--}}
-                {{--                <div class="box-authors"><span class="item-author"><img src="assets/imgs/page/homepage1/author.png" alt="Nivia"></span><span class="item-author"><img src="assets/imgs/page/homepage1/author2.png" alt="Nivia"></span><span class="item-author"><img src="assets/imgs/page/homepage1/author3.png" alt="Nivia"></span><span class="item-author"><span class="text-num-author text-md-bold color-brand-2">+2k</span></span></div><span class="text-lg d-inline-block">Join thousands of users in using<br class="d-none d-md-block">the Marketing platform!</span>--}}
-                {{--              </div>--}}
-                {{--            </div>--}}
-                {{--          </div>--}}
+                <div class="banner-inner-bottom">
+                    <div class="container">
+                        <div class="box-joined">
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
         <section class="section-box wow animate__animated animate__fadeIn box-logos-2">
@@ -57,7 +56,7 @@
                 <h2 class="mt-35 mb-15 text-center">Direct access to verified service<br class="d-none d-lg-block">providers in 1000+ services.</h2>
                 <p class="text-lg neutral-500 mb-45 text-center">Discover the most relevant providers for your project based on your own specific requirements.</p>
                 <div class="row">
-                @if ($categories->isNotEmpty())
+                    @if ($categories->isNotEmpty())
                         @foreach($categories as $category)
                             <div class="col-lg-4">
                                 <div class="box-border-rounded">
@@ -71,7 +70,7 @@
                                         <div class="card-desc">
                                             @if ($category->services->isNotEmpty())
                                                 @foreach ($category->services as $service)
-                                                    <a href="{{ route('services-providers', $service->id) }}">
+                                                    <a href="{{ route('services-providers', [$service->id, $category->id]) }}">
                                                         <span>{{ $service->name_en }} </span><i class="fa-solid fa-arrow-right"></i>
                                                     </a>
                                                 @endforeach
@@ -86,6 +85,7 @@
                     @else
                         <p>No categories available</p>
                     @endif
+
                 </div>
             </div>
             <div class="container mt-25">

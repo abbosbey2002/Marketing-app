@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Provider;
+use App\Models\Service;
 use Illuminate\Http\Request;
 
 class MainController extends Controller
@@ -59,6 +60,22 @@ class MainController extends Controller
         $providers = Provider::paginate(6);
 
         return view('pages.page-provider', compact('providers'));
+    }
+    public function pageProviderService($service_id, $category_id)
+    {
+        // Kiritilgan service va category asosida providerlarni olish
+        $service = Service::find($service_id);
+
+        // Kategoriya ma'lumotlarini olish
+        $category = Category::find($category_id);
+
+        // Xizmatga tegishli barcha provayderlarni olish
+        $providers = $service->providers()->paginate();
+
+        // Barcha kategoriyalarni olish (xizmatlari bilan)
+        $categories = Category::with('services')->get();
+
+        return view('pages.page-provider-service', compact('providers', 'service', 'category', 'categories'));
     }
 
     public function searchProviders()
