@@ -63,16 +63,14 @@ class MainController extends Controller
     }
     public function pageProviderService($service_id, $category_id)
     {
-        // Kiritilgan service va category asosida providerlarni olish
+        // Xizmat va kategoriya ma'lumotlarini olish
         $service = Service::find($service_id);
-
-        // Kategoriya ma'lumotlarini olish
         $category = Category::find($category_id);
 
         // Xizmatga tegishli barcha provayderlarni olish
-        $providers = $service->providers()->paginate();
+        $providers = $service->providers()->paginate(6);
 
-        // Barcha kategoriyalarni olish (xizmatlari bilan)
+        // Barcha kategoriyalarni xizmatlari bilan olish
         $categories = Category::with('services')->get();
 
         return view('pages.page-provider-service', compact('providers', 'service', 'category', 'categories'));

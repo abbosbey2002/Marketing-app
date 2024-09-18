@@ -14,20 +14,11 @@ class ProviderService extends Model
     protected $fillable = [
         'provider_id',
         'service_id',
-        'skills',
-        'description',
-        'price',
-        // Qo'shimcha ustunlar bo'lsa, ularni ham qo'shishingiz mumkin
     ];
 
     protected $casts = [
         'skills' => 'array',
     ];
-
-    public function skilldata()
-    {
-        return $this->skills;
-    }
 
     public function provider()
     {

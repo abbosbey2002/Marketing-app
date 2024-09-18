@@ -13,11 +13,11 @@
             }
         </style>
         <section class="section-box box-connecting">
-            <div class="box-connecting-inner">
+            <div class="box-connecting-inner"><span class="planet shape-1"></span><span class="arrow-left shape-2"></span>
                 <div class="container">
-                    <div class="text-center">
+                    <div class="text-center"><a class="btn btn-brand-4-sm" href="#">Connecting platforms</a>
                         <h2 class="heading-2 mb-15 mt-15">
-                            Xizmat: {{ $service->name_en }}
+                            Service: {{ $service->name_en }}
                         </h2>
                     </div>
                 </div>
@@ -241,10 +241,21 @@
                                                         </h6>
                                                     </div>
                                                     <div class="card-desc">
-                                                        <p>{{ $provider->description }}</p>
+                                                        <p class="size-text">{{ $provider->description }}</p>
                                                         <!-- Provayder sahifasiga link -->
-                                                        <a href="{{ route('provider.details', ['provider_id' => $provider->id]) }}">
-                                                            Provayder haqida ko'proq <i class="fa-solid fa-arrow-right"></i>
+                                                        <a class="btn btn-learmore-2" href="{{ route('singleProviders') }}">
+                                                            <span>
+                                                              <svg width="13" height="13" viewbox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <g clip-path="url(#clip0_24_999)">
+                                                                  <path d="M10.6557 3.81393L1.71996 12.7497L0.251953 11.2817L9.18664 2.34592H1.31195V0.269531H12.7321V11.6897H10.6557V3.81393Z" fill="#191919"></path>
+                                                                </g>
+                                                                <defs>
+                                                                  <clippath id="clip0_24_999">
+                                                                    <rect width="13" height="13" fill="white"></rect>
+                                                                  </clippath>
+                                                                </defs>
+                                                              </svg>
+                                                            </span>View Integration
                                                         </a>
                                                     </div>
                                                 </div>
@@ -254,7 +265,7 @@
                                 </div>
                             </div>
                         @else
-                            <p>Xizmatga tegishli provayderlar mavjud emas.</p>
+                            <p>There are no related service providers.</p>
                         @endif
 
 

@@ -25,12 +25,11 @@ class Provider extends Model
         'email',
         'password',
         'language_id',
-        'service_id',
     ];
 
     public function services()
     {
-        return $this->belongsToMany(Service::class, 'provider_service', 'provider_id');
+        return $this->belongsToMany(Service::class, 'provider_service', 'provider_id', 'service_id');
     }
 
     public function skills()

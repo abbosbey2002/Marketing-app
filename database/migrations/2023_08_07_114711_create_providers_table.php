@@ -27,7 +27,6 @@ return new class extends Migration
             $table->string('password')->nullable();
             $table->rememberToken();
             $table->foreignId('language_id')->nullable()->constrained()->onDelete('cascade'); // Foreign key va nullable
-            $table->foreignId('service_id')->nullable()->constrained()->onDelete('cascade'); // Foreign key va constrained
             $table->timestamps();
         });
     }

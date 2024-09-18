@@ -14,7 +14,10 @@ class Service extends Model
 
     protected $fillable = ['name_ru', 'name_uz', 'name_en', 'category_id'];
 
-    // Optional: If a ServiceList has many Skills
+    public function providers()
+    {
+        return $this->belongsToMany(Provider::class, 'provider_service', 'service_id', 'provider_id');
+    }
     public function skills()
     {
         return $this->hasMany(Skill::class);
@@ -33,10 +36,5 @@ class Service extends Model
     public function providerService()
     {
         return $this->hasOne(ProviderService::class);  // `provider_id` bo'yicha filtrlash
-    }
-
-    public function providers()
-    {
-        return $this->belongsToMany(Provider::class, 'provider_service', 'service_id', 'provider_id');
     }
 }
