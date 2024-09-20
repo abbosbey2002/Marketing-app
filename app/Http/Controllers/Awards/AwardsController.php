@@ -8,16 +8,20 @@ use App\Models\Category;
 use App\Models\Portfolio;
 use App\Models\Provider;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AwardsController extends Controller
 {
     public function index()
     {
         $categories = Category::all();
+        $provider = Auth::user()->manager->provider;
         $providers = Provider::all();
         $awards = Award::with(['category', 'provider'])->paginate(10);
+        $awards = $provider->awards;
+        $portfolyos_links = $provider->portfolios->pluck('link');
 
-        return view('admin.providers.awards.index', compact('awards', 'providers', 'categories'));
+        return view('admin.providers.awards.index', compact('awards', 'providers', 'categories', 'portfolyos_links'));
     }
 
     public function create()
@@ -31,7 +35,6 @@ class AwardsController extends Controller
 
     public function store(Request $request)
     {
-
         $request->validate([
             'category_id' => 'nullable|exists:categories,id',
             'provider_id' => 'nullable|exists:providers,id',

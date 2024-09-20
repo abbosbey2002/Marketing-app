@@ -35,6 +35,8 @@ class ProvidersController extends Controller
         $languages = Language::all();
         $providerLanguageCodes = $provider->languages ? $provider->languages->pluck('code')->toArray() : [];
 
+        // dd($provider);
+
         return view('admin.providers.profile.index', compact('provider', 'services', 'providers', 'languages', 'providerLanguageCodes'));
     }
 
@@ -62,8 +64,8 @@ class ProvidersController extends Controller
             'service-type' => 'required|exists:services,id', // Xizmat ID mavjudligini tekshirish
             'skills' => 'required|array', // Skills array kerak
             'skills.*' => 'exists:skills,id', // Har bir skill mavjudligini tekshirish
-            'startingPrice' => 'nullable|numeric',
-            'description' => 'required|string',
+            'startingPrice' => 'required|numeric',
+            'description' => 'required|string|min:15|max:200',
             'provider_id' => 'required|exists:providers,id', // Provayder ID mavjudligini tekshirish
         ]);
 
@@ -197,6 +199,7 @@ class ProvidersController extends Controller
     {
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
+            'website' => 'required|url',
             'turnover' => 'nullable|integer|min:0',
             'teamSize' => 'required|integer|min:1',
             'tagline' => 'nullable|string|max:255',

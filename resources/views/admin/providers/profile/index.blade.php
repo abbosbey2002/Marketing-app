@@ -13,11 +13,6 @@
                 <div class="content-area-header bg-white sticky-top">
                     <div class="page-header-right ms-auto">
                         <div class="d-flex align-items-center gap-3 page-header-right-items-wrapper">
-                            <a href="javascript:void(0);" class="btn btn-primary" data-bs-toggle="offcanvas"
-                                data-bs-target="#">
-                                <i class="feather-plus me-2"></i>
-                                <span>Add New</span>
-                            </a>
                         </div>
                     </div>
                 </div>
@@ -179,6 +174,15 @@
                                                     </div>
 
                                                     <div class="row g-0 mb-4">
+                                                        <div class="col-sm-6 text-muted">Company website:</div>
+                                                        <div class="col-sm-6 fw-semibold">
+                                                            <input type="text" class="form-control" id="nameInput"
+                                                                placeholder="website" name="website"
+                                                                value="{{ old('website', $provider->website) }}">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row g-0 mb-4">
                                                         <div class="col-sm-6 text-muted">Motto:</div>
                                                         <div class="col-sm-6 fw-semibold">
                                                             <input type="text" class="form-control" id="taglineInput"
@@ -260,7 +264,7 @@
 
                                                     <div class="row g-0 mb-4 providerSubmit" id="providerSubmit"
                                                         style="display: none;">
-                                                        <button type="submit" class="btn btn-primary">Saqlash</button>
+                                                        <button type="submit" class="btn btn-primary">Save</button>
                                                     </div>
 
                                                 </div>

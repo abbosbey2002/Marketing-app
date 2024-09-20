@@ -9,10 +9,10 @@ class Skill extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name_en', 'name_uz', 'name_ru', 'service_list_id'];
+    protected $fillable = ['name_en', 'name_uz', 'name_ru', 'category', 'service_id'];
 
     public function serviceList()
     {
-        return $this->belongsTo(serviceList::class);
+        return $this->belongsTo(Service::class);
     }
 }

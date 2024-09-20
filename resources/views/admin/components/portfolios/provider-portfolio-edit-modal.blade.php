@@ -42,8 +42,6 @@
                                 <div class="mb-4">
                                     <div class="showcase form-group card">
                                         <img src="{{ asset('storage/' . $portfolio->image) }}" alt="Uploaded Image">
-                                        <!-- Check if the URL is correct by visiting it directly -->
-                                        <p>Image URL: {{ asset('storage/' . $portfolio->image) }}</p>
                                         <h5>Image or Video</h5>
                                         <p>Display some images or videos showcasing your work.</p>
                                         <div id="workIllustrationsContainer">
@@ -69,7 +67,8 @@
                                                 <div id="inputContainer">
                                                     <div id="imageInput" class="input-field" style="display: none;">
                                                         <label for="imageFile">Upload Image:</label>
-                                                        <<input type="file" id="imageFile" name="image" accept="image/*">
+                                                        <<input type="file" id="imageFile" name="image"
+                                                            accept="image/*">
                                                     </div>
                                                     <div id="youtubeInput" class="input-field" style="display: none;">
                                                         <label for="youtubeUrl">Add your YouTube Video URL:</label>
@@ -441,7 +440,9 @@
 
 
                     <input type="hidden" name="provider_id" value="{{ auth()->user()->manager->provider_id }}">
-                    <button type="submit">Submit</button>
+                    <div>
+                        <button class="btn btn-primary" type="submit">Submit</button>
+                    </div>
                 </div>
             </form>
         </div>

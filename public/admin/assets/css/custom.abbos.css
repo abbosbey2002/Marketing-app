@@ -1,0 +1,11 @@
+/* Style for the user profile image link */
+/* Author: Abbos Qudratov */
+.custom-user-image {
+    width: 40px !important;
+    height: 40px !important;
+    object-fit: cover;
+}
+
+.custom-upload-image{
+    object-fit: cover;
+}

@@ -21,6 +21,7 @@
                 <h2 class="fs-14 fw-bold text-truncate-1-line">Create Service</h2>
             </div>
         </div>
+
         <div class="offcanvas-body">
             <div class="row">
                 <!-- Name (uz) -->
@@ -59,6 +60,21 @@
                         </select>
                     </div>
                 </div>
+
+                <!-- Skills (dinamik qo'shish) -->
+                <div class="col-12">
+                    <div class="form-group mb-4">
+                        <label class="form-label">Skills (Multiple languages):</label>
+                        <div id="skillsContainer">
+                            <div class="skill-item">
+                                <input class="form-control mb-2" name="skills_uz[]" placeholder="Skill in Uzbek">
+                                <input class="form-control mb-2" name="skills_ru[]" placeholder="Skill in Russian">
+                                <input class="form-control mb-2" name="skills_en[]" placeholder="Skill in English">
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-outline-primary" id="addSkillBtn">Add More Skill</button>
+                    </div>
+                </div>
             </div>
 
             <!-- Submit Button -->
@@ -72,6 +88,25 @@
         </div>
     </div>
 </form>
+
+<!-- Dinamik "Skills" qo'shish uchun JavaScript -->
+<script>
+    document.getElementById('addSkillBtn').addEventListener('click', function() {
+        // Yangi skill maydonlari yaratish
+        var newSkillInput = document.createElement('div');
+        newSkillInput.classList.add('skill-item');
+        newSkillInput.innerHTML = `
+            <input class="form-control mb-2" name="skills_uz[]" placeholder="Skill in Uzbek">
+            <input class="form-control mb-2" name="skills_ru[]" placeholder="Skill in Russian">
+            <input class="form-control mb-2" name="skills_en[]" placeholder="Skill in English">
+        `;
+        
+        // Skilllarni containerga qo'shish
+        document.getElementById('skillsContainer').appendChild(newSkillInput);
+    });
+</script>
+
+
 
 <!--! ================================================================ !-->
 <!--! [End] Tasks Details Offcanvas !-->

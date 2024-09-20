@@ -122,13 +122,8 @@ class ManagerController extends Controller
         return view('admin.providers.managers.show', compact('manager'));
     }
 
-    public function edit(Request $request)
+    public function edit(Manager $manager)
     {
-        $id = $request->input('forGetId');
-
-        // POST yoki GET so'rovi orqali kelgan ID ni olamiz
-        $manager = Manager::findOrFail($id); // ID bo'yicha managerni topamiz
-
         return view('admin.providers.managers.edit', compact('manager'));
     }
 

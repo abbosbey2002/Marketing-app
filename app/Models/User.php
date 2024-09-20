@@ -23,6 +23,9 @@ class User extends Authenticatable
         'password',
         'phone',
         'role',
+        'avatar',     // Avatar maydoni
+        'address',    // Manzil maydoni
+        'bio',        // Bio (qisqacha ma'lumot) maydoni
     ];
 
     public function manager()

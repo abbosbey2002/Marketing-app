@@ -87,9 +87,9 @@ class ProviderRegistrationController extends Controller
         $provider = Provider::create([
             'turnover' => null,
             'name' => $providerData['name'],
-            'company_address' => $providerData['company_address'],
-            'company_website' => $providerData['company_website'],
-            'company_phone' => $providerData['company_phone'],
+            'address' => $providerData['company_address'],
+            'website' => $providerData['company_website'],
+            'phone' => $providerData['company_phone'],
             'teamSize' => $providerData['teamSize'],
         ]);
 

@@ -16,6 +16,7 @@ class Provider extends Model
         'phone',
         'address',
         'turnover',
+        'website',
         'teamSize',
         'tagline',
         'foundedAt',

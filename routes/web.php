@@ -2,31 +2,30 @@
 
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ServiceController;
-
-
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\ProviderRegistrationController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\Awards\AwardsController;
-
 use App\Http\Controllers\Contact\ContactController;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\Managers\ManagerController;
+use App\Http\Controllers\Marketers\MarketersController;
+use App\Http\Controllers\Partners\PartnersController;
+// use App\Http\Controllers\Providers\ProviderSearchController;
 use App\Http\Controllers\Portfolios\PortfoliosController;
 use App\Http\Controllers\Providers\ProviderDashboardController;
 use App\Http\Controllers\Providers\ProvidersController;
-use App\Http\Controllers\ProviderSearchController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\Reviews\ReviewsController;
-use App\Http\Controllers\Services\ServicesController;
 use App\Http\Controllers\Teams\TeamController;
+use App\Http\Controllers\Users\UsersController;
 use Illuminate\Support\Facades\Route;
 
-/*****************************************************************************
+/*
  * Display Head routes
  * @author Doniyor Rajapov
- *****************************************************************************/
+ */
 Route::get('/', [MainController::class, 'home'])->name('home');
 
 Route::get('/manager/invite', [ManagerController::class, 'invite'])->name('manager.invite');
@@ -64,11 +63,11 @@ Route::prefix('auth')->namespace('App\Http\Controllers\Auth')->group(function ()
     Route::post('/password/reset', [ResetPasswordController::class, 'reset'])->name('password.update');
 });
 
-/*****************************************************************************
+/*
  * Display Provider routes
  * @author Doniyor Rajapov
- *****************************************************************************/
-Route::get('/search-companies', [ProviderSearchController::class, 'search'])->name('search.companies');
+ */
+// Route::get('/search-companies', [ProviderSearchController::class, 'search'])->name('search.companies');
 // >namespace('App\Http\Controllers\Providers')
 
 Route::prefix('provider')->group(function () {
@@ -108,18 +107,19 @@ Route::prefix('provider')->group(function () {
         Route::get('/managers/{id}/data', [ManagerController::class, 'getManager']);
 
         // admin  category va service qo'shish uchun
-        Route::resource('services-admins', ServiceController::class);
+        Route::resource('services-admin', ServiceController::class);
         Route::resource('categories', CategoryController::class);
     });
 });
 
-Route::resource('services', ServicesController::class);
+Route::resource('services', ServiceController::class);
 Route::get('/providers/{provider_id}/{category_id}', [MainController::class, 'pageProviderService'])->name('services-providers');
 Route::get('/search', [MainController::class, 'search'])->name('search');
-/*****************************************************************************
+
+/*
  * Display Marketer routes
  * @author Doniyor Rajapov
- *****************************************************************************/
+ */
 Route::prefix('marketer')->namespace('App\Http\Controllers')->group(function () {
     Route::get('/login', [AuthController::class, 'showMarketerLoginForm'])->name('login.marketer');
     Route::post('/login', [AuthController::class, 'marketerLogin'])->name('marketer.login');
@@ -127,10 +127,10 @@ Route::prefix('marketer')->namespace('App\Http\Controllers')->group(function () 
     // Marketer uchun boshqa yo'nalishlar (agar mavjud bo'lsa, qo'shing)
 });
 
-/*****************************************************************************
+/*
  * Display Partner routes
  * @author Doniyor Rajapov
- *****************************************************************************/
+ */
 Route::prefix('partner')->namespace('App\Http\Controllers')->group(function () {
     // Client login
     Route::get('/login', [AuthController::class, 'showClientLoginForm'])->name('login.client');
@@ -139,10 +139,10 @@ Route::prefix('partner')->namespace('App\Http\Controllers')->group(function () {
     // Client uchun boshqa yo'nalishlar (agar mavjud bo'lsa, qo'shing)
 });
 
-/*****************************************************************************
+/*
  * Display Admin routes
  * @author Doniyor Rajapov
- *****************************************************************************/
+ */
 // Route::prefix('admin')->namespace('App\Http\Controllers')->middleware('auth')->group(function () {
 //     Route::view('/dashboard', 'admin')->name('dashboard');
 //     Route::resource('services', ServicesController::class);

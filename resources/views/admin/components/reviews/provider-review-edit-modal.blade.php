@@ -89,7 +89,7 @@ $languages = App\Models\Language::all();
                 <div class="col-12">
                     <div class="form-group mb-4">
                         <label class="form-label">Company Size:</label>
-                        <input type="text" name="company_size" class="form-control" placeholder="Enter company size" value="{{ $review->company_size }}">
+                        <input type="bumber" name="company_size" class="form-control" placeholder="Enter company size" value="{{ $review->company_size }}">
                     </div>
                 </div>
 

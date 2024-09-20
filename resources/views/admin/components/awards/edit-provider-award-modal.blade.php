@@ -30,10 +30,10 @@
                     <div class="col-sm-6">
                         <div class="form-group mb-4">
                             <label for="awardName" class="form-label">Category (Optional)</label>
-                            <select id="category" name="category_id"  class="form-control">
+                            <select id="category" name="category_id" required  class="form-control">
                                @foreach($categories as $category)
                                  <option value="{{$category->id}}"  {{ $category->id == old('category_id', $award->category_id) ? 'selected' : '' }}>
-                                       {{ $category->name }}
+                                       {{ $category->name_en }}
                                  </option>
                                @endforeach
                             </select>
@@ -43,7 +43,7 @@
                     <div class="col-sm-6">
                         <div class="form-group mb-4">
                             <label for="awardName" class="form-label">Date</label>
-                            <input type="month" id="awardName" name="date" class="form-control datepicker-input" value="{{ old('date', $award->date) }}">
+                            <input type="month" id="awardName" required name="date" class="form-control datepicker-input" value="{{ old('date', $award->date) }}">
                         </div>
                     </div>
                     
@@ -51,11 +51,9 @@
                         <div class="form-group mb-4">
                             <label class="form-label">Link to an existing work (Optional):</label>
                                 <select id="link" name="link" class="form-select form-control">
-                                        <option value="low" {{ old('link', $award->link) == 'low' ? 'selected' : '' }} data-bg="bg-primary">Low</option>
-                                        <option value="normal" {{ old('link', $award->link) == 'normal' ? 'selected' : '' }} data-bg="bg-teal">Normal</option>
-                                        <option value="medium" {{ old('link', $award->link) == 'medium' ? 'selected' : '' }} data-bg="bg-success">Medium</option>
-                                        <option value="high" {{ old('link', $award->link) == 'high' ? 'selected' : '' }} data-bg="bg-warning">High</option>
-                                        <option value="urgent" {{ old('link', $award->link) == 'urgent' ? 'selected' : '' }} data-bg="bg-danger">Urgent</option>
+                                    @foreach ($portfolyos_links as $link)
+                                    <option value="{{ $award->link }}" {{ old('link', $award->link) == $link ? 'selected' : '' }}> {{ $award->link  }} </option>
+                                    @endforeach
                                 </select>
                         </div>
                     </div>

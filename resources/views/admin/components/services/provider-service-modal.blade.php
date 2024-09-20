@@ -36,7 +36,7 @@
                 <div class="col-sm-12 col-lg-12">
                     <div class="form-group mb-4">
                         <label class="form-label">Skills:</label>
-                        <select name="skills[]" id="skills-list" class="form-control select2"  multiple="multiple" > 
+                        <select name="skills[]" id="skills-list" required class="form-control select2"  multiple="multiple" > 
                             @foreach($skills as $skill)
                                 <option value="{{ $skill->id }}">{{ $skill->name_en }}</option>
                             @endforeach
@@ -51,25 +51,25 @@
                         <div class="row mt-2">
                             <div class="col d-flex align-items-center">
                                 <label for="price-1000" class="d-flex align-items-center">
-                                    <input type="radio" id="price-1000" name="startingPrice" value="1000">
+                                    <input type="radio" id="price-1000" name="startingPrice" required value="1000">
                                     <span class="ms-2">€1000</span>
                                 </label>
                             </div>
                             <div class="col d-flex align-items-center">
                                 <label for="price-2000" class="d-flex align-items-center">
-                                    <input type="radio" id="price-2000" name="startingPrice" value="2000">
+                                    <input type="radio" id="price-2000" name="startingPrice" required value="2000">
                                     <span class="ms-2">€2000</span>
                                 </label>
                             </div>
                             <div class="col d-flex align-items-center">
                                 <label for="price-5000" class="d-flex align-items-center">
-                                    <input type="radio" id="price-5000" name="startingPrice" value="5000">
+                                    <input type="radio" id="price-5000" name="startingPrice" required value="5000">
                                     <span class="ms-2">€5000</span>
                                 </label>
                             </div>
                             <div class="col d-flex align-items-center">
                                 <label for="price-10000" class="d-flex align-items-center">
-                                    <input type="radio" id="price-10000" name="startingPrice" value="10000">
+                                    <input type="radio" id="price-10000" name="startingPrice" required value="10000">
                                     <span class="ms-2">€10000</span>
                                 </label>
                             </div>
@@ -87,7 +87,7 @@
                 <div class="col-12">
                     <div class="form-group mb-4">
                         <label class="form-label">Description (optional):</label>
-                        <textarea class="form-control" name="description" style="height: 18em;"></textarea>
+                        <textarea class="form-control" required name="description" style="height: 18em;"></textarea>
                     </div>
                 </div>
             </div>

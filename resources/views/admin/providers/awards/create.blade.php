@@ -131,7 +131,7 @@
                                                 </div>
                                             </div>
                                             <input type="hidden" name="provider_id" value="{{ Auth()->user()->provider_id}}">
-                                            <button type="submit" class="btn btn-primary"> Saqlash </button>
+                                            <button type="submit" class="btn btn-primary"> Save </button>
                                         </form>
                                     </div>
                                 </div>

@@ -84,7 +84,7 @@ $languages = App\Models\Language::all();
                 <div class="col-12">
                     <div class="form-group mb-4">
                         <label class="form-label">Company Size:</label>
-                        <input type="text" name="company_size" class="form-control" placeholder="Enter company size">
+                        <input type="number" name="company_size" class="form-control" placeholder="Enter company size">
                     </div>
                 </div>
 

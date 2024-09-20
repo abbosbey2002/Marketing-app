@@ -9,7 +9,6 @@ use Illuminate\Http\Request;
 
 class MainController extends Controller
 {
-
     public function search(Request $request)
     {
         $query = $request->input('query');
@@ -21,7 +20,7 @@ class MainController extends Controller
         if ($query) {
             // Kategoriyalarni qidiruv so'rovi bo'yicha filtrlash
             $results = Category::where('name', 'LIKE', "%$query%")
-                ->orWhereHas('services', function($q) use ($query) {
+                ->orWhereHas('services', function ($q) use ($query) {
                     $q->where('name_en', 'LIKE', "%$query%");
                 })
                 ->get();
@@ -42,9 +41,10 @@ class MainController extends Controller
             'query' => $query,
             'partners' => $partners,
             'categories' => $categories,
-            'providers' => $providers
+            'providers' => $providers,
         ]);
     }
+
     // home
     public function home()
     {
@@ -61,6 +61,7 @@ class MainController extends Controller
 
         return view('pages.page-provider', compact('providers'));
     }
+
     public function pageProviderService($service_id, $category_id)
     {
         // Xizmat va kategoriya ma'lumotlarini olish

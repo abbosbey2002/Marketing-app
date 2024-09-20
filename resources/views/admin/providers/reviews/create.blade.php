@@ -205,7 +205,7 @@
 
                                             <div class="d-flex justify-content-end gap-2">
                                                 <button type="reset" class="btn btn-secondary">Tozalash</button>
-                                                <button type="submit" class="btn btn-primary">Saqlash</button>
+                                                <button type="submit" class="btn btn-primary">Save</button>
                                             </div>
                                         </form>
                                     

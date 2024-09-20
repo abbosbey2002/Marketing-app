@@ -80,38 +80,48 @@
                                         </ul>
                                     </div>
                                 @endif
+                            
                                 <div class="form-group col-lg-6 col-sm-12">
                                     <label>Address<span class="brand-1">*</span></label>
                                     <input type="text" name="company_address" id="company_address"
-                                        class="form-control text-center" placeholder="Enter your company address" required>
+                                        class="form-control text-center" 
+                                        value="{{ old('company_address') }}" 
+                                        placeholder="Enter your company address" required>
                                 </div>
+                            
                                 <div class="form-group col-lg-6 col-sm-12">
                                     <label>Website<span class="brand-1">*</span></label>
                                     <input type="text" name="company_website" id="company_website"
-                                        class="form-control text-center" placeholder="Enter your company website">
+                                        class="form-control text-center" 
+                                        value="{{ old('company_website') }}" 
+                                        placeholder="Enter your company website">
                                 </div>
+                            
                                 <div class="form-group col-lg-6 col-sm-12">
                                     <label>Phone number<span class="brand-1">*</span></label>
-                                    <input type="text" name="company_phone" id="company_phone"
-                                        class="form-control text-center" placeholder="Enter your company phone number">
+                                    <input type="text" id="phone" name="company_phone"
+                                        class="form-control" 
+                                        value="{{ old('company_phone') }}" 
+                                        placeholder="Enter your company phone number">
                                 </div>
+                            
                                 <div class="form-group col-lg-6 col-sm-12">
                                     <label>Team size<span class="brand-1">*</span></label>
-                                    <input type="text" name="teamSize" id="teamSize" class="form-control text-center"
+                                    <input type="text" name="teamSize" id="teamSize" 
+                                        class="form-control text-center" 
+                                        value="{{ old('teamSize') }}" 
                                         placeholder="Enter your team size">
                                 </div>
-
+                            
                                 <div class="form-group col-lg-12">
                                     <button class="btn btn-black btn-rounded">Next
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="23" height="8"
-                                            viewbox="0 0 23 8" fill="none">
-                                            <path
-                                                d="M22.5 4.00032L18.9791 0.479492V3.3074H0.5V4.69333H18.9791V7.52129L22.5 4.00032Z"
-                                                fill=""></path>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="23" height="8" viewbox="0 0 23 8" fill="none">
+                                            <path d="M22.5 4.00032L18.9791 0.479492V3.3074H0.5V4.69333H18.9791V7.52129L22.5 4.00032Z" fill=""></path>
                                         </svg>
                                     </button>
                                 </div>
                             </form>
+                            
                         </div>
                     </div>
                     <div class="col-lg-6 d-none d-sm-none d-lg-flex justify-content-center align-items-center">

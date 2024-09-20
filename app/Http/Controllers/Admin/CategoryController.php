@@ -1,8 +1,8 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-use App\Http\Controllers\Controller;
 
+use App\Http\Controllers\Controller;
 use App\Models\Category;
 use Illuminate\Http\Request;
 
@@ -14,6 +14,7 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = Category::all();
+
         return view('admin.categories.index', compact('categories'));
     }
 
@@ -35,8 +36,6 @@ class CategoryController extends Controller
             'name_ru' => 'nullable|string|max:255',
             'name_en' => 'nullable|string|max:255',
         ]);
-
-
 
         Category::create($validatedData);
 
@@ -70,8 +69,6 @@ class CategoryController extends Controller
             'name_en' => 'nullable|string|max:255',
         ]);
 
-
-
         $category->update($validatedData);
 
         return redirect()->route('categories.index')->with('success', 'Category updated successfully.');
@@ -83,6 +80,7 @@ class CategoryController extends Controller
     public function destroy(Category $category)
     {
         $category->delete();
+
         return redirect()->route('categories.index')->with('success', 'Category deleted successfully.');
     }
 }

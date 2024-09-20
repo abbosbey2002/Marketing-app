@@ -3,8 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Service;
 use App\Models\Category;
+use App\Models\Service;
+use App\Models\Skill;
 use Illuminate\Http\Request;
 
 class ServiceController extends Controller
@@ -16,6 +17,7 @@ class ServiceController extends Controller
     {
         $categories = Category::all();
         $services = Service::with('category')->get();
+
         return view('admin.services.index', compact('services', 'categories'));
     }
 
@@ -26,6 +28,7 @@ class ServiceController extends Controller
     {
         // Kategoriya ro'yxatini olish
         $categories = Category::all();
+
         return view('services.create', compact('categories'));
     }
 
@@ -40,11 +43,33 @@ class ServiceController extends Controller
             'name_uz' => 'required|string|max:255',
             'name_en' => 'required|string|max:255',
             'category_id' => 'nullable|exists:categories,id',
+            'skills_uz' => 'nullable|array',  // Skills for Uzbek
+            'skills_ru' => 'nullable|array',  // Skills for Russian
+            'skills_en' => 'nullable|array',  // Skills for English
+            'skills_uz.*' => 'nullable|string|max:255',
+            'skills_ru.*' => 'nullable|string|max:255',
+            'skills_en.*' => 'nullable|string|max:255',
         ]);
 
         // Yangi servis yaratish
-        Service::create($request->all());
+        $service = Service::create($request->only(['name_ru', 'name_uz', 'name_en', 'category_id']));
 
+        // Skills yaratish (uch tilga asoslangan)
+        if ($request->has('skills_uz') && $request->has('skills_ru') && $request->has('skills_en')) {
+            for ($i = 0; $i < count($request->skills_uz); $i++) {
+                if (! empty($request->skills_uz[$i]) || ! empty($request->skills_ru[$i]) || ! empty($request->skills_en[$i])) {
+                    Skill::create([
+                        'name_uz' => $request->skills_uz[$i],
+                        'name_ru' => $request->skills_ru[$i],
+                        'name_en' => $request->skills_en[$i],
+                        'category' => '1',
+                        'service_id' => $service->id,
+                    ]);
+                }
+            }
+        }
+
+        // Yaratilgan servis uchun qaytish
         return redirect()->route('services-admin.index')->with('success', 'Service created successfully.');
     }
 
@@ -62,6 +87,7 @@ class ServiceController extends Controller
     public function edit(Service $service)
     {
         $categories = Category::all();
+
         return view('services.edit', compact('service', 'categories'));
     }
 
@@ -70,24 +96,58 @@ class ServiceController extends Controller
      */
     public function update(Request $request, $id)
     {
-
-        $service = Service::findOrFail($id);
-
-        $validated = $request->validate([
-            'name_ru' => 'nullable|string|max:255',
-            'name_uz' => 'nullable|string|max:255',
-            'name_en' => 'nullable|string|max:255',
+        // So'rovni validatsiya qilish
+        $request->validate([
+            'name_ru' => 'required|string|max:255',
+            'name_uz' => 'required|string|max:255',
+            'name_en' => 'required|string|max:255',
             'category_id' => 'nullable|exists:categories,id',
+            'skills_uz.*' => 'nullable|string|max:255',
+            'skills_ru.*' => 'nullable|string|max:255',
+            'skills_en.*' => 'nullable|string|max:255',
+            'skills_uz_new.*' => 'nullable|string|max:255',
+            'skills_ru_new.*' => 'nullable|string|max:255',
+            'skills_en_new.*' => 'nullable|string|max:255',
         ]);
 
-        $service->update($validated);
+        // Xizmatni yangilash
+        $service = Service::findOrFail($id);
+        $service->update($request->only(['name_ru', 'name_uz', 'name_en', 'category_id']));
 
-        try {
-            $service->update($request->all());
-            return redirect()->route('services-admin.index')->with('success', 'Service updated successfully.');
-        } catch (\Exception $e) {
-            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+        // Mavjud skillslarni yangilash
+        if ($request->has('skills_uz')) {
+            foreach ($request->skills_uz as $skillId => $skillNameUz) {
+                $skill = Skill::findOrFail($skillId);
+                $skill->update([
+                    'name_uz' => $skillNameUz,
+                    'name_ru' => $request->skills_ru[$skillId],
+                    'name_en' => $request->skills_en[$skillId],
+                ]);
+            }
         }
+
+        // Yangi skillslarni qo'shish
+        if ($request->has('skills_uz_new')) {
+            for ($i = 0; $i < count($request->skills_uz_new); $i++) {
+                if (! empty($request->skills_uz_new[$i]) || ! empty($request->skills_ru_new[$i]) || ! empty($request->skills_en_new[$i])) {
+                    Skill::create([
+                        'name_uz' => $request->skills_uz_new[$i],
+                        'name_ru' => $request->skills_ru_new[$i],
+                        'name_en' => $request->skills_en_new[$i],
+                        'category' => '1',
+                        'service_list_id' => $service->id,
+                    ]);
+                }
+            }
+        }
+
+        // O'chirilgan skillslarni o'chirish (client tarafdan kelgan 'remove-skill' dan foydalanishingiz mumkin)
+        if ($request->has('remove_skills')) {
+            Skill::destroy($request->remove_skills);
+        }
+
+        // Muvaffaqiyatli xabar bilan qaytish
+        return redirect()->route('services-admin.index')->with('success', 'Service updated successfully.');
     }
 
     /**

@@ -17,29 +17,35 @@
             background-color: #fff;
             border: 1px solid #ced4da;
             border-radius: 4px;
-            color: black !important; /* Text color */
-            min-height: 38px; /* Adjust height as needed */
+            color: black !important;
+            /* Text color */
+            min-height: 38px;
+            /* Adjust height as needed */
         }
 
         .select2-container--default .select2-selection--multiple .select2-selection__choice {
             background-color: #007bff;
             border-color: #007bff;
-            color: black !important; /* Text color */
+            color: black !important;
+            /* Text color */
         }
 
         .select2-container--default .select2-selection--multiple .select2-selection__choice__remove {
-            color: black !important; /* Text color */
+            color: black !important;
+            /* Text color */
         }
 
         .select2-container--default .select2-selection--multiple .select2-selection__choice__remove:hover {
             background-color: #0056b3;
             border-color: #0056b3;
-            color: black !important; /* Text color */
+            color: black !important;
+            /* Text color */
         }
 
         /* Ensure text color inside Select2 dropdown */
         .select2-container--default .select2-results__option {
-            color: black !important; /* Text color */
+            color: black !important;
+            /* Text color */
         }
     </style>
 
@@ -66,12 +72,17 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('admin/assets/vendors/css/datepicker.min.css') }}">
     <!--! END: Vendors CSS-->
 
+
+
+
     <!--! BEGIN: Custom CSS-->
     <link rel="stylesheet" type="text/css" href="{{ asset('admin/assets/css/theme.min.css') }}">
     <!-- Add in your <head> section -->
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet"/>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.5/lottie.min.js"></script>
+
+
 
 
     <!-- Add before the closing </body> tag -->
@@ -83,16 +94,20 @@
     <script src="https:oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="https:oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+
+    {{-- Style for the user profile image link --}}
+    {{-- Author: Abbos Qudratov  --}}
+    <link rel="stylesheet" type="text/css" href="{{ asset('admin/assets/css/custom.abbos.css') }}">
 </head>
 
 <body>
-<!--! ================================================================ !-->
-<!--! [Start] Navigation Manu !-->
-<!--! ================================================================ !-->
-@include('admin.components.sidebar')
-<!--! ================================================================ !-->
-<!--! [End]  Navigation Manu !-->
-<!--! ================================================================ !-->
+    <!--! ================================================================ !-->
+    <!--! [Start] Navigation Manu !-->
+    <!--! ================================================================ !-->
+    @include('admin.components.sidebar')
+    <!--! ================================================================ !-->
+    <!--! [End]  Navigation Manu !-->
+    <!--! ================================================================ !-->
 
     <!--! ================================================================ !-->
     <!--! [Start] Header !-->
@@ -108,7 +123,7 @@
     <!--! Footer Script !-->
     <!--! ================================================================ !-->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-   
+
 
     <!--! BEGIN: Vendors JS !-->
     <script src="{{ asset('admin/assets/vendors/js/vendors.min.js') }}"></script>
@@ -118,7 +133,7 @@
     <script src="{{ asset('admin/assets/vendors/js/select2.min.js') }}"></script>
     <script src="{{ asset('admin/assets/vendors/js/select2-active.min.js') }}"></script>
     <!-- For employees JS-->
-     <!-- SweetAlert2 JS -->
+    <!-- SweetAlert2 JS -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="{{ asset('admin/assets/vendors/js/quill.min.js') }}"></script>
     <script src="{{ asset('admin/assets/vendors/js/datepicker.min.js') }}"></script>
@@ -136,50 +151,50 @@
     <script src="{{ asset('admin/assets/js/theme-customizer-init.min.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
     <script>
-    function confirmDelete(event) {
-        event.preventDefault();
-        var num1 = Math.floor(Math.random() * 10) + 1;
-        var num2 = Math.floor(Math.random() * 10) + 1;
-        var correctAnswer = num1 + num2;
+        function confirmDelete(event) {
+            event.preventDefault();
+            var num1 = Math.floor(Math.random() * 10) + 1;
+            var num2 = Math.floor(Math.random() * 10) + 1;
+            var correctAnswer = num1 + num2;
 
-        Swal.fire({
-            title: 'Matematik amalni bajaring',
-            text: `${num1} + ${num2} = ?`,
-            input: 'text',
-            inputPlaceholder: 'Javobni kiriting',
-            showCancelButton: true,
-            confirmButtonText: 'Tasdiqlash',
-            cancelButtonText: 'Bekor qilish',
-            preConfirm: (answer) => {
-                if (parseInt(answer) === correctAnswer) {
-                    return true;
-                } else {
-                    Swal.showValidationMessage(
-                        'Notog\'ri javob. O\'chirish uchun to\'g\'ri javob kiritilishi kerak.'
-                    );
-                    return false;
-                }
-            }
-        }).then((result) => {
-            if (result.value) { // Ensure deletion only if confirmed
-                Swal.fire({
-                    title: 'O\'chirishni tasdiqlaysizmi?',
-                    text: "Bu amalni bekor qilib bo'lmaydi!",
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonText: 'Ha, o\'chirilsin!',
-                    cancelButtonText: 'Bekor qilish'
-                }).then((result) => {
-                    if (result.value) { // Ensure submission only if confirmed
-                        event.target.submit();
+            Swal.fire({
+                title: 'Matematik amalni bajaring',
+                text: `${num1} + ${num2} = ?`,
+                input: 'text',
+                inputPlaceholder: 'Javobni kiriting',
+                showCancelButton: true,
+                confirmButtonText: 'Tasdiqlash',
+                cancelButtonText: 'Bekor qilish',
+                preConfirm: (answer) => {
+                    if (parseInt(answer) === correctAnswer) {
+                        return true;
+                    } else {
+                        Swal.showValidationMessage(
+                            'Notog\'ri javob. O\'chirish uchun to\'g\'ri javob kiritilishi kerak.'
+                        );
+                        return false;
                     }
-                });
-            }
-        });
-    }
-</script>
+                }
+            }).then((result) => {
+                if (result.value) { // Ensure deletion only if confirmed
+                    Swal.fire({
+                        title: 'O\'chirishni tasdiqlaysizmi?',
+                        text: "Bu amalni bekor qilib bo'lmaydi!",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonText: 'Ha, o\'chirilsin!',
+                        cancelButtonText: 'Bekor qilish'
+                    }).then((result) => {
+                        if (result.value) { // Ensure submission only if confirmed
+                            event.target.submit();
+                        }
+                    });
+                }
+            });
+        }
+    </script>
 
-<!--! END: Theme Customizer !-->
+    <!--! END: Theme Customizer !-->
 </body>
 
 </html>

@@ -129,8 +129,8 @@
 
 
 
-    @include('admin.components.awards.provider-award-modal')
-    @include('admin.components.awards.edit-provider-award-modal', $awards)
+    @include('admin.components.awards.provider-award-modal', [$portfolyos_links])
+    @include('admin.components.awards.edit-provider-award-modal', [$portfolyos_links, $awards])
     @include('admin.components.awards.view-provider-award-modal')
 
 

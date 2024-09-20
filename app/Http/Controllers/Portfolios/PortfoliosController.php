@@ -34,18 +34,18 @@ class PortfoliosController extends Controller
         // Formadan kelgan ma'lumotlarni validatsiya qilish
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
-            'image' => 'nullable|max:2048',
-            'youtube_url' => 'nullable|string|max:255',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'youtube_url' => 'nullable|url|max:255',
             'expertise' => 'nullable|string|max:255',
             'skills' => 'nullable|string',
-            'budget' => 'numeric',
+            'budget' => 'required|numeric',  // bigInteger o'rniga
             'start_date' => 'nullable|date',
-            'end_date' => 'nullable|date',
+            'end_date' => 'nullable|date|after_or_equal:start_date',  // end_date start_date dan keyin yoki teng bo'lishi kerak
             'introduction' => 'nullable|string',
             'challenges' => 'nullable|string',
             'solution' => 'nullable|string',
             'impact' => 'nullable|string',
-            'link' => 'nullable|string|max:255',
+            'link' => 'nullable|url|max:255',
             'company_name' => 'nullable|string|max:255',
             'company_location' => 'nullable|string|max:255',
             'sector' => 'nullable|string|max:255',
@@ -53,6 +53,7 @@ class PortfoliosController extends Controller
             'geographic_scope' => 'nullable|string|max:255',
             'provider_id' => 'nullable|exists:providers,id',
             'service_id' => 'nullable|exists:services,id',
+            'email' => 'nullable|email|max:255',
         ]);
 
         // Agar fayl yuklangan bo'lsa

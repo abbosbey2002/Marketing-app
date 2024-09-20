@@ -33,7 +33,7 @@
                     <div class="col-12">
                         <div class="form-group mb-4">
                             <label class="form-label">Name (uz):</label>
-                            <input class="form-control" name="name_uz" value="{{ $service->name_uz }}">
+                            <input class="form-control" name="name_uz" value="{{ $service->name_uz }}" required>
                         </div>
                     </div>
 
@@ -41,7 +41,7 @@
                     <div class="col-12">
                         <div class="form-group mb-4">
                             <label class="form-label">Name (ru):</label>
-                            <input class="form-control" name="name_ru" value="{{ $service->name_ru }}">
+                            <input class="form-control" name="name_ru" value="{{ $service->name_ru }}" required>
                         </div>
                     </div>
 
@@ -49,7 +49,7 @@
                     <div class="col-12">
                         <div class="form-group mb-4">
                             <label class="form-label">Name (en):</label>
-                            <input class="form-control" name="name_en" value="{{ $service->name_en }}">
+                            <input class="form-control" name="name_en" value="{{ $service->name_en }}" required>
                         </div>
                     </div>
 
@@ -57,15 +57,35 @@
                     <div class="col-12">
                         <div class="form-group mb-4">
                             <label class="form-label">Category:</label>
-                            <select class="form-control select2" name="category_id">
+                            <select class="form-control select2" name="category_id" required>
+                                <option value="">Select a category</option>
                                 @foreach($categories as $category)
                                     <option value="{{ $category->id }}" {{ old('category_id', $service->category_id) == $category->id ? 'selected' : '' }}>
                                         {{ $category->name_en }}
                                     </option>
                                 @endforeach
                             </select>
-
                         </div>
+                    </div>
+
+                    <!-- Skills Section -->
+                    <div class="col-12">
+                        <label class="form-label">Skills (Multiple languages):</label>
+                        <div id="skillsContainer{{ $service->id }}">
+                            <!-- Mavjud skillslarni ko'rsatish -->
+                            @foreach($service->skills as $skill)
+                                <div class="skill-item d-flex mb-2">
+                                    <input class="form-control me-2" name="skills_uz[{{ $skill->id }}]" value="{{ $skill->name_uz }}" placeholder="Skill in Uzbek">
+                                    <input class="form-control me-2" name="skills_ru[{{ $skill->id }}]" value="{{ $skill->name_ru }}" placeholder="Skill in Russian">
+                                    <input class="form-control me-2" name="skills_en[{{ $skill->id }}]" value="{{ $skill->name_en }}" placeholder="Skill in English">
+                                    <!-- O'chirish tugmasi -->
+                                    <button type="button" class="btn btn-danger btn-sm remove-skill" data-skill-id="{{ $skill->id }}">Remove</button>
+                                </div>
+                            @endforeach
+                        </div>
+
+                        <!-- Yangi skill qo'shish -->
+                        <button type="button" class="btn btn-outline-primary" id="addSkillBtn{{ $service->id }}">Add More Skill</button>
                     </div>
                 </div>
 
@@ -80,5 +100,27 @@
         </div>
     </div>
 
+    <!-- Script for Adding and Removing Skills -->
+    <script>
+        document.getElementById('addSkillBtn{{ $service->id }}').addEventListener('click', function() {
+            var newSkillInput = `
+                <div class="skill-item d-flex mb-2">
+                    <input class="form-control me-2" name="skills_uz_new[]" placeholder="Skill in Uzbek">
+                    <input class="form-control me-2" name="skills_ru_new[]" placeholder="Skill in Russian">
+                    <input class="form-control me-2" name="skills_en_new[]" placeholder="Skill in English">
+                    <button type="button" class="btn btn-danger btn-sm remove-skill">Remove</button>
+                </div>`;
+            document.getElementById('skillsContainer{{ $service->id }}').insertAdjacentHTML('beforeend', newSkillInput);
+        });
+
+        // Remove skill input on click
+        document.querySelectorAll('.remove-skill').forEach(button => {
+            button.addEventListener('click', function() {
+                this.closest('.skill-item').remove();
+            });
+        });
+    </script>
+
 @endforeach
+
 

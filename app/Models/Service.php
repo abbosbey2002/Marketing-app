@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Service extends Model
 {
-
     use HasFactory;
 
     protected $table = 'services';
@@ -18,6 +17,7 @@ class Service extends Model
     {
         return $this->belongsToMany(Provider::class, 'provider_service', 'service_id', 'provider_id');
     }
+
     public function skills()
     {
         return $this->hasMany(Skill::class);
@@ -25,7 +25,7 @@ class Service extends Model
 
     public function category()
     {
-        return $this->belongsTo(Category::class,'category_id');
+        return $this->belongsTo(Category::class, 'category_id');
     }
 
     public function providerSkills()

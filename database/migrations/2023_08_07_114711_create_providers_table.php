@@ -17,6 +17,7 @@ return new class extends Migration
             $table->bigInteger('turnover')->nullable();
             $table->bigInteger('teamSize');
             $table->string('tagline')->nullable();
+            $table->string('website')->nullable();
             $table->date('foundedAt')->nullable();
             $table->text('description')->nullable();
             $table->string('logo')->nullable();

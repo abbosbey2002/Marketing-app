@@ -10,7 +10,7 @@
             @include('admin.components.single-sidebar')
             <!-- [ Content Sidebar  ] end -->
             <!-- [ Main Area  ] start -->
-            
+
             <div class="content-area" data-scrollbar-target="#psScrollbarInit">
                 <div class="content-area-header bg-white sticky-top">
                     <div class="page-header-right ms-auto">
@@ -25,20 +25,20 @@
                 </div>
                 <div class="content-area-body">
                     @if ($errors->any())
-                <div class="alert alert-danger">
-                    <ul class="mb-0">
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif
+                        <div class="alert alert-danger">
+                            <ul class="mb-0">
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
 
-            @if (session('message'))
-                <div class="alert alert-success">
-                    {{ session('message') }}
-                </div>
-            @endif
+                    @if (session('message'))
+                        <div class="alert alert-success">
+                            {{ session('message') }}
+                        </div>
+                    @endif
                     <div class="card mb-0">
                         <div class="card-body">
                             <!--! BEGIN: [Users] !-->
@@ -143,6 +143,85 @@
                 }
             });
         }
+
+        // 
+        document.getElementById('myForm').addEventListener('submit', function(e) {
+            var urlField = document.getElementById('urlField').value;
+            var errorMessage = document.getElementById('error-message');
+
+            // URL formatini tekshirish uchun regex
+            var urlPattern = /^(https?:\/\/)?([\w\-]+)+[\w\-]+(\.[a-z]{2,})+([/?].*)?$/i;
+
+            // Agar URL noto'g'ri formatda bo'lsa, xatolikni ko'rsatish
+            if (!urlPattern.test(urlField)) {
+                errorMessage.style.display = 'inline';
+                e.preventDefault(); // Formani yuborishni to'xtatadi
+            } else {
+                errorMessage.style.display = 'none';
+            }
+        });
     </script>
+
+<script>
+    document.getElementById('imageFile').addEventListener('change', function(event) {
+        var reader = new FileReader();
+        reader.onload = function() {
+            var output = document.getElementById('imageDisplay');
+            output.src = reader.result;
+            output.style.display = 'block';
+            document.querySelector('.no-content').display = "none"
+        };
+        reader.readAsDataURL(event.target.files[0]);
+    });
+</script>
+
+
+<script>
+    var dropZone = document.getElementById('dropZone');
+    var imageFileInput = document.getElementById('imageFile');
+
+    dropZone.addEventListener('dragover', function(e) {
+        e.preventDefault();
+        dropZone.style.borderColor = 'green';
+    });
+
+    dropZone.addEventListener('dragleave', function() {
+        dropZone.style.borderColor = '#000';
+    });
+
+    dropZone.addEventListener('drop', function(e) {
+        e.preventDefault();
+        
+        // Faylni olish
+        var file = e.dataTransfer.files[0];
+        if (!file) {
+            alert("No file dropped.");
+            return;
+        }
+
+        // Fayl formati rasm ekanligini tekshirish
+        if (!file.type.startsWith('image/')) {
+            alert("Only images are allowed.");
+            return;
+        }
+
+        // Faylni <input type="file"> ga yuklash
+        var dataTransfer = new DataTransfer();
+        dataTransfer.items.add(file);
+        imageFileInput.files = dataTransfer.files;
+
+        // Konsolda fayl yuklanganligini tekshirish
+        console.log(imageFileInput.files);
+
+        // Rasmni ekranda ko'rsatish
+        var reader = new FileReader();
+        reader.onload = function() {
+            var output = document.getElementById('imageDisplay');
+            output.src = reader.result;
+            output.style.display = 'block';
+        };
+        reader.readAsDataURL(file);
+    });
+</script>
 
 @endsection
