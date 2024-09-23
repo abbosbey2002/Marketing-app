@@ -65,12 +65,11 @@
                     </div>
                 </div>
 
-
                 <!-- Description -->
                 <div class="col-12">
                     <div class="form-group mb-4">
                         <label class="form-label">Description (optional):</label>
-                        <textarea class="form-control" name="description" style="height: 18em;">{{($service->providerService->description) }}</textarea>
+                        <textarea class="form-control" name="description" style="height: 18em;">{{($service->description) }}</textarea>
                     </div>
                 </div>
             </div>

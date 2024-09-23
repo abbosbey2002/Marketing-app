@@ -43,7 +43,7 @@ class ProviderRegistrationController extends Controller
         $validatedData = $request->validate([
             'company_address' => 'required|string|max:255',
             'company_website' => 'required|url|max:255',
-            'company_phone' => 'required|string|max:15',
+            'company_phone' => 'required|string',
             'teamSize' => 'required|integer',
         ]);
 

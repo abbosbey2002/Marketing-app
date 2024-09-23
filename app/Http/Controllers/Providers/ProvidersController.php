@@ -219,7 +219,9 @@ class ProvidersController extends Controller
         ]);
 
         $user = Auth::user()->manager;
-        $provider = $user->provider;
+        $provider_id = $user->provider_id;
+
+        $provider = Provider::find($provider_id);
 
         // Handle file uploads
         if ($request->hasFile('logo')) {

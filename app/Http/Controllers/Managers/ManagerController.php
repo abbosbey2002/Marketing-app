@@ -35,6 +35,7 @@ class ManagerController extends Controller
 
             return redirect()->back()->with('success', 'Providerga qo\'shilish taklifi yuborildi.');
         } catch (\Exception $e) {
+            dd($e);
             return redirect()->back()->with('error', 'Providerga qo\'shilish taklifini yuborishda xatolik yuz berdi.');
         }
     }

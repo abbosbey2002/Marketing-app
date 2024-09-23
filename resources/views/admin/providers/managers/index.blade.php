@@ -62,12 +62,15 @@
                     <div class="card-body">
                         <form action="{{ route('providers.invite') }}" method="POST">
                             @csrf  <!-- CSRF token, xavfsizlik uchun -->
-                            <div class="form-group">
-                                <label for="email">Email:</label>
-                                <input type="email" name="email" class="form-control" required>
-                            </div>
-                            <div class="flex mt-3">
-                                <button type="submit" class="btn btn-primary">Send an offer</button>
+                            <div class="row">
+                                <div class="col-9 form-group">
+                                    <label for="email">Email:</label>
+                                    <input type="email" name="email" class="form-control" required>
+                                </div>
+                                <div class="col-3 flex">
+                                    <label for=""></label>
+                                    <button type="submit" class="btn btn-primary">Send an offer</button>
+                                </div>
                             </div>
 
                         </form>
